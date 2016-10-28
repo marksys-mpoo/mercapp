@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">MercApp</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_maps">Map</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="prompt_email">prompt_email</string>
+    <string name="prompt_password">prompt_password</string>
+    <string name="action_sign_in_short">action_sign_in_short</string>
+    <string name="action_sign_in">action_sign_in</string>
+
+    <string name="title_activity_tela_principal">Map</string>
+
+    <string name="email_vazio">Campo email não pode ser vazio!</string>
+    <string name="senha_vazio">Campo senha não pode ser vazio!</string>
+    <string name="email_senha_invalido">Email ou Senha inválidos!</string>
+    <string name="email_invalido">Email inválidos!</string>
+    <string name="senha_diferentes">Senhas diferentes!</string>
+    <string name="login_tamanho_invalido">Seu login deve ter entre 4 e 15 caracteres!</string>
+    <string name="login_senha_tamanho_invalido">Sua senha deve ter entre 3 e 15 caracteres!</string>
+</resources>
