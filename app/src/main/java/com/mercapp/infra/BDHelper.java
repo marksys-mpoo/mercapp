@@ -22,8 +22,20 @@ public class BDHelper extends SQLiteOpenHelper {
     public static final String COLUNA_ID_PESSOA= "_id_pessoa";
     public static final String COLUNA_NOME = "nome";
     public static final String COLUNA_TELEFONE = "telefone";
-    public static final String COLUNA_ID_ENDERECO = "_id_endereco";
+    public static final String COLUNA_ID_ENDERECO_PESSOA = "_id_endereco";
     public static final String COLUNA_ID_USARIO = "_id_usuario";
+
+    //Tabela de Endereço
+    public static final String TBL_ENDERECO = "endereco";
+    public static final String COLUNA_ID_ENDERECO= "_id_endereco";
+    public static final String COLUNA_NUMERO = "numero";
+    public static final String COLUNA_BAIRRO = "bairro";
+    public static final String COLUNA_CIDADE = "cidade";
+    public static final String COLUNA_UF = "uf";
+    public static final String COLUNA_CEP = "cep";
+    public static final String COLUNA_ENDERECO = "endereco";
+
+
 
 //    private static final String CREATE_TBL_USUARIOS = "CREATE TABLE " + TBL_USUARIO + "("
 //            + COLUNA_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -40,12 +52,14 @@ public class BDHelper extends SQLiteOpenHelper {
         //db.execSQL(CREATE_TBL_USUARIOS);
         db.execSQL(SQLScript.getTabelaUsuario());
         db.execSQL(SQLScript.getTabelaPessoa());
+        db.execSQL(SQLScript.getTabelaEndereco());
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int versaoAntiga, int novaVersao) {
         db.execSQL("DROP TABLE IF EXISTIS " + TBL_USUARIO);
         db.execSQL("DROP TABLE IF EXISTIS " + TBL_PESSOA);
+        db.execSQL("DROP TABLE IF EXISTIS " + TBL_ENDERECO);
         onCreate(db);
     }
 

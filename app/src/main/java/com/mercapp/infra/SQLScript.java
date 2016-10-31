@@ -6,11 +6,12 @@ package com.mercapp.infra;
 
 public class SQLScript {
     public static String getTabelaUsuario() {
+
         StringBuilder usuarioBuilder = new StringBuilder();
         usuarioBuilder.append("CREATE TABLE  usuarios ( ");
         usuarioBuilder.append("_id_usuario   integer primary key autoincrement,   ");
         usuarioBuilder.append("email  text not null unique,  ");
-        usuarioBuilder.append("senha  text not null, ");
+        usuarioBuilder.append("senha  text not null );");
         
         return usuarioBuilder.toString();
     }
@@ -27,4 +28,18 @@ public class SQLScript {
         pessoaBuilder.append("foreign key (_id_endereco ) references  endereco ( _id_endereco ) );");
         return pessoaBuilder.toString();
     }
+    public static String getTabelaEndereco() {
+
+        StringBuilder enderecoBuilder = new StringBuilder();
+        enderecoBuilder.append("CREATE TABLE  endereco  (  ");
+        enderecoBuilder.append("_id_endereco   integer primary key autoincrement,   ");
+        enderecoBuilder.append("numero  text not null,  ");
+        enderecoBuilder.append("bairro  text not null,  ");
+        enderecoBuilder.append("cidade  text not null,  ");
+        enderecoBuilder.append("uf  text not null,  ");
+        enderecoBuilder.append("cep  text not null,  ");
+        enderecoBuilder.append("endereco  text not null );");
+        return enderecoBuilder.toString();
+    }
 }
+
