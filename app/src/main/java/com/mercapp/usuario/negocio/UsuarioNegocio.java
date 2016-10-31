@@ -3,6 +3,7 @@ package com.mercapp.usuario.negocio;
 import android.content.Context;
 
 import com.mercapp.infra.Session;
+import com.mercapp.usuario.dominio.Pessoa;
 import com.mercapp.usuario.dominio.Usuario;
 import com.mercapp.usuario.persistencia.UsuarioPersistencia;
 
@@ -22,15 +23,17 @@ public class UsuarioNegocio {
         _context = context;
     }
 
-    public void cadastro(String emailTela, String senhaTela){
+    public void cadastro(String nomeTela, String emailTela, String senhaTela){
 
         Usuario usuarioCadastro = new Usuario();
+        Pessoa pessoa = new Pessoa();
 
+        pessoa.setNome(nomeTela);
         usuarioCadastro.setEmail(emailTela);
         usuarioCadastro.setSenha(senhaTela);
 
         UsuarioPersistencia usuarioPersistencia = new UsuarioPersistencia(_context);
-        usuarioPersistencia.cadastrarUsuario(usuarioCadastro);
+        usuarioPersistencia.cadastrarUsuario(usuarioCadastro, pessoa);
     }
 
     public void iniciarSessao(Usuario usuario){

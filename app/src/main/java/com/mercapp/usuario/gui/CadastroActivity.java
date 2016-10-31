@@ -19,7 +19,7 @@ import java.util.regex.Pattern;
 
 public class CadastroActivity extends AppCompatActivity {
 
-    private EditText etEmail, etSenha, etConfirmar;
+    private EditText etNome, etEmail, etSenha, etConfirmar;
     private Button btnEfetuarCadastro;
     private Context _context = CadastroActivity.this;
     private UsuarioNegocio usuarioNegocio;
@@ -29,6 +29,7 @@ public class CadastroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
 
+        etNome = (EditText) findViewById(R.id.etNome);
         etEmail = (EditText) findViewById(R.id.etEmail);
         etSenha = (EditText) findViewById(R.id.etSenha);
         etConfirmar = (EditText) findViewById(R.id.etConfirmaSenha);
@@ -37,7 +38,7 @@ public class CadastroActivity extends AppCompatActivity {
     }
 
     public void efetuarCadastro(View view) {
-
+        String nome = etNome.getText().toString().trim();
         String email = etEmail.getText().toString().trim();
         String senha = etSenha.getText().toString().trim();
 
@@ -45,8 +46,8 @@ public class CadastroActivity extends AppCompatActivity {
         usuarioCadastro = usuarioNegocio.buscaUsuario(email,senha);
 
         if ((usuarioCadastro == null) && (validarCampos())){
-            usuarioNegocio.cadastro(email, senha);
-            Toast.makeText(this, "Cadastro efetuado com sucesso\r\n Faça o login - "+ email, Toast.LENGTH_SHORT).show();
+            usuarioNegocio.cadastro(nome, email, senha);
+            Toast.makeText(this, "Cadastro efetuado com sucesso\r\n Faça o login - "+ nome, Toast.LENGTH_SHORT).show();
             voltarLogin(view);
         }
 

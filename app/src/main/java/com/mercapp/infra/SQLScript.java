@@ -41,5 +41,26 @@ public class SQLScript {
         enderecoBuilder.append("endereco  text not null );");
         return enderecoBuilder.toString();
     }
+
+    public static String getTabelaCarrinho() {
+
+        StringBuilder carrinhoBuilder = new StringBuilder();
+        carrinhoBuilder.append("CREATE TABLE  carrinho  (  ");
+        carrinhoBuilder.append("_id_carrinho   integer primary key autoincrement,   ");
+        carrinhoBuilder.append("valor_total  text not null,  ");
+        carrinhoBuilder.append("descontos  text not null,  ");
+        carrinhoBuilder.append("_id_produtos   integer,  ");
+        carrinhoBuilder.append("foreign key (_id_produtos ) references  produto ( _id_produtos ) );");
+        return carrinhoBuilder.toString();
+    }
+    public static String getTabelaProduto() {
+
+        StringBuilder carrinhoBuilder = new StringBuilder();
+        carrinhoBuilder.append("CREATE TABLE  produto  (  ");
+        carrinhoBuilder.append("_id_produto   integer primary key autoincrement,   ");
+        carrinhoBuilder.append("descricao  text not null,  ");
+        carrinhoBuilder.append("preco  text not null );");
+        return carrinhoBuilder.toString();
+    }
 }
 
