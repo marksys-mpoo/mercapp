@@ -1,9 +1,5 @@
 package com.mercapp.Carrinho.dominio;
 
-import com.mercapp.supermercado.dominio.Produtos;
-
-import java.util.ArrayList;
-
 /**
  * Created by wellington on 30/10/16.
  */
