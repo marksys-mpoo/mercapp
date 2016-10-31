@@ -40,6 +40,19 @@ public class SQLScript {
         enderecoBuilder.append("cep  text not null,  ");
         enderecoBuilder.append("endereco  text not null );");
         return enderecoBuilder.toString();
+
+
+    }
+    public static String getTabelaSupermercado() {
+
+        StringBuilder supermercadoBuilder = new StringBuilder();
+        supermercadoBuilder.append("CREATE TABLE  supermercado  (  ");
+        supermercadoBuilder.append("_id_supermercado   integer primary key autoincrement,   ");
+        supermercadoBuilder.append("nome  text not null,  ");
+        supermercadoBuilder.append("telefone  text not null,  ");
+        supermercadoBuilder.append("_id_produtos   integer,  ");
+        supermercadoBuilder.append("foreign key (_id_produtos ) references  produto ( _id_produtos ) );");
+        return supermercadoBuilder.toString();
     }
 
     public static String getTabelaCarrinho() {

@@ -35,12 +35,12 @@ public class BDHelper extends SQLiteOpenHelper {
     public static final String COLUNA_CEP = "cep";
     public static final String COLUNA_ENDERECO = "endereco";
 
-    //Tabela Carrinho
-    public static final String TBL_CARRINHO = "carrinho";
-    public static final String COLUNA_ID_CARRINHO = "_id_carrinho";
-    public static final String COLUNA_VALOR_TOTAL = "valor_total";
-    public static final String COLUNA_DESCONTOS = "descontos";
-    public static final String COLUNA_PRODUTOS = "_id_produtos";
+    //Tabela Supermercado
+    public static final String TBL_SUPERMERCADO = "supermercado";
+    public static final String COLUNA_ID_SUPERMERCADO = "_id_supermercado";
+    public static final String COLUNA_NOME_SUPERMERCADO = "nome";
+    public static final String COLUNA_TELEFONE_SUPERMERCADO = "telefone";
+    public static final String COLUNA_ID_PRODUTOS_SUPERMERCADO = "_id_produtos";
 
     //Tabela Produtos
     public static final String TBL_PRODUTO = "produto";
@@ -48,6 +48,12 @@ public class BDHelper extends SQLiteOpenHelper {
     public static final String COLUNA_DESCRICAO = "descricao";
     public static final String COLUNA_PRECO = "preco";
 
+    //Tabela Carrinho
+    public static final String TBL_CARRINHO = "carrinho";
+    public static final String COLUNA_ID_CARRINHO = "_id_carrinho";
+    public static final String COLUNA_VALOR_TOTAL = "valor_total";
+    public static final String COLUNA_DESCONTOS = "descontos";
+    public static final String COLUNA_PRODUTOS = "_id_produtos";
 
 //    private static final String CREATE_TBL_USUARIOS = "CREATE TABLE " + TBL_USUARIO + "("
 //            + COLUNA_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -67,6 +73,7 @@ public class BDHelper extends SQLiteOpenHelper {
         db.execSQL(SQLScript.getTabelaEndereco());
         db.execSQL(SQLScript.getTabelaCarrinho());
         db.execSQL(SQLScript.getTabelaProduto());
+        db.execSQL(SQLScript.getTabelaSupermercado());
     }
 
     @Override
@@ -76,6 +83,7 @@ public class BDHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTIS " + TBL_ENDERECO);
         db.execSQL("DROP TABLE IF EXISTIS " + TBL_CARRINHO);
         db.execSQL("DROP TABLE IF EXISTIS " + TBL_PRODUTO);
+        db.execSQL("DROP TABLE IF EXISTIS " + TBL_SUPERMERCADO);
         onCreate(db);
     }
 
