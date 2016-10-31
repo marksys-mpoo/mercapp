@@ -44,7 +44,7 @@ public class BDHelper extends SQLiteOpenHelper {
 
     //Tabela Produtos
     public static final String TBL_PRODUTO = "produto";
-    public static final String COLUNA_ID_PRODUTO = "_id_produto";
+    public static final String COLUNA_ID_PRODUTO = "_id_produtos";
     public static final String COLUNA_DESCRICAO = "descricao";
     public static final String COLUNA_PRECO = "preco";
 
