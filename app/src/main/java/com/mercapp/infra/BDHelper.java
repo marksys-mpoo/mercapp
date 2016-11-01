@@ -16,6 +16,7 @@ public class BDHelper extends SQLiteOpenHelper {
     public static final String COLUNA_ID = "_id_usuario";
     public static final String COLUNA_EMAIL = "email";
     public static final String COLUNA_SENHA = "senha";
+    public static final String COLUNA_ID_PESSOA_USUARIO = "_id_pessoa_usuario";
 
     //Tabela de Pessoa
     public static final String TBL_PESSOA = "pessoas";
@@ -23,17 +24,16 @@ public class BDHelper extends SQLiteOpenHelper {
     public static final String COLUNA_NOME = "nome";
     public static final String COLUNA_TELEFONE = "telefone";
     public static final String COLUNA_ID_ENDERECO_PESSOA = "_id_endereco";
-    public static final String COLUNA_ID_USARIO = "_id_usuario";
 
     //Tabela de Endereço
     public static final String TBL_ENDERECO = "endereco";
     public static final String COLUNA_ID_ENDERECO= "_id_endereco";
+    public static final String COLUNA_RUA = "rua";
     public static final String COLUNA_NUMERO = "numero";
     public static final String COLUNA_BAIRRO = "bairro";
     public static final String COLUNA_CIDADE = "cidade";
     public static final String COLUNA_UF = "uf";
     public static final String COLUNA_CEP = "cep";
-    public static final String COLUNA_ENDERECO = "endereco";
 
     //Tabela Supermercado
     public static final String TBL_SUPERMERCADO = "supermercado";
