@@ -119,7 +119,7 @@ public class TelaMenuActivity extends AppCompatActivity
             case R.id.nav_descontos:
                 Toast.makeText(this, "Desculpe o transtorno, estamos implementando", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.nav_comfiguracao:
+            case R.id.nav_configuracao:
                 Toast.makeText(this, "Desculpe o transtorno, estamos implementando", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_mapa:
