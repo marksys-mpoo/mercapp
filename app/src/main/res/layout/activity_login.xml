@@ -64,7 +64,8 @@
             android:onClick="cadastrarUsuario"
             android:layout_below="@+id/btnEntrar"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp" />
 
         <Button
             android:text="Login"
@@ -73,7 +74,8 @@
             android:id="@+id/btnEntrar"
             android:onClick="loginUsuario"
             android:layout_below="@+id/etSenha"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="20dp" />
 
     </RelativeLayout>
 

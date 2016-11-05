@@ -23,17 +23,15 @@ public class UsuarioNegocio {
         _context = context;
     }
 
-    public void cadastro(String nomeTela, String emailTela, String senhaTela){
+    public void cadastro(String emailTela, String senhaTela){
 
         Usuario usuarioCadastro = new Usuario();
-        Pessoa pessoa = new Pessoa();
 
-        pessoa.setNome(nomeTela);
         usuarioCadastro.setEmail(emailTela);
         usuarioCadastro.setSenha(senhaTela);
 
         UsuarioPersistencia usuarioPersistencia = new UsuarioPersistencia(_context);
-        usuarioPersistencia.cadastrarUsuario(usuarioCadastro, pessoa);
+        usuarioPersistencia.cadastrarUsuario(usuarioCadastro);
     }
 
     public void iniciarSessao(Usuario usuario){

@@ -23,16 +23,14 @@ public class UsuarioPersistencia {
         bdHelper= new BDHelper(_context);
     }
 
-    public void cadastrarUsuario(Usuario usuario, Pessoa pessoa){
+    public void cadastrarUsuario(Usuario usuario){
         SQLiteDatabase db = bdHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
 
         values.put(bdHelper.COLUNA_EMAIL, usuario.getEmail());
         values.put(bdHelper.COLUNA_SENHA, usuario.getSenha());
-        values.put(bdHelper.COLUNA_NOME, pessoa.getNome());
 
         db.insert(bdHelper.TBL_USUARIO, null, values);
-        db.insert(bdHelper.TBL_PESSOA, null, values);
         db.close();
     }
 
