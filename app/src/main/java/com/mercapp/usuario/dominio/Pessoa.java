@@ -5,6 +5,8 @@ public class Pessoa {
     private int id;
     private String nome;
     private String telefone;
+    private String numeroCartao;
+    private Usuario usuario;
     private Endereco endereco;
 
     public int getId() {
@@ -31,11 +33,27 @@ public class Pessoa {
         this.telefone = telefone;
     }
 
+    public String getNumeroCartao() {
+        return numeroCartao;
+    }
+
+    public void setNumeroCartao(String numeroCartao) {
+        this.numeroCartao = numeroCartao;
+    }
+
     public Endereco getEndereco() {
         return endereco;
     }
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

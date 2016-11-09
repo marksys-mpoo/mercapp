@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.mercapp.R;
 import com.mercapp.infra.Session;
+import com.mercapp.usuario.dominio.Pessoa;
 import com.mercapp.usuario.dominio.Usuario;
 import com.mercapp.usuario.negocio.UsuarioNegocio;
 
@@ -21,7 +22,7 @@ import java.util.regex.Pattern;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private Session session;
+    private Session session = Session.getInstanciaSessao();
     private Button btnLogar, btnCadastrar;
     private EditText etEmail, etSenha;
     private Context _context = LoginActivity.this;
@@ -47,11 +48,18 @@ public class LoginActivity extends AppCompatActivity {
             UsuarioNegocio usuarioNegocio = new UsuarioNegocio(_context);
             Usuario logarTest = usuarioNegocio.buscaUsuario(email,senha);
             if (logarTest != null) {
-                usuarioNegocio.iniciarSessao(logarTest);
-                Intent changeToTelaPrincipal = new Intent(LoginActivity.this, TelaMenuActivity.class);
-                LoginActivity.this.startActivity(changeToTelaPrincipal);
-                Toast.makeText(this, "Bem-Vindo - "+ email, Toast.LENGTH_SHORT).show();
-                finish();
+                session.setUsuarioLogado(logarTest);
+                if (usuarioNegocio.buscarPessoa(logarTest.getId()) != null) {
+                    session.setPessoaLogada(usuarioNegocio.buscarPessoa(logarTest.getId()));
+                    Intent changeToTelaPrincipal = new Intent(LoginActivity.this, TelaMenuActivity.class);
+                    LoginActivity.this.startActivity(changeToTelaPrincipal);
+                    Toast.makeText(this, "Bem-Vindo - " + session.getPessoaLogada().getNome(), Toast.LENGTH_SHORT).show();
+                    finish();
+                } else{
+                    Intent changeToTelaCadastroPessoa = new Intent(LoginActivity.this,CadastroPessoaActivity.class);
+                    LoginActivity.this.startActivity(changeToTelaCadastroPessoa);
+                    finish();
+                }
             } else {
                 Toast.makeText(this, "Email ou senha inválido!", Toast.LENGTH_SHORT).show();                }
         }
@@ -60,10 +68,7 @@ public class LoginActivity extends AppCompatActivity {
     public void cadastrarUsuario (View view){
         Intent cadastro = new Intent(LoginActivity.this, CadastroActivity.class);
         startActivity(cadastro);
-    }
-
-    public void sair(){
-       this.finish();
+        finish();
     }
 
     private boolean validarCampos(){

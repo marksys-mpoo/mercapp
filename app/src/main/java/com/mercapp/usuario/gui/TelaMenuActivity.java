@@ -34,6 +34,7 @@ public class TelaMenuActivity extends AppCompatActivity
     private Session session = Session.getInstanciaSessao();
 
     TextView emailUsuario;
+    TextView nomePessoa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +66,12 @@ public class TelaMenuActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         View header = navigationView.getHeaderView(0);
+
         String email = session.getUsuarioLogado().getEmail().toString();
+        String nome = session.getPessoaLogada().getNome().toString();
+
+        nomePessoa = (TextView)header.findViewById(id.nomeLogado);
+        nomePessoa.setText(nome);
         emailUsuario = (TextView)header.findViewById(id.emailLogado);
         emailUsuario.setText(email);
     }
@@ -127,7 +133,7 @@ public class TelaMenuActivity extends AppCompatActivity
                 break;
 
             case R.id.logoutApp:
-                session.usuarioLogout();
+                session.Logout();
                 Intent changeToTelaLogin = new Intent(TelaMenuActivity.this, LoginActivity.class);
                 TelaMenuActivity.this.startActivity(changeToTelaLogin);
                 finish();

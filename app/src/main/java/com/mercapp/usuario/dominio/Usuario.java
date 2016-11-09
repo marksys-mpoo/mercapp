@@ -5,7 +5,6 @@ public class Usuario {
     private int id;
     private String email;
     private String senha;
-    private Pessoa pessoa;
 
     public String getEmail(){return email;}
 
@@ -21,11 +20,4 @@ public class Usuario {
 
     public void setId(int id) {this.id = id;}
 
-    public Pessoa getPessoa() {
-        return pessoa;
-    }
-
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
-    }
 }

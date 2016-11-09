@@ -22,6 +22,7 @@
         android:layout_weight="0.49" />
 
     <TextView
+        android:id="@+id/nomeLogado"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"

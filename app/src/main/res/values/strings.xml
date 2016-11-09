@@ -23,4 +23,6 @@
     <string name="senha_diferentes">Senhas diferentes!</string>
     <string name="login_tamanho_invalido">Seu login deve ter entre 4 e 15 caracteres!</string>
     <string name="login_senha_tamanho_invalido">Sua senha deve ter entre 3 e 15 caracteres!</string>
+    <string name="title_activity_cadastro_pessoa">CadastroPessoaActivity</string>
+    <string name="campo_vazio">Este campo não pode ser vazio!</string>
 </resources>

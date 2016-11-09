@@ -7,10 +7,7 @@ public class SQLScript {
         usuarioBuilder.append("CREATE TABLE  usuarios ( ");
         usuarioBuilder.append("_id_usuario   integer primary key autoincrement,   ");
         usuarioBuilder.append("email  text not null unique,  ");
-        usuarioBuilder.append("senha  text not null, " );
-        usuarioBuilder.append("_id_pessoa integer, ");
-        usuarioBuilder.append("foreign key (_id_pessoa ) references pessoa ( _id_pessoa ) );");
-        
+        usuarioBuilder.append("senha  text not null );" );
         return usuarioBuilder.toString();
     }
 
@@ -21,8 +18,9 @@ public class SQLScript {
         pessoaBuilder.append("_id_pessoa   integer primary key autoincrement,   ");
         pessoaBuilder.append("nome  text not null,  ");
         pessoaBuilder.append("telefone text not null, ");
-        pessoaBuilder.append("_id_endereco   integer,  ");
-        pessoaBuilder.append("foreign key (_id_endereco ) references  endereco ( _id_endereco ) );");
+        pessoaBuilder.append("numerocartao text not null, ");
+        pessoaBuilder.append("_id_usuario_pessoa text not null, ");
+        pessoaBuilder.append("_id_endereco   integer );");
         return pessoaBuilder.toString();
     }
     public static String getTabelaEndereco() {

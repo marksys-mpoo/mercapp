@@ -5,6 +5,7 @@ import android.content.Context;
 import com.mercapp.infra.Session;
 import com.mercapp.usuario.dominio.Pessoa;
 import com.mercapp.usuario.dominio.Usuario;
+import com.mercapp.usuario.persistencia.PessoaPersistencia;
 import com.mercapp.usuario.persistencia.UsuarioPersistencia;
 
 public class UsuarioNegocio {
@@ -34,7 +35,26 @@ public class UsuarioNegocio {
         usuarioPersistencia.cadastrarUsuario(usuarioCadastro);
     }
 
-    public void iniciarSessao(Usuario usuario){
-        sessao.setUsuarioLogado(usuario);
+    public Pessoa buscarPessoa(int usuarioId){
+        PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(_context);
+        Pessoa pessoaLogada = pessoaPersistencia.buscarPessoa(usuarioId);
+        return pessoaLogada;
+    }
+
+    public Pessoa buscarPessoa(String numeroCartao){
+        PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(_context);
+        Pessoa pessoaLogada = pessoaPersistencia.buscarPessoa(numeroCartao);
+        return pessoaLogada;
+    }
+
+    public void cadastroPessoa(String nome, String telefone, String numeroCartao){
+        Pessoa pessoaCadastro = new Pessoa();
+
+        pessoaCadastro.setNome(nome);
+        pessoaCadastro.setTelefone(telefone);
+        pessoaCadastro.setNumeroCartao(numeroCartao);
+
+        PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(_context);
+        pessoaPersistencia.cadastrarPessoa(pessoaCadastro);
     }
 }
