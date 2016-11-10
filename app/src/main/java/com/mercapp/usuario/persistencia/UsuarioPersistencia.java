@@ -51,6 +51,22 @@ public class UsuarioPersistencia {
         return usuario;
     }
 
+    public Usuario buscarUsuario(String email){
+        SQLiteDatabase db = bdHelper.getReadableDatabase();
+
+        Usuario usuario = null;
+
+        Cursor cursor = db.rawQuery("SELECT * FROM "+bdHelper.TBL_USUARIO +
+                " WHERE "+bdHelper.COLUNA_EMAIL+" LIKE ? ", new String[]{email});
+
+        if (cursor.moveToFirst()){
+            usuario = criarUsuario(cursor);
+        }
+        cursor.close();
+        db.close();
+        return usuario;
+    }
+
     private Usuario criarUsuario(Cursor cursor){
         Usuario usuario = new Usuario();
         usuario.setId(cursor.getInt(0));

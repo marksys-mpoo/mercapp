@@ -19,6 +19,12 @@ public class UsuarioNegocio {
         return usuarioLogado;
     }
 
+    public Usuario buscaUsuario(String email) {
+        UsuarioPersistencia usuarioPersistencia = new UsuarioPersistencia(_context);
+        Usuario usuarioLogado = usuarioPersistencia.buscarUsuario(email);
+        return usuarioLogado;
+    }
+
     public UsuarioNegocio(Context context)
     {
         _context = context;

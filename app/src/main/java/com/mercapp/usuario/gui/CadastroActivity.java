@@ -47,6 +47,8 @@ public class CadastroActivity extends AppCompatActivity {
             usuarioNegocio.cadastro(email, senha);
             Toast.makeText(this, "Cadastro efetuado com sucesso\r\n Faça o login - "+ email, Toast.LENGTH_SHORT).show();
             voltarLogin(view);
+        } else{
+            Toast.makeText(this, "Usuário já cadastrado!", Toast.LENGTH_SHORT).show();
         }
 
     }
