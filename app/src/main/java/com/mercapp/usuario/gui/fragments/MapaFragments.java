@@ -23,12 +23,15 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.mercapp.supermercado.dominio.Supermercado;
+import com.mercapp.supermercado.negocio.SupermercadoNegocio;
 import com.mercapp.usuario.gui.TelaMenuActivity;
 
 public class MapaFragments extends SupportMapFragment implements OnMapReadyCallback, GoogleMap.OnMapClickListener,
         android.location.LocationListener {
 
     private FragmentManager fragmentManager;
+    private Context _context = null;
 
     Activity context;
     TextView superSelecionado, txtView;
@@ -43,6 +46,7 @@ public class MapaFragments extends SupportMapFragment implements OnMapReadyCallb
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getMapAsync(this);
+        _context = this.getActivity();
     }
 
     @Override
@@ -91,41 +95,52 @@ public class MapaFragments extends SupportMapFragment implements OnMapReadyCallb
             mMap.setMyLocationEnabled(true);
 
             LatLng ufrpe = new LatLng(-8.017877, -34.944440);
-            mMap.addMarker(new MarkerOptions().position(ufrpe).title("Ceagri I"));
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ufrpe, 12));
-            //mMap.moveCamera(CameraUpdateFactory.newLatLng(ufrpe));
+            mMap.addMarker(new MarkerOptions().position(ufrpe).title("Supermercado 1"));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ufrpe, 14));
 
-
-            LatLng posi2 = new LatLng(-8.01, -34.9);
-            mMap.addMarker(new MarkerOptions().position(posi2).title("Posição 2"));
+            LatLng posi2 = new LatLng(-8.021448, -34.933130);
+            mMap.addMarker(new MarkerOptions().position(posi2).title("Supermercado 2"));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(posi2));
 
             mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener()
-
-
             {
-
                 @Override
                 public boolean onMarkerClick(Marker arg0) {
-                    if(arg0 != null && arg0.getTitle().equals("Ceagri I")) {
-                        Toast.makeText(getContext(), arg0.getTitle(), Toast.LENGTH_SHORT).show();
-                        fm.beginTransaction().replace(R.id.container2, new RodapeMapa()).commit();
-                        //supermercadoSelecionado
+                    if(arg0 != null && arg0.getTitle().equals("Supermercado 1")) {
+                        Supermercado retornoBusca = selecionarSupermercado(arg0.getTitle());
+                        if (retornoBusca != null) {
+                            fm.beginTransaction().replace(R.id.container2, new RodapeMapa()).commit();
+                        } else {
+                            Toast.makeText(getContext(), arg0.getTitle() + " não cadastrado.", Toast.LENGTH_SHORT).show();
+                        }
                     }
 
-                    if(arg0 != null && arg0.getTitle().equals("Posição 2")) {
-                        Toast.makeText(getContext(), arg0.getTitle(), Toast.LENGTH_SHORT).show();
-                        fm.beginTransaction().replace(R.id.container2, new RodapeMapa()).commit();
+                    if(arg0 != null && arg0.getTitle().equals("Supermercado 2")) {
+                        Supermercado retornoBusca = selecionarSupermercado(arg0.getTitle());
+                        if (retornoBusca != null) {
+                            fm.beginTransaction().replace(R.id.container2, new RodapeMapa()).commit();
+                        } else {
+                            Toast.makeText(getContext(), arg0.getTitle() + " não cadastrado.", Toast.LENGTH_SHORT).show();
+                        }
                     }
                     return true;
                 }
-
             });
 
         }
         catch (SecurityException ex) {
             Log.e(TAG,"Error",ex);
         }
+    }
+
+    public Supermercado selecionarSupermercado(String texto){
+
+        SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(_context);
+        Supermercado superSelect = supermercadoNegocio.buscaSupermercado(texto);
+        if (superSelect != null) {
+            supermercadoNegocio.iniciarSessao(superSelect);
+        }
+        return superSelect;
     }
 
     @Override

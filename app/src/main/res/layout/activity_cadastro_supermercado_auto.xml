@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_cadastro_supermercado_auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.mercapp.supermercado.dominio.CadastroSupermercadoAuto">
+
+    <Button
+        android:text="Cadastrar Direto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="21dp"
+        android:id="@+id/button2"
+        android:onClick="cadastroDireto"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Buscar Supermercado BD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button3"
+        android:onClick="buscaSupermercadoBD"
+        android:layout_above="@+id/supTextoNome"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="18dp" />
+
+    <TextView
+        android:text="Nome Buscado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/supTextoNome"
+        android:textSize="20sp"
+        android:layout_above="@+id/supTextoTelefone"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="17dp" />
+
+    <TextView
+        android:text="Telefone Buscado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/supTextoTelefone"
+        android:textSize="20sp"
+        android:layout_marginBottom="28dp"
+        android:layout_above="@+id/button2"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="To Mapa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button4"
+        android:onClick="changeTelaCadatroSupermercadoToMapa"
+        android:layout_below="@+id/supTextoTelefone"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:id="@+id/supBuscaNome"
+        android:hint="Busca Supermercado pelo Nome"
+        android:layout_above="@+id/button3"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Cadastrar Supermercado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button5"
+        android:onClick="cadastrarSupermercadoManual"
+
+        android:layout_above="@+id/supBuscaNome"
+        android:layout_alignStart="@+id/button3"
+        android:layout_marginBottom="25dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:id="@+id/supTelefone"
+        android:hint="Numero Telefone"
+
+        android:layout_above="@+id/button5"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:id="@+id/supNome"
+        android:hint="Nome Supermercado"
+
+        android:layout_above="@+id/supTelefone"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Cadastro/Busca dos Supermercados"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/textView"
+        android:textSize="20sp"/>
+
+</RelativeLayout>

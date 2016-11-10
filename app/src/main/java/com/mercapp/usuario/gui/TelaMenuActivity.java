@@ -1,5 +1,6 @@
 package com.mercapp.usuario.gui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -21,6 +22,7 @@ import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.mercapp.R;
 import com.mercapp.infra.Session;
+import com.mercapp.supermercado.dominio.CadastroSupermercadoAuto;
 import com.mercapp.usuario.gui.fragments.MapaFragments;
 
 import static com.mercapp.R.id;
@@ -32,6 +34,7 @@ public class TelaMenuActivity extends AppCompatActivity
 
     private FragmentManager fragmentManager;
     private Session session = Session.getInstanciaSessao();
+    private Context _context = TelaMenuActivity.this;
 
     TextView emailUsuario;
     TextView nomePessoa;
@@ -131,19 +134,20 @@ public class TelaMenuActivity extends AppCompatActivity
             case R.id.nav_mapa:
                 showFragment(new MapaFragments(), "MapGPS" );
                 break;
-
             case R.id.logoutApp:
                 session.Logout();
                 Intent changeToTelaLogin = new Intent(TelaMenuActivity.this, LoginActivity.class);
                 TelaMenuActivity.this.startActivity(changeToTelaLogin);
                 finish();
                 break;
-
+            case R.id.nav_cadastro_supermercado:
+                Intent changeToTelaCadastroSupermercado = new Intent(TelaMenuActivity.this, CadastroSupermercadoAuto.class);
+                TelaMenuActivity.this.startActivity(changeToTelaCadastroSupermercado);
+                finish();
+                break;
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
 }

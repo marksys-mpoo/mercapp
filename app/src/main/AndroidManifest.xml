@@ -56,6 +56,9 @@
             android:name=".usuario.gui.TelaMenuActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".supermercado.dominio.CadastroSupermercadoAuto"
+            android:screenOrientation="portrait" />
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

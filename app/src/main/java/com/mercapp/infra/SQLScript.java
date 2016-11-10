@@ -40,7 +40,7 @@ public class SQLScript {
     public static String getTabelaSupermercado() {
 
         StringBuilder supermercadoBuilder = new StringBuilder();
-        supermercadoBuilder.append("CREATE TABLE  supermercado  (  ");
+        supermercadoBuilder.append("CREATE TABLE  Supermercado  (  ");
         supermercadoBuilder.append("_id_supermercado   integer primary key autoincrement,   ");
         supermercadoBuilder.append("nome  text not null,  ");
         supermercadoBuilder.append("telefone  text not null,  ");

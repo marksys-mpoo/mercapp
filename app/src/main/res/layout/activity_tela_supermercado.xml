@@ -14,13 +14,13 @@
         android:text="Supermercado 2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView5"
+        android:id="@+id/supermercadoSessao"
         android:textSize="36sp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Voltar"
+        android:text="Voltar Mapa"
         android:id="@+id/SuperMercado_to_Mapa"
         android:onClick="voltarTelaMenu"
         android:layout_centerVertical="true"

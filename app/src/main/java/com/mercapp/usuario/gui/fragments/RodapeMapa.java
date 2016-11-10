@@ -10,14 +10,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.mercapp.R;
+import com.mercapp.infra.Session;
 import com.mercapp.supermercado.gui.TelaSupermercado;
 
 
 public class RodapeMapa extends Fragment {
 
     private FragmentManager fragmentManager;
+    private Session session = Session.getInstanciaSessao();
 
     final FragmentManager fm = getFragmentManager();
 
@@ -33,6 +36,9 @@ public class RodapeMapa extends Fragment {
     public void onStart() {
         super.onStart();
 
+        String superSessao = session.getSupermercadoSelecionado().getNome().toString();
+        setTextSupermercado(superSessao);
+
         Button bt3=(Button)context.findViewById(R.id.rodape_to_Supermercado);
         bt3.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
@@ -43,29 +49,8 @@ public class RodapeMapa extends Fragment {
             }
         });
     }
-
-    private void showTela (Fragment fragment, String name) {
-
-        fragmentManager = getFragmentManager();
-
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-
-        transaction.replace(R.id.container, fragment, name);
-
-        transaction.commit();
-
+    public void setTextSupermercado(String text){
+        TextView textView = (TextView) getView().findViewById(R.id.supermercadoSelecionadoWaypoint);
+        textView.setText(text);
     }
-
-    private void showTela2 (Fragment fragment, String name) {
-
-        fragmentManager = getFragmentManager();
-
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-
-        transaction.replace(R.id.container2, fragment, name);
-
-        transaction.commit();
-
-    }
-
 }
