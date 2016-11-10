@@ -41,7 +41,7 @@ public class CadastroActivity extends AppCompatActivity {
         String senha = etSenha.getText().toString().trim();
 
         usuarioNegocio = new UsuarioNegocio(_context);
-        usuarioCadastro = usuarioNegocio.buscaUsuario(email,senha);
+        usuarioCadastro = usuarioNegocio.buscaUsuario(email);
 
         if ((usuarioCadastro == null) && (validarCampos())){
             usuarioNegocio.cadastro(email, senha);
