@@ -93,6 +93,8 @@ public class MapaFragments extends SupportMapFragment implements OnMapReadyCallb
             mMap.getUiSettings().setZoomControlsEnabled(true);
 
             mMap.setMyLocationEnabled(true);
+            mMap.setPadding(0,0,0,0);//(leftPadding, topPadding, rightPadding, bottomPadding)
+
 
             LatLng ufrpe = new LatLng(-8.017877, -34.944440);
             mMap.addMarker(new MarkerOptions().position(ufrpe).title("Supermercado 1"));
@@ -106,6 +108,7 @@ public class MapaFragments extends SupportMapFragment implements OnMapReadyCallb
             {
                 @Override
                 public boolean onMarkerClick(Marker arg0) {
+                    mMap.setPadding(0,0,0,150);
                     if(arg0 != null && arg0.getTitle().equals("Supermercado 1")) {
                         Supermercado retornoBusca = selecionarSupermercado(arg0.getTitle());
                         if (retornoBusca != null) {

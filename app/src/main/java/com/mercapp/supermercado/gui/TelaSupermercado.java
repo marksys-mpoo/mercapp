@@ -14,7 +14,7 @@ import com.mercapp.usuario.gui.TelaMenuActivity;
 public class TelaSupermercado extends AppCompatActivity {
 
     private Context _context = TelaSupermercado.this;
-    private TextView etNomeSupermercado;
+    private TextView etNomeSupermercado, etFoneSupermercado;
     //private CadastroSupermercadoAuto cadastroSupermercadoAuto;
     private String supermercadoEscolhido;
     private Session session = Session.getInstanciaSessao();
@@ -24,9 +24,12 @@ public class TelaSupermercado extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_supermercado);
 
-        String email = session.getSupermercadoSelecionado().getNome().toString();
+        String nomeSM = session.getSupermercadoSelecionado().getNome().toString();
         etNomeSupermercado = (TextView) findViewById(R.id.supermercadoSessao);
-        etNomeSupermercado.setText(email);
+        etNomeSupermercado.setText(nomeSM);
+        String foneSM = session.getSupermercadoSelecionado().getTelefone().toString();
+        etFoneSupermercado = (TextView) findViewById(R.id.telefoneSessao);
+        etFoneSupermercado.setText(foneSM);
 
     }
 
