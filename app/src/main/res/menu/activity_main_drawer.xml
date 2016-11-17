@@ -15,14 +15,6 @@
             android:id="@+id/nav_carrinho"
             android:icon="@drawable/ic_local_grocery_store_black_24dp"
             android:title="Carrinho" />
-        <item
-            android:id="@+id/nav_configuracao"
-            android:icon="@drawable/ic_phonelink_setup_black_24dp"
-            android:title="Configuração" />
-        <item
-            android:id="@+id/nav_ajuda"
-            android:icon="@drawable/ic_live_help_black_24dp"
-            android:title="Ajuda" />
 
         <item
             android:id="@+id/nav_mapa"
@@ -31,17 +23,22 @@
     </group>
 
     <group android:checkableBehavior="single">
-
+        <item
+            android:id="@+id/nav_cadastro_supermercado"
+            android:icon="@drawable/ic_exit_to_app_black_24dp"
+            android:title="Supermercados" />
+        <item
+            android:id="@+id/nav_ajuda"
+            android:icon="@drawable/ic_live_help_black_24dp"
+            android:title="Ajuda" />
+        <item
+            android:id="@+id/nav_configuracao"
+            android:icon="@drawable/ic_phonelink_setup_black_24dp"
+            android:title="Configuração" />
         <item
             android:id="@+id/logoutApp"
             android:icon="@drawable/ic_exit_to_app_black_24dp"
             android:title="Logout" />
-
-        <item
-            android:id="@+id/nav_cadastro_supermercado"
-            android:icon="@drawable/ic_exit_to_app_black_24dp"
-            android:title="Cadastro Supermercados" />
-
     </group>
 
 </menu>

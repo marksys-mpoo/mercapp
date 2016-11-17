@@ -8,6 +8,7 @@
          location permissions for the 'MyLocation' functionality. 
     -->
     <uses-library android:name="com.google.android.maps" />
+
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -39,7 +40,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".usuario.gui.LoginActivity"
+            android:name=".usuario.gui.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -57,6 +58,9 @@
             android:name=".usuario.gui.TelaMenuActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".usuario.gui.LoginActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".supermercado.dominio.CadastroSupermercadoAuto"
             android:screenOrientation="portrait" />
@@ -81,7 +85,7 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".usuario.gui.CadastroPessoaActivity"></activity>
+        <activity android:name=".usuario.gui.CadastroPessoaActivity" />
     </application>
 
 </manifest>

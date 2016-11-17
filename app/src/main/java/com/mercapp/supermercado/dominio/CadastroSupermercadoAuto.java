@@ -9,6 +9,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.mercapp.R;
 import com.mercapp.supermercado.negocio.SupermercadoNegocio;
 import com.mercapp.usuario.gui.TelaMenuActivity;
@@ -19,7 +23,7 @@ public class CadastroSupermercadoAuto extends AppCompatActivity {
     private Context _context = CadastroSupermercadoAuto.this;
     private SupermercadoNegocio supermercadoNegocio;
     private Supermercado supermercadoCadastrado;
-    private EditText etSupNome, etSupTelefone, etSupBuscaNome, etSupBuscaTelefone;
+    private EditText etSupNome, etSupTelefone, etSupBuscaNome, etSupBuscaTelefone, etLogintude, etLatitude;
     private TextView etSupTextoNome, etSupTextoTelefone;
 
     @Override
@@ -27,8 +31,8 @@ public class CadastroSupermercadoAuto extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_supermercado_auto);
 
-        etSupNome = (EditText) findViewById(R.id.supNome);
-        etSupTelefone = (EditText) findViewById(R.id.supTelefone);
+        etSupNome = (EditText) findViewById(R.id.etSupNome);
+        etSupTelefone = (EditText) findViewById(R.id.etSupTelefone);
         etSupBuscaNome = (EditText) findViewById(R.id.supBuscaNome);
         etSupTextoNome = (TextView) findViewById(R.id.supTextoNome);
         etSupTextoTelefone = (TextView) findViewById(R.id.supTextoTelefone);
@@ -42,13 +46,14 @@ public class CadastroSupermercadoAuto extends AppCompatActivity {
         Supermercado supermercado2 = CadastrarSupermercado(1,"Supermercado 2","2222");
         efetuarCadastroSupermercado(supermercado2);
     }
+    private Supermercado CadastrarSupermercado(Integer id, String nome, String telefone) {
 
-    public Supermercado CadastrarSupermercado(Integer id, String nome, String telefone) {
         Supermercado supermercado = new Supermercado();
         supermercado.setId(id);
         supermercado.setNome(nome);
         supermercado.setTelefone(telefone);
         return supermercado;
+
     }
 
     public void efetuarCadastroSupermercado(Supermercado supermercado) {
