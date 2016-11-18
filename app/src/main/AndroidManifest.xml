@@ -62,7 +62,7 @@
             android:name=".usuario.gui.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".supermercado.dominio.CadastroSupermercadoAuto"
+            android:name=".supermercado.gui.CadastroSupermercadoAuto"
             android:screenOrientation="portrait" />
 
         <!--
@@ -86,6 +86,8 @@
             android:value="@integer/google_play_services_version" />
 
         <activity android:name=".usuario.gui.CadastroPessoaActivity" />
+        <activity android:name=".infra.Administrador" />
+        <activity android:name=".supermercado.gui.ListaSupermercados"></activity>
     </application>
 
 </manifest>

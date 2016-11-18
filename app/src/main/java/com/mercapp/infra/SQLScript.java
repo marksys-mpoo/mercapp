@@ -41,7 +41,7 @@ public class SQLScript {
 
         StringBuilder supermercadoBuilder = new StringBuilder();
         supermercadoBuilder.append("CREATE TABLE  Supermercado  (  ");
-        supermercadoBuilder.append("_id_supermercado   integer primary key autoincrement,   ");
+        supermercadoBuilder.append("_id integer primary key autoincrement,   ");
         supermercadoBuilder.append("nome  text not null,  ");
         supermercadoBuilder.append("telefone  text not null,  ");
         supermercadoBuilder.append("_id_produtos   integer,  ");

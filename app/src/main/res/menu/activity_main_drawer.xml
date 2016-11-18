@@ -24,9 +24,9 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_cadastro_supermercado"
+            android:id="@+id/nav_adm"
             android:icon="@drawable/ic_exit_to_app_black_24dp"
-            android:title="Supermercados" />
+            android:title="Administrador" />
         <item
             android:id="@+id/nav_ajuda"
             android:icon="@drawable/ic_live_help_black_24dp"

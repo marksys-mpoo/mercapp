@@ -51,6 +51,21 @@ public class SupermercadoPersistencia {
         return supermercadoS;
     }
 
+    public Cursor carregaDados(){
+        SQLiteDatabase db = bdHelperS.getReadableDatabase();
+        Cursor cursor;
+        String[] campos =  {BDHelper.COLUNA_ID_SUPERMERCADO, BDHelper.COLUNA_NOME_SUPERMERCADO, BDHelper.COLUNA_TELEFONE_SUPERMERCADO};
+        cursor = db.rawQuery("SELECT * FROM " + BDHelper.TBL_SUPERMERCADO, null);
+
+        //BDHelper.TBL_SUPERMERCADO, campos, null, null, null, null, null, null);
+
+        if(cursor!=null){
+            cursor.moveToFirst();
+        }
+        db.close();
+        return cursor;
+    }
+
     private Supermercado criarSupermercado(Cursor cursor){
         Supermercado supermercado = new Supermercado();
         supermercado.setId(cursor.getInt(0));

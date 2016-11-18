@@ -1,6 +1,7 @@
 package com.mercapp.supermercado.negocio;
 
 import android.content.Context;
+import android.database.Cursor;
 
 import com.mercapp.infra.Session;
 import com.mercapp.supermercado.dominio.Supermercado;
@@ -34,6 +35,12 @@ public class SupermercadoNegocio {
 
         SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(_context);
         supermercadoPersistencia.cadastrarSupermercado(supermercadoCadastro);
+    }
+    public Cursor listaSupermercados(){
+        SupermercadoPersistencia consulta = new SupermercadoPersistencia(_context);
+        Cursor cursor = consulta.carregaDados();
+
+        return cursor;
     }
 
     public void iniciarSessao(Supermercado supermercado){

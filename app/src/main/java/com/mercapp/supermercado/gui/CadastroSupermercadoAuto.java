@@ -1,4 +1,4 @@
-package com.mercapp.supermercado.dominio;
+package com.mercapp.supermercado.gui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,11 +9,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.mercapp.R;
+import com.mercapp.infra.Administrador;
+import com.mercapp.supermercado.dominio.Supermercado;
 import com.mercapp.supermercado.negocio.SupermercadoNegocio;
 import com.mercapp.usuario.gui.TelaMenuActivity;
 
@@ -100,8 +98,8 @@ public class CadastroSupermercadoAuto extends AppCompatActivity {
         }
     }
 
-    public void changeTelaCadatroSupermercadoToMapa(View view) {
-        Intent voltarMenu = new Intent(CadastroSupermercadoAuto.this, TelaMenuActivity.class);
+    public void changeTelaCadatroSupermercadoToTelaAdministrador(View view) {
+        Intent voltarMenu = new Intent(CadastroSupermercadoAuto.this, Administrador.class);
         startActivity(voltarMenu);
         finish();
     }

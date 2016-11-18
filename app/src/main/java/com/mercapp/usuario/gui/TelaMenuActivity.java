@@ -21,8 +21,9 @@ import android.widget.Toast;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.mercapp.R;
+import com.mercapp.infra.Administrador;
 import com.mercapp.infra.Session;
-import com.mercapp.supermercado.dominio.CadastroSupermercadoAuto;
+import com.mercapp.supermercado.gui.CadastroSupermercadoAuto;
 import com.mercapp.usuario.gui.fragments.MapaFragments;
 
 import static com.mercapp.R.id;
@@ -141,9 +142,9 @@ public class TelaMenuActivity extends AppCompatActivity
                 TelaMenuActivity.this.startActivity(changeToTelaLogin);
                 finish();
                 break;
-            case R.id.nav_cadastro_supermercado:
-                Intent changeToTelaCadastroSupermercado = new Intent(TelaMenuActivity.this, CadastroSupermercadoAuto.class);
-                TelaMenuActivity.this.startActivity(changeToTelaCadastroSupermercado);
+            case R.id.nav_adm:
+                Intent changeToAdm = new Intent(TelaMenuActivity.this, Administrador.class);
+                TelaMenuActivity.this.startActivity(changeToAdm);
                 finish();
                 break;
         }
