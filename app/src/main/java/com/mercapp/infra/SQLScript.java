@@ -62,12 +62,13 @@ public class SQLScript {
     }
     public static String getTabelaProduto() {
 
-        StringBuilder carrinhoBuilder = new StringBuilder();
-        carrinhoBuilder.append("CREATE TABLE  produto  (  ");
-        carrinhoBuilder.append("_id_produto   integer primary key autoincrement,   ");
-        carrinhoBuilder.append("descricao  text not null,  ");
-        carrinhoBuilder.append("preco  text not null );");
-        return carrinhoBuilder.toString();
+        StringBuilder produtoBuilder = new StringBuilder();
+        produtoBuilder.append("CREATE TABLE  produto  (  ");
+        produtoBuilder.append("_id integer primary key autoincrement,   ");
+        produtoBuilder.append("descricao  text not null,  ");
+        produtoBuilder.append("preco  text not null,  ");
+        produtoBuilder.append("_id_super text not null );  ");
+        return produtoBuilder.toString();
     }
 }
 

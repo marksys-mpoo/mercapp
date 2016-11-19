@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.mercapp.infra.Session;
+import com.mercapp.supermercado.dominio.Produto;
 import com.mercapp.supermercado.dominio.Supermercado;
 import com.mercapp.supermercado.persistencia.SupermercadoPersistencia;
 
@@ -18,6 +19,12 @@ public class SupermercadoNegocio {
         SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(_context);
         Supermercado supermercadoSelecionado = supermercadoPersistencia.buscarSupermercado(nome);
         return supermercadoSelecionado;
+    }
+
+    public Produto buscaProduto(String descricao) {
+        SupermercadoPersistencia produtoPersistencia = new SupermercadoPersistencia(_context);
+        Produto produtoSelecionado = produtoPersistencia.buscarProduto(descricao);
+        return produtoSelecionado;
     }
 
     public SupermercadoNegocio(Context context)
@@ -36,10 +43,33 @@ public class SupermercadoNegocio {
         SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(_context);
         supermercadoPersistencia.cadastrarSupermercado(supermercadoCadastro);
     }
+
+    public void cadastroProduto(String descricao, String preco, String idSupermercado){
+
+        Produto produtoCadastro = new Produto();
+        produtoCadastro.setDescricao(descricao);
+        produtoCadastro.setPreco(preco);
+        produtoCadastro.setIdSupermercado(idSupermercado);
+        SupermercadoPersistencia produtoPersistencia = new SupermercadoPersistencia(_context);
+        produtoPersistencia.cadastrarProduto(produtoCadastro);
+    }
+
     public Cursor listaSupermercados(){
         SupermercadoPersistencia consulta = new SupermercadoPersistencia(_context);
         Cursor cursor = consulta.carregaDados();
 
+        return cursor;
+    }
+
+    public Cursor listaProdutos(){
+        SupermercadoPersistencia consulta = new SupermercadoPersistencia(_context);
+        Cursor cursor = consulta.carregaDadosProdutos();
+        return cursor;
+    }
+
+    public Cursor listaProdutosDoSupermercado(String idSuper){
+        SupermercadoPersistencia consulta = new SupermercadoPersistencia(_context);
+        Cursor cursor = consulta.carregaDadosProdutosDoSupermercado(idSuper);
         return cursor;
     }
 

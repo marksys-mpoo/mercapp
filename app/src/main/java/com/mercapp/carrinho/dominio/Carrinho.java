@@ -8,7 +8,7 @@ public class Carrinho {
     private int id;
     private double valorTotal;
     private double descontos;
-//    private ArrayList<Produtos> produtos;
+//    private ArrayList<Produto> produtos;
 //
 //    public int getId() {
 //        return id;
@@ -33,11 +33,11 @@ public class Carrinho {
 //        this.descontos = descontos;
 //    }
 //
-//    public ArrayList<Produtos> getProdutos() {
+//    public ArrayList<Produto> idProdutos() {
 //        return produtos;
 //    }
 //
-//    public void setProdutos(ArrayList<Produtos> produtos) {
+//    public void setProdutos(ArrayList<Produto> produtos) {
 //        this.produtos = produtos;
 //    }
 }

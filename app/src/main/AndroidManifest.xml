@@ -62,7 +62,7 @@
             android:name=".usuario.gui.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".supermercado.gui.CadastroSupermercadoAuto"
+            android:name=".supermercado.gui.CadastroSupermercados"
             android:screenOrientation="portrait" />
 
         <!--
@@ -87,7 +87,10 @@
 
         <activity android:name=".usuario.gui.CadastroPessoaActivity" />
         <activity android:name=".infra.Administrador" />
-        <activity android:name=".supermercado.gui.ListaSupermercados"></activity>
+        <activity android:name=".supermercado.gui.ListaSupermercados" />
+        <activity android:name=".supermercado.gui.ListaProdutos" />
+        <activity android:name=".supermercado.gui.CadastroProdutos" />
+        <activity android:name=".supermercado.gui.ListaProdutosDoSupermercado"></activity>
     </application>
 
 </manifest>

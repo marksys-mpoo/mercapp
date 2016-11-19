@@ -23,7 +23,6 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.mercapp.R;
 import com.mercapp.infra.Administrador;
 import com.mercapp.infra.Session;
-import com.mercapp.supermercado.gui.CadastroSupermercadoAuto;
 import com.mercapp.usuario.gui.fragments.MapaFragments;
 
 import static com.mercapp.R.id;

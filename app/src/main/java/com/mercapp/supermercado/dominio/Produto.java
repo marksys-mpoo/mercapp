@@ -1,12 +1,10 @@
 package com.mercapp.supermercado.dominio;
 
-/**
- * Created by wellington on 30/10/16.
- */
-public class Produtos {
+public class Produto {
     private int id;
     private String descricao;
-    private double preco;
+    private String preco;
+    private String idSupermercado;
 
     public String getDescricao() {
         return descricao;
@@ -24,12 +22,20 @@ public class Produtos {
         this.id = id;
     }
 
-    public double getPreco() {
+    public String getPreco() {
         return preco;
     }
 
-    public void setPreco(double preco) {
+    public void setPreco(String preco) {
         this.preco = preco;
+    }
+
+    public String getIdSupermercado() {
+        return idSupermercado;
+    }
+
+    public void setIdSupermercado(String idSupermercado) {
+        this.idSupermercado = idSupermercado;
     }
 
 }

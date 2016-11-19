@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.mercapp.R;
-import com.mercapp.supermercado.gui.CadastroSupermercadoAuto;
+import com.mercapp.supermercado.gui.CadastroProdutos;
+import com.mercapp.supermercado.gui.CadastroSupermercados;
+import com.mercapp.supermercado.gui.ListaProdutos;
 import com.mercapp.supermercado.gui.ListaSupermercados;
 import com.mercapp.usuario.gui.TelaMenuActivity;
 
@@ -19,7 +21,7 @@ public class Administrador extends AppCompatActivity {
     }
 
     public void changeTelaAdministradorToCadastroSupermercado(View view) {
-        Intent voltarMenu = new Intent(Administrador.this, CadastroSupermercadoAuto.class);
+        Intent voltarMenu = new Intent(Administrador.this, CadastroSupermercados.class);
         startActivity(voltarMenu);
         finish();
     }
@@ -30,7 +32,7 @@ public class Administrador extends AppCompatActivity {
     }
 
     public void changeTelaAdministradorToCadastroProdutos(View view) {
-        Intent voltarMenu = new Intent(Administrador.this, CadastroSupermercadoAuto.class);
+        Intent voltarMenu = new Intent(Administrador.this, CadastroProdutos.class);
         startActivity(voltarMenu);
         finish();
     }
@@ -39,4 +41,10 @@ public class Administrador extends AppCompatActivity {
         startActivity(voltarMenu);
         finish();
     }
+    public void changeTelaAdministradorToListaProdutos(View view) {
+        Intent voltarMenu = new Intent(Administrador.this, ListaProdutos.class);
+        startActivity(voltarMenu);
+        finish();
+    }
+
 }

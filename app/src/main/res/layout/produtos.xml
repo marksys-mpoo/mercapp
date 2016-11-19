@@ -12,24 +12,33 @@
         android:textSize="18sp"/>
 
     <TextView
-        android:id="@+id/colunaProduto3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Coluna 3"
-        android:textSize="18sp"
-        android:layout_marginEnd="21dp"
-        android:layout_alignBaseline="@+id/colunaProduto2"
-        android:layout_alignBottom="@+id/colunaProduto2"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
         android:id="@+id/colunaProduto2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Coluna 2"
         android:textSize="18sp"
-        android:layout_marginStart="29dp"
+        android:layout_marginStart="16dp"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/colunaProduto1" />
+
+    <TextView
+        android:id="@+id/colunaProduto4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Coluna 4"
+        android:textSize="18sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="13dp" />
+
+    <TextView
+        android:id="@+id/colunaProduto3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Coluna 3"
+        android:textSize="18sp"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/colunaProduto4"
+        android:layout_marginEnd="31dp" />
 
 </RelativeLayout>

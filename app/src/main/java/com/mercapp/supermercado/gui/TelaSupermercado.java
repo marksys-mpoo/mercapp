@@ -15,7 +15,7 @@ public class TelaSupermercado extends AppCompatActivity {
 
     private Context _context = TelaSupermercado.this;
     private TextView etNomeSupermercado, etFoneSupermercado;
-    //private CadastroSupermercadoAuto cadastroSupermercadoAuto;
+    //private CadastroSupermercados cadastroSupermercadoAuto;
     private String supermercadoEscolhido;
     private Session session = Session.getInstanciaSessao();
 
@@ -37,8 +37,14 @@ public class TelaSupermercado extends AppCompatActivity {
         Intent voltarMenu = new Intent(TelaSupermercado.this, TelaMenuActivity.class);
         startActivity(voltarMenu);
         finish();
-
     }
+
+    public void tela_de_produtos(View view) {
+        Intent voltarMenu = new Intent(TelaSupermercado.this, ListaProdutosDoSupermercado.class);
+        startActivity(voltarMenu);
+        finish();
+    }
+
     public String getSupermercadoEscolhido() {
         return supermercadoEscolhido;
     }

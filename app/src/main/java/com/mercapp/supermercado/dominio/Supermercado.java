@@ -1,5 +1,7 @@
 package com.mercapp.supermercado.dominio;
 
+import java.util.ArrayList;
+
 /**
  * Created by wellington on 30/10/16.
  */
@@ -9,6 +11,8 @@ public class Supermercado {
     private int id;
     private String nome;
     private String telefone;
+
+    private ArrayList<Produto> idProdutos;
 
     public int getId() {
         return id;

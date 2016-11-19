@@ -13,12 +13,11 @@ import com.mercapp.R;
 import com.mercapp.infra.Administrador;
 import com.mercapp.supermercado.dominio.Supermercado;
 import com.mercapp.supermercado.negocio.SupermercadoNegocio;
-import com.mercapp.usuario.gui.TelaMenuActivity;
 
 
-public class CadastroSupermercadoAuto extends AppCompatActivity {
+public class CadastroSupermercados extends AppCompatActivity {
 
-    private Context _context = CadastroSupermercadoAuto.this;
+    private Context _context = CadastroSupermercados.this;
     private SupermercadoNegocio supermercadoNegocio;
     private Supermercado supermercadoCadastrado;
     private EditText etSupNome, etSupTelefone, etSupBuscaNome, etSupBuscaTelefone, etLogintude, etLatitude;
@@ -63,7 +62,7 @@ public class CadastroSupermercadoAuto extends AppCompatActivity {
         supermercadoCadastrado = supermercadoNegocio.buscaSupermercado(nome);
         if (supermercadoCadastrado == null) {
             supermercadoNegocio.cadastroSupermercado(nome, telefone);
-            Toast.makeText(this, "Supermercados Cadastrados com sucesso\r\n Faça o login - " + nome, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Supermercados Cadastrados com sucesso\r\n - " + nome, Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Supermercado já exitente!", Toast.LENGTH_SHORT).show();
         }
@@ -98,8 +97,8 @@ public class CadastroSupermercadoAuto extends AppCompatActivity {
         }
     }
 
-    public void changeTelaCadatroSupermercadoToTelaAdministrador(View view) {
-        Intent voltarMenu = new Intent(CadastroSupermercadoAuto.this, Administrador.class);
+    public void changeTelaCadatroSupermercadosToTelaAdministrador(View view) {
+        Intent voltarMenu = new Intent(CadastroSupermercados.this, Administrador.class);
         startActivity(voltarMenu);
         finish();
     }

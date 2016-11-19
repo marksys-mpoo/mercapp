@@ -44,9 +44,19 @@
         android:layout_height="wrap_content"
         android:onClick="changeTelaAdministradorToListaSupermercado"
         android:id="@+id/button88"
-        android:layout_below="@+id/button6"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp" />
+        android:layout_marginTop="19dp"
+        android:layout_below="@+id/button7"
+        android:layout_alignStart="@+id/button7" />
+
+    <Button
+        android:text="Tela Lista Produtos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="changeTelaAdministradorToListaProdutos"
+        android:id="@+id/button2"
+        android:layout_marginBottom="80dp"
+        android:layout_above="@+id/button8"
+        android:layout_alignStart="@+id/button6" />
 
     <Button
         android:text="Cadastro Produtos"
@@ -54,8 +64,8 @@
         android:layout_height="wrap_content"
         android:onClick="changeTelaAdministradorToCadastroProdutos"
         android:id="@+id/button6"
-        android:layout_below="@+id/button7"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp" />
+        android:layout_marginBottom="17dp"
+        android:layout_above="@+id/button2"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

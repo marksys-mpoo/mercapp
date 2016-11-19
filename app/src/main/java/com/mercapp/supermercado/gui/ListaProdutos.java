@@ -14,31 +14,31 @@ import com.mercapp.infra.Administrador;
 import com.mercapp.infra.BDHelper;
 import com.mercapp.supermercado.negocio.SupermercadoNegocio;
 
-public class ListaSupermercados extends AppCompatActivity {
+public class ListaProdutos extends AppCompatActivity {
 
     private ListView lista;
-    private Context _context = ListaSupermercados.this;
+    private Context _context = ListaProdutos.this;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lista_supermercados);
+        setContentView(R.layout.activity_lista_produtos);
 
         SupermercadoNegocio consulta = new SupermercadoNegocio(_context);
-        Cursor cursor = consulta.listaSupermercados();
+        Cursor cursor = consulta.listaProdutos();
 
-        String[] nomeCampos = new String[] {BDHelper.COLUNA_ID_SUPERMERCADO, BDHelper.COLUNA_NOME_SUPERMERCADO, BDHelper.COLUNA_TELEFONE_SUPERMERCADO};
-        int[] idViews = new int[] {R.id.colunaProduto1, R.id.colunaProduto2, R.id.colunaProduto3};
+        String[] nomeCampos = new String[] {BDHelper.COLUNA_ID_PRODUTO, BDHelper.COLUNA_DESCRICAO, BDHelper.COLUNA_PRECO, BDHelper.COLUNA_ID_SUPERMERCADO_PRODUTO};
+        int[] idViews = new int[] {R.id.colunaProduto1, R.id.colunaProduto2, R.id.colunaProduto3, R.id.colunaProduto4};
 
-        SimpleCursorAdapter adaptador = new SimpleCursorAdapter(_context,R.layout.supermercados,cursor,nomeCampos,idViews, 0);
+        SimpleCursorAdapter adaptador = new SimpleCursorAdapter(_context,R.layout.produtos,cursor,nomeCampos,idViews, 0);
         lista = (ListView)findViewById(R.id.lista_produtos);
         lista.setAdapter(adaptador);
     }
 
-    public void changeTelaListaSupermercadosToTelaAdmimistrador(View view) {
-        Intent voltarAdm = new Intent(ListaSupermercados.this, Administrador.class);
+    public void changeTelaListaProdutosToTelaAdmimistrador(View view) {
+        Intent voltarAdm = new Intent(ListaProdutos.this, Administrador.class);
         startActivity(voltarAdm);
         finish();
     }
-
 }
