@@ -18,15 +18,6 @@
         android:layout_below="@+id/textView6" />
 
     <TextView
-        android:text="Id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:id="@+id/textView6"
-        android:layout_below="@+id/button10"
-        android:layout_alignParentStart="true" />
-
-    <TextView
         android:text="Supermercado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,16 +26,6 @@
         android:id="@+id/textView9"
         android:layout_above="@+id/textView7"
         android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:text="Descrição"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:id="@+id/textView4"
-        android:layout_below="@+id/button10"
-        android:layout_toEndOf="@+id/textView6"
-        android:layout_marginStart="37dp" />
 
     <Button
         android:text="Voltar Adm"
@@ -74,4 +55,23 @@
         android:layout_marginEnd="14dp"
         android:layout_above="@+id/lista_produtos_do_supermercado"
         android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="Descrição"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/button10"
+        android:layout_toStartOf="@+id/button10" />
+
+    <TextView
+        android:text="Id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:id="@+id/textView6"
+        android:layout_alignBaseline="@+id/textView4"
+        android:layout_alignBottom="@+id/textView4"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

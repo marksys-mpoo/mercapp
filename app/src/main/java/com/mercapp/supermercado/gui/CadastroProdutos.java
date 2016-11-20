@@ -5,14 +5,11 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mercapp.R;
 import com.mercapp.infra.Administrador;
 import com.mercapp.supermercado.dominio.Produto;
-import com.mercapp.supermercado.dominio.Supermercado;
 import com.mercapp.supermercado.negocio.SupermercadoNegocio;
 
 public class CadastroProdutos extends AppCompatActivity {
@@ -48,19 +45,17 @@ public class CadastroProdutos extends AppCompatActivity {
     }
 
     public void efetuarCadastroProduto(Produto produto) {
-
         Integer id = produto.getId();
         String descricao = produto.getDescricao();
         String preco = produto.getPreco();
         String idSupermercado = produto.getIdSupermercado();
-
         supermercadoNegocio = new SupermercadoNegocio(_context);
         produtoCadastrado = supermercadoNegocio.buscaProduto(descricao);
         if (produtoCadastrado == null) {
             supermercadoNegocio.cadastroProduto(descricao, preco, idSupermercado);
-            Toast.makeText(this, "Supermercados Cadastrados com sucesso\r\n - " + id, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Produto " + id + " cadastrado com sucesso.", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "Supermercado já exitente!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Produto já exitente!", Toast.LENGTH_SHORT).show();
         }
     }
 

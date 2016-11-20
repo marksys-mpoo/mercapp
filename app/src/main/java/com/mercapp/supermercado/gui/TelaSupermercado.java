@@ -13,10 +13,9 @@ import com.mercapp.usuario.gui.TelaMenuActivity;
 
 public class TelaSupermercado extends AppCompatActivity {
 
-    private Context _context = TelaSupermercado.this;
+    //private Context _context = TelaSupermercado.this;
     private TextView etNomeSupermercado, etFoneSupermercado;
-    //private CadastroSupermercados cadastroSupermercadoAuto;
-    private String supermercadoEscolhido;
+    //private String supermercadoEscolhido;
     private Session session = Session.getInstanciaSessao();
 
     @Override
@@ -44,12 +43,12 @@ public class TelaSupermercado extends AppCompatActivity {
         startActivity(voltarMenu);
         finish();
     }
-
+    /*
     public String getSupermercadoEscolhido() {
         return supermercadoEscolhido;
     }
 
     public void setSupermercadoEscolhido(String supermercadoEscolhido) {
         this.supermercadoEscolhido = supermercadoEscolhido;
-    }
+    }*/
 }

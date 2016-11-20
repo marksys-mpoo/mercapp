@@ -67,7 +67,7 @@ public class SQLScript {
         produtoBuilder.append("_id integer primary key autoincrement,   ");
         produtoBuilder.append("descricao  text not null,  ");
         produtoBuilder.append("preco  text not null,  ");
-        produtoBuilder.append("_id_super text not null );  ");
+        produtoBuilder.append("_id_supermercado text not null );  ");
         return produtoBuilder.toString();
     }
 }

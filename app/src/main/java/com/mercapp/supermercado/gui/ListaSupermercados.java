@@ -23,13 +23,14 @@ public class ListaSupermercados extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_supermercados);
+        MostrarSupermercados();
+    }
 
+    private void MostrarSupermercados() {
         SupermercadoNegocio consulta = new SupermercadoNegocio(_context);
         Cursor cursor = consulta.listaSupermercados();
-
         String[] nomeCampos = new String[] {BDHelper.COLUNA_ID_SUPERMERCADO, BDHelper.COLUNA_NOME_SUPERMERCADO, BDHelper.COLUNA_TELEFONE_SUPERMERCADO};
         int[] idViews = new int[] {R.id.colunaProduto1, R.id.colunaProduto2, R.id.colunaProduto3};
-
         SimpleCursorAdapter adaptador = new SimpleCursorAdapter(_context,R.layout.supermercados,cursor,nomeCampos,idViews, 0);
         lista = (ListView)findViewById(R.id.lista_produtos);
         lista.setAdapter(adaptador);

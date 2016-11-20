@@ -14,7 +14,6 @@ public class SupermercadoNegocio {
     private Context _context;
     private Session sessao = Session.getInstanciaSessao();
 
-
     public Supermercado buscaSupermercado(String nome) {
         SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(_context);
         Supermercado supermercadoSelecionado = supermercadoPersistencia.buscarSupermercado(nome);
@@ -33,19 +32,14 @@ public class SupermercadoNegocio {
     }
 
     public void cadastroSupermercado(String nome, String telefone){
-
         Supermercado supermercadoCadastro = new Supermercado();
-
-        //supermercadoCadastro.setId();
         supermercadoCadastro.setNome(nome);
         supermercadoCadastro.setTelefone(telefone);
-
         SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(_context);
         supermercadoPersistencia.cadastrarSupermercado(supermercadoCadastro);
     }
 
     public void cadastroProduto(String descricao, String preco, String idSupermercado){
-
         Produto produtoCadastro = new Produto();
         produtoCadastro.setDescricao(descricao);
         produtoCadastro.setPreco(preco);
@@ -57,7 +51,6 @@ public class SupermercadoNegocio {
     public Cursor listaSupermercados(){
         SupermercadoPersistencia consulta = new SupermercadoPersistencia(_context);
         Cursor cursor = consulta.carregaDados();
-
         return cursor;
     }
 

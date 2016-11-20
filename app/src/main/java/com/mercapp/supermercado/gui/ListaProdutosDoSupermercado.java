@@ -25,15 +25,16 @@ public class ListaProdutosDoSupermercado extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_produtos_do_supermercado);
+        MostrarProdutosDoSupermercado();
+    }
 
-        SupermercadoNegocio consulta = new SupermercadoNegocio(_context);
-        Integer idSM = session.getSupermercadoSelecionado().getId();
-        String idSM_string = idSM.toString();
-        Cursor cursor = consulta.listaProdutosDoSupermercado(idSM_string);
-
+    private void MostrarProdutosDoSupermercado() {
+        SupermercadoNegocio buscaProdutos = new SupermercadoNegocio(_context);
+        Integer idSupermercado = session.getSupermercadoSelecionado().getId();
+        String idSupermercado_string = idSupermercado.toString();
+        Cursor cursor = buscaProdutos.listaProdutosDoSupermercado(idSupermercado_string);
         String[] nomeCampos = new String[] {BDHelper.COLUNA_ID_PRODUTO, BDHelper.COLUNA_DESCRICAO, BDHelper.COLUNA_PRECO, BDHelper.COLUNA_ID_SUPERMERCADO_PRODUTO};
         int[] idViews = new int[] {R.id.colunaProduto1, R.id.colunaProduto2, R.id.colunaProduto3, R.id.colunaProduto4};
-
         SimpleCursorAdapter adaptador = new SimpleCursorAdapter(_context,R.layout.produtos,cursor,nomeCampos,idViews, 0);
         lista = (ListView)findViewById(R.id.lista_produtos_do_supermercado);
         lista.setAdapter(adaptador);
