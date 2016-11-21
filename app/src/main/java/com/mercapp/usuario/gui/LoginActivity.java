@@ -1,5 +1,6 @@
 package com.mercapp.usuario.gui;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -149,6 +150,12 @@ public class LoginActivity extends AppCompatActivity {
             result = false;
         }
         return result;
+    }
+
+    public void onBackPressed() {
+        finish();
+
+        return;
     }
 
 }

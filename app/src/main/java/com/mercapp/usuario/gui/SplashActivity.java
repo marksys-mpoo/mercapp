@@ -39,6 +39,7 @@ public class SplashActivity extends AppCompatActivity {
                     //após terminar o try ele chama a tela login. Se não houve erro.
                    Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                     startActivity(intent);
+                    finish();
                 }
             }
         };
