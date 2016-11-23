@@ -2,43 +2,46 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_historico"
-            android:icon="@drawable/ic_history_black_24dp"
-            android:title="Histórico" />
-        <item
-            android:id="@+id/nav_descontos"
-            android:icon="@drawable/ic_local_offer_black_24dp"
-            android:title="Descontos" />
 
-        <item
-            android:id="@+id/nav_carrinho"
-            android:icon="@drawable/ic_local_grocery_store_black_24dp"
-            android:title="Carrinho" />
+            <item
+                android:id="@+id/nav_historico"
+                android:icon="@drawable/ic_history_black_24dp"
+                android:title="@string/nav_drawer_historico" />
+            <item
+                android:id="@+id/nav_descontos"
+                android:icon="@drawable/ic_local_offer_black_24dp"
+                android:title="@string/nav_drawer_descontos" />
 
-        <item
-            android:id="@+id/nav_mapa"
-            android:icon="@drawable/ic_menu_map"
-            android:title="Mapa" />
+            <item
+                android:id="@+id/nav_carrinho"
+                android:icon="@drawable/ic_local_grocery_store_black_24dp"
+                android:title="@string/nav_drawer_carrinho" />
+
+            <item
+                android:id="@+id/nav_mapa"
+                android:icon="@drawable/ic_menu_map"
+                android:title="@string/nav_drawer_mapa" />
     </group>
-
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_adm"
-            android:icon="@drawable/ic_exit_to_app_black_24dp"
-            android:title="Administrador" />
-        <item
-            android:id="@+id/nav_ajuda"
-            android:icon="@drawable/ic_live_help_black_24dp"
-            android:title="Ajuda" />
-        <item
-            android:id="@+id/nav_configuracao"
-            android:icon="@drawable/ic_phonelink_setup_black_24dp"
-            android:title="Configuração" />
-        <item
-            android:id="@+id/logoutApp"
-            android:icon="@drawable/ic_exit_to_app_black_24dp"
-            android:title="Logout" />
-    </group>
-
+    <group>
+        <item android:title="@string/nav_drawer_configuracoes">
+            <menu>
+                <item
+                    android:id="@+id/nav_adm"
+                    android:icon="@drawable/ic_exit_to_app_black_24dp"
+                    android:title="@string/nav_drawer_administrador" />
+                <item
+                    android:id="@+id/nav_sobre"
+                    android:icon="@drawable/ic_info_black_24dp"
+                    android:title="@string/nav_drawer_sobre" />
+                <item
+                    android:id="@+id/nav_configuracao"
+                    android:icon="@drawable/ic_menu_manage"
+                    android:title="@string/nav_drawer_configuracao" />
+                <item
+                    android:id="@+id/logoutApp"
+                    android:icon="@drawable/ic_exit_to_app_black_24dp"
+                    android:title="@string/nav_drawer_sair" />
+            </menu>
+        </item>
+   </group>
 </menu>

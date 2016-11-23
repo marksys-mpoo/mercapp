@@ -119,7 +119,7 @@ public class TelaMenuActivity extends AppCompatActivity
             case R.id.nav_historico:
                 Toast.makeText(this, "Desculpe o transtorno, estamos implementando", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.nav_ajuda:
+            case R.id.nav_sobre:
                 Toast.makeText(this, "Desculpe o transtorno, estamos implementando", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_carrinho:
@@ -132,7 +132,6 @@ public class TelaMenuActivity extends AppCompatActivity
                 Toast.makeText(this, "Desculpe o transtorno, estamos implementando", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_mapa:
-               // showFragment(new MapaFragments(), "MapGPS" );
                 getFragmentManager().popBackStack();
                 break;
             case R.id.logoutApp:

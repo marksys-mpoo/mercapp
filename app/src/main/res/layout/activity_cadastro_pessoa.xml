@@ -22,7 +22,7 @@
             android:orientation="vertical" >
 
             <TextView
-                android:text="Finalize seu cadastro para poder realizar compras."
+                android:text="@string/titulo_Tela_cadastro_pessoa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/etTextoPessoa"
@@ -38,7 +38,7 @@
                 android:inputType="textPersonName"
                 android:ems="10"
                 android:id="@+id/etNome"
-                android:hint="Nome:"
+                android:hint="@string/hint_nome"
                 android:layout_marginTop="35dp" />
 
             <EditText
@@ -47,7 +47,7 @@
                 android:inputType="phone"
                 android:ems="10"
                 android:id="@+id/etTelefone"
-                android:hint="Telefone:"
+                android:hint="@string/hint_telefone"
                 android:layout_marginTop="35dp" />
 
             <EditText
@@ -56,11 +56,11 @@
                 android:inputType="phone"
                 android:ems="10"
                 android:id="@+id/etNumeroCartao"
-                android:hint="Número Cartão:"
+                android:hint="@string/hint_número_cartao"
                 android:layout_marginTop="35dp" />
 
             <Button
-                android:text="Finalizar Cadastro"
+                android:text="@string/botao_finalizar_cadastro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnCadastroPessoa"

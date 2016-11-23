@@ -6,7 +6,7 @@ android:layout_width="match_parent" android:layout_height="match_parent">
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ver"
+        android:text="@string/botao_ver_fragment_rodape"
         android:id="@+id/rodape_to_Supermercado"
         android:layout_alignTop="@+id/rodape"
         android:layout_alignStart="@+id/voltarMapa" />
@@ -33,7 +33,7 @@ android:layout_width="match_parent" android:layout_height="match_parent">
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
     <TextView
-        android:text="Supermercado 1"
+        android:text="@string/textview_supermercado_1_fragment_rodape"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/supermercadoSelecionadoWaypoint"

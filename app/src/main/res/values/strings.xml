@@ -1,4 +1,5 @@
 <resources>
+    //Título
     <string name="app_name">MercApp</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -7,15 +8,124 @@
     <string name="action_settings">Configurações</string>
     <string name="title_activity_maps">Map</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    // Menu drawer
+    <string name="nav_drawer_historico">Histórico</string>
+    <string name="nav_drawer_descontos">Descontos</string>
+    <string name="nav_drawer_carrinho">Carrinho</string>
+    <string name="nav_drawer_mapa">Mapa</string>
+    <string name="nav_drawer_mais">Comunicação</string>
+    <string name="nav_drawer_administrador">Administrador</string>
+    <string name="nav_drawer_sobre">Sobre</string>
+    <string name="nav_drawer_configuracao">Configuração</string>
+    <string name="nav_drawer_configuracoes">Configurações</string>
+
+    nav_drawer_configuracoes
+    <string name="nav_drawer_sair">Sair</string>
+
+
+    //Tela_Administrador
+    <string name="titulo_tela_administrador">Administrador</string>
+    <string name="botao_cadastro_supermercado">Cadastrar Supermercado</string>
+    <string name="botao_voltar_para_o_Mapa">Voltar</string>
+    <string name="botao_tela_lista_supermercados">Lista Supermercados</string>
+    <string name="botao_tela_lista_produtos">Lista Produtos</string>
+    <string name="botao_cadastro_produtos">Cadastrar Produtos</string>
+    <string name="titulo_supermercados">Supermercados</string>
+    <string name="titulo_produtos">Produtos</string>
+
+    //Tela_cadastro
+    <string name="hint_email_tela_cadastro">Email</string>
+    <string name="hint_confirmar_senha_tela_cadastro">Confirmar Senha</string>
+    <string name="hint_senha_tela_cadastro">Senha</string>
+    <string name="botao_Cadastrar_tela_cadastro">Cadastrar</string>
+    <string name="botao_voltar_tela_cadastro">Voltar</string>
+
+    //Tela_cadastro_pessoa
+    <string name="titulo_Tela_cadastro_pessoa">Finalize seu cadastro para poder realizar compras.</string>
+    <string name="hint_nome">Nome</string>
+    <string name="hint_telefone">Telefone</string>
+    <string name="hint_número_cartao">Número Cartão</string>
+    <string name="botao_finalizar_cadastro">Finalizar Cadastro</string>
+
+    //Tela_cadastro_Produtos
+    <string name="titulo_tela_cadastro_produtos">Cadastro de Produtos</string>
+    <string name="botao_cadastrar_produtos_direto">Cadastrar Produtos Direto</string>
+    <string name="botao_voltar_tela_cadastro_produtos">Voltar</string>
+
+    //Tela_cadastro_e_busca_de_supermercado
+    <string name="tela_cadastro_busca_dos_Supermercados">Cadastrar ou Buscar Supermercados</string>
+    <string name="hint_nome_supermercado">Nome do Supermercado</string>
+    <string name="hint_numero_telefone_supermercado">Numero Telefone do Supermercado</string>
+    <string name="botao_cadastrar_supermercados">Cadastrar Supermercado</string>
+    <string name="hint_busca_supermercado_pelo_nome">Busca Supermercado pelo Nome</string>
+    <string name="botao_busccar_supermercado">Buscar Supermercado</string>
+    <string name="hint_nome_supermercado_buscado">Nome Buscado</string>
+    <string name="hint_telefone_supermercado_buscado">Telefone Buscado</string>
+    <string name="botao_cadastrar_supermercado_direto">Cadastrar Direto</string>
+    <string name="botao_voltar_tela_cadastro_e_busca_de_supermercado">Voltar</string>
+
+    //Tela_lista_produtos
+    <string name="botao_voltar_tela_lista_produtos">Voltar</string>
+    <string name="textview_descricao_produto">Descrição</string>
+    <string name="textview_id_produto">id</string>
+    <string name="textview_preco_produto">Preço</string>
+    <string name="textview_idsuper_produto">IdSuper</string>
+
+    //Tela_lista_produtos_do_supermercado
+    <string name="textview_descricao_produto_do_supermercado">Descrição</string>
+    <string name="textview_id_produto_do_supermercado">id</string>
+    <string name="textview_preco_produto_do_supermercado">Preço</string>
+    <string name="textview_idsuper_produto_do_supermercado">Id</string>
+    <string name="botao_voltar_tela_lista_produtos_do_supermercado">Voltar</string>
+
+    //Tela_lista_produtos_do_supermercado
+    <string name="botao_voltar_tela_lista_supermercado">Voltar</string>
+    <string name="textview_id_supermercado">Id</string>
+    <string name="textview_nome_supermercado">Nome</string>
+    <string name="textview_telefone_supermercado">Telefone</string>
+
+    //Tela_login
+    <string name="hint_email_tela_login">Email</string>
+    <string name="hint_senha_tela_login">Senha</string>
+    <string name="botao_login_tela_login">Login</string>
+    <string name="botao_cadastrar_tela_login">Cadastrar</string>
+
+    //Tela_supermercado
+    <string name="textview_fone_supermercado">Fone: </string>
+    <string name="botao_voltar_tela_supermercado">Voltar</string>
+    <string name="botao_produtos_tela_supermercado">Produtos</string>
+
+    //fragment_cabecalho
+    <string name="textview_supermercado_1_fragment_cabecalho">Supermercado 1</string>
+
+    //fragment_rodape
+    <string name="botao_ver_fragment_rodape">Ver</string>
+    <string name="textview_supermercado_1_fragment_rodape">Supermercado 1</string>
+
+    //produtos
+    <string name="textview_coluna1_produtos">Coluna 1 </string>
+    <string name="textview_coluna2_produtos">Coluna 2 </string>
+    <string name="textview_coluna3_produtos">Coluna 3 </string>
+    <string name="textview_coluna4_produtos">Coluna 4 </string>
+
+    //supermercados
+    <string name="textview_coluna1_supermercados">Coluna 1 </string>
+    <string name="textview_coluna2_supermercados">Coluna 2 </string>
+    <string name="textview_coluna3_supermercados">Coluna 3 </string>
+
+
+
+    <!-- TODO: Remove or change this placeholder text
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="prompt_email">prompt_email</string>
     <string name="prompt_password">prompt_password</string>
     <string name="action_sign_in_short">action_sign_in_short</string>
-    <string name="action_sign_in">action_sign_in</string>
+    <string name="action_sign_in">action_sign_in</string>  -->
 
     <string name="title_activity_tela_principal">Map</string>
+    <string name="title_activity_configuracoes">configuracoes</string>
 
+    // Avisos
     <string name="email_vazio">Campo email não pode ser vazio!</string>
     <string name="senha_vazio">Campo senha não pode ser vazio!</string>
     <string name="email_senha_invalido">Email ou Senha inválidos!</string>
@@ -25,4 +135,5 @@
     <string name="login_senha_tamanho_invalido">Sua senha deve ter entre 3 e 15 caracteres!</string>
     <string name="title_activity_cadastro_pessoa">CadastroPessoaActivity</string>
     <string name="campo_vazio">Este campo não pode ser vazio!</string>
+
 </resources>

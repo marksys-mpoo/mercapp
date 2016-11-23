@@ -11,7 +11,7 @@
     tools:context="com.mercapp.infra.Administrador">
 
     <TextView
-        android:text="Tela do Administrador"
+        android:text="@string/titulo_tela_administrador"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -20,52 +20,74 @@
         android:textSize="26sp" />
 
     <Button
-        android:text="Cadastro Supermercado"
-        android:layout_width="wrap_content"
+        android:text="@string/botao_tela_lista_produtos"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="changeTelaAdministradorToCadastroSupermercado"
-        android:id="@+id/button7"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="42dp" />
+        android:onClick="changeTelaAdministradorToListaProdutos"
+        android:id="@+id/btnLsitarProdutos"
+        android:layout_marginBottom="80dp"
+        android:layout_above="@+id/button8"
+        android:layout_alignStart="@+id/btnCadastroProdutos" />
 
     <Button
-        android:text="Voltar para o Mapa"
+        android:text="@string/botao_cadastro_produtos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="changeTelaAdministradorToCadastroProdutos"
+        android:id="@+id/btnCadastroProdutos"
+        android:layout_marginBottom="17dp"
+        android:layout_above="@+id/btnLsitarProdutos"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="@string/titulo_produtos"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnCadastroProdutos"
+        android:layout_alignParentStart="true"
+        android:id="@+id/tvProdutos"
+        android:textColor="@color/cast_expanded_controller_background_color"
+        android:textStyle="normal|bold"
+        android:textSize="18sp" />
+
+    <TextView
+        android:text="@string/titulo_supermercados"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:id="@+id/tvSupermercados"
+        android:textColor="@color/cast_expanded_controller_background_color"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="@string/botao_cadastro_supermercado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="changeTelaAdministradorToCadastroSupermercado"
+        android:id="@+id/btnCadastroSupermercado"
+        android:layout_below="@+id/tvSupermercados"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="@string/botao_tela_lista_supermercados"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="changeTelaAdministradorToListaSupermercado"
+        android:id="@+id/btnListarSupermercado"
+        android:layout_below="@+id/btnCadastroSupermercado"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        android:text="@string/botao_voltar_para_o_Mapa"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="voltarToMenuMapa"
         android:id="@+id/button8"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/button6" />
-
-    <Button
-        android:text="Tela Lista Supermercados"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="changeTelaAdministradorToListaSupermercado"
-        android:id="@+id/button88"
-        android:layout_marginTop="19dp"
-        android:layout_below="@+id/button7"
-        android:layout_alignStart="@+id/button7" />
-
-    <Button
-        android:text="Tela Lista Produtos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="changeTelaAdministradorToListaProdutos"
-        android:id="@+id/button2"
-        android:layout_marginBottom="80dp"
-        android:layout_above="@+id/button8"
-        android:layout_alignStart="@+id/button6" />
-
-    <Button
-        android:text="Cadastro Produtos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="changeTelaAdministradorToCadastroProdutos"
-        android:id="@+id/button6"
-        android:layout_marginBottom="17dp"
-        android:layout_above="@+id/button2"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

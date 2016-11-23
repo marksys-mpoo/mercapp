@@ -18,15 +18,15 @@
         android:textSize="36sp" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tela de Produtos"
+        android:text="@string/botao_produtos_tela_supermercado"
         android:onClick="tela_de_produtos"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:text="Fone:"
+        android:text="@string/textview_fone_supermercado"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="26sp"
@@ -47,12 +47,11 @@
         android:layout_marginStart="71dp" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Voltar Mapa"
+        android:text="@string/botao_voltar_tela_supermercado"
         android:id="@+id/SuperMercado_to_Mapa"
         android:onClick="voltarTelaMenu"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="83dp" />
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

@@ -90,7 +90,7 @@
         <activity android:name=".supermercado.gui.ListaSupermercados" />
         <activity android:name=".supermercado.gui.ListaProdutos" />
         <activity android:name=".supermercado.gui.CadastroProdutos" />
-        <activity android:name=".supermercado.gui.ListaProdutosDoSupermercado"></activity>
+        <activity android:name=".supermercado.gui.ListaProdutosDoSupermercado" />
     </application>
 
 </manifest>

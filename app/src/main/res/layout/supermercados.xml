@@ -8,14 +8,14 @@
         android:id="@+id/colunaProduto1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Coluna 1"
+        android:text="@string/textview_coluna1_supermercados"
         android:textSize="18sp"/>
 
     <TextView
         android:id="@+id/colunaProduto3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Coluna 3"
+        android:text="@string/textview_coluna3_supermercados"
         android:textSize="18sp"
         android:layout_marginEnd="21dp"
         android:layout_alignBaseline="@+id/colunaProduto2"
@@ -26,10 +26,9 @@
         android:id="@+id/colunaProduto2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Coluna 2"
+        android:text="@string/textview_coluna2_supermercados"
         android:textSize="18sp"
-        android:layout_marginStart="29dp"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/colunaProduto1" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
