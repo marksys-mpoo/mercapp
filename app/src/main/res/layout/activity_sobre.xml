@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_sobre"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="com.mercapp.infra.SobreActivity"
+       >
+   <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+   <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+        <ImageView
+            android:contentDescription="@string/img_descricao_tela_sobre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_logo"
+            android:id="@+id/imageView3" />
+
+        <TextView
+            android:text="@string/nome_tela_sobre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvNomeSite"
+            android:textSize="28dp"
+            android:layout_below="@+id/imageView3"
+            android:layout_centerHorizontal="true"
+            android:textColor="@android:color/holo_red_dark"
+            android:textColorHighlight="#990000"
+            android:onClick="web" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:textSize="17dp"
+            android:textColor="@android:color/tertiary_text_light"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/descricao_tela_sobre"
+            android:id="@+id/sobre_descricao"
+            android:gravity="top"
+            android:layout_below="@+id/tvNomeSite"
+            android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="@string/desenvolvedores_tela_sobre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView16"
+        android:layout_marginTop="17dp"
+        android:layout_below="@+id/sobre_descricao"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="@string/tela_sobre_wellington"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView20"
+        android:layout_below="@+id/textView19"
+        android:layout_alignStart="@+id/textView19"
+        android:textAlignment="center" />
+
+    <TextView
+        android:text="@string/tela_sobre_filipe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView17"
+        android:layout_below="@+id/textView20"
+        android:layout_alignStart="@+id/textView20"
+        android:textAlignment="center" />
+
+    <TextView
+        android:text="@string/tela_sobre_lucas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView19"
+        android:layout_below="@+id/textView18"
+        android:layout_alignParentEnd="true"
+        android:textAlignment="center" />
+
+    <TextView
+        android:text="@string/tela_sobre_jobson"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView18"
+        android:layout_below="@+id/textView16"
+        android:layout_alignParentStart="true"
+        android:textAlignment="center"
+        android:autoLink="web" />
+
+    <TextView
+        android:text="@string/site_tela_sobre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView17"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/textviewSite"
+        android:linksClickable="true"
+        android:autoLink="web|email"
+       />
+
+
+    </RelativeLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>

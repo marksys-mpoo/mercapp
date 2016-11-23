@@ -23,6 +23,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.mercapp.R;
 import com.mercapp.infra.Administrador;
 import com.mercapp.infra.Session;
+import com.mercapp.infra.SobreActivity;
 import com.mercapp.usuario.gui.fragments.MapaFragments;
 
 import static com.mercapp.R.id;
@@ -120,7 +121,9 @@ public class TelaMenuActivity extends AppCompatActivity
                 Toast.makeText(this, "Desculpe o transtorno, estamos implementando", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_sobre:
-                Toast.makeText(this, "Desculpe o transtorno, estamos implementando", Toast.LENGTH_SHORT).show();
+                Intent sobre = new Intent(TelaMenuActivity.this, SobreActivity.class);
+                TelaMenuActivity.this.startActivity(sobre);
+                finish();
                 break;
             case R.id.nav_carrinho:
                 Toast.makeText(this, "Desculpe o transtorno, estamos implementando", Toast.LENGTH_SHORT).show();

@@ -86,11 +86,12 @@
             android:value="@integer/google_play_services_version" />
 
         <activity android:name=".usuario.gui.CadastroPessoaActivity" />
-        <activity android:name=".infra.Administrador" />
         <activity android:name=".supermercado.gui.ListaSupermercados" />
         <activity android:name=".supermercado.gui.ListaProdutos" />
         <activity android:name=".supermercado.gui.CadastroProdutos" />
         <activity android:name=".supermercado.gui.ListaProdutosDoSupermercado" />
+        <activity android:name=".infra.SobreActivity" />
+        <activity android:name=".infra.Administrador" />
     </application>
 
 </manifest>

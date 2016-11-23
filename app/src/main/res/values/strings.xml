@@ -53,7 +53,8 @@
     <string name="botao_voltar_tela_cadastro_produtos">Voltar</string>
 
     //Tela_cadastro_e_busca_de_supermercado
-    <string name="tela_cadastro_busca_dos_Supermercados">Cadastrar ou Buscar Supermercados</string>
+    <string name="tela_cadastro_dos_Supermercados">Cadastrar Supermercados </string>
+    <string name="tela_busca_dos_Supermercados">Buscar Supermercados </string>
     <string name="hint_nome_supermercado">Nome do Supermercado</string>
     <string name="hint_numero_telefone_supermercado">Numero Telefone do Supermercado</string>
     <string name="botao_cadastrar_supermercados">Cadastrar Supermercado</string>
@@ -113,7 +114,21 @@
     <string name="textview_coluna2_supermercados">Coluna 2 </string>
     <string name="textview_coluna3_supermercados">Coluna 3 </string>
 
-
+    //tela_sobre
+    <string name="nome_tela_sobre">MercApp</string>
+    <string name="descricao_tela_sobre">O projeto MercApp  tem como objetivo permitir que
+        o cliente realize suas compras em poucos minutos pelo seu Smartphone.
+        O cliente irá buscar um supermercado de sua preferência que esteja cadastrado no
+        aplicativo, selecionar os produtos, a forma de pagamento e receber tudo no conforto de sua casa.
+        Neste contexto os clientes terão mais tempo para fazer outras coisas no dia-a-dia ao
+        invés de perder tempo no supermercado e supermercado terá. </string>
+    <string name="desenvolvedores_tela_sobre">Desenvolvedores:</string>
+    <string name="tela_sobre_wellington">Wellington Luiz</string>
+    <string name="tela_sobre_jobson">Jobson Pereira</string>
+    <string name="tela_sobre_lucas">Lucas Filipe </string>
+    <string name="tela_sobre_filipe">Filipe Peticormei</string>
+    <string name="img_descricao_tela_sobre">icone do app</string>
+    <string name="site_tela_sobre">https://sites.google.com/site/marksysufrpe</string>
 
     <!-- TODO: Remove or change this placeholder text
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -124,6 +139,8 @@
 
     <string name="title_activity_tela_principal">Map</string>
     <string name="title_activity_configuracoes">configuracoes</string>
+
+
 
     // Avisos
     <string name="email_vazio">Campo email não pode ser vazio!</string>
