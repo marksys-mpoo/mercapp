@@ -47,4 +47,11 @@ public class Administrador extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent voltarMenu = new Intent(Administrador.this, TelaMenuActivity.class);
+        startActivity(voltarMenu);
+        finish();
+    }
+
 }

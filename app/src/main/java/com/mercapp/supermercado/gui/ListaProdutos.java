@@ -41,4 +41,11 @@ public class ListaProdutos extends AppCompatActivity {
         startActivity(voltarAdm);
         finish();
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent voltarMenu = new Intent(ListaProdutos.this, Administrador.class);
+        startActivity(voltarMenu);
+        finish();
+    }
 }

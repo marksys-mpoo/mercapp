@@ -32,23 +32,22 @@ public class TelaSupermercado extends AppCompatActivity {
 
     }
 
+    public void tela_de_produtos(View view) {
+        Intent voltarMenu = new Intent(TelaSupermercado.this, ListaProdutosDoSupermercado.class);
+        startActivity(voltarMenu);
+        finish();
+    }
+
     public void voltarTelaMenu(View view) {
         Intent voltarMenu = new Intent(TelaSupermercado.this, TelaMenuActivity.class);
         startActivity(voltarMenu);
         finish();
     }
 
-    public void tela_de_produtos(View view) {
-        Intent voltarMenu = new Intent(TelaSupermercado.this, ListaProdutosDoSupermercado.class);
-        startActivity(voltarMenu);
+    @Override
+    public void onBackPressed() {
+        Intent voltarTelaMenuMapa = new Intent(TelaSupermercado.this, TelaMenuActivity.class);
+        startActivity(voltarTelaMenuMapa);
         finish();
     }
-    /*
-    public String getSupermercadoEscolhido() {
-        return supermercadoEscolhido;
-    }
-
-    public void setSupermercadoEscolhido(String supermercadoEscolhido) {
-        this.supermercadoEscolhido = supermercadoEscolhido;
-    }*/
 }

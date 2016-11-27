@@ -90,4 +90,11 @@ public class CadastroSupermercados extends AppCompatActivity {
         startActivity(voltarMenu);
         finish();
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent voltarMenu = new Intent(CadastroSupermercados.this, Administrador.class);
+        startActivity(voltarMenu);
+        finish();
+    }
 }

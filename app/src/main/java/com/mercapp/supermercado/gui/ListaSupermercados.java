@@ -42,4 +42,11 @@ public class ListaSupermercados extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent voltarMenu = new Intent(ListaSupermercados.this, Administrador.class);
+        startActivity(voltarMenu);
+        finish();
+    }
+
 }

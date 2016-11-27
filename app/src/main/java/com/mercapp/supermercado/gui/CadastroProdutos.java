@@ -64,4 +64,11 @@ public class CadastroProdutos extends AppCompatActivity {
         startActivity(voltarMenu);
         finish();
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent voltarMenu = new Intent(CadastroProdutos.this, Administrador.class);
+        startActivity(voltarMenu);
+        finish();
+    }
 }

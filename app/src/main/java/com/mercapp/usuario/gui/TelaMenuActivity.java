@@ -23,7 +23,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.mercapp.R;
 import com.mercapp.infra.Administrador;
 import com.mercapp.infra.Session;
-import com.mercapp.infra.SobreActivity;
+import com.mercapp.infra.Sobre;
 import com.mercapp.usuario.gui.fragments.MapaFragments;
 
 import static com.mercapp.R.id;
@@ -82,12 +82,9 @@ public class TelaMenuActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+        Intent voltarMenu = new Intent(TelaMenuActivity.this, LoginActivity.class);
+        startActivity(voltarMenu);
+        finish();
     }
 
     @Override
@@ -121,7 +118,7 @@ public class TelaMenuActivity extends AppCompatActivity
                 Toast.makeText(this, "Desculpe o transtorno, estamos implementando", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_sobre:
-                Intent sobre = new Intent(TelaMenuActivity.this, SobreActivity.class);
+                Intent sobre = new Intent(TelaMenuActivity.this, Sobre.class);
                 TelaMenuActivity.this.startActivity(sobre);
                 finish();
                 break;

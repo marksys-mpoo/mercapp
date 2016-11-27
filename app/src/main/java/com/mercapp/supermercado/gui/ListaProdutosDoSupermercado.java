@@ -41,8 +41,16 @@ public class ListaProdutosDoSupermercado extends AppCompatActivity {
     }
 
     public void changeTelaListaProdutosDoSupermercadoToTelaSupermercado(View view) {
-        Intent voltarAdm = new Intent(ListaProdutosDoSupermercado.this, TelaSupermercado.class);
-        startActivity(voltarAdm);
+        Intent voltarTelaSupermercado = new Intent(ListaProdutosDoSupermercado.this, TelaSupermercado.class);
+        startActivity(voltarTelaSupermercado);
         finish();
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent voltarTelaSupermercado = new Intent(ListaProdutosDoSupermercado.this, TelaSupermercado.class);
+        startActivity(voltarTelaSupermercado);
+        finish();
+    }
+
 }
