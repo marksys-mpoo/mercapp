@@ -24,6 +24,8 @@ public class CadastroActivity extends AppCompatActivity {
     private Context _context = CadastroActivity.this;
     private UsuarioNegocio usuarioNegocio;
     private Usuario usuarioCadastro;
+    private String senhaCriptografada;
+    private CriptografiaSenha criptografia;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +35,6 @@ public class CadastroActivity extends AppCompatActivity {
         etSenha = (EditText) findViewById(R.id.etSenha);
         etConfirmar = (EditText) findViewById(R.id.etConfirmaSenha);
         btnEfetuarCadastro = (Button) findViewById(R.id.btnEfetuarCadastro);
-
     }
 
     public void efetuarCadastro(View view) {
@@ -44,7 +45,10 @@ public class CadastroActivity extends AppCompatActivity {
         usuarioCadastro = usuarioNegocio.buscaUsuario(email);
 
         if ((usuarioCadastro == null) && (validarCampos())){
-            usuarioNegocio.cadastro(email, senha);
+            criptografia = CriptografiaSenha.getInstancia(senha);
+            senhaCriptografada = criptografia.getSenhaCriptografada();
+
+            usuarioNegocio.cadastro(email, senhaCriptografada);
             Toast.makeText(this, "Cadastro efetuado com sucesso\r\n Faça o login - "+ email, Toast.LENGTH_SHORT).show();
             voltarLogin(view);
         } else{
@@ -52,6 +56,7 @@ public class CadastroActivity extends AppCompatActivity {
         }
 
     }
+
     public void voltarLogin(View view) {
         Intent voltarlogin = new Intent(this, LoginActivity.class);
         startActivity(voltarlogin);

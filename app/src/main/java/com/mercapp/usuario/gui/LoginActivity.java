@@ -25,6 +25,9 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnLogar, btnCadastrar;
     private EditText etEmail, etSenha;
     private Context _context = LoginActivity.this;
+    private CriptografiaSenha criptografiaSenha;
+    private String senhaCriptografada;
+    private CriptografiaSenha criptografia;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +47,12 @@ public class LoginActivity extends AppCompatActivity {
         if (validarCampos()) {
             String email = etEmail.getText().toString().trim();
             String senha = etSenha.getText().toString().trim();
+
             UsuarioNegocio usuarioNegocio = new UsuarioNegocio(_context);
-            Usuario logarTest = usuarioNegocio.buscaUsuario(email,senha);
+            criptografia = CriptografiaSenha.getInstancia(senha);
+            senhaCriptografada = criptografia.getSenhaCriptografada();
+            Usuario logarTest = usuarioNegocio.buscaUsuario(email,senhaCriptografada);
+
             if (logarTest != null) {
                 session.setUsuarioLogado(logarTest);
                 if (usuarioNegocio.buscarPessoa(logarTest.getId()) != null) {

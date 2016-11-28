@@ -22,8 +22,6 @@ public class SobreActivity extends AppCompatActivity {
         Intent voltarMenu = new Intent(this, TelaMenuActivity.class);
         startActivity(voltarMenu);
         finish();
-
-
     }
 
 
