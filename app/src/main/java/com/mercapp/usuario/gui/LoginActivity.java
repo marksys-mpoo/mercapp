@@ -64,6 +64,8 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    
+
     public void cadastrarUsuario (View view){
         Intent cadastro = new Intent(LoginActivity.this, CadastroActivity.class);
         startActivity(cadastro);

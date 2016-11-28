@@ -90,6 +90,7 @@
     <string name="hint_senha_tela_login">Senha</string>
     <string name="botao_login_tela_login">Login</string>
     <string name="botao_cadastrar_tela_login">Cadastrar</string>
+    <string name="label_Tela_login">Esqueci minha senha.</string>
 
     //Tela_supermercado
     <string name="textview_fone_supermercado">Fone: </string>
@@ -141,7 +142,6 @@
     <string name="title_activity_configuracoes">configuracoes</string>
 
 
-
     // Avisos
     <string name="email_vazio">Campo email não pode ser vazio!</string>
     <string name="senha_vazio">Campo senha não pode ser vazio!</string>
@@ -152,5 +152,9 @@
     <string name="login_senha_tamanho_invalido">Sua senha deve ter entre 3 e 15 caracteres!</string>
     <string name="title_activity_cadastro_pessoa">CadastroPessoaActivity</string>
     <string name="campo_vazio">Este campo não pode ser vazio!</string>
+
+    //tela_recuperar_senha
+    <string name="titulo_tela_recuperar_senha">Digite o email cadastrado no sistema para recuperar a senha.</string>
+
 
 </resources>
