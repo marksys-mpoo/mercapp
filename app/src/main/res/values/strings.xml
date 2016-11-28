@@ -95,7 +95,19 @@
     //Tela_supermercado
     <string name="textview_fone_supermercado">Fone: </string>
     <string name="botao_voltar_tela_supermercado">Voltar</string>
+    <string name="textViewDepartamentos">Departamentos</string>
     <string name="botao_produtos_tela_supermercado">Produtos</string>
+
+    //Departamentos
+    <string name="dp_padaria">Padaria</string>
+    <string name="dp_frios">Frios</string>
+    <string name="dp_acougue">Açougue</string>
+    <string name="dp_frutas">Frutas</string>
+    <string name="dp_bebidas">Bebidas</string>
+    <string name="dp_mercearia">Mercearia</string>
+    <string name="dp_rotisseria">Rotisseria</string>
+    <string name="dp_limpeza">Limpeza</string>
+    <string name="dp_bazar">Bazar</string>
 
     //fragment_cabecalho
     <string name="textview_supermercado_1_fragment_cabecalho">Supermercado 1</string>
@@ -114,6 +126,7 @@
     <string name="textview_coluna1_supermercados">Coluna 1 </string>
     <string name="textview_coluna2_supermercados">Coluna 2 </string>
     <string name="textview_coluna3_supermercados">Coluna 3 </string>
+
 
     //tela_sobre
     <string name="nome_tela_sobre">MercApp</string>

@@ -1,57 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_tela_supermercado"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.mercapp.supermercado.gui.TelaSupermercado">
 
     <TextView
-        android:text="Supermercado 2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:text="supermercado"
         android:id="@+id/supermercadoSessao"
-        android:textSize="36sp" />
-
-    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/botao_produtos_tela_supermercado"
-        android:onClick="tela_de_produtos"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:textSize="20sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
-    <TextView
-        android:text="@string/textview_fone_supermercado"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="26sp"
-        android:layout_below="@+id/supermercadoSessao"
-        android:layout_marginTop="34dp"
-        android:id="@+id/textFone" />
 
     <TextView
         android:text="Telefone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/telefoneSessao"
-        android:textSize="26sp"
+        android:textSize="12sp"
         android:width="10sp"
         android:layout_alignBaseline="@+id/textFone"
         android:layout_alignBottom="@+id/textFone"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="71dp" />
+        android:layout_marginStart="36dp" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/botao_voltar_tela_supermercado"
-        android:id="@+id/SuperMercado_to_Mapa"
-        android:onClick="voltarTelaMenu"
-        android:layout_alignParentBottom="true"
+        android:text="@string/botao_produtos_tela_supermercado"
+        android:onClick="tela_de_produtos"
+        android:id="@+id/button2"
+        android:layout_alignParentBottom="true" />
+
+    <TextView
+        android:text="@string/textview_fone_supermercado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:id="@+id/textFone"
+        android:layout_below="@+id/supermercadoSessao"
         android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="@string/textViewDepartamentos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView20"
+        android:textSize="16sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/telefoneSessao"
+        android:layout_alignParentStart="true" />
+
+    <TableLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/cast_expanded_controller_margin_between_seek_bar_and_control_buttons"
+        android:layout_marginRight="@dimen/cast_expanded_controller_margin_between_seek_bar_and_control_buttons"
+        android:id="@+id/tableLayout"
+        android:layout_below="@+id/textView20"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/button2"
+        android:layout_alignParentStart="true">
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:text="@string/dp_padaria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dp_padaria"
+                android:gravity="bottom|center"
+                android:id="@+id/button5"
+                android:layout_marginLeft="@dimen/marginTabelaDepartamentos"
+                android:layout_marginTop="@dimen/marginTabelaDepartamentos" />
+
+            <Button
+                android:text="@string/dp_frios"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dp_frios"
+                android:gravity="bottom|center"
+                android:id="@+id/button6"
+                android:layout_marginLeft="@dimen/marginTabelaDepartamentos"
+                android:layout_marginTop="@dimen/marginTabelaDepartamentos" />
+
+            <Button
+                android:text="@string/dp_acougue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dp_acougue"
+                android:gravity="bottom|center"
+                android:id="@+id/button7"
+                android:layout_marginLeft="@dimen/marginTabelaDepartamentos"
+                android:layout_marginTop="@dimen/marginTabelaDepartamentos" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:text="@string/dp_frutas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dp_frutas"
+                android:gravity="bottom|center"
+                android:id="@+id/button12"
+                android:layout_marginTop="@dimen/marginTabelaDepartamentos"
+                android:layout_marginLeft="@dimen/marginTabelaDepartamentos" />
+
+            <Button
+                android:text="@string/dp_bebidas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dp_bebidas"
+                android:gravity="bottom|center"
+                android:id="@+id/button11"
+                android:layout_marginTop="@dimen/marginTabelaDepartamentos"
+                android:layout_marginLeft="@dimen/marginTabelaDepartamentos" />
+
+            <Button
+                android:text="@string/dp_mercearia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dp_mercearia"
+                android:gravity="bottom|center"
+                android:id="@+id/button9"
+                android:layout_marginTop="@dimen/marginTabelaDepartamentos"
+                android:layout_marginLeft="@dimen/marginTabelaDepartamentos" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:text="@string/dp_rotisseria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dp_rotisseria"
+                android:gravity="bottom|center"
+                android:id="@+id/button15"
+                android:layout_marginTop="@dimen/marginTabelaDepartamentos"
+                android:layout_marginLeft="@dimen/marginTabelaDepartamentos"
+                android:layout_marginBottom="@dimen/marginTabelaDepartamentos" />
+
+            <Button
+                android:text="@string/dp_limpeza"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dp_limpeza"
+                android:gravity="bottom|center"
+                android:id="@+id/button14"
+                android:layout_marginTop="@dimen/marginTabelaDepartamentos"
+                android:layout_marginLeft="@dimen/marginTabelaDepartamentos"
+                android:layout_marginBottom="@dimen/marginTabelaDepartamentos" />
+
+            <Button
+                android:text="@string/dp_bazar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dp_bazar"
+                android:gravity="bottom|center"
+                android:id="@+id/button13"
+                android:layout_marginTop="@dimen/marginTabelaDepartamentos"
+                android:layout_marginLeft="@dimen/marginTabelaDepartamentos"
+                android:layout_marginBottom="@dimen/marginTabelaDepartamentos" />
+        </TableRow>
+    </TableLayout>
+
 </RelativeLayout>
