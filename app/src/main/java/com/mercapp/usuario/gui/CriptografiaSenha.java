@@ -2,10 +2,6 @@ package com.mercapp.usuario.gui;
 
 import java.util.HashMap;
 
-/**
- * Created by WELLINGTON on 28/11/2016.
- */
-
 public class CriptografiaSenha {
     private char[] alfa = new char[52];
     private char[] nume = new char[10];

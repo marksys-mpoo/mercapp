@@ -2,10 +2,6 @@ package com.mercapp.supermercado.dominio;
 
 import java.util.ArrayList;
 
-/**
- * Created by wellington on 30/10/16.
- */
-
 public class Supermercado {
 
     private int id;

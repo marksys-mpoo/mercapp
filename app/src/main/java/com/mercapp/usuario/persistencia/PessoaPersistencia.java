@@ -10,10 +10,6 @@ import com.mercapp.infra.Session;
 import com.mercapp.usuario.dominio.Pessoa;
 import com.mercapp.usuario.dominio.Usuario;
 
-/**
- * Created by lucas on 08/11/16.
- */
-
 public class PessoaPersistencia {
 
     private Context _context;
