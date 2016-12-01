@@ -6,14 +6,6 @@ android:layout_width="match_parent" android:layout_height="match_parent">
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/botao_ver_fragment_rodape"
-        android:id="@+id/rodape_to_Supermercado"
-        android:layout_alignTop="@+id/rodape"
-        android:layout_alignStart="@+id/voltarMapa" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="Voltar "
         android:id="@+id/voltarMapa"
         android:layout_marginEnd="11dp"
@@ -32,6 +24,16 @@ android:layout_width="match_parent" android:layout_height="match_parent">
         android:layout_gravity="center_horizontal|top"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/botao_ver_fragment_rodape"
+        android:id="@+id/rodape_to_Supermercado"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="12dp" />
+
     <TextView
         android:text="@string/textview_supermercado_1_fragment_rodape"
         android:layout_width="wrap_content"
@@ -40,8 +42,8 @@ android:layout_width="match_parent" android:layout_height="match_parent">
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textSize="20sp"
         android:textColor="@color/cast_expanded_controller_text_color"
-        android:layout_marginStart="37dp"
-        android:layout_alignBottom="@+id/rodape_to_Supermercado"
-        android:layout_alignParentStart="true" />
+        android:layout_above="@+id/rodape_to_Supermercado"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="12dp" />
 
 </RelativeLayout>

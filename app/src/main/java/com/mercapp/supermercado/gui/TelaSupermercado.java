@@ -39,11 +39,38 @@ public class TelaSupermercado extends AppCompatActivity {
 
     public void buscaProdutosPadaria(View view) {
         this.selecionarDepartamento("1");
-
     }
 
     public void buscaProdutosFrios(View view) {
         this.selecionarDepartamento("2");
+    }
+
+    public void buscaProdutosAcougue(View view) {
+        this.selecionarDepartamento("3");
+    }
+
+    public void buscaProdutosFrutas(View view) {
+        this.selecionarDepartamento("4");
+    }
+
+    public void buscaProdutosBebidas(View view) {
+        this.selecionarDepartamento("5");
+    }
+
+    public void buscaProdutosMercearia(View view) {
+        this.selecionarDepartamento("6");
+    }
+
+    public void buscaProdutosHigiene(View view) {
+        this.selecionarDepartamento("7");
+    }
+
+    public void buscaProdutosLimpeza(View view) {
+        this.selecionarDepartamento("8");
+    }
+
+    public void buscaProdutosBazar(View view) {
+        this.selecionarDepartamento("9");
     }
 
     public void selecionarDepartamento(String departamentoSelecionado) {

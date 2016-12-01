@@ -41,6 +41,20 @@ public class ListaProdutosDoSupermercado extends AppCompatActivity {
                 this.setDepartamentoSelecionado("Padaria");
             } else if (idDepartamento == "2") {
                 this.setDepartamentoSelecionado("Frios");
+            } else if (idDepartamento == "3") {
+                this.setDepartamentoSelecionado("Açougue");
+            } else if (idDepartamento == "4") {
+                this.setDepartamentoSelecionado("Frutas");
+            } else if (idDepartamento == "5") {
+                this.setDepartamentoSelecionado("Bebidas");
+            } else if (idDepartamento == "6") {
+                this.setDepartamentoSelecionado("Mercearia");
+            } else if (idDepartamento == "7") {
+                this.setDepartamentoSelecionado("Higiene");
+            } else if (idDepartamento == "8") {
+                this.setDepartamentoSelecionado("Limpeza");
+            } else if (idDepartamento == "9") {
+                this.setDepartamentoSelecionado("Bazar");
             }
             etDepartamentoSelecionado.setText(this.getDepartamentoSelecionado());
             this.buscaProdutosPorDepartamento(idSupermercado_string, idDepartamento);
@@ -66,8 +80,8 @@ public class ListaProdutosDoSupermercado extends AppCompatActivity {
     public void buscaProdutosPorDepartamento(String idSupermercado, String idDepartamento) {
         SupermercadoNegocio buscaProdutos = new SupermercadoNegocio(_context);
         Cursor cursor = buscaProdutos.buscaProdutosPorDepartamentoNegocio(idSupermercado, idDepartamento);
-        String[] nomeCampos = new String[] {BDHelper.COLUNA_ID_PRODUTO, BDHelper.COLUNA_DESCRICAO, BDHelper.COLUNA_PRECO, BDHelper.COLUNA_ID_SUPERMERCADO_PRODUTO};
-        int[] idViews = new int[] {R.id.colunaProduto1, R.id.colunaProduto2, R.id.colunaProduto3, R.id.colunaProduto4};
+        String[] nomeCampos = new String[] {BDHelper.COLUNA_ID_PRODUTO, BDHelper.COLUNA_DESCRICAO, BDHelper.COLUNA_PRECO};
+        int[] idViews = new int[] {R.id.colunaProduto1, R.id.colunaProduto2, R.id.colunaProduto3};
         SimpleCursorAdapter adaptador = new SimpleCursorAdapter(_context,R.layout.produtos,cursor,nomeCampos,idViews, 0);
         lista = (ListView)findViewById(R.id.lista_produtos_do_supermercado);
         lista.setAdapter(adaptador);

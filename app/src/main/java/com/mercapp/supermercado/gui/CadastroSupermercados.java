@@ -34,9 +34,9 @@ public class CadastroSupermercados extends AppCompatActivity {
     }
 
     public void cadastroDireto(View view) {
-        Supermercado supermercado1 = CadastrarSupermercado(1,"Supermercado 1","1111");
+        Supermercado supermercado1 = CadastrarSupermercado(1,"Extrabom - UFRPE","1111");
         efetuarCadastroSupermercado(supermercado1);
-        Supermercado supermercado2 = CadastrarSupermercado(1,"Supermercado 2","2222");
+        Supermercado supermercado2 = CadastrarSupermercado(1,"Extrabom - Dois Irmãos","2222");
         efetuarCadastroSupermercado(supermercado2);
     }
     private Supermercado CadastrarSupermercado(Integer id, String nome, String telefone) {

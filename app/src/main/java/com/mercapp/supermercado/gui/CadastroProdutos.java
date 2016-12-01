@@ -25,14 +25,87 @@ public class CadastroProdutos extends AppCompatActivity {
     }
 
     public void cadastroProdutosDireto(View view) {
-        Produto produto1 = CadastrarProduto(1,"Produto 1","11.11","1", "1");
-        efetuarCadastroProduto(produto1);
-        Produto produto2 = CadastrarProduto(2,"Produto 2","22.22","2","1");
-        efetuarCadastroProduto(produto2);
-        Produto produto3 = CadastrarProduto(3,"Produto 3","33.33","1","2");
-        efetuarCadastroProduto(produto3);
-        Produto produto4 = CadastrarProduto(4,"Produto 4","44.44","2","2");
-        efetuarCadastroProduto(produto4);
+        // 1 - Padaria
+        Produto produto1 = CadastrarProduto(1,"PAO FRANCES","8,99 KG","1", "1");
+        efetuarCadastroProduto(produto1, "nao");
+        Produto produto2 = CadastrarProduto(2,"PANETONE","12,99 KG","1", "1");
+        efetuarCadastroProduto(produto2, "nao");
+        Produto produto3 = CadastrarProduto(3,"PAO FRANCES","9,59 KG","2", "1");
+        efetuarCadastroProduto(produto3, "nao");
+        Produto produto4 = CadastrarProduto(4,"PAO FORMA","7,54 PC","2", "1");
+        efetuarCadastroProduto(produto4, "nao");
+        // 2 - Frios
+        Produto produto5 = CadastrarProduto(5,"PRESUNTO","7,99 KG","1","2");
+        efetuarCadastroProduto(produto5, "nao");
+        Produto produto6 = CadastrarProduto(6,"REQUEIJAO","5,33 CP","1","2");
+        efetuarCadastroProduto(produto6, "nao");
+        Produto produto7 = CadastrarProduto(7,"IOGURTE","11,59 1L","2","2");
+        efetuarCadastroProduto(produto7, "nao");
+        Produto produto8 = CadastrarProduto(8,"PRESUNTO","7,99 KG","2", "2");
+        efetuarCadastroProduto(produto8, "nao");
+        // 3 - Açougue
+        Produto produto9 = CadastrarProduto(9,"MAMINHA","19,49 KG","1","3");
+        efetuarCadastroProduto(produto9, "nao");
+        Produto produto10 = CadastrarProduto(10,"CARNE BOVINA","20,33 KG","1","3");
+        efetuarCadastroProduto(produto10, "nao");
+        Produto produto11 = CadastrarProduto(11,"CARNE SUINA","22,00 KG","2","3");
+        efetuarCadastroProduto(produto11, "nao");
+        Produto produto12 = CadastrarProduto(12,"ALCATRA","17,00 KG","2","3");
+        efetuarCadastroProduto(produto12, "nao");
+        // 4 - Frutas
+        Produto produto13 = CadastrarProduto(13,"MACA VERDE","7,49 KG","1","4");
+        efetuarCadastroProduto(produto13, "nao");
+        Produto produto14 = CadastrarProduto(14,"TOMATE","6,33 KG","1","4");
+        efetuarCadastroProduto(produto14, "nao");
+        Produto produto15 = CadastrarProduto(15,"LARANJA","3,00 KG","2","4");
+        efetuarCadastroProduto(produto15, "nao");
+        Produto produto16 = CadastrarProduto(16,"CEBOLA","4,50 KG","2","4");
+        efetuarCadastroProduto(produto16, "nao");
+        // 5 - Bebida
+        Produto produto17 = CadastrarProduto(17,"CERVEJA","3,00 LT","1","5");
+        efetuarCadastroProduto(produto17, "nao");
+        Produto produto18 = CadastrarProduto(18,"SODA","6,50 2L","1","5");
+        efetuarCadastroProduto(produto18, "nao");
+        Produto produto19 = CadastrarProduto(19,"COCA-COLA","7,00 2L","2","5");
+        efetuarCadastroProduto(produto19, "nao");
+        Produto produto20 = CadastrarProduto(20,"GUARANA","6,00 2L","2","5");
+        efetuarCadastroProduto(produto20, "nao");
+        // 6 - Mercearia
+        Produto produto21 = CadastrarProduto(21,"BISCOITO","2,49 PC","1","6");
+        efetuarCadastroProduto(produto21, "nao");
+        Produto produto22 = CadastrarProduto(22,"MAIONESE","3,55 PC","1","6");
+        efetuarCadastroProduto(produto22, "nao");
+        Produto produto23 = CadastrarProduto(23,"MOLHO TOMATE","4,00 PC","2","6");
+        efetuarCadastroProduto(produto23, "nao");
+        Produto produto24 = CadastrarProduto(24,"MARGARINA","3,02 PC","2","6");
+        efetuarCadastroProduto(produto24, "nao");
+        // 7 - Higiene
+        Produto produto25 = CadastrarProduto(25,"CREME DENTAL","4,00 UN","1","7");
+        efetuarCadastroProduto(produto25, "nao");
+        Produto produto26 = CadastrarProduto(26,"ESCOVA DENTAL","5,33 UN","1","7");
+        efetuarCadastroProduto(produto26, "nao");
+        Produto produto27 = CadastrarProduto(27,"SHAMPOO","6,00 UN","2","7");
+        efetuarCadastroProduto(produto27, "nao");
+        Produto produto28 = CadastrarProduto(28,"SABONETE","1,50 UN","2","7");
+        efetuarCadastroProduto(produto28, "nao");
+        // 8 - Limpeza
+        Produto produto29 = CadastrarProduto(29,"AGUA SANITARIA","2,49 1L","1","8");
+        efetuarCadastroProduto(produto29, "nao");
+        Produto produto30 = CadastrarProduto(30,"DESINFETANTE","2,33 KG","1","8");
+        efetuarCadastroProduto(produto30, "nao");
+        Produto produto31 = CadastrarProduto(31,"DETERGENTE","2,00 2L","2","8");
+        efetuarCadastroProduto(produto31, "nao");
+        Produto produto32 = CadastrarProduto(32,"AMACIANTE","5,90 2L","2","8");
+        efetuarCadastroProduto(produto32, "nao");
+        // 9 - Bazar
+        Produto produto33 = CadastrarProduto(33,"TUPPERWARE","3,49 UN","1","9");
+        efetuarCadastroProduto(produto33, "nao");
+        Produto produto34 = CadastrarProduto(34,"CANECA","8,53 UN","1","9");
+        efetuarCadastroProduto(produto34, "nao");
+        Produto produto35 = CadastrarProduto(35,"PRATOS PLASTICO","7,00 PC","2","9");
+        efetuarCadastroProduto(produto35, "nao");
+        Produto produto36 = CadastrarProduto(36,"TALHERES PLASTICO","5,00 PC","2","9");
+        efetuarCadastroProduto(produto36, "sim");
     }
 
     private Produto CadastrarProduto(Integer id, String descricao, String preco, String idSupermercado, String idDepartamento) {
@@ -45,19 +118,23 @@ public class CadastroProdutos extends AppCompatActivity {
         return produto;
     }
 
-    public void efetuarCadastroProduto(Produto produto) {
+    public void efetuarCadastroProduto(Produto produto, String isUltimoProduto) {
         Integer id = produto.getId();
         String descricao = produto.getDescricao();
         String preco = produto.getPreco();
         String idSupermercado = produto.getIdSupermercado();
         String idDepartamento = produto.getIdDepartamento();
         supermercadoNegocio = new SupermercadoNegocio(_context);
-        produtoCadastrado = supermercadoNegocio.buscaProduto(descricao);
+        produtoCadastrado = supermercadoNegocio.buscaProduto(id);
         if (produtoCadastrado == null) {
             supermercadoNegocio.cadastroProduto(descricao, preco, idSupermercado, idDepartamento);
-            Toast.makeText(this, "Produto " + id + " cadastrado com sucesso.", Toast.LENGTH_SHORT).show();
+            if (isUltimoProduto == "sim"){
+                Toast.makeText(this, "Produtos cadastrados com sucesso.", Toast.LENGTH_SHORT).show();
+            }
         } else {
-            Toast.makeText(this, "Produto já exitente!", Toast.LENGTH_SHORT).show();
+            if (isUltimoProduto == "sim") {
+                Toast.makeText(this, "Produtos já exitentes!", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 

@@ -105,9 +105,10 @@
     <string name="dp_frutas">Frutas</string>
     <string name="dp_bebidas">Bebidas</string>
     <string name="dp_mercearia">Mercearia</string>
-    <string name="dp_rotisseria">Rotisseria</string>
+    <string name="dp_higiene">Higiene</string>
     <string name="dp_limpeza">Limpeza</string>
     <string name="dp_bazar">Bazar</string>
+
 
     //fragment_cabecalho
     <string name="textview_supermercado_1_fragment_cabecalho">Supermercado 1</string>

@@ -20,9 +20,9 @@ public class SupermercadoNegocio {
         return supermercadoSelecionado;
     }
 
-    public Produto buscaProduto(String descricao) {
+    public Produto buscaProduto(Integer id) {
         SupermercadoPersistencia produtoPersistencia = new SupermercadoPersistencia(_context);
-        Produto produtoSelecionado = produtoPersistencia.buscarProduto(descricao);
+        Produto produtoSelecionado = produtoPersistencia.buscarProduto(id);
         return produtoSelecionado;
     }
 

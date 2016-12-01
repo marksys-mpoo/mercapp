@@ -99,6 +99,7 @@
 
             <Button
                 android:text="@string/dp_acougue"
+                android:onClick="buscaProdutosAcougue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/dp_acougue"
@@ -114,6 +115,7 @@
 
             <Button
                 android:text="@string/dp_frutas"
+                android:onClick="buscaProdutosFrutas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/dp_frutas"
@@ -124,6 +126,7 @@
 
             <Button
                 android:text="@string/dp_bebidas"
+                android:onClick="buscaProdutosBebidas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/dp_bebidas"
@@ -134,6 +137,7 @@
 
             <Button
                 android:text="@string/dp_mercearia"
+                android:onClick="buscaProdutosMercearia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/dp_mercearia"
@@ -148,10 +152,11 @@
             android:layout_height="wrap_content" >
 
             <Button
-                android:text="@string/dp_rotisseria"
+                android:text="@string/dp_higiene"
+                android:onClick="buscaProdutosHigiene"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/dp_rotisseria"
+                android:background="@drawable/dp_higiene"
                 android:gravity="bottom|center"
                 android:id="@+id/button15"
                 android:layout_marginTop="@dimen/marginTabelaDepartamentos"
@@ -160,6 +165,7 @@
 
             <Button
                 android:text="@string/dp_limpeza"
+                android:onClick="buscaProdutosLimpeza"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/dp_limpeza"
@@ -171,6 +177,7 @@
 
             <Button
                 android:text="@string/dp_bazar"
+                android:onClick="buscaProdutosBazar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/dp_bazar"

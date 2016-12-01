@@ -42,6 +42,16 @@
             android:layout_marginEnd="@dimen/marginTabelaColunasProdutos"
             android:layout_marginStart="@dimen/marginTabelaColunasProdutos" />
 
+        <TextView
+            android:id="@+id/colunaProduto4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/textview_coluna4_produtos"
+            android:textSize="18sp"
+            android:layout_marginStart="@dimen/marginTabelaColunasProdutos"
+            android:layout_marginEnd="@dimen/marginTabelaColunasProdutos" />
+
+
         </TableRow>
 
 

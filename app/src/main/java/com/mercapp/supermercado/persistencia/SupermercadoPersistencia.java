@@ -52,11 +52,12 @@ public class SupermercadoPersistencia {
         return supermercado;
     }
 
-    public Produto buscarProduto(String descricao){
+    public Produto buscarProduto(Integer id){
+        String id_string = id.toString();
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Produto produto = null;
         Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_PRODUTO +
-                " WHERE "+ bdHelper.COLUNA_DESCRICAO+" LIKE ? ", new String[]{descricao});
+                " WHERE "+ bdHelper.COLUNA_ID_PRODUTO+" LIKE ? ", new String[]{id_string});
         if (cursor.moveToFirst()){
             produto = criarProduto(cursor);
         }

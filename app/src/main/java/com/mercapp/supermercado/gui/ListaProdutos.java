@@ -31,8 +31,8 @@ public class ListaProdutos extends AppCompatActivity {
         Cursor cursor = buscaProdutos.listaProdutos();
         String[] colunasBD = new String[] {BDHelper.COLUNA_ID_PRODUTO, BDHelper.COLUNA_DESCRICAO, BDHelper.COLUNA_PRECO, BDHelper.COLUNA_ID_SUPERMERCADO_PRODUTO};
         int[] idListView = new int[] {R.id.colunaProduto1, R.id.colunaProduto2, R.id.colunaProduto3, R.id.colunaProduto4};
-        SimpleCursorAdapter adaptador = new SimpleCursorAdapter(_context,R.layout.produtos,cursor,colunasBD,idListView, 0);
-        lista = (ListView)findViewById(R.id.lista_produtos);
+        SimpleCursorAdapter adaptador = new SimpleCursorAdapter(_context,R.layout.produtos_geral,cursor,colunasBD,idListView, 0);
+        lista = (ListView)findViewById(R.id.lista_produtos_geral);
         lista.setAdapter(adaptador);
     }
 

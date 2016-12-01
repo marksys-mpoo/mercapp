@@ -11,15 +11,6 @@
     tools:context="com.mercapp.supermercado.gui.ListaProdutos">
 
     <TextView
-        android:text="@string/textview_idsuper_produto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:layout_above="@+id/lista_produtos"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/textView7" />
-
-    <TextView
         android:text="@string/textview_id_produto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,7 +32,7 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/lista_produtos"
+        android:id="@+id/lista_produtos_geral"
         android:layout_below="@+id/textView6"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="18dp" />
@@ -64,5 +55,14 @@
         android:layout_marginStart="39dp"
         android:layout_below="@+id/button10"
         android:layout_toEndOf="@+id/textView6" />
+
+    <TextView
+        android:text="@string/textview_idsuper_produto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:id="@+id/textView7"
+        android:layout_below="@+id/button10"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

@@ -106,8 +106,8 @@ public class MapaFragments extends SupportMapFragment implements OnMapReadyCallb
         LatLng parnamirimExtrabom = new LatLng(-8.027122, -34.9170917);
         LatLng encruzilhadaExtrabom = new LatLng(-8.0371238, -34.899941);
         LatLng torreExtrabom = new LatLng(-8.0462157, -34.9116174);
-        LatLng ufrpe = new LatLng(-8.017877, -34.944440);
-        LatLng posi2 = new LatLng(-8.021448, -34.933130);
+        LatLng ufrpeExtrabom = new LatLng(-8.017877, -34.944440);
+        LatLng doisIrmaosExtrabom = new LatLng(-8.021448, -34.933130);
 
         //MARKER's
         customAddMaker(boaViagemExtrabom, "Extrabom - BoaViagem");
@@ -117,8 +117,8 @@ public class MapaFragments extends SupportMapFragment implements OnMapReadyCallb
         customAddMaker(parnamirimExtrabom, "Extrabom - Parnamirim");
         customAddMaker(pinaExtrabom, "Extrabom - Pina");
         customAddMaker(encruzilhadaExtrabom, "Extrabom - Encruzilhada");
-        customAddMaker(ufrpe, "Supermercado 1");
-        customAddMaker(posi2, "Supermercado 2");
+        customAddMaker(ufrpeExtrabom, "Extrabom - UFRPE");
+        customAddMaker(doisIrmaosExtrabom, "Extrabom - Dois Irmãos");
     }
 
     private void eventosWaypoints(final FragmentManager fragmentManager) {
