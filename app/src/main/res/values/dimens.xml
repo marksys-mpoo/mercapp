@@ -6,5 +6,12 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    // Tabela de Botoes do Departamento
     <dimen name="marginTabelaDepartamentos">3dp</dimen>
+
+    // Tabela Produtos (Titulo das Colunas)
+    <dimen name="marginTabelaColunasProdutos">22dp</dimen> // Tela produtos.xml
+    <dimen name="marginTabelaColunasProdutosTela">20dp</dimen> // Tela activity_lista_produtos_do_supermercado.xml
+
 </resources>

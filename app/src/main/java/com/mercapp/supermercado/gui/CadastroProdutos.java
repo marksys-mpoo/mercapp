@@ -25,22 +25,23 @@ public class CadastroProdutos extends AppCompatActivity {
     }
 
     public void cadastroProdutosDireto(View view) {
-        Produto produto1 = CadastrarProduto(1,"Produto 1","11.11","1");
+        Produto produto1 = CadastrarProduto(1,"Produto 1","11.11","1", "1");
         efetuarCadastroProduto(produto1);
-        Produto produto2 = CadastrarProduto(2,"Produto 2","22.22","2");
+        Produto produto2 = CadastrarProduto(2,"Produto 2","22.22","2","1");
         efetuarCadastroProduto(produto2);
-        Produto produto3 = CadastrarProduto(3,"Produto 3","33.33","1");
+        Produto produto3 = CadastrarProduto(3,"Produto 3","33.33","1","2");
         efetuarCadastroProduto(produto3);
-        Produto produto4 = CadastrarProduto(4,"Produto 4","44.44","2");
+        Produto produto4 = CadastrarProduto(4,"Produto 4","44.44","2","2");
         efetuarCadastroProduto(produto4);
     }
 
-    private Produto CadastrarProduto(Integer id, String descricao, String preco, String idSupermercado) {
+    private Produto CadastrarProduto(Integer id, String descricao, String preco, String idSupermercado, String idDepartamento) {
         Produto produto = new Produto();
         produto.setId(id);
         produto.setDescricao(descricao);
         produto.setPreco(preco);
         produto.setIdSupermercado(idSupermercado);
+        produto.setIdDepartamento(idDepartamento);
         return produto;
     }
 
@@ -49,10 +50,11 @@ public class CadastroProdutos extends AppCompatActivity {
         String descricao = produto.getDescricao();
         String preco = produto.getPreco();
         String idSupermercado = produto.getIdSupermercado();
+        String idDepartamento = produto.getIdDepartamento();
         supermercadoNegocio = new SupermercadoNegocio(_context);
         produtoCadastrado = supermercadoNegocio.buscaProduto(descricao);
         if (produtoCadastrado == null) {
-            supermercadoNegocio.cadastroProduto(descricao, preco, idSupermercado);
+            supermercadoNegocio.cadastroProduto(descricao, preco, idSupermercado, idDepartamento);
             Toast.makeText(this, "Produto " + id + " cadastrado com sucesso.", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Produto já exitente!", Toast.LENGTH_SHORT).show();

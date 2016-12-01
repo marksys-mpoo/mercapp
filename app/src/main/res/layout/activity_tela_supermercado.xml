@@ -77,6 +77,7 @@
 
             <Button
                 android:text="@string/dp_padaria"
+                android:onClick="buscaProdutosPadaria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/dp_padaria"
@@ -87,6 +88,7 @@
 
             <Button
                 android:text="@string/dp_frios"
+                android:onClick="buscaProdutosFrios"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/dp_frios"

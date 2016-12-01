@@ -1,5 +1,6 @@
 package com.mercapp.infra;
 
+import com.mercapp.supermercado.dominio.Produto;
 import com.mercapp.supermercado.dominio.Supermercado;
 import com.mercapp.usuario.dominio.Pessoa;
 import com.mercapp.usuario.dominio.Usuario;
@@ -26,6 +27,7 @@ public class Session {
     private Pessoa pessoaLogada;
     private Usuario usuarioLogado;
     private Supermercado supermercadoSelecionado;
+    private String departamentoSelecionado;
 
 
     public static Session getInstanciaSessao() {
@@ -59,5 +61,13 @@ public class Session {
         this.pessoaLogada = null;
     }
 
+
+    public String getDepartamentoSelecionado() {
+        return departamentoSelecionado;
+    }
+
+    public void setDepartamentoSelecionado(String departamentoSelecionado) {
+        this.departamentoSelecionado = departamentoSelecionado;
+    }
 
 }

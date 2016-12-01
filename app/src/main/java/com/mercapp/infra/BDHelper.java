@@ -41,7 +41,6 @@ public class BDHelper extends SQLiteOpenHelper {
     public static final String COLUNA_ID_SUPERMERCADO = "_id";
     public static final String COLUNA_NOME_SUPERMERCADO = "nome";
     public static final String COLUNA_TELEFONE_SUPERMERCADO = "telefone";
-    public static final String COLUNA_ID_PRODUTOS_SUPERMERCADO = "_id_produtos";
 
     //Tabela Produto
     public static final String TBL_PRODUTO = "produto";
@@ -49,6 +48,7 @@ public class BDHelper extends SQLiteOpenHelper {
     public static final String COLUNA_DESCRICAO = "descricao";
     public static final String COLUNA_PRECO = "preco";
     public static final String COLUNA_ID_SUPERMERCADO_PRODUTO = "_id_supermercado";
+    public static final String COLUNA_PRODUTO_DEPARTAMENTO = "_id_departamento";
 
     //Tabela Carrinho
     public static final String TBL_CARRINHO = "carrinho";
@@ -57,11 +57,6 @@ public class BDHelper extends SQLiteOpenHelper {
     public static final String COLUNA_DESCONTOS = "descontos";
     public static final String COLUNA_PRODUTOS = "_id_produtos";
 
-//    private static final String CREATE_TBL_USUARIOS = "CREATE TABLE " + TBL_USUARIO + "("
-//            + COLUNA_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-//            + COLUNA_EMAIL + " TEXT,"
-//            + COLUNA_SENHA + " TEXT);";
-
     public BDHelper(Context context) {
         super(context, NOME_BD, null, VERSAO_BD);
     }
@@ -69,7 +64,6 @@ public class BDHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //db.execSQL(CREATE_TBL_USUARIOS);
         db.execSQL(SQLScript.getTabelaUsuario());
         db.execSQL(SQLScript.getTabelaPessoa());
         db.execSQL(SQLScript.getTabelaEndereco());

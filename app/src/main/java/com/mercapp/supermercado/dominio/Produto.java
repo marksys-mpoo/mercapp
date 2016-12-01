@@ -5,6 +5,7 @@ public class Produto {
     private String descricao;
     private String preco;
     private String idSupermercado;
+    private String idDepartamento;
 
     public String getDescricao() {
         return descricao;
@@ -37,5 +38,14 @@ public class Produto {
     public void setIdSupermercado(String idSupermercado) {
         this.idSupermercado = idSupermercado;
     }
+
+    public String getIdDepartamento() {
+        return idDepartamento;
+    }
+
+    public void setIdDepartamento(String idDepartamento) {
+        this.idDepartamento = idDepartamento;
+    }
+
 
 }

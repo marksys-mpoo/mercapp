@@ -36,7 +36,7 @@ public class SplashActivity extends AppCompatActivity {
                   //// ERRO se houver
                 }
                 finally {
-                    //após terminar o try ele chama a tela login. Se não houve erro.
+                    //após terminar o try ele chama a tela login. Se não houver erro.
                    Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                     startActivity(intent);
                     finish();

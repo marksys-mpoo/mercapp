@@ -96,7 +96,7 @@
     <string name="textview_fone_supermercado">Fone: </string>
     <string name="botao_voltar_tela_supermercado">Voltar</string>
     <string name="textViewDepartamentos">Departamentos</string>
-    <string name="botao_produtos_tela_supermercado">Produtos</string>
+    <string name="botao_produtos_tela_supermercado">Todos os Produtos do Supermercado</string>
 
     //Departamentos
     <string name="dp_padaria">Padaria</string>
@@ -116,11 +116,11 @@
     <string name="botao_ver_fragment_rodape">Ver</string>
     <string name="textview_supermercado_1_fragment_rodape">Supermercado 1</string>
 
-    //produtos
-    <string name="textview_coluna1_produtos">Coluna 1 </string>
-    <string name="textview_coluna2_produtos">Coluna 2 </string>
-    <string name="textview_coluna3_produtos">Coluna 3 </string>
-    <string name="textview_coluna4_produtos">Coluna 4 </string>
+    //tabela produtos ListView
+    <string name="textview_coluna1_produtos">  Coluna 1 </string>
+    <string name="textview_coluna2_produtos">  Coluna 2 </string>
+    <string name="textview_coluna3_produtos">  Coluna 3 </string>
+    <string name="textview_coluna4_produtos">  Coluna 4 </string>
 
     //supermercados
     <string name="textview_coluna1_supermercados">Coluna 1 </string>
