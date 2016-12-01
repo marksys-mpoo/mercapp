@@ -4,8 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.mercapp.usuario.dominio.Endereco;
-
 public class BDHelper extends SQLiteOpenHelper {
 
     public static final String NOME_BD = "mercapp.sqlite";

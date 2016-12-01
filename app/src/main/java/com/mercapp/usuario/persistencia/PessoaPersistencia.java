@@ -8,18 +8,15 @@ import android.database.sqlite.SQLiteDatabase;
 import com.mercapp.infra.BDHelper;
 import com.mercapp.infra.Session;
 import com.mercapp.usuario.dominio.Pessoa;
-import com.mercapp.usuario.dominio.Usuario;
 
 public class PessoaPersistencia {
 
     private Context _context;
     private BDHelper bdHelper;
     private Session session = Session.getInstanciaSessao();
-    private UsuarioPersistencia usuarioPersistencia;
 
     public PessoaPersistencia(Context context){
         _context = context;
-        usuarioPersistencia = new UsuarioPersistencia(_context);
         bdHelper = new BDHelper(_context);
     }
 

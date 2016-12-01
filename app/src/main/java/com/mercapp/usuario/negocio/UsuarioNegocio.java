@@ -2,7 +2,6 @@ package com.mercapp.usuario.negocio;
 
 import android.content.Context;
 
-import com.mercapp.infra.Session;
 import com.mercapp.usuario.dominio.Pessoa;
 import com.mercapp.usuario.dominio.Usuario;
 import com.mercapp.usuario.persistencia.PessoaPersistencia;
@@ -11,7 +10,6 @@ import com.mercapp.usuario.persistencia.UsuarioPersistencia;
 public class UsuarioNegocio {
 
     private Context _context;
-    private Session sessao = Session.getInstanciaSessao();
 
     public Usuario buscaUsuario(String email, String senha) {
         UsuarioPersistencia usuarioPersistencia = new UsuarioPersistencia(_context);

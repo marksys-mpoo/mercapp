@@ -1,6 +1,5 @@
 package com.mercapp.usuario.gui;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -35,7 +34,6 @@ public class TelaMenuActivity extends AppCompatActivity
 
     private FragmentManager fragmentManager;
     private Session session = Session.getInstanciaSessao();
-    private Context _context = TelaMenuActivity.this;
 
     TextView emailUsuario;
     TextView nomePessoa;

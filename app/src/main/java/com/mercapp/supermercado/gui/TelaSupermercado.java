@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.mercapp.R;
 import com.mercapp.infra.Session;
-import com.mercapp.supermercado.dominio.Produto;
 import com.mercapp.supermercado.negocio.SupermercadoNegocio;
 import com.mercapp.usuario.gui.TelaMenuActivity;
 
