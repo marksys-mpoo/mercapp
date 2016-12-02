@@ -23,10 +23,10 @@ public class ListaProdutos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_produtos);
-        MostrarListaProdutosGeral();
+        listarProdutosGeral();
     }
 
-    private void MostrarListaProdutosGeral() {
+    private void listarProdutosGeral() {
         SupermercadoNegocio buscaProdutos = new SupermercadoNegocio(_context);
         Cursor cursor = buscaProdutos.listaProdutos();
         String[] colunasBD = new String[] {BDHelper.COLUNA_ID_PRODUTO, BDHelper.COLUNA_DESCRICAO, BDHelper.COLUNA_PRECO, BDHelper.COLUNA_ID_SUPERMERCADO_PRODUTO};

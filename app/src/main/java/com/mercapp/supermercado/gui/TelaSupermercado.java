@@ -16,7 +16,6 @@ public class TelaSupermercado extends AppCompatActivity {
 
     private TextView etNomeSupermercado, etFoneSupermercado;
     private Session session = Session.getInstanciaSessao();
-    private ListaProdutosDoSupermercado listaProdutosDoSupermercado;
     private Context _context = null;
 
     @Override
@@ -37,39 +36,39 @@ public class TelaSupermercado extends AppCompatActivity {
         this.selecionarDepartamento("Todos");
     }
 
-    public void buscaProdutosPadaria(View view) {
+    public void listaProdutosPadaria(View view) {
         this.selecionarDepartamento("1");
     }
 
-    public void buscaProdutosFrios(View view) {
+    public void listaProdutosFrios(View view) {
         this.selecionarDepartamento("2");
     }
 
-    public void buscaProdutosAcougue(View view) {
+    public void listaProdutosAcougue(View view) {
         this.selecionarDepartamento("3");
     }
 
-    public void buscaProdutosFrutas(View view) {
+    public void listaProdutosFrutas(View view) {
         this.selecionarDepartamento("4");
     }
 
-    public void buscaProdutosBebidas(View view) {
+    public void listaProdutosBebidas(View view) {
         this.selecionarDepartamento("5");
     }
 
-    public void buscaProdutosMercearia(View view) {
+    public void listaProdutosMercearia(View view) {
         this.selecionarDepartamento("6");
     }
 
-    public void buscaProdutosHigiene(View view) {
+    public void listaProdutosHigiene(View view) {
         this.selecionarDepartamento("7");
     }
 
-    public void buscaProdutosLimpeza(View view) {
+    public void listaProdutosLimpeza(View view) {
         this.selecionarDepartamento("8");
     }
 
-    public void buscaProdutosBazar(View view) {
+    public void listaProdutosBazar(View view) {
         this.selecionarDepartamento("9");
     }
 
@@ -78,13 +77,6 @@ public class TelaSupermercado extends AppCompatActivity {
         SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(_context);
         supermercadoNegocio.iniciarSessaoProduto(departamentoSelecionado);
         Intent voltarMenu = new Intent(TelaSupermercado.this, ListaProdutosDoSupermercado.class);
-        startActivity(voltarMenu);
-        finish();
-
-    }
-
-    public void voltarTelaMenu(View view) {
-        Intent voltarMenu = new Intent(TelaSupermercado.this, TelaMenuActivity.class);
         startActivity(voltarMenu);
         finish();
     }

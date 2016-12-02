@@ -51,25 +51,25 @@ public class SupermercadoNegocio {
 
     public Cursor listaSupermercados(){
         SupermercadoPersistencia consulta = new SupermercadoPersistencia(_context);
-        Cursor cursor = consulta.carregaDados();
+        Cursor cursor = consulta.listaDados();
         return cursor;
     }
 
     public Cursor listaProdutos(){
         SupermercadoPersistencia consulta = new SupermercadoPersistencia(_context);
-        Cursor cursor = consulta.carregaDadosProdutos();
+        Cursor cursor = consulta.listaDadosProdutos();
         return cursor;
     }
 
     public Cursor listaProdutosDoSupermercado(String idSuper){
         SupermercadoPersistencia consulta = new SupermercadoPersistencia(_context);
-        Cursor cursor = consulta.carregaDadosProdutosDoSupermercado(idSuper);
+        Cursor cursor = consulta.listaDadosProdutosDoSupermercado(idSuper);
         return cursor;
     }
 
-    public Cursor buscaProdutosPorDepartamentoNegocio(String idSupermercado, String idDepartamento){
+    public Cursor listaProdutosPorDepartamentoNegocio(String idSupermercado, String idDepartamento){
         SupermercadoPersistencia consulta = new SupermercadoPersistencia(_context);
-        Cursor cursor = consulta.buscaProdutosDoSupermercadoPorDepartamentoPersistencia(idSupermercado, idDepartamento);
+        Cursor cursor = consulta.listaProdutosDoSupermercadoPorDepartamentoPersistencia(idSupermercado, idDepartamento);
         return cursor;
     }
 

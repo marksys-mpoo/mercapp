@@ -102,9 +102,9 @@ public class CadastroProdutos extends AppCompatActivity {
         efetuarCadastroProduto(produto33, "nao");
         Produto produto34 = CadastrarProduto(34,"CANECA","8,53 UN","1","9");
         efetuarCadastroProduto(produto34, "nao");
-        Produto produto35 = CadastrarProduto(35,"PRATOS PLASTICO","7,00 PC","2","9");
+        Produto produto35 = CadastrarProduto(35,"PRATO PLASTICO","7,00 PC","2","9");
         efetuarCadastroProduto(produto35, "nao");
-        Produto produto36 = CadastrarProduto(36,"TALHERES PLASTICO","5,00 PC","2","9");
+        Produto produto36 = CadastrarProduto(36,"TALHERE PLASTICO","5,00 PC","2","9");
         efetuarCadastroProduto(produto36, "sim");
     }
 

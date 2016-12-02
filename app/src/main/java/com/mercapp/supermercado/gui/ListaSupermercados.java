@@ -23,10 +23,10 @@ public class ListaSupermercados extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_supermercados);
-        MostrarSupermercados();
+        listarSupermercados();
     }
 
-    private void MostrarSupermercados() {
+    private void listarSupermercados() {
         SupermercadoNegocio consulta = new SupermercadoNegocio(_context);
         Cursor cursor = consulta.listaSupermercados();
         String[] nomeCampos = new String[] {BDHelper.COLUNA_ID_SUPERMERCADO, BDHelper.COLUNA_NOME_SUPERMERCADO, BDHelper.COLUNA_TELEFONE_SUPERMERCADO};

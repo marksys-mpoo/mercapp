@@ -66,7 +66,7 @@ public class SupermercadoPersistencia {
         return produto;
     }
 
-    public Cursor carregaDados(){
+    public Cursor listaDados(){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Cursor cursor;
         cursor = db.rawQuery("SELECT * FROM " + BDHelper.TBL_SUPERMERCADO, null);
@@ -77,7 +77,7 @@ public class SupermercadoPersistencia {
         return cursor;
     }
 
-    public Cursor carregaDadosProdutos(){
+    public Cursor listaDadosProdutos(){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Cursor cursor;
         cursor = db.rawQuery("SELECT * FROM " + BDHelper.TBL_PRODUTO, null);
@@ -88,7 +88,7 @@ public class SupermercadoPersistencia {
         return cursor;
     }
 
-    public Cursor carregaDadosProdutosDoSupermercado(String idSupermercado){
+    public Cursor listaDadosProdutosDoSupermercado(String idSupermercado){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_PRODUTO +
                 " WHERE "+ bdHelper.COLUNA_ID_SUPERMERCADO_PRODUTO+" LIKE ? ", new String[]{idSupermercado});
@@ -99,7 +99,7 @@ public class SupermercadoPersistencia {
         return cursor;
     }
 
-    public Cursor buscaProdutosDoSupermercadoPorDepartamentoPersistencia(String idSupermercado, String idDepartamento){
+    public Cursor listaProdutosDoSupermercadoPorDepartamentoPersistencia(String idSupermercado, String idDepartamento){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_PRODUTO +
                 " WHERE "+ bdHelper.COLUNA_ID_SUPERMERCADO_PRODUTO +" LIKE ? AND "+ bdHelper.COLUNA_PRODUTO_DEPARTAMENTO +" LIKE ? " , new String[]{idSupermercado,idDepartamento});

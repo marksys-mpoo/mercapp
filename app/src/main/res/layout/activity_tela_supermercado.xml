@@ -77,7 +77,7 @@
 
             <Button
                 android:text="@string/dp_padaria"
-                android:onClick="buscaProdutosPadaria"
+                android:onClick="listaProdutosPadaria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/dp_padaria"
@@ -88,7 +88,7 @@
 
             <Button
                 android:text="@string/dp_frios"
-                android:onClick="buscaProdutosFrios"
+                android:onClick="listaProdutosFrios"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/dp_frios"
@@ -99,7 +99,7 @@
 
             <Button
                 android:text="@string/dp_acougue"
-                android:onClick="buscaProdutosAcougue"
+                android:onClick="listaProdutosAcougue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/dp_acougue"
@@ -115,7 +115,7 @@
 
             <Button
                 android:text="@string/dp_frutas"
-                android:onClick="buscaProdutosFrutas"
+                android:onClick="listaProdutosFrutas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/dp_frutas"
@@ -126,7 +126,7 @@
 
             <Button
                 android:text="@string/dp_bebidas"
-                android:onClick="buscaProdutosBebidas"
+                android:onClick="listaProdutosBebidas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/dp_bebidas"
@@ -137,7 +137,7 @@
 
             <Button
                 android:text="@string/dp_mercearia"
-                android:onClick="buscaProdutosMercearia"
+                android:onClick="listaProdutosMercearia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/dp_mercearia"
@@ -153,7 +153,7 @@
 
             <Button
                 android:text="@string/dp_higiene"
-                android:onClick="buscaProdutosHigiene"
+                android:onClick="listaProdutosHigiene"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/dp_higiene"
@@ -165,7 +165,7 @@
 
             <Button
                 android:text="@string/dp_limpeza"
-                android:onClick="buscaProdutosLimpeza"
+                android:onClick="listaProdutosLimpeza"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/dp_limpeza"
@@ -177,7 +177,7 @@
 
             <Button
                 android:text="@string/dp_bazar"
-                android:onClick="buscaProdutosBazar"
+                android:onClick="listaProdutosBazar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/dp_bazar"
