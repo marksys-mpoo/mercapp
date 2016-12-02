@@ -66,6 +66,7 @@
     <string name="botao_voltar_tela_cadastro_e_busca_de_supermercado">Voltar</string>
 
     //Tela_lista_produtos
+    <string name="titulo_lista_produtos">Lista Geral de Produtos</string>
     <string name="botao_voltar_tela_lista_produtos">Voltar</string>
     <string name="textview_descricao_produto">Descrição</string>
     <string name="textview_id_produto">id</string>
@@ -80,6 +81,7 @@
     <string name="botao_voltar_tela_lista_produtos_do_supermercado">Voltar</string>
 
     //Tela_lista_produtos_do_supermercado
+    <string name="titulo_lista_supermercados">Lista de Supermercados</string>
     <string name="botao_voltar_tela_lista_supermercado">Voltar</string>
     <string name="textview_id_supermercado">Id</string>
     <string name="textview_nome_supermercado">Nome</string>

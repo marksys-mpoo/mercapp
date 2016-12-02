@@ -13,20 +13,24 @@
 
     <TextView
         android:text="supermercado"
+        android:textStyle="normal|bold"
+        android:textColor="@color/cast_expanded_controller_background_color"
         android:id="@+id/supermercadoSessao"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="22sp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 
 
     <TextView
         android:text="Telefone"
+        android:textStyle="normal|bold"
+        android:textColor="@color/cast_expanded_controller_background_color"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/telefoneSessao"
-        android:textSize="12sp"
+        android:textSize="14sp"
         android:width="10sp"
         android:layout_alignBaseline="@+id/textFone"
         android:layout_alignBottom="@+id/textFone"
@@ -42,19 +46,23 @@
 
     <TextView
         android:text="@string/textview_fone_supermercado"
+        android:textStyle="normal|bold"
+        android:textColor="@color/cast_expanded_controller_background_color"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="12sp"
+        android:textSize="14sp"
         android:id="@+id/textFone"
         android:layout_below="@+id/supermercadoSessao"
         android:layout_alignParentStart="true" />
 
     <TextView
         android:text="@string/textViewDepartamentos"
+        android:textStyle="normal|bold"
+        android:textColor="@color/wallet_holo_blue_light"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView20"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textAlignment="center"
         android:layout_below="@+id/telefoneSessao"
         android:layout_alignParentStart="true" />

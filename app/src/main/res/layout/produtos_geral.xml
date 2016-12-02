@@ -20,8 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/textview_coluna1_produtos"
-            android:layout_marginStart="@dimen/marginTabelaColunasProdutos"
-            android:layout_marginEnd="@dimen/marginTabelaColunasProdutos"
+            android:layout_marginStart="2sp"
+            android:layout_marginEnd="@dimen/marginTabelaColunasProdutosGeral"
             android:textSize="18sp"/>
 
         <TextView
@@ -30,8 +30,8 @@
             android:layout_height="wrap_content"
             android:text="@string/textview_coluna2_produtos"
             android:textSize="18sp"
-            android:layout_marginEnd="@dimen/marginTabelaColunasProdutos"
-            android:layout_marginStart="@dimen/marginTabelaColunasProdutos"/>
+            android:layout_marginEnd="@dimen/marginTabelaColunasProdutosGeral"
+            android:layout_marginStart="@dimen/marginTabelaColunasProdutosGeral"/>
 
         <TextView
             android:id="@+id/colunaProduto3"
@@ -39,8 +39,8 @@
             android:layout_height="wrap_content"
             android:text="@string/textview_coluna3_produtos"
             android:textSize="18sp"
-            android:layout_marginEnd="@dimen/marginTabelaColunasProdutos"
-            android:layout_marginStart="@dimen/marginTabelaColunasProdutos" />
+            android:layout_marginEnd="@dimen/marginTabelaColunasProdutosGeral"
+            android:layout_marginStart="@dimen/marginTabelaColunasProdutosGeral" />
 
         <TextView
             android:id="@+id/colunaProduto4"
@@ -48,8 +48,8 @@
             android:layout_height="wrap_content"
             android:text="@string/textview_coluna4_produtos"
             android:textSize="18sp"
-            android:layout_marginStart="@dimen/marginTabelaColunasProdutos"
-            android:layout_marginEnd="@dimen/marginTabelaColunasProdutos" />
+            android:layout_marginStart="@dimen/marginTabelaColunasProdutosGeral"
+            android:layout_marginEnd="@dimen/marginTabelaColunasProdutosGeral" />
 
 
         </TableRow>

@@ -60,18 +60,22 @@
 
     <TextView
         android:text="supermercado"
+        android:textStyle="normal|bold"
+        android:textColor="@color/cast_expanded_controller_background_color"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="23sp"
+        android:textSize="22sp"
         android:id="@+id/tituloSupermercado"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
     <TextView
         android:text="departamento"
+        android:textStyle="normal|bold"
+        android:textColor="@color/wallet_holo_blue_light"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="21sp"
+        android:textSize="20sp"
         android:id="@+id/tituloDepartamento"
         android:layout_below="@+id/tituloSupermercado"
         android:layout_centerHorizontal="true" />
