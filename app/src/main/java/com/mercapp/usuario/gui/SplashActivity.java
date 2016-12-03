@@ -7,7 +7,7 @@ import android.widget.ProgressBar;
 import com.mercapp.R;
 
 public class SplashActivity extends AppCompatActivity {
-    private static int TEMPO_SPLASH = 5000;
+    private static int TEMPO_SPLASH = 1000;
 
     protected boolean mbActive;
     protected ProgressBar progressBar;
@@ -24,11 +24,11 @@ public class SplashActivity extends AppCompatActivity {
                 try {
                     int tempPassado = 0;
                     while(mbActive && (tempPassado < TEMPO_SPLASH )){
-                        // enquanto o tempoPassado for menor que 5s
-                        // soma 2 milisegundos
-                        sleep(200);
+                        // enquanto o tempoPassado for menor que 1s
+                        // Soma 100 milisegundos
+                        sleep(100);
                         if(mbActive) {
-                            tempPassado += 500;
+                            tempPassado += 100;
                             updateProgress(tempPassado);
                         }
                     }
