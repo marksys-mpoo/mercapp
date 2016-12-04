@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mercapp.R;
@@ -17,6 +18,7 @@ import com.mercapp.usuario.negocio.UsuarioNegocio;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import com.mercapp.usuario.gui.RecuperarSenhaActivity;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -28,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     private CriptografiaSenha criptografiaSenha;
     private String senhaCriptografada;
     private CriptografiaSenha criptografia;
+    private TextView recupSenha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,15 @@ public class LoginActivity extends AppCompatActivity {
 
         btnLogar = (Button) findViewById(R.id.btnEntrar);
         btnCadastrar = (Button) findViewById(R.id.btnCadastrar);
+        recupSenha = (TextView) findViewById(R.id.tvRecuperarSenha);
+        recupSenha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RecuperarSenhaActivity.class);
+                LoginActivity.this.startActivity(intent);
+                finish();
+            }
+        });
 
     }
 
@@ -49,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
             String senha = etSenha.getText().toString().trim();
 
             UsuarioNegocio usuarioNegocio = new UsuarioNegocio(_context);
-            criptografia = CriptografiaSenha.getInstancia(senha);
+            criptografia =  criptografiaSenha.getInstancia(senha);
             senhaCriptografada = criptografia.getSenhaCriptografada();
             Usuario logarTest = usuarioNegocio.buscaUsuario(email,senhaCriptografada);
 

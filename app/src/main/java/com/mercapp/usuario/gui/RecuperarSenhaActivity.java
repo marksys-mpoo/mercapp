@@ -2,18 +2,29 @@ package com.mercapp.usuario.gui;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mercapp.R;
 import com.mercapp.infra.Session;
 import com.mercapp.usuario.dominio.Usuario;
 import com.mercapp.usuario.negocio.UsuarioNegocio;
 
+import java.util.Properties;
 
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 public class RecuperarSenhaActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -21,12 +32,11 @@ public class RecuperarSenhaActivity extends AppCompatActivity implements View.On
     private Button recuperarSenha;
     private UsuarioNegocio usuarioNegocio;
     private Usuario usuario;
-
-    Session session = null;
+    javax.mail.Session session = null;
     ProgressDialog pdialog = null;
     Context context = null;
-    EditText reciep, sub, msg;
-    String rec, subject, textMessage;
+    String rec, msg, sub;
+
 
 
     @Override
@@ -40,42 +50,64 @@ public class RecuperarSenhaActivity extends AppCompatActivity implements View.On
 
         recuperarSenha.setOnClickListener(this);
 
-//        recuperarSenha.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                usuarioNegocio =  new UsuarioNegocio(context);
-//                usuario =  usuarioNegocio.buscaUsuario(email.getText().toString());
-//                if(usuarioNegocio == null){
-//                    Toast.makeText(context,"Email não existe!", Toast.LENGTH_SHORT).show();
-//                }
-//                else{
-//                    recuperarSenha(usuario);
-//                }
-//
-//            }
-//        });
+        sub = "Recuperação de Senha";
+
     }
 
     @Override
     public void onClick(View v) {
+        rec = email.getText().toString();
 
+        Properties props = new Properties();
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.socketFactory.port", "465");
+        props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.port", "465");
+
+        session = javax.mail.Session.getDefaultInstance(props, new Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication("marksys.mercapp@gmail.com", "mercapp2016");
+            }
+        });
+
+        pdialog = ProgressDialog.show(context, "", "Sending Mail...", true);
+
+        RetreiveFeedTask task = new RetreiveFeedTask();
+        task.execute();
     }
 
+    class RetreiveFeedTask extends AsyncTask<String,Void,String> {
 
-//    public void recuperarSenha(Usuario usuario){
-//
-//        Intent intent = new Intent(Intent.ACTION_SEND);
-//        intent.setType("text/plain");
-//        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{email.getText().toString()});
-//        intent.putExtra(Intent.EXTRA_SUBJECT, "Sua nova Senha");
-//        intent.putExtra(Intent.EXTRA_TEXT,usuario.getSenha().toString());
-//        try {
-//            startActivity(intent.createChooser(intent, "Enviando o email..."));
-//        }catch(Exception e){
-//            //
-//        }
-//    }
+        @Override
+        protected String doInBackground(String... params) {
+            try{
+                usuarioNegocio = new UsuarioNegocio(context);
+                usuario = usuarioNegocio.buscaUsuario(rec);
+                msg = usuario.getSenha();
+                if (msg != null) {
+                    Toast.makeText(getApplicationContext(), "Enviando email para "+ usuario.getEmail(), Toast.LENGTH_SHORT).show();
 
+                    Message message = new MimeMessage(session);
+                    message.setFrom(new InternetAddress("marksys.mercapp@gmail.com"));
+                    message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("wellingtonluiz123456@gmail.com"));
+                    message.setSubject(sub);
+                    message.setContent(msg, "text/html; charset=utf-8");
+                    Transport.send(message);
+                }
+           } catch(MessagingException e) {
+               e.printStackTrace();
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
 
-
+        @Override
+        protected void onPostExecute(String result) {
+            pdialog.dismiss();
+            //reciep.setText(" ");
+            Toast.makeText(getApplicationContext(), "Message sent", Toast.LENGTH_LONG).show();
+        }
+    }
 }
