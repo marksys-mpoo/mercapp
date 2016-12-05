@@ -2,6 +2,7 @@ package com.mercapp.usuario.gui.fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
 import android.support.v4.app.Fragment;
@@ -23,9 +24,11 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.mercapp.supermercado.dominio.Supermercado;
+import com.mercapp.supermercado.gui.CadastroSupermercados;
 import com.mercapp.supermercado.negocio.SupermercadoNegocio;
+import com.mercapp.usuario.gui.TelaMenuActivity;
 
-public class MapaFragments extends SupportMapFragment implements OnMapReadyCallback, GoogleMap.OnMapClickListener,
+public class MapaFragments extends SupportMapFragment implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener, GoogleMap.OnMapClickListener,
         android.location.LocationListener {
 
     private FragmentManager fragmentManager;
@@ -117,8 +120,15 @@ public class MapaFragments extends SupportMapFragment implements OnMapReadyCallb
         customAddMaker(parnamirimExtrabom, "Extrabom - Parnamirim");
         customAddMaker(pinaExtrabom, "Extrabom - Pina");
         customAddMaker(encruzilhadaExtrabom, "Extrabom - Encruzilhada");
+        customAddMaker(torreExtrabom, "Extrabom - Torre");
         customAddMaker(ufrpeExtrabom, "Extrabom - UFRPE");
         customAddMaker(doisIrmaosExtrabom, "Extrabom - Dois Irmãos");
+    }
+
+    public void customAddMaker(LatLng latLng, String titulo){
+        MarkerOptions options = new MarkerOptions();
+        options.position(latLng).title(titulo).draggable(true);
+        marker = mMap.addMarker(options);
     }
 
     private void eventosWaypoints(final FragmentManager fragmentManager) {
@@ -146,19 +156,12 @@ public class MapaFragments extends SupportMapFragment implements OnMapReadyCallb
     }
 
     public Supermercado selecionarSupermercado(String texto) {
-
         SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(_context);
         Supermercado supermercadoSelecionado = supermercadoNegocio.buscaSupermercado(texto);
         if (supermercadoSelecionado != null) {
             supermercadoNegocio.iniciarSessao(supermercadoSelecionado);
         }
         return supermercadoSelecionado;
-    }
-
-    public void customAddMaker(LatLng latLng, String titulo){
-        MarkerOptions options = new MarkerOptions();
-        options.position(latLng).title(titulo).draggable(true);
-        marker = mMap.addMarker(options);
     }
 
     @Override
@@ -186,5 +189,17 @@ public class MapaFragments extends SupportMapFragment implements OnMapReadyCallb
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.container, fragment, name);
         transaction.commit();
+    }
+
+    @Override
+    public void onMapLongClick(LatLng latLng) {
+
+
+
+        Intent cadastrar = new Intent(getActivity(), CadastroSupermercados.class);
+
+        startActivity(cadastrar);
+        getActivity().finish();
+
     }
 }

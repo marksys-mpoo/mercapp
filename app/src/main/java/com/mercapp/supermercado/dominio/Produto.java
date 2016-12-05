@@ -3,7 +3,7 @@ package com.mercapp.supermercado.dominio;
 public class Produto {
     private int id;
     private String descricao;
-    private String preco;
+    private Double preco;
     private String idSupermercado;
     private String idDepartamento;
 
@@ -23,11 +23,11 @@ public class Produto {
         this.id = id;
     }
 
-    public String getPreco() {
+    public Double getPreco() {
         return preco;
     }
 
-    public void setPreco(String preco) {
+    public void setPreco(Double preco) {
         this.preco = preco;
     }
 

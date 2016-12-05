@@ -1,6 +1,6 @@
 package com.mercapp.supermercado.dominio;
 
-import java.util.ArrayList;
+import com.google.android.gms.maps.model.LatLng;
 
 public class Supermercado {
 
@@ -8,7 +8,7 @@ public class Supermercado {
     private String nome;
     private String telefone;
 
-    private ArrayList<Produto> idProdutos;
+    private LatLng coordenadas;
 
     public int getId() {
         return id;
@@ -32,5 +32,13 @@ public class Supermercado {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public LatLng getCoordenadas() {
+        return coordenadas;
+    }
+
+    public void setCoordenadas(LatLng coordenadas) {
+        this.coordenadas = coordenadas;
     }
 }

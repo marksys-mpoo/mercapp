@@ -122,7 +122,7 @@ public class SupermercadoPersistencia {
         Produto produto = new Produto();
         produto.setId(cursor.getInt(0));
         produto.setDescricao(cursor.getString(1));
-        produto.setPreco(cursor.getString(2));
+        produto.setPreco(cursor.getDouble(2));
         produto.setIdSupermercado(cursor.getString(3));
         return produto;
     }

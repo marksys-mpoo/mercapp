@@ -1,5 +1,6 @@
 package com.mercapp.infra;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.mercapp.supermercado.dominio.Supermercado;
 import com.mercapp.usuario.dominio.Pessoa;
 import com.mercapp.usuario.dominio.Usuario;
@@ -10,7 +11,7 @@ public class Session {
     private Usuario usuarioLogado;
     private Supermercado supermercadoSelecionado;
     private String departamentoSelecionado;
-
+    private LatLng coordenadas;
 
     public static Session getInstanciaSessao() {
         return instanciaSessao;
@@ -51,5 +52,13 @@ public class Session {
     public void setDepartamentoSelecionado(String departamentoSelecionado) {
         this.departamentoSelecionado = departamentoSelecionado;
     }
+    public LatLng getCoordenadas() {
+        return coordenadas;
+    }
+
+    public void setCoordenadas(LatLng coordenadas) {
+        this.coordenadas = coordenadas;
+    }
+
 
 }

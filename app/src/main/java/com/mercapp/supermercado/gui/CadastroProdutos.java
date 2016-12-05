@@ -26,15 +26,15 @@ public class CadastroProdutos extends AppCompatActivity {
 
     public void cadastroProdutosDireto(View view) {
         // 1 - Padaria
-        Produto produto1 = CadastrarProduto(1,"PAO FRANCES","8,99 KG","1", "1");
+        Produto produto1 = CadastrarProduto(1,"PAO FRANCES",8.99,"1", "1");
         efetuarCadastroProduto(produto1, "nao");
-        Produto produto2 = CadastrarProduto(2,"PANETONE","12,99 KG","1", "1");
+        Produto produto2 = CadastrarProduto(2,"PANETONE",12.99,"1", "1");
         efetuarCadastroProduto(produto2, "nao");
-        Produto produto3 = CadastrarProduto(3,"PAO FRANCES","9,59 KG","2", "1");
+        Produto produto3 = CadastrarProduto(3,"PAO FRANCES",9.59,"2", "1");
         efetuarCadastroProduto(produto3, "nao");
-        Produto produto4 = CadastrarProduto(4,"PAO FORMA","7,54 PC","2", "1");
-        efetuarCadastroProduto(produto4, "nao");
-        // 2 - Frios
+        Produto produto4 = CadastrarProduto(4,"PAO FORMA",7.54,"2", "1");
+        efetuarCadastroProduto(produto4, "sim");
+        /* // 2 - Frios
         Produto produto5 = CadastrarProduto(5,"PRESUNTO","7,99 KG","1","2");
         efetuarCadastroProduto(produto5, "nao");
         Produto produto6 = CadastrarProduto(6,"REQUEIJAO","5,33 CP","1","2");
@@ -105,10 +105,10 @@ public class CadastroProdutos extends AppCompatActivity {
         Produto produto35 = CadastrarProduto(35,"PRATO PLASTICO","7,00 PC","2","9");
         efetuarCadastroProduto(produto35, "nao");
         Produto produto36 = CadastrarProduto(36,"TALHERE PLASTICO","5,00 PC","2","9");
-        efetuarCadastroProduto(produto36, "sim");
+        efetuarCadastroProduto(produto36, "sim"); */
     }
 
-    private Produto CadastrarProduto(Integer id, String descricao, String preco, String idSupermercado, String idDepartamento) {
+    private Produto CadastrarProduto(Integer id, String descricao, Double preco, String idSupermercado, String idDepartamento) {
         Produto produto = new Produto();
         produto.setId(id);
         produto.setDescricao(descricao);
@@ -121,7 +121,7 @@ public class CadastroProdutos extends AppCompatActivity {
     public void efetuarCadastroProduto(Produto produto, String isUltimoProduto) {
         Integer id = produto.getId();
         String descricao = produto.getDescricao();
-        String preco = produto.getPreco();
+        Double preco = produto.getPreco();
         String idSupermercado = produto.getIdSupermercado();
         String idDepartamento = produto.getIdDepartamento();
         supermercadoNegocio = new SupermercadoNegocio(_context);
