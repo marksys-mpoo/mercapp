@@ -10,35 +10,31 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.mercapp.supermercado.gui.CadastroSupermercados">
 
-    <TextView
-        android:text="@string/tela_cadastro_dos_Supermercados"
+    <Button
+        android:text="@string/botao_voltar_tela_cadastro_e_busca_de_supermercado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/textView11"
-        android:textSize="20sp"
-        android:textStyle="normal|bold"
-        android:textColor="@color/cast_expanded_controller_background_color" />
+        android:id="@+id/btnVoltar"
+        android:onClick="changeTelaCadatroSupermercadosToTelaAdministrador"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
 
-    <EditText
-        android:layout_width="match_parent"
+    <Button
+        android:text="@string/botao_cadastrar_supermercado_direto"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="text"
-        android:ems="10"
-        android:id="@+id/etSupTelefone"
-        android:hint="@string/hint_numero_telefone_supermercado"
-        android:layout_below="@+id/etSupNome"
+        android:id="@+id/btnCadastrarDireto"
+        android:onClick="cadastroDireto"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/linearLayout"
-        android:layout_below="@+id/btnBuscarMercado"
-        android:layout_alignParentStart="true"
-        android:layout_above="@+id/btnVoltar">
+        android:layout_above="@+id/btnVoltar"
+        android:layout_alignParentStart="true">
 
         <TextView
             android:text="@string/hint_nome_supermercado_buscado"
@@ -67,35 +63,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnBuscarMercado"
         android:onClick="buscaSupermercadoBD"
-        android:layout_below="@+id/supBuscaNome"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:text="@string/botao_cadastrar_supermercado_direto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnCadastrarDireto"
-        android:onClick="cadastroDireto"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:text="@string/botao_voltar_tela_cadastro_e_busca_de_supermercado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnVoltar"
-        android:onClick="changeTelaCadatroSupermercadosToTelaAdministrador"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
-
-    <Button
-        android:text="@string/botao_cadastrar_supermercados"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnCadastrarSupermercado"
-        android:onClick="cadastrarSupermercadoManual"
-
-        android:layout_below="@+id/etSupTelefone"
+        android:layout_above="@+id/linearLayout"
         android:layout_alignParentStart="true" />
 
     <EditText
@@ -106,7 +74,39 @@
         android:id="@+id/supBuscaNome"
         android:hint="@string/hint_busca_supermercado_pelo_nome"
         android:textAlignment="center"
-        android:layout_below="@+id/textView13"
+        android:layout_above="@+id/btnBuscarMercado"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="@string/tela_busca_dos_Supermercados"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView13"
+        android:textSize="20sp"
+        android:textStyle="normal|bold"
+        android:textColor="@color/cast_expanded_controller_background_color"
+        android:layout_above="@+id/supBuscaNome"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="@string/botao_cadastrar_supermercados"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnCadastrarSupermercado"
+        android:onClick="cadastrarSupermercadoManual"
+
+        android:layout_marginBottom="32dp"
+        android:layout_above="@+id/supBuscaNome"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:id="@+id/etSupTelefone"
+        android:hint="@string/hint_numero_telefone_supermercado"
+        android:layout_above="@+id/btnCadastrarSupermercado"
         android:layout_alignParentStart="true" />
 
     <EditText
@@ -116,21 +116,60 @@
         android:ems="10"
         android:id="@+id/etSupNome"
         android:hint="@string/hint_nome_supermercado"
+        android:layout_above="@+id/etSupTelefone"
+        android:layout_alignParentStart="true" />
 
-        android:layout_marginTop="15dp"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:text="@string/hint_latitude_supermercado"
+        android:id="@+id/textView9"
         android:layout_below="@+id/textView11"
         android:layout_alignParentStart="true" />
 
     <TextView
-        android:text="@string/tela_busca_dos_Supermercados"
+        android:text="@string/tela_cadastro_dos_Supermercados"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView13"
+        android:id="@+id/textView11"
         android:textSize="20sp"
-        android:layout_marginTop="24dp"
         android:textStyle="normal|bold"
         android:textColor="@color/cast_expanded_controller_background_color"
-        android:layout_below="@+id/btnCadastrarSupermercado"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:id="@+id/etSupLat"
+        android:hint="@string/hint_latitude_supermercado"
+        android:layout_below="@+id/textView9"
+        android:layout_alignEnd="@+id/btnCadastrarDireto"
+        android:layout_marginEnd="14dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:text="@string/hint_longitude_supermercado"
+        android:id="@+id/textView10"
+        android:layout_below="@+id/textView11"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:id="@+id/etSupLong"
+        android:hint="@string/hint_longitude_supermercado"
+        android:layout_below="@+id/textView10"
+        android:layout_alignStart="@+id/textView10" />
+
 
 </RelativeLayout>

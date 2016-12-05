@@ -71,6 +71,7 @@ public class MapaFragments extends SupportMapFragment implements OnMapReadyCallb
             locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
             mMap = googleMap;
             mMap.setOnMapClickListener(this);
+            mMap.setOnMapLongClickListener(this);
             mMap.getUiSettings().setZoomControlsEnabled(true);
             mMap.setMyLocationEnabled(true);
             visualizacaoMapa();
@@ -146,7 +147,7 @@ public class MapaFragments extends SupportMapFragment implements OnMapReadyCallb
 
     public void waypointPressionado(Marker marcador, String supermercado, FragmentManager fm) {
         if(marcador != null && marcador.getTitle().equals(supermercado)) {
-            Supermercado retornoBusca = selecionarSupermercado(marcador.getTitle());
+            Supermercado retornoBusca = this.selecionarSupermercado(marcador.getTitle());
             if (retornoBusca != null) {
                 fm.beginTransaction().replace(R.id.container2, new RodapeMapa()).commit();
             } else {
@@ -196,10 +197,13 @@ public class MapaFragments extends SupportMapFragment implements OnMapReadyCallb
 
 
 
-        Intent cadastrar = new Intent(getActivity(), CadastroSupermercados.class);
+        Toast.makeText(getActivity(), "Coordenadas registradas!", Toast.LENGTH_LONG).show();
 
+        Intent cadastrar = new Intent(getActivity(), CadastroSupermercados.class);
+        cadastrar.putExtra("CoordLat",latLng.latitude);
+        cadastrar.putExtra("CoordLong",latLng.longitude);
         startActivity(cadastrar);
-        getActivity().finish();
+        //getActivity().finish();
 
     }
 }

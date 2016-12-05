@@ -9,28 +9,54 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.mercapp.R;
 import com.mercapp.infra.Administrador;
+import com.mercapp.infra.Session;
 import com.mercapp.supermercado.dominio.Supermercado;
 import com.mercapp.supermercado.negocio.SupermercadoNegocio;
+import com.mercapp.usuario.gui.TelaMenuActivity;
 
 public class CadastroSupermercados extends AppCompatActivity {
 
     private Context _context = CadastroSupermercados.this;
+    private Session session = Session.getInstanciaSessao();
     private SupermercadoNegocio supermercadoNegocio;
     private Supermercado supermercadoCadastrado;
-    private EditText etSupNome, etSupTelefone, etSupBuscaNome, etSupBuscaTelefone, etLogintude, etLatitude;
-    private TextView etSupTextoNome, etSupTextoTelefone;
+    private EditText etSupermercadoNome, etSupermercadoTelefone, etSupermercadoBuscaNome, etSupermercadoBuscaTelefone, etLogintude, etLatitude;
+    private TextView etSupermercadoTextoNome, etSupermercadoTextoTelefone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastro_supermercado_auto);
-        etSupNome = (EditText) findViewById(R.id.etSupNome);
-        etSupTelefone = (EditText) findViewById(R.id.etSupTelefone);
-        etSupBuscaNome = (EditText) findViewById(R.id.supBuscaNome);
-        etSupTextoNome = (TextView) findViewById(R.id.supTextoNome);
-        etSupTextoTelefone = (TextView) findViewById(R.id.supTextoTelefone);
+        setContentView(R.layout.activity_cadastro_supermercado);
+        etSupermercadoNome = (EditText) findViewById(R.id.etSupNome);
+        etSupermercadoTelefone = (EditText) findViewById(R.id.etSupTelefone);
+        etSupermercadoBuscaNome = (EditText) findViewById(R.id.supBuscaNome);
+        etSupermercadoTextoNome = (TextView) findViewById(R.id.supTextoNome);
+        etSupermercadoTextoTelefone = (TextView) findViewById(R.id.supTextoTelefone);
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle.containsKey("CoordLat") ){
+            Double coordLat = bundle.getDouble("CoordLat");
+            String coordLatString = coordLat.toString();
+            etLatitude = (EditText) findViewById(R.id.etSupLat);
+            etLatitude.setText(coordLatString);
+        }
+
+        if (bundle.containsKey("CoordLong") ){
+            Double coordLong = bundle.getDouble("CoordLong");
+            String coordLongString = coordLong.toString();
+            etLogintude = (EditText) findViewById(R.id.etSupLong);
+            etLogintude.setText(coordLongString);
+        }
+        /*
+        //LatLng coordenadas = session.getCoordenadas();
+        Double latitude = coordenadas.latitude;
+        String coordLat = latitude.toString();
+        Double longitude = coordenadas.longitude;
+        String coordLong = latitude.toString();
+        */
     }
 
     public void cadastroDireto(View view) {
@@ -61,8 +87,8 @@ public class CadastroSupermercados extends AppCompatActivity {
     }
 
     public void cadastrarSupermercadoManual(View view) {
-        String nome = etSupNome.getText().toString().trim();
-        String telefone = etSupTelefone.getText().toString().trim();
+        String nome = etSupermercadoNome.getText().toString().trim();
+        String telefone = etSupermercadoTelefone.getText().toString().trim();
         supermercadoNegocio = new SupermercadoNegocio(_context);
         supermercadoCadastrado = supermercadoNegocio.buscaSupermercado(nome);
         if (supermercadoCadastrado == null) {
@@ -74,12 +100,12 @@ public class CadastroSupermercados extends AppCompatActivity {
     }
 
     public void buscaSupermercadoBD(View view) {
-        String buscaNome = etSupBuscaNome.getText().toString().trim();
+        String buscaNome = etSupermercadoBuscaNome.getText().toString().trim();
         supermercadoNegocio = new SupermercadoNegocio(_context);
         supermercadoCadastrado = supermercadoNegocio.buscaSupermercado(buscaNome);
         if (supermercadoCadastrado != null) {
-            etSupTextoNome.setText(supermercadoCadastrado.getNome());
-            etSupTextoTelefone.setText(supermercadoCadastrado.getTelefone());
+            etSupermercadoTextoNome.setText(supermercadoCadastrado.getNome());
+            etSupermercadoTextoTelefone.setText(supermercadoCadastrado.getTelefone());
         } else {
             Toast.makeText(this, "Supermercado não cadastrado!", Toast.LENGTH_SHORT).show();
         }
@@ -93,8 +119,28 @@ public class CadastroSupermercados extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent voltarMenu = new Intent(CadastroSupermercados.this, Administrador.class);
+        Intent voltarMenu = new Intent(CadastroSupermercados.this, TelaMenuActivity.class);
         startActivity(voltarMenu);
         finish();
     }
 }
+
+
+/*
+
+    private TextView etNomeSupermercado, etFoneSupermercado;
+    private Session session = Session.getInstanciaSessao();
+    private Context _context = null;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_tela_supermercado);
+
+        String nomeSM = session.getSupermercadoSelecionado().getNome().toString();
+        etNomeSupermercado = (TextView) findViewById(R.id.supermercadoSessao);
+        etNomeSupermercado.setText(nomeSM);
+        String foneSM = session.getSupermercadoSelecionado().getTelefone().toString();
+        etFoneSupermercado = (TextView) findViewById(R.id.telefoneSessao);
+        etFoneSupermercado.setText(foneSM);
+ */

@@ -1,10 +1,8 @@
 <resources>
     //Título
     <string name="app_name">MercApp</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_settings">Configurações</string>
     <string name="title_activity_maps">Map</string>
 
@@ -64,6 +62,8 @@
     <string name="hint_telefone_supermercado_buscado">Telefone Buscado</string>
     <string name="botao_cadastrar_supermercado_direto">Cadastrar Direto</string>
     <string name="botao_voltar_tela_cadastro_e_busca_de_supermercado">Voltar</string>
+    <string name="hint_latitude_supermercado">Latitude</string>
+    <string name="hint_longitude_supermercado">Longitude</string>
 
     //Tela_lista_produtos
     <string name="titulo_lista_produtos">Lista Geral de Produtos</string>
