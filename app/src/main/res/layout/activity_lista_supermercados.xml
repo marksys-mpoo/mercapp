@@ -30,14 +30,23 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:layout_below="@+id/button10"
+        android:layout_alignParentStart="true"
+        android:id="@+id/editText" />
+
     <TextView
         android:text="@string/textview_id_supermercado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:id="@+id/textView6"
-        android:layout_marginTop="28dp"
-        android:layout_below="@+id/button10"
+        android:layout_below="@+id/editText"
         android:layout_alignParentStart="true" />
 
     <TextView
@@ -46,9 +55,9 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:id="@+id/textView3"
-        android:layout_alignBaseline="@+id/textView6"
-        android:layout_alignBottom="@+id/textView6"
-        android:layout_alignParentEnd="true" />
+        android:layout_above="@+id/lista_produtos"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="13dp" />
 
     <TextView
         android:text="@string/textview_nome_supermercado"
@@ -56,8 +65,16 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:id="@+id/textView4"
-        android:layout_alignBaseline="@+id/textView3"
-        android:layout_alignBottom="@+id/textView3"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/editText"
+        android:layout_alignEnd="@+id/editText"
+        android:layout_marginEnd="44dp" />
+
+    <Button
+        android:text="Add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView3"
+        android:id="@+id/button3"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

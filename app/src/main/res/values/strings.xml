@@ -23,11 +23,11 @@
 
     //Tela_Administrador
     <string name="titulo_tela_administrador">Administrador</string>
-    <string name="botao_cadastro_supermercado">Cadastrar Supermercado</string>
+    <string name="botao_cadastro_supermercado">Cadastrar</string>
     <string name="botao_voltar_para_o_Mapa">Voltar</string>
-    <string name="botao_tela_lista_supermercados">Lista Supermercados</string>
-    <string name="botao_tela_lista_produtos">Lista Produtos</string>
-    <string name="botao_cadastro_produtos">Cadastrar Produtos</string>
+    <string name="botao_tela_lista_supermercados">Listar</string>
+    <string name="botao_tela_lista_produtos">Listar</string>
+    <string name="botao_cadastro_produtos">Cadastrar</string>
     <string name="titulo_supermercados">Supermercados</string>
     <string name="titulo_produtos">Produtos</string>
 
@@ -54,13 +54,13 @@
     <string name="preco_vazio_tela_cadastro_produtos">Campo "preço" não pode ser vazio!</string>
 
     //Tela_cadastro_e_busca_de_supermercado
-    <string name="tela_cadastro_dos_Supermercados">Cadastrar Supermercados </string>
-    <string name="tela_busca_dos_Supermercados">Buscar Supermercados </string>
-    <string name="hint_nome_supermercado">Nome do Supermercado</string>
-    <string name="hint_numero_telefone_supermercado">Numero Telefone do Supermercado</string>
-    <string name="botao_cadastrar_supermercados">Cadastrar Supermercado</string>
-    <string name="hint_busca_supermercado_pelo_nome">Busca Supermercado pelo Nome</string>
-    <string name="botao_busccar_supermercado">Buscar Supermercado</string>
+    <string name="tela_cadastro_dos_Supermercados">Cadastrar</string>
+    <string name="tela_busca_dos_Supermercados">Buscar</string>
+    <string name="hint_nome_supermercado">Nome</string>
+    <string name="hint_numero_telefone_supermercado">Telefone</string>
+    <string name="botao_cadastrar_supermercados">Cadastrar</string>
+    <string name="hint_busca_supermercado_pelo_nome">Buscar pelo Nome</string>
+    <string name="botao_buscar_supermercado">Buscar</string>
     <string name="hint_nome_supermercado_buscado">Nome Buscado</string>
     <string name="hint_telefone_supermercado_buscado">Telefone Buscado</string>
     <string name="botao_cadastrar_supermercado_direto">Cadastrar Direto</string>
