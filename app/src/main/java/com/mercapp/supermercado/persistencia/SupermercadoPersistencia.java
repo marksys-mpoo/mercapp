@@ -24,6 +24,8 @@ public class SupermercadoPersistencia {
         ContentValues values = new ContentValues();
         values.put(bdHelper.COLUNA_NOME_SUPERMERCADO, supermercado.getNome());
         values.put(bdHelper.COLUNA_TELEFONE_SUPERMERCADO, supermercado.getTelefone());
+        values.put(bdHelper.COLUNA_LATITUDE_SUPERMERCADO, supermercado.getCoordenadas().latitude);
+        values.put(bdHelper.COLUNA_LONGITUDE_SUPERMERCADO, supermercado.getCoordenadas().longitude);
         db.insert(bdHelper.TBL_SUPERMERCADO, null, values);
         db.close();
     }
@@ -34,7 +36,6 @@ public class SupermercadoPersistencia {
         values.put(bdHelper.COLUNA_DESCRICAO, produto.getDescricao());
         values.put(bdHelper.COLUNA_PRECO_PRODUTO, produto.getPreco());
         values.put(bdHelper.COLUNA_NOME_PRODUTO, produto.getNome());
-
         values.put(bdHelper.COLUNA_ID_SUPERMERCADO_PRODUTO, produto.getIdSupermercado());
         values.put(bdHelper.COLUNA_PRODUTO_DEPARTAMENTO, produto.getIdDepartamento());
         db.insert(bdHelper.TBL_PRODUTO, null, values);

@@ -42,10 +42,10 @@ public class SQLScript {
         StringBuilder supermercadoBuilder = new StringBuilder();
         supermercadoBuilder.append("CREATE TABLE  Supermercado  (  ");
         supermercadoBuilder.append("_id integer primary key autoincrement,   ");
-        supermercadoBuilder.append("nome  text not null,  ");
+        supermercadoBuilder.append("nome  text not null unique,  ");
         supermercadoBuilder.append("telefone  text not null,  ");
-        supermercadoBuilder.append("_id_produtos   integer,  ");
-        supermercadoBuilder.append("foreign key (_id_produtos ) references  produto ( _id_produtos ) );");
+        supermercadoBuilder.append("latitude double,  ");
+        supermercadoBuilder.append("longitude double );");
         return supermercadoBuilder.toString();
     }
 

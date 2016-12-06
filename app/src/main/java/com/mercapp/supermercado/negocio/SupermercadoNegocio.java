@@ -3,6 +3,7 @@ package com.mercapp.supermercado.negocio;
 import android.content.Context;
 import android.database.Cursor;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.mercapp.infra.Session;
 import com.mercapp.supermercado.dominio.Produto;
 import com.mercapp.supermercado.dominio.Supermercado;
@@ -36,10 +37,11 @@ public class SupermercadoNegocio {
         _context = context;
     }
 
-    public void cadastroSupermercado(String nome, String telefone){
+    public void cadastroSupermercado(String nome, String telefone, LatLng coordenadas){
         Supermercado supermercadoCadastro = new Supermercado();
         supermercadoCadastro.setNome(nome);
         supermercadoCadastro.setTelefone(telefone);
+        supermercadoCadastro.setCoordenadas(coordenadas);
         SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(_context);
         supermercadoPersistencia.cadastrarSupermercado(supermercadoCadastro);
     }

@@ -3,6 +3,7 @@ package com.mercapp.usuario.gui.fragments;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.location.Location;
 import android.location.LocationManager;
 import android.support.v4.app.Fragment;
@@ -101,29 +102,23 @@ public class MapaFragments extends SupportMapFragment implements OnMapReadyCallb
     }
 
     private void addMarcadoresNoMapa() {
-        //Posições
-        LatLng boaViagemExtrabom = new LatLng(-8.1201256, -34.9031476);
-        LatLng pinaExtrabom = new LatLng(-8.09494, -34.8877137);
-        LatLng piedadeExtrabom = new LatLng(-8.183888, -34.9211767);
-        LatLng mustardinhaExtrabom = new LatLng(-8.069109, -34.9198987);
-        LatLng olindaExtrabom = new LatLng(-7.9995286, -34.8469477);
-        LatLng parnamirimExtrabom = new LatLng(-8.027122, -34.9170917);
-        LatLng encruzilhadaExtrabom = new LatLng(-8.0371238, -34.899941);
-        LatLng torreExtrabom = new LatLng(-8.0462157, -34.9116174);
-        LatLng ufrpeExtrabom = new LatLng(-8.017877, -34.944440);
-        LatLng doisIrmaosExtrabom = new LatLng(-8.021448, -34.933130);
+        SupermercadoNegocio consulta = new SupermercadoNegocio(_context);
+        Cursor cursor = consulta.listaSupermercados();
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+                    String nomeSupermercado = cursor.getString(1);
+                    Double latitude = cursor.getDouble(3);
+                    Double longitude = cursor.getDouble(4);
+                    LatLng coordenadas = new LatLng(latitude, longitude);
+                    customAddMaker(coordenadas, nomeSupermercado);
+                } while (cursor.moveToNext());
+            }
+        } finally {
+            cursor.close();
+        }
 
-        //MARKER's
-        customAddMaker(boaViagemExtrabom, "Extrabom - BoaViagem");
-        customAddMaker(piedadeExtrabom, "Extrabom - Piedade");
-        customAddMaker(mustardinhaExtrabom, "Extrabom - Mustardinha");
-        customAddMaker(olindaExtrabom, "Extrabom - Olinda");
-        customAddMaker(parnamirimExtrabom, "Extrabom - Parnamirim");
-        customAddMaker(pinaExtrabom, "Extrabom - Pina");
-        customAddMaker(encruzilhadaExtrabom, "Extrabom - Encruzilhada");
-        customAddMaker(torreExtrabom, "Extrabom - Torre");
-        customAddMaker(ufrpeExtrabom, "Extrabom - UFRPE");
-        customAddMaker(doisIrmaosExtrabom, "Extrabom - Dois Irmãos");
+
     }
 
     public void customAddMaker(LatLng latLng, String titulo){
@@ -194,16 +189,11 @@ public class MapaFragments extends SupportMapFragment implements OnMapReadyCallb
 
     @Override
     public void onMapLongClick(LatLng latLng) {
-
-
-
         Toast.makeText(getActivity(), "Coordenadas registradas!", Toast.LENGTH_LONG).show();
-
         Intent cadastrar = new Intent(getActivity(), CadastroSupermercados.class);
         cadastrar.putExtra("CoordLat",latLng.latitude);
         cadastrar.putExtra("CoordLong",latLng.longitude);
         startActivity(cadastrar);
-        //getActivity().finish();
-
+        getActivity().finish();
     }
 }

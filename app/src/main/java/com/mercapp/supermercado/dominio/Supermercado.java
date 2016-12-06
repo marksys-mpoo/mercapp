@@ -7,7 +7,6 @@ public class Supermercado {
     private int id;
     private String nome;
     private String telefone;
-
     private LatLng coordenadas;
 
     public int getId() {

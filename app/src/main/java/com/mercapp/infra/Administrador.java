@@ -21,8 +21,10 @@ public class Administrador extends AppCompatActivity {
     }
 
     public void changeTelaAdministradorToCadastroSupermercado(View view) {
-        Intent voltarMenu = new Intent(Administrador.this, CadastroSupermercados.class);
-        startActivity(voltarMenu);
+        Intent cadastrar = new Intent(Administrador.this, CadastroSupermercados.class);
+        cadastrar.putExtra("CoordLat",0);
+        cadastrar.putExtra("CoordLong",0);
+        startActivity(cadastrar);
         finish();
     }
     public void voltarToMenuMapa(View view) {
