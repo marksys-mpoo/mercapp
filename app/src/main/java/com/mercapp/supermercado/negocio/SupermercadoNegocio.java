@@ -25,6 +25,11 @@ public class SupermercadoNegocio {
         Produto produtoSelecionado = produtoPersistencia.buscarProduto(id);
         return produtoSelecionado;
     }
+    public Produto buscarProdutoNome(String nome) {
+        SupermercadoPersistencia produtoPersistencia = new SupermercadoPersistencia(_context);
+        Produto produtoSelecionado = produtoPersistencia.buscarProdutoNome(nome);
+        return produtoSelecionado;
+    }
 
     public SupermercadoNegocio(Context context)
     {
@@ -38,16 +43,23 @@ public class SupermercadoNegocio {
         SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(_context);
         supermercadoPersistencia.cadastrarSupermercado(supermercadoCadastro);
     }
-
-    public void cadastroProduto(String descricao, Double preco, String idSupermercado, String idDepartamento){
+    public void cadastroProduto(String descricao, Double preco, String nome){
         Produto produtoCadastro = new Produto();
         produtoCadastro.setDescricao(descricao);
         produtoCadastro.setPreco(preco);
-        produtoCadastro.setIdSupermercado(idSupermercado);
-        produtoCadastro.setIdDepartamento(idDepartamento);
+        produtoCadastro.setNome(nome);
         SupermercadoPersistencia produtoPersistencia = new SupermercadoPersistencia(_context);
         produtoPersistencia.cadastrarProduto(produtoCadastro);
     }
+//    public void cadastroProduto(String descricao, Double preco, String idSupermercado, String idDepartamento){
+//        Produto produtoCadastro = new Produto();
+//        produtoCadastro.setDescricao(descricao);
+//        produtoCadastro.setPreco(preco);
+//        produtoCadastro.setIdSupermercado(idSupermercado);
+//        produtoCadastro.setIdDepartamento(idDepartamento);
+//        SupermercadoPersistencia produtoPersistencia = new SupermercadoPersistencia(_context);
+//        produtoPersistencia.cadastrarProduto(produtoCadastro);
+//    }
 
     public Cursor listaSupermercados(){
         SupermercadoPersistencia consulta = new SupermercadoPersistencia(_context);

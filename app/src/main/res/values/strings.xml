@@ -47,8 +47,11 @@
 
     //Tela_cadastro_Produtos
     <string name="titulo_tela_cadastro_produtos">Cadastro de Produtos</string>
-    <string name="botao_cadastrar_produtos_direto">Cadastrar Produtos Direto</string>
+    <string name="botao_cadastrar_produtos_direto">Salvar</string>
     <string name="botao_voltar_tela_cadastro_produtos">Voltar</string>
+    <string name="nome_vazio_tela_cadastro_produtos">Campo "nome" não pode ser vazio!</string>
+    <string name="descricao_vazio_tela_cadastro_produtos">Campo "descrição" não pode ser vazio!</string>
+    <string name="preco_vazio_tela_cadastro_produtos">Campo "preço" não pode ser vazio!</string>
 
     //Tela_cadastro_e_busca_de_supermercado
     <string name="tela_cadastro_dos_Supermercados">Cadastrar Supermercados </string>
@@ -71,6 +74,7 @@
     <string name="textview_descricao_produto">Descrição</string>
     <string name="textview_id_produto">id</string>
     <string name="textview_preco_produto">Preço</string>
+    <string name="textview_por_produto">Por</string>
     <string name="textview_idsuper_produto">IdSuper</string>
 
     //Tela_lista_produtos_do_supermercado

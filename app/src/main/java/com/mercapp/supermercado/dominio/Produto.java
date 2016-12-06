@@ -3,9 +3,19 @@ package com.mercapp.supermercado.dominio;
 public class Produto {
     private int id;
     private String descricao;
+    private String nome;
     private Double preco;
     private String idSupermercado;
     private String idDepartamento;
+
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
     public String getDescricao() {
         return descricao;

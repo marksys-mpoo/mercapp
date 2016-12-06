@@ -32,7 +32,9 @@ public class SupermercadoPersistencia {
         SQLiteDatabase db = bdHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(bdHelper.COLUNA_DESCRICAO, produto.getDescricao());
-        values.put(bdHelper.COLUNA_PRECO, produto.getPreco());
+        values.put(bdHelper.COLUNA_PRECO_PRODUTO, produto.getPreco());
+        values.put(bdHelper.COLUNA_NOME_PRODUTO, produto.getNome());
+
         values.put(bdHelper.COLUNA_ID_SUPERMERCADO_PRODUTO, produto.getIdSupermercado());
         values.put(bdHelper.COLUNA_PRODUTO_DEPARTAMENTO, produto.getIdDepartamento());
         db.insert(bdHelper.TBL_PRODUTO, null, values);
@@ -58,6 +60,19 @@ public class SupermercadoPersistencia {
         Produto produto = null;
         Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_PRODUTO +
                 " WHERE "+ bdHelper.COLUNA_ID_PRODUTO+" LIKE ? ", new String[]{id_string});
+        if (cursor.moveToFirst()){
+            produto = criarProduto(cursor);
+        }
+        cursor.close();
+        db.close();
+        return produto;
+    }
+
+    public Produto buscarProdutoNome(String nome){
+        SQLiteDatabase db = bdHelper.getReadableDatabase();
+        Produto produto = null;
+        Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_PRODUTO +
+                " WHERE "+ bdHelper.COLUNA_NOME_PRODUTO+" LIKE ? ", new String[]{nome});
         if (cursor.moveToFirst()){
             produto = criarProduto(cursor);
         }

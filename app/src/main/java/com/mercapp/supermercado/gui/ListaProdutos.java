@@ -29,23 +29,22 @@ public class ListaProdutos extends AppCompatActivity {
     private void listarProdutosGeral() {
         SupermercadoNegocio buscaProdutos = new SupermercadoNegocio(_context);
         Cursor cursor = buscaProdutos.listaProdutos();
-        String[] colunasBD = new String[] {BDHelper.COLUNA_ID_PRODUTO, BDHelper.COLUNA_DESCRICAO, BDHelper.COLUNA_PRECO, BDHelper.COLUNA_ID_SUPERMERCADO_PRODUTO};
+        String[] colunasBD = new String[] {BDHelper.COLUNA_ID_PRODUTO, BDHelper.COLUNA_DESCRICAO, BDHelper.COLUNA_PRECO_PRODUTO, BDHelper.COLUNA_ID_SUPERMERCADO_PRODUTO};
         int[] idListView = new int[] {R.id.colunaProduto1, R.id.colunaProduto2, R.id.colunaProduto3, R.id.colunaProduto4};
         SimpleCursorAdapter adaptador = new SimpleCursorAdapter(_context,R.layout.produtos_geral,cursor,colunasBD,idListView, 0);
         lista = (ListView)findViewById(R.id.lista_produtos_geral);
         lista.setAdapter(adaptador);
     }
 
-    public void changeTelaListaProdutosToTelaAdmimistrador(View view) {
-        Intent voltarAdm = new Intent(ListaProdutos.this, Administrador.class);
-        startActivity(voltarAdm);
-        finish();
-    }
-
     @Override
     public void onBackPressed() {
         Intent voltarMenu = new Intent(ListaProdutos.this, Administrador.class);
         startActivity(voltarMenu);
+        finish();
+    }
+    public void adcionarProduto(View view) {
+        Intent cadastrarProdutos = new Intent(ListaProdutos.this, CadastroProdutos.class);
+        startActivity(cadastrarProdutos);
         finish();
     }
 }
