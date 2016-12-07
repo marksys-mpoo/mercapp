@@ -53,20 +53,20 @@
     <string name="descricao_vazio_tela_cadastro_produtos">Campo "descrição" não pode ser vazio!</string>
     <string name="preco_vazio_tela_cadastro_produtos">Campo "preço" não pode ser vazio!</string>
 
-    //Tela_cadastro_e_busca_de_supermercado
-    <string name="tela_cadastro_dos_Supermercados">Cadastrar</string>
+    //Tela_cadastro_supermercado
+    <string name="tela_cadastro_dos_Supermercados">Cadastrar de Supermercados</string>
     <string name="tela_busca_dos_Supermercados">Buscar</string>
     <string name="hint_nome_supermercado">Nome</string>
     <string name="hint_numero_telefone_supermercado">Telefone</string>
-    <string name="botao_cadastrar_supermercados">Cadastrar</string>
+    <string name="botao_cadastrar_supermercados">Salvar</string>
     <string name="hint_busca_supermercado_pelo_nome">Buscar pelo Nome</string>
-    <string name="botao_buscar_supermercado">Buscar</string>
-    <string name="hint_nome_supermercado_buscado">Nome Buscado</string>
-    <string name="hint_telefone_supermercado_buscado">Telefone Buscado</string>
     <string name="botao_cadastrar_supermercado_direto">Cadastrar Direto</string>
     <string name="botao_voltar_tela_cadastro_e_busca_de_supermercado">Voltar</string>
     <string name="hint_latitude_supermercado">Latitude</string>
     <string name="hint_longitude_supermercado">Longitude</string>
+    <string name="selecionar_coordenadas">Usar o Mapa</string>
+    <string name="ajuda_mapa">Pressionar o local desejado no mapa por mais de 1 segundo.</string>
+
 
     //Tela_lista_produtos
     <string name="titulo_lista_produtos">Lista Geral de Produtos</string>

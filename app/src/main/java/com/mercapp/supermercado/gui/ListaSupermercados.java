@@ -80,6 +80,14 @@ public class ListaSupermercados extends AppCompatActivity {
         finish();
     }
 
+    public void changeScreenListaToCadastroSupermercados(View view) {
+        Intent addSupermercado = new Intent(ListaSupermercados.this, CadastroSupermercados.class);
+        addSupermercado.putExtra("CoordLat",0);
+        addSupermercado.putExtra("CoordLong",0);
+        startActivity(addSupermercado);
+        finish();
+    }
+
     @Override
     public void onBackPressed() {
         Intent voltarMenu = new Intent(ListaSupermercados.this, Administrador.class);
