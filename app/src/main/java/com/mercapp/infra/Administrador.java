@@ -27,6 +27,7 @@ public class Administrador extends AppCompatActivity {
         startActivity(cadastrar);
         finish();
     }
+
     public void voltarToMenuMapa(View view) {
         Intent voltarMapa = new Intent(Administrador.this, TelaMenuActivity.class);
         startActivity(voltarMapa);
