@@ -53,15 +53,6 @@ public class SupermercadoNegocio {
         SupermercadoPersistencia produtoPersistencia = new SupermercadoPersistencia(_context);
         produtoPersistencia.cadastrarProduto(produtoCadastro);
     }
-//    public void cadastroProduto(String descricao, Double preco, String idSupermercado, String idDepartamento){
-//        Produto produtoCadastro = new Produto();
-//        produtoCadastro.setDescricao(descricao);
-//        produtoCadastro.setPreco(preco);
-//        produtoCadastro.setIdSupermercado(idSupermercado);
-//        produtoCadastro.setIdDepartamento(idDepartamento);
-//        SupermercadoPersistencia produtoPersistencia = new SupermercadoPersistencia(_context);
-//        produtoPersistencia.cadastrarProduto(produtoCadastro);
-//    }
 
     public Cursor listaSupermercados(){
         SupermercadoPersistencia consulta = new SupermercadoPersistencia(_context);
