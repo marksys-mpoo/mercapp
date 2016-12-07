@@ -69,6 +69,12 @@ public class SupermercadoNegocio {
         return cursor;
     }
 
+    public Cursor listarSupermercadosPorParteDoNome(String inputText){
+        SupermercadoPersistencia listagem = new SupermercadoPersistencia(_context);
+        Cursor cursor = listagem.listarSupermercadosPorParteDoNome(inputText);
+        return cursor;
+    }
+
     public Cursor listaProdutos(){
         SupermercadoPersistencia consulta = new SupermercadoPersistencia(_context);
         Cursor cursor = consulta.listaDadosProdutos();

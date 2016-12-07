@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.FilterQueryProvider;
 import android.widget.ListView;
-import android.widget.ArrayAdapter;
 import android.widget.SearchView;
 import android.widget.SearchView.OnQueryTextListener;
 
@@ -17,16 +16,15 @@ import com.mercapp.R;
 import com.mercapp.infra.Administrador;
 import com.mercapp.infra.BDHelper;
 import com.mercapp.supermercado.negocio.SupermercadoNegocio;
-import com.mercapp.supermercado.persistencia.SupermercadoPersistencia;
 
 public class ListaSupermercados extends AppCompatActivity {
 
     private ListView lista;
     private Context _context = ListaSupermercados.this;
     private SimpleCursorAdapter dataAdapter;
-    private SupermercadoPersistencia buscador = new SupermercadoPersistencia(_context);
+    private SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(_context);
 
-    SearchView sv;
+    SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +41,9 @@ public class ListaSupermercados extends AppCompatActivity {
         lista = (ListView)findViewById(R.id.lista_supermercados);
         lista.setAdapter(dataAdapter);
 
-        sv=(SearchView) findViewById(R.id.searchViewSupermercados);
+        searchView =(SearchView) findViewById(R.id.searchViewSupermercados);
 
-        sv.setOnQueryTextListener(new OnQueryTextListener() {
+        searchView.setOnQueryTextListener(new OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String text) {
                 // TODO Auto-generated method stub
@@ -60,7 +58,7 @@ public class ListaSupermercados extends AppCompatActivity {
         //
         dataAdapter.setFilterQueryProvider(new FilterQueryProvider() {
             public Cursor runQuery(CharSequence constraint) {
-                return buscador.buscarSupermercadoPorNome(constraint.toString());
+                return supermercadoNegocio.listarSupermercadosPorParteDoNome(constraint.toString());
             }
         });
 

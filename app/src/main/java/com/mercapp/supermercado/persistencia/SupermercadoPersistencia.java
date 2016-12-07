@@ -58,7 +58,7 @@ public class SupermercadoPersistencia {
         return supermercado;
     }
 
-    public Cursor buscarSupermercadoPorNome(String inputText) throws SQLException {
+    public Cursor listarSupermercadosPorParteDoNome(String inputText) throws SQLException {
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Cursor cursor = null;
         cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_SUPERMERCADO +
