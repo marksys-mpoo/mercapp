@@ -3,7 +3,10 @@ package com.mercapp.supermercado.persistencia;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+
 import com.mercapp.infra.BDHelper;
 import com.mercapp.supermercado.dominio.Produto;
 import com.mercapp.supermercado.dominio.Supermercado;
@@ -53,6 +56,18 @@ public class SupermercadoPersistencia {
         cursor.close();
         db.close();
         return supermercado;
+    }
+
+    public Cursor buscarSupermercadoPorNome(String inputText) throws SQLException {
+        SQLiteDatabase db = bdHelper.getReadableDatabase();
+        Cursor cursor = null;
+        cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_SUPERMERCADO +
+                " WHERE "+ bdHelper.COLUNA_NOME_SUPERMERCADO+" LIKE '%" + inputText + "%'", null, null);
+        if(cursor!=null){
+            cursor.moveToFirst();
+        }
+        db.close();
+        return cursor;
     }
 
     public Produto buscarProduto(Integer id){
@@ -115,6 +130,8 @@ public class SupermercadoPersistencia {
         return cursor;
     }
 
+
+
     public Cursor listaProdutosDoSupermercadoPorDepartamentoPersistencia(String idSupermercado, String idDepartamento){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_PRODUTO +
@@ -142,4 +159,7 @@ public class SupermercadoPersistencia {
         produto.setIdSupermercado(cursor.getString(3));
         return produto;
     }
+
+
+
 }

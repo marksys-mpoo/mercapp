@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_lista_supermercados"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,10 +14,10 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/lista_produtos"
-        android:layout_below="@+id/textView6"
+        android:id="@+id/lista_supermercados"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="22dp" />
+        android:layout_below="@+id/textView6"
+        android:layout_alignBottom="@+id/button3" />
 
     <TextView
         android:text="@string/titulo_lista_supermercados"
@@ -30,34 +31,14 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <EditText
-        android:layout_width="wrap_content"
+    <SearchView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:ems="10"
+        android:id="@+id/searchViewSupermercados"
         android:layout_below="@+id/button10"
         android:layout_alignParentStart="true"
-        android:id="@+id/editText" />
-
-    <TextView
-        android:text="@string/textview_id_supermercado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:id="@+id/textView6"
-        android:layout_below="@+id/editText"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:text="@string/textview_telefone_supermercado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:id="@+id/textView3"
-        android:layout_above="@+id/lista_produtos"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="13dp" />
+        android:layout_marginTop="11dp"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:text="@string/textview_nome_supermercado"
@@ -65,16 +46,42 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:id="@+id/textView4"
-        android:layout_below="@+id/editText"
-        android:layout_alignEnd="@+id/editText"
-        android:layout_marginEnd="44dp" />
+        android:layout_below="@+id/searchViewSupermercados"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp" />
 
-    <Button
-        android:text="Add"
+    <TextView
+        android:text="@string/textview_telefone_supermercado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textView3"
+        android:textSize="20sp"
+        android:id="@+id/textView3"
+        android:layout_marginEnd="13dp"
+        android:layout_alignBaseline="@+id/textView4"
+        android:layout_alignBottom="@+id/textView4"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="@string/textview_id_supermercado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:id="@+id/textView6"
+        android:layout_alignBaseline="@+id/textView4"
+        android:layout_alignBottom="@+id/textView4"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView3"
+        android:layout_alignStart="@+id/button3"
+        android:layout_marginTop="12dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:text="text"
+        app:srcCompat="@android:drawable/ic_input_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
         android:id="@+id/button3"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
