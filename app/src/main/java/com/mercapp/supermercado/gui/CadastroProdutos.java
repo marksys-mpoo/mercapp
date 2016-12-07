@@ -193,14 +193,14 @@ public class CadastroProdutos extends AppCompatActivity {
 //    }
 
     public void changeTelaCadatroProdutosToTelaAdministrador(View view) {
-        Intent voltarMenu = new Intent(CadastroProdutos.this, Administrador.class);
+        Intent voltarMenu = new Intent(CadastroProdutos.this, ListaSupermercados.class);
         startActivity(voltarMenu);
         finish();
     }
 
     @Override
     public void onBackPressed() {
-        Intent voltarMenu = new Intent(CadastroProdutos.this, Administrador.class);
+        Intent voltarMenu = new Intent(CadastroProdutos.this, ListaSupermercados.class);
         startActivity(voltarMenu);
         finish();
     }

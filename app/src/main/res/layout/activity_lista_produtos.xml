@@ -46,18 +46,6 @@
         <!--android:id="@+id/textView7"-->
         <!--android:layout_below="@+id/button10"-->
         <!--android:layout_alignParentEnd="true" />-->
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_input_add"
-        app:backgroundTint="?attr/actionModeSplitBackground"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="adcionarProduto"
-        />
 
     <TextView
         android:text="@string/textview_descricao_produto"
@@ -87,4 +75,18 @@
         android:id="@+id/textView12"
         android:layout_below="@+id/button10"
         android:layout_alignEnd="@+id/fab" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        app:srcCompat="@android:drawable/ic_input_add"
+        android:onClick="adcionarProduto"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:layout_marginRight="@dimen/fab_margin"
+        android:layout_marginBottom="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="12dp" />
 </RelativeLayout>

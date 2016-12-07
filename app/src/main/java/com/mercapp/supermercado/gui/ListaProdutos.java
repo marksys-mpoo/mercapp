@@ -29,7 +29,7 @@ public class ListaProdutos extends AppCompatActivity {
     private void listarProdutosGeral() {
         SupermercadoNegocio buscaProdutos = new SupermercadoNegocio(_context);
         Cursor cursor = buscaProdutos.listaProdutos();
-        String[] colunasBD = new String[] {BDHelper.COLUNA_ID_PRODUTO, BDHelper.COLUNA_DESCRICAO, BDHelper.COLUNA_PRECO_PRODUTO, BDHelper.COLUNA_ID_SUPERMERCADO_PRODUTO};
+        String[] colunasBD = new String[] {BDHelper.COLUNA_NOME_PRODUTO, BDHelper.COLUNA_DESCRICAO, BDHelper.COLUNA_PRECO_PRODUTO, BDHelper.COLUNA_ID_SUPERMERCADO_PRODUTO};
         int[] idListView = new int[] {R.id.colunaProduto1, R.id.colunaProduto2, R.id.colunaProduto3, R.id.colunaProduto4};
         SimpleCursorAdapter adaptador = new SimpleCursorAdapter(_context,R.layout.produtos_geral,cursor,colunasBD,idListView, 0);
         lista = (ListView)findViewById(R.id.lista_produtos_geral);

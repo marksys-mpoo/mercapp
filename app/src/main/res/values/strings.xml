@@ -25,8 +25,8 @@
     <string name="titulo_tela_administrador">Administrador</string>
     <string name="botao_cadastro_supermercado">Cadastrar</string>
     <string name="botao_voltar_para_o_Mapa">Voltar</string>
-    <string name="botao_tela_lista_supermercados">Listar</string>
-    <string name="botao_tela_lista_produtos">Listar</string>
+    <string name="botao_tela_lista_supermercados">Supermercados</string>
+    <string name="botao_tela_lista_produtos">Produtos</string>
     <string name="botao_cadastro_produtos">Cadastrar</string>
     <string name="titulo_supermercados">Supermercados</string>
     <string name="titulo_produtos">Produtos</string>

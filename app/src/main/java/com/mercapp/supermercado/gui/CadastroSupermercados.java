@@ -105,7 +105,7 @@ public class CadastroSupermercados extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent voltarMenu = new Intent(CadastroSupermercados.this, TelaMenuActivity.class);
+        Intent voltarMenu = new Intent(CadastroSupermercados.this, ListaSupermercados.class);
         startActivity(voltarMenu);
         finish();
     }
