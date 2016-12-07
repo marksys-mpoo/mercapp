@@ -43,7 +43,7 @@
     <string name="hint_nome">Nome</string>
     <string name="hint_telefone">Telefone</string>
     <string name="hint_número_cartao">Número Cartão</string>
-    <string name="botao_finalizar_cadastro">Finalizar Cadastro</string>
+    <string name="botao_salvar">Salvar</string>
 
     //Tela_cadastro_Produtos
     <string name="titulo_tela_cadastro_produtos">Cadastro de Produtos</string>

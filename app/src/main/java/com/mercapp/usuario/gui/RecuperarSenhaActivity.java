@@ -106,7 +106,6 @@ public class RecuperarSenhaActivity extends AppCompatActivity implements View.On
         @Override
         protected void onPostExecute(String result) {
             pdialog.dismiss();
-            //reciep.setText(" ");
             Toast.makeText(getApplicationContext(), "Message sent", Toast.LENGTH_LONG).show();
         }
     }

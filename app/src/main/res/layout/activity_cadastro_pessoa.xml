@@ -60,7 +60,7 @@
                 android:layout_marginTop="35dp" />
 
             <Button
-                android:text="@string/botao_finalizar_cadastro"
+                android:text="@string/botao_salvar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnCadastroPessoa"
