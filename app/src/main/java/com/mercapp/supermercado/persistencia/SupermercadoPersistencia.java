@@ -7,6 +7,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.mercapp.infra.BDHelper;
 import com.mercapp.supermercado.dominio.Produto;
 import com.mercapp.supermercado.dominio.Supermercado;
@@ -90,11 +91,12 @@ public class SupermercadoPersistencia {
         return cursor;
     }
 
-    private Supermercado criarSupermercado(Cursor cursor){
+    public Supermercado criarSupermercado(Cursor cursor){
         Supermercado supermercado = new Supermercado();
         supermercado.setId(cursor.getInt(0));
         supermercado.setNome(cursor.getString(1));
         supermercado.setTelefone(cursor.getString(2));
+        supermercado.setCoordenadas(new LatLng(cursor.getDouble(3),cursor.getDouble(4)));
         return supermercado;
     }
 

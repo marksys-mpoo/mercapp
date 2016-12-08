@@ -93,7 +93,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnCadastrarSupermercado"
         android:onClick="cadastrarSupermercadoManual"
-
         android:layout_above="@+id/btnCadastrarDireto"
         android:layout_alignParentStart="true" />
 

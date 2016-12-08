@@ -23,11 +23,17 @@ public class CadastroSupermercados extends AppCompatActivity {
 
     private static final String stringVazia = "";
     private static final String stringInicial ="0.0";
-    private Context _context = CadastroSupermercados.this;
-    private Session session = Session.getInstanciaSessao();
+    private static final String textBotaoFuncaoEditar ="Atualizar";
+    private static final String textBotaoFuncaoCadastrar ="Salvar";
+    private String textBotaoFuncao;
+    private String nomeSupermercado, telefoneSupermercado;
+
+    private Context _context = CadastroSupermercados.this;    private Session session = Session.getInstanciaSessao();
     private SupermercadoNegocio supermercadoNegocio;
-    private Supermercado supermercadoCadastrado;
+    private Supermercado supermercadoCadastrado, supermercadoEditado;
     private EditText etSupermercadoNome, etSupermercadoTelefone, etLogintude, etLatitude;
+    private Button btnSalvarEditar;
+    private String funcao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,22 +42,66 @@ public class CadastroSupermercados extends AppCompatActivity {
 
         etSupermercadoNome = (EditText) findViewById(R.id.etSupNome);
         etSupermercadoTelefone = (EditText) findViewById(R.id.etSupTelefone);
+        etLatitude = (EditText) findViewById(R.id.etSupLat);
+        etLogintude = (EditText) findViewById(R.id.etSupLong);
+        btnSalvarEditar = (Button) findViewById(R.id.btnCadastrarSupermercado);
 
-        Bundle bundle = getIntent().getExtras();
-        if (bundle.containsKey("CoordLat") ){
-            Double coordLat = bundle.getDouble("CoordLat");
+        funcao = session.getFuncaoCrudSupermercado().toString();
+
+        if (funcao == "alterar") {
+            nomeSupermercado = session.getSupermercadoSelecionado().getNome().toString();
+            telefoneSupermercado = session.getSupermercadoSelecionado().getTelefone().toString();
+            Double coordLat = session.getSupermercadoSelecionado().getCoordenadas().latitude;
+            Double coordLong = session.getSupermercadoSelecionado().getCoordenadas().longitude;
             String coordLatString = coordLat.toString();
-            etLatitude = (EditText) findViewById(R.id.etSupLat);
+            String coordLongString = coordLong.toString();
+            etSupermercadoNome.setText(nomeSupermercado);
+            etSupermercadoTelefone.setText(telefoneSupermercado);
             etLatitude.setText(coordLatString);
-            etLatitude.requestFocus();
+            etLogintude.setText(coordLongString);
+            textBotaoFuncao = textBotaoFuncaoEditar;
         }
 
-        if (bundle.containsKey("CoordLong") ){
-            Double coordLong = bundle.getDouble("CoordLong");
-            String coordLongString = coordLong.toString();
-            etLogintude = (EditText) findViewById(R.id.etSupLong);
-            etLogintude.setText(coordLongString);
+        if (funcao == "cadastrar") {
+            Bundle bundle = getIntent().getExtras();
+            if (bundle.containsKey("CoordLat")) {
+                Double coordLat = bundle.getDouble("CoordLat");
+                String coordLatString = coordLat.toString();
+                etLatitude.setText(coordLatString);
+            }
+            if (bundle.containsKey("CoordLong")) {
+                Double coordLong = bundle.getDouble("CoordLong");
+                String coordLongString = coordLong.toString();
+                etLogintude.setText(coordLongString);
+            }
+            nomeSupermercado = "";
+            telefoneSupermercado = "";
+            textBotaoFuncao = textBotaoFuncaoCadastrar;
         }
+
+        if (funcao == "editar") {
+
+            Bundle bundle = getIntent().getExtras();
+            if (bundle.containsKey("CoordLat")) {
+                Double coordLat = bundle.getDouble("CoordLat");
+                String coordLatString = coordLat.toString();
+                etLatitude.setText(coordLatString);
+            }
+
+            if (bundle.containsKey("CoordLong")) {
+                Double coordLong = bundle.getDouble("CoordLong");
+                String coordLongString = coordLong.toString();
+                etLogintude.setText(coordLongString);
+            }
+
+            nomeSupermercado = session.getSupermercadoSelecionado().getNome().toString();
+            telefoneSupermercado = session.getSupermercadoSelecionado().getTelefone().toString();
+            etSupermercadoNome.setText(nomeSupermercado);
+            etSupermercadoTelefone.setText(telefoneSupermercado);
+            textBotaoFuncao = session.getTextButaoFuncaoSupermercado().toString();;
+        }
+
+        btnSalvarEditar.setText(textBotaoFuncao);
     }
 
     public void cadastroDireto(View view) {
@@ -109,6 +159,15 @@ public class CadastroSupermercados extends AppCompatActivity {
     }
 
     public void changeScreenCadastroSupermercadoToMapa(View view) {
+        nomeSupermercado = etSupermercadoNome.getText().toString().trim();
+        telefoneSupermercado = etSupermercadoTelefone.getText().toString().trim();
+        Supermercado supermercadoEditado = new Supermercado();
+        supermercadoEditado.setNome(nomeSupermercado);
+        supermercadoEditado.setTelefone(telefoneSupermercado);
+        SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(_context);
+        supermercadoNegocio.iniciarSessaoSupermercado(supermercadoEditado);
+        supermercadoNegocio.iniciarSessaoFuncaoCrud("editar");
+        supermercadoNegocio.iniciarSessaotextButaoFuncaoCrud(textBotaoFuncao);
         Intent addCoordenadas = new Intent(CadastroSupermercados.this, TelaMenuActivity.class);
         startActivity(addCoordenadas);
         finish();

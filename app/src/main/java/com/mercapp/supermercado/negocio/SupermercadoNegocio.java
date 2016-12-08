@@ -61,11 +61,25 @@ public class SupermercadoNegocio {
         return cursor;
     }
 
-    public void iniciarSessao(Supermercado supermercado){
+    public void iniciarSessaoSupermercado(Supermercado supermercado){
         sessao.setSupermercadoSelecionado(supermercado);
+    }
+
+    public void iniciarSessaoFuncaoCrud(String funcao){
+        sessao.setFuncaoCrudSupermercado(funcao);
+    }
+
+    public void iniciarSessaotextButaoFuncaoCrud(String text){
+        sessao.setTextButaoFuncaoSupermercado(text);
     }
 
     public void iniciarSessaoProduto(String departamento){
         sessao.setDepartamentoSelecionado(departamento);
+    }
+
+    public Supermercado criarSupermercado(Cursor cursor) {
+        SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(_context);
+        Supermercado supermercado = supermercadoPersistencia.criarSupermercado(cursor);
+        return supermercado;
     }
 }

@@ -13,6 +13,8 @@ public class Session {
     private Supermercado supermercadoSelecionado;
     private String departamentoSelecionado;
     private LatLng coordenadas;
+    private String funcaoCrudSupermercado;
+    private String textButaoFuncaoSupermercado;
 
     public Produto getProdutoSelecao() {
         return produtoSelecao;
@@ -70,5 +72,20 @@ public class Session {
         this.coordenadas = coordenadas;
     }
 
+    public String getFuncaoCrudSupermercado() {
+        return funcaoCrudSupermercado;
+    }
+
+    public void setFuncaoCrudSupermercado(String funcaoCrudSupermercado) {
+        this.funcaoCrudSupermercado = funcaoCrudSupermercado;
+    }
+
+    public String getTextButaoFuncaoSupermercado() {
+        return textButaoFuncaoSupermercado;
+    }
+
+    public void setTextButaoFuncaoSupermercado(String textButaoFuncaoSupermercado) {
+        this.textButaoFuncaoSupermercado = textButaoFuncaoSupermercado;
+    }
 
 }

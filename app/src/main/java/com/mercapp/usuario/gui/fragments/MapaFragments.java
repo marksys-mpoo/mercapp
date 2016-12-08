@@ -27,7 +27,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.mercapp.supermercado.dominio.Supermercado;
 import com.mercapp.supermercado.gui.CadastroSupermercados;
 import com.mercapp.supermercado.negocio.SupermercadoNegocio;
-import com.mercapp.usuario.gui.TelaMenuActivity;
 
 public class MapaFragments extends SupportMapFragment implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener, GoogleMap.OnMapClickListener,
         android.location.LocationListener {
@@ -155,7 +154,7 @@ public class MapaFragments extends SupportMapFragment implements OnMapReadyCallb
         SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(_context);
         Supermercado supermercadoSelecionado = supermercadoNegocio.buscaSupermercado(texto);
         if (supermercadoSelecionado != null) {
-            supermercadoNegocio.iniciarSessao(supermercadoSelecionado);
+            supermercadoNegocio.iniciarSessaoSupermercado(supermercadoSelecionado);
         }
         return supermercadoSelecionado;
     }
