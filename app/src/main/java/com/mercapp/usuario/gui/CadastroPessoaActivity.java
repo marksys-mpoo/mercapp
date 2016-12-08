@@ -32,6 +32,17 @@ public class CadastroPessoaActivity extends AppCompatActivity {
         etTelefone = (EditText) findViewById(R.id.etTelefone);
         etNumeroCartao = (EditText) findViewById(R.id.etNumeroCartao);
         btnCadastroPessoa = (Button) findViewById(R.id.btnCadastroPessoa);
+
+        if (session.getPessoaLogada() != null){
+            defineText(session.getPessoaLogada());
+        }
+    }
+
+    public void defineText(Pessoa pessoa){
+        etNome.setHint(pessoa.getNome());
+        etTelefone.setHint(pessoa.getTelefone());
+        etNumeroCartao.setHint(pessoa.getNumeroCartao());
+
     }
 
     public void cadastroPessoa(View view){

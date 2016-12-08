@@ -115,6 +115,11 @@ public class TelaMenuActivity extends AppCompatActivity
 
         switch (id) {
 
+            case R.id.nav_perfil:
+                Intent perfil = new Intent(TelaMenuActivity.this, CadastroPessoaActivity.class);
+                TelaMenuActivity.this.startActivity(perfil);
+                finish();
+                break;
             case R.id.nav_historico:
                 Toast.makeText(this, "Desculpe o transtorno, estamos implementando", Toast.LENGTH_SHORT).show();
                 break;
