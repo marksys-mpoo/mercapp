@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +21,8 @@ import com.mercapp.usuario.gui.TelaMenuActivity;
 
 public class CadastroSupermercados extends AppCompatActivity {
 
+    private static final String stringVazia = "";
+    private static final String stringInicial ="0.0";
     private Context _context = CadastroSupermercados.this;
     private Session session = Session.getInstanciaSessao();
     private SupermercadoNegocio supermercadoNegocio;
@@ -90,14 +93,18 @@ public class CadastroSupermercados extends AppCompatActivity {
         String telefone = etSupermercadoTelefone.getText().toString().trim();
         Double latitude = Double.parseDouble(etLatitude.getText().toString().trim());
         Double longitude = Double.parseDouble(etLogintude.getText().toString().trim());
-        LatLng coordenadas = new LatLng(latitude, longitude);
-        supermercadoNegocio = new SupermercadoNegocio(_context);
-        supermercadoCadastrado = supermercadoNegocio.buscaSupermercado(nome);
-        if (supermercadoCadastrado == null) {
-            supermercadoNegocio.cadastroSupermercado(nome, telefone, coordenadas);
-            Toast.makeText(this, "Supermercado " + nome + " cadastrado com sucesso.", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "Supermercado já existente!", Toast.LENGTH_SHORT).show();
+
+        if(validarCamposDouble() && validarCampos()) {
+            LatLng coordenadas = new LatLng(latitude, longitude);
+            supermercadoNegocio = new SupermercadoNegocio(_context);
+            supermercadoCadastrado = supermercadoNegocio.buscaSupermercado(nome);
+            if (supermercadoCadastrado == null) {
+                supermercadoNegocio.cadastroSupermercado(nome, telefone, coordenadas);
+                limparCampos();
+                Toast.makeText(this, "Supermercado " + nome + " cadastrado com sucesso.", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Supermercado já existente!", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -107,11 +114,56 @@ public class CadastroSupermercados extends AppCompatActivity {
         finish();
     }
 
+    private  boolean validarCamposDouble(){
+        boolean result;
+        if (etLatitude.getText().toString().equals(stringInicial)) {
+            etLatitude.requestFocus();
+            etLatitude.setError(getString(R.string.latitude_vazio_tela_cadastro_produtos));
+            result = false;
+        }else if(etLogintude.getText().toString().equals(stringInicial)) {
+            etLogintude.requestFocus();
+            etLogintude.setError(getString(R.string.longitude_vazio_tela_cadastro_produtos));
+            result = false;
+        }else{
+            result = true;
+        }
+        return result;
+    }
+
     @Override
     public void onBackPressed() {
         Intent voltarMenu = new Intent(CadastroSupermercados.this, ListaSupermercados.class);
         startActivity(voltarMenu);
         finish();
+    }
+
+    private void limparCampos(){
+        etSupermercadoNome.setText(stringVazia);
+        etSupermercadoTelefone.setText(stringVazia);
+        etLatitude.setText(stringInicial);
+        etLogintude.setText(stringInicial);
+        etLatitude.requestFocus();
+    }
+    private boolean validarCampos(){
+        String nomeSupermercado = etSupermercadoNome.getText().toString();
+        String telefonesupermercado = etSupermercadoTelefone.getText().toString();
+        return verificaVazios(nomeSupermercado, telefonesupermercado);
+    }
+
+    private boolean verificaVazios(String nomeSupermercado, String telefonesupermercado) {
+        boolean result;
+        if (TextUtils.isEmpty(nomeSupermercado)) {
+            etSupermercadoNome.requestFocus();
+            etSupermercadoNome.setError(getString(R.string.nome_vazio_tela_cadastro_supermrecados));
+            result = false;
+        } else if (TextUtils.isEmpty(telefonesupermercado)) {
+            etSupermercadoTelefone.requestFocus();
+            etSupermercadoTelefone.setError(getString(R.string.telefone_vazio_tela_cadastro_supermrecados));
+            result = false;
+        }else {
+            result = true;
+        }
+        return result;
     }
 }
 

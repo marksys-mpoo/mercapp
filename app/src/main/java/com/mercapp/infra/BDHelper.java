@@ -83,6 +83,4 @@ public class BDHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTIS " + TBL_SUPERMERCADO);
         onCreate(db);
     }
-
-
 }

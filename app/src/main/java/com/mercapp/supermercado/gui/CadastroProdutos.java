@@ -17,6 +17,7 @@ import com.mercapp.supermercado.negocio.SupermercadoNegocio;
 
 public class CadastroProdutos extends AppCompatActivity {
 
+    private static final String stringVazia = "";
     private Context _context = CadastroProdutos.this;
     private SupermercadoNegocio supermercadoNegocio;
     private Produto produtoCadastrado;
@@ -45,7 +46,7 @@ public class CadastroProdutos extends AppCompatActivity {
             if(validarCampos()) {
                 preco = Double.parseDouble(setpreco.getText().toString());
                 Produto produto = CadastrarProduto(nome, descricao, preco);
-                efetuarCadastroProduto(produto, "sim");
+                efetuarCadastroProduto(produto);
             }else{
                 Toast.makeText(this, "O cadastro não foi realizado.", Toast.LENGTH_SHORT).show();
             }
@@ -134,7 +135,7 @@ public class CadastroProdutos extends AppCompatActivity {
         }
     }
 
-    private void efetuarCadastroProduto(Produto produto, String sim) {
+    private void efetuarCadastroProduto(Produto produto) {
         String descricao = produto.getDescricao();
         Double preco = produto.getPreco();
         String nome =  produto.getNome();
@@ -142,17 +143,16 @@ public class CadastroProdutos extends AppCompatActivity {
         produtoCadastrado = produtoNegocio.buscarProdutoNome(nome);
         if (produtoCadastrado == null) {
             produtoNegocio.cadastroProduto(descricao, preco, nome);
-            if (sim == "sim"){
-                Toast.makeText(this, "Produto " + nome + " cadastrado com sucesso.", Toast.LENGTH_SHORT).show();
-            }
+            limparCampos();
+            Toast.makeText(this, "Produto " + nome + " cadastrado com sucesso.", Toast.LENGTH_SHORT).show();
         } else {
-            if (sim == "sim") {
-                Toast.makeText(this, "Produtos já exitentes!", Toast.LENGTH_SHORT).show();
-            }
+            Toast.makeText(this, "Produtos já exitentes!", Toast.LENGTH_SHORT).show();
+
         }
 
 
     }
+
 
     private Produto CadastrarProduto(String nome, String descricao, double preco) {
         Produto produto = new Produto();
@@ -228,5 +228,11 @@ public class CadastroProdutos extends AppCompatActivity {
         return result;
     }
 
+    private void limparCampos(){
+        setnome.setText(stringVazia);
+        setdescricao.setText(stringVazia);
+        setpreco.setText(stringVazia);
+        setnome.requestFocus();
+    }
 
 }

@@ -33,7 +33,6 @@ public class SupermercadoPersistencia {
         db.close();
     }
 
-
     public Supermercado buscarSupermercado(String nome){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Supermercado supermercado = null;
