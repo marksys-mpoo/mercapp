@@ -16,6 +16,7 @@ public class PessoaNegocio {
     public PessoaNegocio(Context _context) {
         this._context = _context;
     }
+
     public Pessoa buscarPessoa(int usuarioId){
         PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(_context);
         Pessoa pessoaLogada = pessoaPersistencia.buscarPessoa(usuarioId);
@@ -37,5 +38,10 @@ public class PessoaNegocio {
 
         PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(_context);
         pessoaPersistencia.cadastrarPessoa(pessoaCadastro);
+    }
+
+    public void editarPessoa(Pessoa pessoa){
+        PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(_context);
+        pessoaPersistencia.editarPessoa(pessoa);
     }
 }

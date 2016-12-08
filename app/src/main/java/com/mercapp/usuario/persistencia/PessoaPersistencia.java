@@ -33,6 +33,19 @@ public class PessoaPersistencia {
         db.close();
     }
 
+    public void editarPessoa(Pessoa pessoa){
+        SQLiteDatabase db = bdHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(bdHelper.COLUNA_NOME, pessoa.getNome());
+        values.put(bdHelper.COLUNA_TELEFONE, pessoa.getTelefone());
+        values.put(bdHelper.COLUNA_NUMEROCARTAO, pessoa.getNumeroCartao());
+        values.put(bdHelper.COLUNA_ID_USUARIO_PESSOA, session.getUsuarioLogado().getId());
+        db.update(bdHelper.TBL_PESSOA, values, "_id = ? ", new String[]{""+pessoa.getId()});
+
+        db.close();
+    }
+
     public Pessoa buscarPessoa(String numeroCartao){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
 

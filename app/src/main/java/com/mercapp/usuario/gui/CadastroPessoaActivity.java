@@ -42,16 +42,21 @@ public class CadastroPessoaActivity extends AppCompatActivity {
         etNome.setText(pessoa.getNome());
         etTelefone.setText(pessoa.getTelefone());
         etNumeroCartao.setText(pessoa.getNumeroCartao());
-
     }
 
     public void cadastroPessoa(View view){
+
         String nome = etNome.getText().toString().trim();
         String telefone = etTelefone.getText().toString().trim();
         String numeroCartao = etNumeroCartao.getText().toString().trim();
 
         if (validarCamposPessoa()){
             pessoaNegocio = new PessoaNegocio(_context);
+            if (session.getPessoaLogada() != null){
+                pessoaNegocio.editarPessoa(session.getPessoaLogada());
+                Toast.makeText(this, "Alterações Salvas", Toast.LENGTH_SHORT).show();
+                finish();
+            } else {
             pessoaNegocio.cadastroPessoa(nome, telefone, numeroCartao);
             Pessoa pessoa = pessoaNegocio.buscarPessoa(numeroCartao);
             session.setPessoaLogada(pessoa);
@@ -59,6 +64,7 @@ public class CadastroPessoaActivity extends AppCompatActivity {
             CadastroPessoaActivity.this.startActivity(changeToTelaPrincipal);
             Toast.makeText(this, "Bem-Vindo - "+ nome, Toast.LENGTH_SHORT).show();
             finish();
+            }
         }else {
             Toast.makeText(this, "Existem campos vazios", Toast.LENGTH_SHORT).show();
         }
