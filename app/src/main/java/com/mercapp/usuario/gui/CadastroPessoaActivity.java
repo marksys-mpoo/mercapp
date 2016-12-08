@@ -39,9 +39,9 @@ public class CadastroPessoaActivity extends AppCompatActivity {
     }
 
     public void defineText(Pessoa pessoa){
-        etNome.setHint(pessoa.getNome());
-        etTelefone.setHint(pessoa.getTelefone());
-        etNumeroCartao.setHint(pessoa.getNumeroCartao());
+        etNome.setText(pessoa.getNome());
+        etTelefone.setText(pessoa.getTelefone());
+        etNumeroCartao.setText(pessoa.getNumeroCartao());
 
     }
 
