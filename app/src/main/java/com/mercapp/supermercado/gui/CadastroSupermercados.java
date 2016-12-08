@@ -136,10 +136,6 @@ public class CadastroSupermercados extends AppCompatActivity {
             Toast.makeText(this, "Supermercado já exitente!", Toast.LENGTH_SHORT).show();
         }
     }
-    public void teste999(View view) {
-        Toast.makeText(this, "Supermercado " + textBotaoFuncao + " Teste!", Toast.LENGTH_SHORT).show();
-    }
-
 
     public void cadastrarAtualizar(View view) {
         String nome = etSupermercadoNome.getText().toString().trim();

@@ -20,7 +20,6 @@ public class SupermercadoNegocio {
         return supermercadoSelecionado;
     }
 
-
     public SupermercadoNegocio(Context context)
     {
         _context = context;
@@ -46,7 +45,6 @@ public class SupermercadoNegocio {
         Cursor cursor = listagem.listarSupermercadosPorParteDoNome(inputText);
         return cursor;
     }
-
 
     public Cursor listaProdutosDoSupermercado(String idSuper){
         SupermercadoPersistencia consulta = new SupermercadoPersistencia(_context);
@@ -80,5 +78,10 @@ public class SupermercadoNegocio {
         SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(_context);
         Supermercado supermercado = supermercadoPersistencia.criarSupermercado(cursor);
         return supermercado;
+    }
+
+    public void deletar(int id){
+        SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(_context);
+        supermercadoPersistencia.deletar(id);
     }
 }

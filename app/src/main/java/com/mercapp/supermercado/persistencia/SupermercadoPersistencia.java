@@ -41,6 +41,13 @@ public class SupermercadoPersistencia {
         db.close();
     }
 
+    public void deletar(int id){
+        SQLiteDatabase db = bdHelper.getWritableDatabase();
+        String where = bdHelper.COLUNA_ID_SUPERMERCADO + "=" + id;
+        db.delete(bdHelper.TBL_SUPERMERCADO, where, null);
+        db.close();
+    }
+
     public Supermercado buscarSupermercado(String nome){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Supermercado supermercado = null;
