@@ -21,16 +21,6 @@ public class SupermercadoNegocio {
         return supermercadoSelecionado;
     }
 
-    public Produto buscaProduto(Integer id) {
-        SupermercadoPersistencia produtoPersistencia = new SupermercadoPersistencia(_context);
-        Produto produtoSelecionado = produtoPersistencia.buscarProduto(id);
-        return produtoSelecionado;
-    }
-    public Produto buscarProdutoNome(String nome) {
-        SupermercadoPersistencia produtoPersistencia = new SupermercadoPersistencia(_context);
-        Produto produtoSelecionado = produtoPersistencia.buscarProdutoNome(nome);
-        return produtoSelecionado;
-    }
 
     public SupermercadoNegocio(Context context)
     {
@@ -45,14 +35,6 @@ public class SupermercadoNegocio {
         SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(_context);
         supermercadoPersistencia.cadastrarSupermercado(supermercadoCadastro);
     }
-    public void cadastroProduto(String descricao, Double preco, String nome){
-        Produto produtoCadastro = new Produto();
-        produtoCadastro.setDescricao(descricao);
-        produtoCadastro.setPreco(preco);
-        produtoCadastro.setNome(nome);
-        SupermercadoPersistencia produtoPersistencia = new SupermercadoPersistencia(_context);
-        produtoPersistencia.cadastrarProduto(produtoCadastro);
-    }
 
     public Cursor listaSupermercados(){
         SupermercadoPersistencia consulta = new SupermercadoPersistencia(_context);
@@ -66,11 +48,6 @@ public class SupermercadoNegocio {
         return cursor;
     }
 
-    public Cursor listaProdutos(){
-        SupermercadoPersistencia consulta = new SupermercadoPersistencia(_context);
-        Cursor cursor = consulta.listaDadosProdutos();
-        return cursor;
-    }
 
     public Cursor listaProdutosDoSupermercado(String idSuper){
         SupermercadoPersistencia consulta = new SupermercadoPersistencia(_context);

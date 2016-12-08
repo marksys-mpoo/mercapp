@@ -102,7 +102,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/etSupLong"
         android:layout_alignParentStart="true"
-        android:id="@+id/button3"
+        android:id="@+id/btnUsarMapa"
         android:layout_alignParentEnd="true"
         android:onClick="changeScreenCadastroSupermercadoToMapa"/>
 
@@ -110,7 +110,7 @@
         android:text="@string/ajuda_mapa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button3"
+        android:layout_below="@+id/btnUsarMapa"
         android:layout_centerHorizontal="true"
         android:id="@+id/textView13" />
 

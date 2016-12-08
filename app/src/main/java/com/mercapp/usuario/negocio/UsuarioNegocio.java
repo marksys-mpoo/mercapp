@@ -39,26 +39,26 @@ public class UsuarioNegocio {
         usuarioPersistencia.cadastrarUsuario(usuarioCadastro);
     }
 
-    public Pessoa buscarPessoa(int usuarioId){
-        PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(_context);
-        Pessoa pessoaLogada = pessoaPersistencia.buscarPessoa(usuarioId);
-        return pessoaLogada;
-    }
-
-    public Pessoa buscarPessoa(String numeroCartao){
-        PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(_context);
-        Pessoa pessoaLogada = pessoaPersistencia.buscarPessoa(numeroCartao);
-        return pessoaLogada;
-    }
-
-    public void cadastroPessoa(String nome, String telefone, String numeroCartao){
-        Pessoa pessoaCadastro = new Pessoa();
-
-        pessoaCadastro.setNome(nome);
-        pessoaCadastro.setTelefone(telefone);
-        pessoaCadastro.setNumeroCartao(numeroCartao);
-
-        PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(_context);
-        pessoaPersistencia.cadastrarPessoa(pessoaCadastro);
-    }
+//    public Pessoa buscarPessoa(int usuarioId){
+//        PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(_context);
+//        Pessoa pessoaLogada = pessoaPersistencia.buscarPessoa(usuarioId);
+//        return pessoaLogada;
+//    }
+//
+//    public Pessoa buscarPessoa(String numeroCartao){
+//        PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(_context);
+//        Pessoa pessoaLogada = pessoaPersistencia.buscarPessoa(numeroCartao);
+//        return pessoaLogada;
+//    }
+//
+//    public void cadastroPessoa(String nome, String telefone, String numeroCartao){
+//        Pessoa pessoaCadastro = new Pessoa();
+//
+//        pessoaCadastro.setNome(nome);
+//        pessoaCadastro.setTelefone(telefone);
+//        pessoaCadastro.setNumeroCartao(numeroCartao);
+//
+//        PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(_context);
+//        pessoaPersistencia.cadastrarPessoa(pessoaCadastro);
+//    }
 }

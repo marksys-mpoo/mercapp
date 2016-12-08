@@ -12,6 +12,7 @@ import android.widget.ListView;
 import com.mercapp.R;
 import com.mercapp.infra.Administrador;
 import com.mercapp.infra.BDHelper;
+import com.mercapp.supermercado.negocio.ProdutoNegocio;
 import com.mercapp.supermercado.negocio.SupermercadoNegocio;
 
 public class ListaProdutos extends AppCompatActivity {
@@ -27,7 +28,7 @@ public class ListaProdutos extends AppCompatActivity {
     }
 
     private void listarProdutosGeral() {
-        SupermercadoNegocio buscaProdutos = new SupermercadoNegocio(_context);
+        ProdutoNegocio buscaProdutos = new ProdutoNegocio(_context);
         Cursor cursor = buscaProdutos.listaProdutos();
         String[] colunasBD = new String[] {BDHelper.COLUNA_NOME_PRODUTO, BDHelper.COLUNA_DESCRICAO, BDHelper.COLUNA_PRECO_PRODUTO, BDHelper.COLUNA_ID_SUPERMERCADO_PRODUTO};
         int[] idListView = new int[] {R.id.colunaProduto1, R.id.colunaProduto2, R.id.colunaProduto3, R.id.colunaProduto4};

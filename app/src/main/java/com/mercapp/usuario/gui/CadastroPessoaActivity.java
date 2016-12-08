@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.mercapp.R;
 import com.mercapp.infra.Session;
 import com.mercapp.usuario.dominio.Pessoa;
+import com.mercapp.usuario.negocio.PessoaNegocio;
 import com.mercapp.usuario.negocio.UsuarioNegocio;
 
 public class CadastroPessoaActivity extends AppCompatActivity {
@@ -21,7 +22,7 @@ public class CadastroPessoaActivity extends AppCompatActivity {
     private Button btnCadastroPessoa;
     private Session session = Session.getInstanciaSessao();
     private Context _context = CadastroPessoaActivity.this;
-    private UsuarioNegocio usuarioNegocio;
+    private PessoaNegocio pessoaNegocio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +40,9 @@ public class CadastroPessoaActivity extends AppCompatActivity {
         String numeroCartao = etNumeroCartao.getText().toString().trim();
 
         if (validarCamposPessoa()){
-            usuarioNegocio = new UsuarioNegocio(_context);
-            usuarioNegocio.cadastroPessoa(nome, telefone, numeroCartao);
-            Pessoa pessoa = usuarioNegocio.buscarPessoa(numeroCartao);
+            pessoaNegocio = new PessoaNegocio(_context);
+            pessoaNegocio.cadastroPessoa(nome, telefone, numeroCartao);
+            Pessoa pessoa = pessoaNegocio.buscarPessoa(numeroCartao);
             session.setPessoaLogada(pessoa);
             Intent changeToTelaPrincipal = new Intent(CadastroPessoaActivity.this, TelaMenuActivity.class);
             CadastroPessoaActivity.this.startActivity(changeToTelaPrincipal);

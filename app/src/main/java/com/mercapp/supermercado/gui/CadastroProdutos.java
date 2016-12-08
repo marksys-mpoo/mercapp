@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.mercapp.R;
 import com.mercapp.infra.Administrador;
 import com.mercapp.supermercado.dominio.Produto;
+import com.mercapp.supermercado.negocio.ProdutoNegocio;
 import com.mercapp.supermercado.negocio.SupermercadoNegocio;
 
 public class CadastroProdutos extends AppCompatActivity {
@@ -137,12 +138,12 @@ public class CadastroProdutos extends AppCompatActivity {
         String descricao = produto.getDescricao();
         Double preco = produto.getPreco();
         String nome =  produto.getNome();
-        supermercadoNegocio = new SupermercadoNegocio(_context);
-        produtoCadastrado = supermercadoNegocio.buscarProdutoNome(nome);
+        ProdutoNegocio produtoNegocio = new ProdutoNegocio(_context);
+        produtoCadastrado = produtoNegocio.buscarProdutoNome(nome);
         if (produtoCadastrado == null) {
-            supermercadoNegocio.cadastroProduto(descricao, preco, nome);
+            produtoNegocio.cadastroProduto(descricao, preco, nome);
             if (sim == "sim"){
-                Toast.makeText(this, "Produtos cadastrados com sucesso.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Produto " + nome + " cadastrado com sucesso.", Toast.LENGTH_SHORT).show();
             }
         } else {
             if (sim == "sim") {
@@ -193,14 +194,14 @@ public class CadastroProdutos extends AppCompatActivity {
 //    }
 
     public void changeTelaCadatroProdutosToTelaAdministrador(View view) {
-        Intent voltarMenu = new Intent(CadastroProdutos.this, ListaSupermercados.class);
+        Intent voltarMenu = new Intent(CadastroProdutos.this, ListaProdutos.class);
         startActivity(voltarMenu);
         finish();
     }
 
     @Override
     public void onBackPressed() {
-        Intent voltarMenu = new Intent(CadastroProdutos.this, ListaSupermercados.class);
+        Intent voltarMenu = new Intent(CadastroProdutos.this, ListaProdutos.class);
         startActivity(voltarMenu);
         finish();
     }
@@ -216,13 +217,13 @@ public class CadastroProdutos extends AppCompatActivity {
         if (TextUtils.isEmpty(nome)) {
             setnome.requestFocus();
             setnome.setError(getString(R.string.nome_vazio_tela_cadastro_produtos));
-            result = true;
+            result = false;
         } else if (TextUtils.isEmpty(descricao)) {
             setdescricao.requestFocus();
             setdescricao.setError(getString(R.string.descricao_vazio_tela_cadastro_produtos));
-            result = true;
-        }else {
             result = false;
+        }else {
+            result = true;
         }
         return result;
     }

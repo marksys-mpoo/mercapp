@@ -3,73 +3,78 @@ package com.mercapp.supermercado.persistencia;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.mercapp.infra.BDHelper;
 import com.mercapp.supermercado.dominio.Produto;
-import com.mercapp.supermercado.dominio.Supermercado;
 
-public class SupermercadoPersistencia {
+/**
+ * Created by WELLINGTON on 07/12/2016.
+ */
 
+public class ProdutoPersistencia {
     private Context _context;
     private BDHelper bdHelper;
 
-    public SupermercadoPersistencia(Context context)
-    {
-        _context = context;
+    public ProdutoPersistencia(Context _context) {
+        this._context = _context;
         bdHelper = new BDHelper(_context);
     }
-
-    public void cadastrarSupermercado(Supermercado supermercado){
+    public void cadastrarProduto(Produto produto){
         SQLiteDatabase db = bdHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(bdHelper.COLUNA_NOME_SUPERMERCADO, supermercado.getNome());
-        values.put(bdHelper.COLUNA_TELEFONE_SUPERMERCADO, supermercado.getTelefone());
-        values.put(bdHelper.COLUNA_LATITUDE_SUPERMERCADO, supermercado.getCoordenadas().latitude);
-        values.put(bdHelper.COLUNA_LONGITUDE_SUPERMERCADO, supermercado.getCoordenadas().longitude);
-        db.insert(bdHelper.TBL_SUPERMERCADO, null, values);
+        values.put(bdHelper.COLUNA_DESCRICAO, produto.getDescricao());
+        values.put(bdHelper.COLUNA_PRECO_PRODUTO, produto.getPreco());
+        values.put(bdHelper.COLUNA_NOME_PRODUTO, produto.getNome());
+        values.put(bdHelper.COLUNA_ID_SUPERMERCADO_PRODUTO, produto.getIdSupermercado());
+        values.put(bdHelper.COLUNA_PRODUTO_DEPARTAMENTO, produto.getIdDepartamento());
+        db.insert(bdHelper.TBL_PRODUTO, null, values);
         db.close();
     }
-
-
-    public Supermercado buscarSupermercado(String nome){
+    public Produto buscarProduto(Integer id){
+        String id_string = id.toString();
         SQLiteDatabase db = bdHelper.getReadableDatabase();
-        Supermercado supermercado = null;
-        Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_SUPERMERCADO +
-                " WHERE "+ bdHelper.COLUNA_NOME_SUPERMERCADO+" LIKE ? ", new String[]{nome});
+        Produto produto = null;
+        Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_PRODUTO +
+                " WHERE "+ bdHelper.COLUNA_ID_PRODUTO+" LIKE ? ", new String[]{id_string});
         if (cursor.moveToFirst()){
-            supermercado = criarSupermercado(cursor);
+            produto = criarProduto(cursor);
         }
         cursor.close();
         db.close();
-        return supermercado;
+        return produto;
     }
-
-    public Cursor listarSupermercadosPorParteDoNome(String inputText) throws SQLException {
+    public Produto buscarProdutoNome(String nome){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
-        Cursor cursor = null;
-        cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_SUPERMERCADO +
-                " WHERE "+ bdHelper.COLUNA_NOME_SUPERMERCADO+" LIKE '%" + inputText + "%'", null, null);
-        if(cursor!=null){
-            cursor.moveToFirst();
+        Produto produto = null;
+        Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_PRODUTO +
+                " WHERE "+ bdHelper.COLUNA_NOME_PRODUTO+" LIKE ? ", new String[]{nome});
+        if (cursor.moveToFirst()){
+            produto = criarProduto(cursor);
         }
+        cursor.close();
         db.close();
-        return cursor;
+        return produto;
     }
 
-    public Cursor listaDados(){
+    public Cursor listaDadosProdutos(){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Cursor cursor;
-        cursor = db.rawQuery("SELECT * FROM " + BDHelper.TBL_SUPERMERCADO, null);
+        cursor = db.rawQuery("SELECT * FROM " + BDHelper.TBL_PRODUTO, null);
         if(cursor!=null){
             cursor.moveToFirst();
         }
         db.close();
         return cursor;
     }
-
+    private Produto criarProduto(Cursor cursor){
+        Produto produto = new Produto();
+        produto.setId(cursor.getInt(0));
+        produto.setDescricao(cursor.getString(1));
+        produto.setPreco(cursor.getDouble(2));
+        produto.setIdSupermercado(cursor.getString(3));
+        return produto;
+    }
     public Cursor listaDadosProdutosDoSupermercado(String idSupermercado){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_PRODUTO +
@@ -89,14 +94,6 @@ public class SupermercadoPersistencia {
         }
         db.close();
         return cursor;
-    }
-
-    private Supermercado criarSupermercado(Cursor cursor){
-        Supermercado supermercado = new Supermercado();
-        supermercado.setId(cursor.getInt(0));
-        supermercado.setNome(cursor.getString(1));
-        supermercado.setTelefone(cursor.getString(2));
-        return supermercado;
     }
 
 }

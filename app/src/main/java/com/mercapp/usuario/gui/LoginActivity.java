@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.mercapp.R;
 import com.mercapp.infra.Session;
 import com.mercapp.usuario.dominio.Usuario;
+import com.mercapp.usuario.negocio.PessoaNegocio;
 import com.mercapp.usuario.negocio.UsuarioNegocio;
 
 import java.util.regex.Matcher;
@@ -67,8 +68,9 @@ public class LoginActivity extends AppCompatActivity {
 
             if (logarTest != null) {
                 session.setUsuarioLogado(logarTest);
-                if (usuarioNegocio.buscarPessoa(logarTest.getId()) != null) {
-                    session.setPessoaLogada(usuarioNegocio.buscarPessoa(logarTest.getId()));
+                PessoaNegocio pessoaNegocio = new PessoaNegocio(_context);
+                if (pessoaNegocio.buscarPessoa(logarTest.getId()) != null) {
+                    session.setPessoaLogada(pessoaNegocio.buscarPessoa(logarTest.getId()));
                     Intent changeToTelaPrincipal = new Intent(LoginActivity.this, TelaMenuActivity.class);
                     LoginActivity.this.startActivity(changeToTelaPrincipal);
                     Toast.makeText(this, "Bem-Vindo - " + session.getPessoaLogada().getNome(), Toast.LENGTH_SHORT).show();
