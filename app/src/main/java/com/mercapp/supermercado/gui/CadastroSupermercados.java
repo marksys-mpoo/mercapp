@@ -8,12 +8,10 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.mercapp.R;
-import com.mercapp.infra.Administrador;
 import com.mercapp.infra.Session;
 import com.mercapp.supermercado.dominio.Supermercado;
 import com.mercapp.supermercado.negocio.SupermercadoNegocio;
@@ -23,14 +21,14 @@ public class CadastroSupermercados extends AppCompatActivity {
 
     private static final String stringVazia = "";
     private static final String stringInicial ="0.0";
-    private static final String textBotaoFuncaoEditar ="Atualizar";
-    private static final String textBotaoFuncaoCadastrar ="Salvar";
+    private static final String textBotaoFuncaoEditar ="atualizar";
+    private static final String textBotaoFuncaoCadastrar ="salvar";
     private String textBotaoFuncao;
     private String nomeSupermercado, telefoneSupermercado;
 
     private Context _context = CadastroSupermercados.this;    private Session session = Session.getInstanciaSessao();
     private SupermercadoNegocio supermercadoNegocio;
-    private Supermercado supermercadoCadastrado, supermercadoEditado;
+    private Supermercado supermercado, supermercadoEditado;
     private EditText etSupermercadoNome, etSupermercadoTelefone, etLogintude, etLatitude;
     private Button btnSalvarEditar;
     private String funcao;
@@ -106,17 +104,17 @@ public class CadastroSupermercados extends AppCompatActivity {
 
     public void cadastroDireto(View view) {
         LatLng ufrpeExtrabom = new LatLng(-8.017877, -34.944440);
-        Supermercado supermercado1 = CadastrarSupermercado("Extrabom - UFRPE","1111", ufrpeExtrabom);
+        Supermercado supermercado1 = CriarSupermercado("Extrabom - UFRPE","1111", ufrpeExtrabom);
         efetuarCadastroSupermercado(supermercado1);
         LatLng doisIrmaosExtrabom = new LatLng(-8.021448, -34.933130);
-        Supermercado supermercado2 = CadastrarSupermercado("Extrabom - Dois Irmãos","2222", doisIrmaosExtrabom);
+        Supermercado supermercado2 = CriarSupermercado("Extrabom - Dois Irmãos","2222", doisIrmaosExtrabom);
         efetuarCadastroSupermercado(supermercado2);
         LatLng parnamirimExtrabom = new LatLng(-8.027122, -34.9170917);
-        Supermercado supermercado3 = CadastrarSupermercado("Extrabom - Parnamirim","3333", parnamirimExtrabom);
+        Supermercado supermercado3 = CriarSupermercado("Extrabom - Parnamirim","3333", parnamirimExtrabom);
         efetuarCadastroSupermercado(supermercado3);
 
     }
-    private Supermercado CadastrarSupermercado(String nome, String telefone, LatLng coordenadas) {
+    private Supermercado CriarSupermercado(String nome, String telefone, LatLng coordenadas) {
         Supermercado supermercado = new Supermercado();
         supermercado.setNome(nome);
         supermercado.setTelefone(telefone);
@@ -125,35 +123,56 @@ public class CadastroSupermercados extends AppCompatActivity {
     }
 
     public void efetuarCadastroSupermercado(Supermercado supermercado) {
+        Integer id = supermercado.getId();
         String nome = supermercado.getNome();
         String telefone = supermercado.getTelefone();
         LatLng coordenadas = supermercado.getCoordenadas();
         supermercadoNegocio = new SupermercadoNegocio(_context);
-        supermercadoCadastrado = supermercadoNegocio.buscaSupermercado(nome);
-        if (supermercadoCadastrado == null) {
-            supermercadoNegocio.cadastroSupermercado(nome, telefone, coordenadas);
+        this.supermercado = supermercadoNegocio.buscaSupermercado(nome);
+        if (this.supermercado == null) {
+            supermercadoNegocio.cadastrarAtualizar(id, textBotaoFuncao, nome, telefone, coordenadas);
             Toast.makeText(this, "Supermercado " + nome + " cadastrado com sucesso.", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Supermercado já exitente!", Toast.LENGTH_SHORT).show();
         }
     }
+    public void teste999(View view) {
+        Toast.makeText(this, "Supermercado " + textBotaoFuncao + " Teste!", Toast.LENGTH_SHORT).show();
+    }
 
-    public void cadastrarSupermercadoManual(View view) {
+
+    public void cadastrarAtualizar(View view) {
         String nome = etSupermercadoNome.getText().toString().trim();
         String telefone = etSupermercadoTelefone.getText().toString().trim();
         Double latitude = Double.parseDouble(etLatitude.getText().toString().trim());
         Double longitude = Double.parseDouble(etLogintude.getText().toString().trim());
+        Integer id = 0;
 
-        if(validarCamposDouble() && validarCampos()) {
-            LatLng coordenadas = new LatLng(latitude, longitude);
-            supermercadoNegocio = new SupermercadoNegocio(_context);
-            supermercadoCadastrado = supermercadoNegocio.buscaSupermercado(nome);
-            if (supermercadoCadastrado == null) {
-                supermercadoNegocio.cadastroSupermercado(nome, telefone, coordenadas);
-                limparCampos();
-                Toast.makeText(this, "Supermercado " + nome + " cadastrado com sucesso.", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Supermercado já existente!", Toast.LENGTH_SHORT).show();
+        if (textBotaoFuncao == "salvar") {
+            id = 0; // Não vai ser usado pois no cadastro Id no banco é auto incrementado.
+            //Toast.makeText(this, "Supermstente! salvar", Toast.LENGTH_SHORT).show();
+            if(validarCamposDouble() && validarCampos()) {
+                LatLng coordenadas = new LatLng(latitude, longitude);
+                supermercadoNegocio = new SupermercadoNegocio(_context);
+                supermercado = supermercadoNegocio.buscaSupermercado(nome);
+                if (supermercado == null) {
+                    supermercadoNegocio.cadastrarAtualizar(id, textBotaoFuncao, nome, telefone, coordenadas);
+                    //limparCampos();
+                    Toast.makeText(this, "Supermercado " + nome + " cadastrado com sucesso.", Toast.LENGTH_SHORT).show();
+                    onBackPressed();
+                } else {
+                    Toast.makeText(this, "Supermercado já existente!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        } else if (textBotaoFuncao == "atualizar") {
+            id = session.getSupermercadoSelecionado().getId();
+            if(validarCamposDouble() && validarCampos()) {
+                LatLng coordenadas = new LatLng(latitude, longitude);
+                supermercadoNegocio = new SupermercadoNegocio(_context);
+                supermercado = supermercadoNegocio.buscaSupermercado(nome);
+                supermercadoNegocio.cadastrarAtualizar(id, textBotaoFuncao, nome, telefone, coordenadas);
+                Toast.makeText(this, "Supermercado " + nome + " atualizado.", Toast.LENGTH_SHORT).show();
+                onBackPressed();
             }
         }
     }
@@ -164,10 +183,17 @@ public class CadastroSupermercados extends AppCompatActivity {
         Supermercado supermercadoEditado = new Supermercado();
         supermercadoEditado.setNome(nomeSupermercado);
         supermercadoEditado.setTelefone(telefoneSupermercado);
+        if (textBotaoFuncao == "salvar") {
+            supermercadoEditado.setId(0);
+        } else if (textBotaoFuncao == "atualizar") {
+            Integer idSupermercadoSessao = session.getSupermercadoSelecionado().getId();
+            supermercadoEditado.setId(idSupermercadoSessao);
+        }
         SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(_context);
         supermercadoNegocio.iniciarSessaoSupermercado(supermercadoEditado);
         supermercadoNegocio.iniciarSessaoFuncaoCrud("editar");
         supermercadoNegocio.iniciarSessaotextButaoFuncaoCrud(textBotaoFuncao);
+
         Intent addCoordenadas = new Intent(CadastroSupermercados.this, TelaMenuActivity.class);
         startActivity(addCoordenadas);
         finish();

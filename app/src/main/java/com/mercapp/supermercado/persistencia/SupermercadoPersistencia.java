@@ -7,6 +7,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.google.android.gms.games.internal.api.StatsImpl;
 import com.google.android.gms.maps.model.LatLng;
 import com.mercapp.infra.BDHelper;
 import com.mercapp.supermercado.dominio.Produto;
@@ -23,14 +24,20 @@ public class SupermercadoPersistencia {
         bdHelper = new BDHelper(_context);
     }
 
-    public void cadastrarSupermercado(Supermercado supermercado){
+    public void cadastrarAtualizar(Integer id, String textBotaoFuncao, Supermercado supermercado){
         SQLiteDatabase db = bdHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(bdHelper.COLUNA_NOME_SUPERMERCADO, supermercado.getNome());
         values.put(bdHelper.COLUNA_TELEFONE_SUPERMERCADO, supermercado.getTelefone());
         values.put(bdHelper.COLUNA_LATITUDE_SUPERMERCADO, supermercado.getCoordenadas().latitude);
         values.put(bdHelper.COLUNA_LONGITUDE_SUPERMERCADO, supermercado.getCoordenadas().longitude);
-        db.insert(bdHelper.TBL_SUPERMERCADO, null, values);
+        if (textBotaoFuncao == "salvar") {
+            db.insert(bdHelper.TBL_SUPERMERCADO, null, values);
+        } else if (textBotaoFuncao == "atualizar") {
+            String where;
+            where = bdHelper.COLUNA_ID_SUPERMERCADO + "=" + id;
+            db.update(bdHelper.TBL_SUPERMERCADO,values,where,null);
+        }
         db.close();
     }
 
