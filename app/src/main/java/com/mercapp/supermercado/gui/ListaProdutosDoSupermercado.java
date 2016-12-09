@@ -62,7 +62,6 @@ public class ListaProdutosDoSupermercado extends AppCompatActivity {
             this.buscarTodosProdutosDoSupermercado();
             etDepartamentoSelecionado.setText("Produtos");
         }
-
     }
 
     public void buscarTodosProdutosDoSupermercado() {
@@ -85,12 +84,6 @@ public class ListaProdutosDoSupermercado extends AppCompatActivity {
         SimpleCursorAdapter adaptador = new SimpleCursorAdapter(_context,R.layout.produtos,cursor,nomeCampos,idViews, 0);
         lista = (ListView)findViewById(R.id.lista_produtos_do_supermercado);
         lista.setAdapter(adaptador);
-    }
-
-    public void changeTelaListaProdutosDoSupermercadoToTelaSupermercado(View view) {
-        Intent voltarTelaSupermercado = new Intent(ListaProdutosDoSupermercado.this, TelaSupermercado.class);
-        startActivity(voltarTelaSupermercado);
-        finish();
     }
 
     @Override

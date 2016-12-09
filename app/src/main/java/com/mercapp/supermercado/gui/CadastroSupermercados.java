@@ -102,41 +102,6 @@ public class CadastroSupermercados extends AppCompatActivity {
         btnSalvarEditar.setText(textBotaoFuncao);
     }
 
-    public void cadastroDireto(View view) {
-        LatLng ufrpeExtrabom = new LatLng(-8.017877, -34.944440);
-        Supermercado supermercado1 = CriarSupermercado("Extrabom - UFRPE","1111", ufrpeExtrabom);
-        efetuarCadastroSupermercado(supermercado1);
-        LatLng doisIrmaosExtrabom = new LatLng(-8.021448, -34.933130);
-        Supermercado supermercado2 = CriarSupermercado("Extrabom - Dois Irmãos","2222", doisIrmaosExtrabom);
-        efetuarCadastroSupermercado(supermercado2);
-        LatLng parnamirimExtrabom = new LatLng(-8.027122, -34.9170917);
-        Supermercado supermercado3 = CriarSupermercado("Extrabom - Parnamirim","3333", parnamirimExtrabom);
-        efetuarCadastroSupermercado(supermercado3);
-
-    }
-    private Supermercado CriarSupermercado(String nome, String telefone, LatLng coordenadas) {
-        Supermercado supermercado = new Supermercado();
-        supermercado.setNome(nome);
-        supermercado.setTelefone(telefone);
-        supermercado.setCoordenadas(coordenadas);
-        return supermercado;
-    }
-
-    public void efetuarCadastroSupermercado(Supermercado supermercado) {
-        Integer id = supermercado.getId();
-        String nome = supermercado.getNome();
-        String telefone = supermercado.getTelefone();
-        LatLng coordenadas = supermercado.getCoordenadas();
-        supermercadoNegocio = new SupermercadoNegocio(_context);
-        this.supermercado = supermercadoNegocio.buscaSupermercado(nome);
-        if (this.supermercado == null) {
-            supermercadoNegocio.cadastrarAtualizar(id, textBotaoFuncao, nome, telefone, coordenadas);
-            Toast.makeText(this, "Supermercado " + nome + " cadastrado com sucesso.", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "Supermercado já exitente!", Toast.LENGTH_SHORT).show();
-        }
-    }
-
     public void cadastrarAtualizar(View view) {
         String nome = etSupermercadoNome.getText().toString().trim();
         String telefone = etSupermercadoTelefone.getText().toString().trim();
@@ -146,14 +111,12 @@ public class CadastroSupermercados extends AppCompatActivity {
 
         if (textBotaoFuncao == "salvar") {
             id = 0; // Não vai ser usado pois no cadastro Id no banco é auto incrementado.
-            //Toast.makeText(this, "Supermstente! salvar", Toast.LENGTH_SHORT).show();
             if(validarCamposDouble() && validarCampos()) {
                 LatLng coordenadas = new LatLng(latitude, longitude);
                 supermercadoNegocio = new SupermercadoNegocio(_context);
                 supermercado = supermercadoNegocio.buscaSupermercado(nome);
                 if (supermercado == null) {
                     supermercadoNegocio.cadastrarAtualizar(id, textBotaoFuncao, nome, telefone, coordenadas);
-                    //limparCampos();
                     Toast.makeText(this, "Supermercado " + nome + " cadastrado com sucesso.", Toast.LENGTH_SHORT).show();
                     onBackPressed();
                 } else {
@@ -189,7 +152,6 @@ public class CadastroSupermercados extends AppCompatActivity {
         supermercadoNegocio.iniciarSessaoSupermercado(supermercadoEditado);
         supermercadoNegocio.iniciarSessaoFuncaoCrud("editar");
         supermercadoNegocio.iniciarSessaotextButaoFuncaoCrud(textBotaoFuncao);
-
         Intent addCoordenadas = new Intent(CadastroSupermercados.this, TelaMenuActivity.class);
         startActivity(addCoordenadas);
         finish();
@@ -225,6 +187,7 @@ public class CadastroSupermercados extends AppCompatActivity {
         etLogintude.setText(stringInicial);
         etLatitude.requestFocus();
     }
+
     private boolean validarCampos(){
         String nomeSupermercado = etSupermercadoNome.getText().toString();
         String telefonesupermercado = etSupermercadoTelefone.getText().toString();
@@ -247,30 +210,3 @@ public class CadastroSupermercados extends AppCompatActivity {
         return result;
     }
 }
-
-/*
-        //Posições
-        LatLng boaViagemExtrabom = new LatLng(-8.1201256, -34.9031476);
-        LatLng pinaExtrabom = new LatLng(-8.09494, -34.8877137);
-        LatLng piedadeExtrabom = new LatLng(-8.183888, -34.9211767);
-        LatLng mustardinhaExtrabom = new LatLng(-8.069109, -34.9198987);
-        LatLng olindaExtrabom = new LatLng(-7.9995286, -34.8469477);
-        LatLng parnamirimExtrabom = new LatLng(-8.027122, -34.9170917);
-        LatLng encruzilhadaExtrabom = new LatLng(-8.0371238, -34.899941);
-        LatLng torreExtrabom = new LatLng(-8.0462157, -34.9116174);
-        LatLng ufrpeExtrabom = new LatLng(-8.017877, -34.944440);
-        LatLng doisIrmaosExtrabom = new LatLng(-8.021448, -34.933130);
-
-        //MARKER's
-        customAddMaker(boaViagemExtrabom, "Extrabom - BoaViagem");
-        customAddMaker(piedadeExtrabom, "Extrabom - Piedade");
-        customAddMaker(mustardinhaExtrabom, "Extrabom - Mustardinha");
-        customAddMaker(olindaExtrabom, "Extrabom - Olinda");
-        customAddMaker(parnamirimExtrabom, "Extrabom - Parnamirim"); // add
-        customAddMaker(pinaExtrabom, "Extrabom - Pina");
-        customAddMaker(encruzilhadaExtrabom, "Extrabom - Encruzilhada");
-        customAddMaker(torreExtrabom, "Extrabom - Torre");
-        customAddMaker(ufrpeExtrabom, "Extrabom - UFRPE"); // add
-        customAddMaker(doisIrmaosExtrabom, "Extrabom - Dois Irmãos"); // add
-
-        */
