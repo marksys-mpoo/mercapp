@@ -30,7 +30,6 @@ public class ListaSupermercados extends AppCompatActivity {
     private SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(_context);
     private AlertDialog alerta;
     private Integer idSupermermercadoDelete;
-
     SearchView searchView;
 
     @Override

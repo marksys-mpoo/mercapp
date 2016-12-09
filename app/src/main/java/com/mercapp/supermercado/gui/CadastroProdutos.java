@@ -12,16 +12,18 @@ import android.widget.Toast;
 import com.mercapp.R;
 import com.mercapp.infra.Administrador;
 import com.mercapp.supermercado.dominio.Produto;
+import com.mercapp.supermercado.dominio.Supermercado;
 import com.mercapp.supermercado.negocio.ProdutoNegocio;
 import com.mercapp.supermercado.negocio.SupermercadoNegocio;
 
 public class CadastroProdutos extends AppCompatActivity {
 
     private static final String stringVazia = "";
+    private static final String idDepartamento = "1";
     private Context _context = CadastroProdutos.this;
     private SupermercadoNegocio supermercadoNegocio;
     private Produto produtoCadastrado;
-    private EditText setdescricao, setpreco,setnome;
+    private EditText setdescricao, setpreco,setnome, setSupermrecado ;
     private double preco;
 
     @Override
@@ -31,6 +33,7 @@ public class CadastroProdutos extends AppCompatActivity {
         setnome = (EditText) findViewById(R.id.edtNomeProduto);
         setdescricao = (EditText) findViewById(R.id.edtDescricaoProduto);
         setpreco = (EditText) findViewById(R.id.edtPrecoProduto);
+        setSupermrecado = (EditText)findViewById(R.id.edtSupermercadoProduto);
         setnome.requestFocus();
     }
 
@@ -38,14 +41,18 @@ public class CadastroProdutos extends AppCompatActivity {
 
         String nome = setnome.getText().toString().trim();
         String descricao = setdescricao.getText().toString().trim();
+        String nomeSupermercado = setSupermrecado.getText().toString().trim();
         if (setpreco.getText().toString().equals("")) {
             setpreco.requestFocus();
             setpreco.setError(getString(R.string.preco_vazio_tela_cadastro_produtos));
         }
         else {
             if(validarCampos()) {
-                preco = Double.parseDouble(setpreco.getText().toString());
-                Produto produto = CadastrarProduto(nome, descricao, preco);
+                preco = Double.parseDouble(setpreco.getText().toString().trim());
+                supermercadoNegocio = new SupermercadoNegocio(_context);
+                Supermercado supermercado = supermercadoNegocio.buscaSupermercado(nomeSupermercado);
+                int idSupermercado = supermercado.getId();
+                Produto produto = CadastrarProduto(nome, descricao, preco,idSupermercado,idDepartamento );
                 efetuarCadastroProduto(produto);
             }else{
                 Toast.makeText(this, "O cadastro não foi realizado.", Toast.LENGTH_SHORT).show();
@@ -136,29 +143,30 @@ public class CadastroProdutos extends AppCompatActivity {
     }
 
     private void efetuarCadastroProduto(Produto produto) {
+        Integer id = produto.getId();
         String descricao = produto.getDescricao();
         Double preco = produto.getPreco();
         String nome =  produto.getNome();
+        int idSupermercado = produto.getIdSupermercado();
+        String idDepartamento = produto.getIdDepartamento();
         ProdutoNegocio produtoNegocio = new ProdutoNegocio(_context);
-        produtoCadastrado = produtoNegocio.buscarProdutoNome(nome);
+        produtoCadastrado = produtoNegocio.buscaProduto(id);
         if (produtoCadastrado == null) {
-            produtoNegocio.cadastroProduto(descricao, preco, nome);
-            limparCampos();
-            Toast.makeText(this, "Produto " + nome + " cadastrado com sucesso.", Toast.LENGTH_SHORT).show();
-        } else {
+            produtoNegocio.cadastroProduto(nome, descricao, preco, idSupermercado,idDepartamento);
+            Toast.makeText(this, "Produtos cadastrados com sucesso.", Toast.LENGTH_SHORT).show();
+        }else {
             Toast.makeText(this, "Produtos já exitentes!", Toast.LENGTH_SHORT).show();
-
         }
-
 
     }
 
-
-    private Produto CadastrarProduto(String nome, String descricao, double preco) {
+    private Produto CadastrarProduto(  String nome, String descricao, double preco, int nomesupermercado, String idDepartamento) {
         Produto produto = new Produto();
         produto.setNome(nome);
         produto.setDescricao(descricao);
         produto.setPreco(preco);
+        produto.setIdDepartamento(idDepartamento);
+        produto.setIdSupermercado(nomesupermercado);
         return produto;
     }
 
@@ -179,10 +187,10 @@ public class CadastroProdutos extends AppCompatActivity {
 //        Double preco = produto.getPreco();
 //        String idSupermercado = produto.getIdSupermercado();
 //        String idDepartamento = produto.getIdDepartamento();
-//        supermercadoNegocio = new SupermercadoNegocio(_context);
-//        produtoCadastrado = supermercadoNegocio.buscaProduto(id);
+//        ProdutoNegocio produtoNegocio = new ProdutoNegocio(_context);
+//        produtoCadastrado = produtoNegocio.buscaProduto(id);
 //        if (produtoCadastrado == null) {
-//            supermercadoNegocio.cadastroProduto(descricao, preco, idSupermercado, idDepartamento);
+//            produtoNegocio.cadastroProduto(descricao, preco, idSupermercado, idDepartamento);
 //            if (isUltimoProduto == "sim"){
 //                Toast.makeText(this, "Produtos cadastrados com sucesso.", Toast.LENGTH_SHORT).show();
 //            }

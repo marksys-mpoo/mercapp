@@ -5,7 +5,7 @@ public class Produto {
     private String descricao;
     private String nome;
     private Double preco;
-    private String idSupermercado;
+    private int idSupermercado;
     private String idDepartamento;
 
 
@@ -41,11 +41,11 @@ public class Produto {
         this.preco = preco;
     }
 
-    public String getIdSupermercado() {
+    public int getIdSupermercado() {
         return idSupermercado;
     }
 
-    public void setIdSupermercado(String idSupermercado) {
+    public void setIdSupermercado(int idSupermercado) {
         this.idSupermercado = idSupermercado;
     }
 

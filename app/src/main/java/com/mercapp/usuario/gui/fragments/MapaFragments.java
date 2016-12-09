@@ -48,7 +48,6 @@ public class MapaFragments extends SupportMapFragment implements OnMapReadyCallb
         getMapAsync(this);
         _context = this.getActivity();
     }
-
     @Override
     public void onResume() {
         super.onResume();
@@ -116,8 +115,6 @@ public class MapaFragments extends SupportMapFragment implements OnMapReadyCallb
         } finally {
             cursor.close();
         }
-
-
     }
 
     public void customAddMaker(LatLng latLng, String titulo){

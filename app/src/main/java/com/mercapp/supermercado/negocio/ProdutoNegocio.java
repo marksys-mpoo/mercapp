@@ -34,11 +34,13 @@ public class ProdutoNegocio {
         return produtoSelecionado;
     }
 
-    public void cadastroProduto(String descricao, Double preco, String nome){
+    public void cadastroProduto( String nome,String descricao, Double preco, int idSupermercado,String idDepartamento){
         Produto produtoCadastro = new Produto();
         produtoCadastro.setDescricao(descricao);
         produtoCadastro.setPreco(preco);
         produtoCadastro.setNome(nome);
+        produtoCadastro.setIdSupermercado(idSupermercado);
+        produtoCadastro.setIdDepartamento(idDepartamento);
         ProdutoPersistencia produtoPersistencia = new ProdutoPersistencia(_context);
         produtoPersistencia.cadastrarProduto(produtoCadastro);
     }
