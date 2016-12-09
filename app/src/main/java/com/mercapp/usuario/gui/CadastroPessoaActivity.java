@@ -53,8 +53,13 @@ public class CadastroPessoaActivity extends AppCompatActivity {
         if (validarCamposPessoa()){
             pessoaNegocio = new PessoaNegocio(_context);
             if (session.getPessoaLogada() != null){
+                session.getPessoaLogada().setNome(nome);
+                session.getPessoaLogada().setTelefone(telefone);
+                session.getPessoaLogada().setNumeroCartao(numeroCartao);
                 pessoaNegocio.editarPessoa(session.getPessoaLogada());
-                Toast.makeText(this, "Alterações Salvas", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Alterações Salvas " + session.getPessoaLogada().getNome(), Toast.LENGTH_SHORT).show();
+                Intent changeToTelaPrincipal = new Intent(CadastroPessoaActivity.this, TelaMenuActivity.class);
+                CadastroPessoaActivity.this.startActivity(changeToTelaPrincipal);
                 finish();
             } else {
             pessoaNegocio.cadastroPessoa(nome, telefone, numeroCartao);

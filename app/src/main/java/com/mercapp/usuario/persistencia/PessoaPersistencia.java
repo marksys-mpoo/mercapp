@@ -40,8 +40,7 @@ public class PessoaPersistencia {
         values.put(bdHelper.COLUNA_NOME, pessoa.getNome());
         values.put(bdHelper.COLUNA_TELEFONE, pessoa.getTelefone());
         values.put(bdHelper.COLUNA_NUMEROCARTAO, pessoa.getNumeroCartao());
-        values.put(bdHelper.COLUNA_ID_USUARIO_PESSOA, session.getUsuarioLogado().getId());
-        db.update(bdHelper.TBL_PESSOA, values, "_id = ? ", new String[]{""+pessoa.getId()});
+        db.update(bdHelper.TBL_PESSOA, values, "_id_pessoa = ?", new String[]{""+pessoa.getId()});
 
         db.close();
     }
