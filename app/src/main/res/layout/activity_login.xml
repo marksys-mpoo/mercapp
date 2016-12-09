@@ -15,76 +15,78 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:layout_width="191dp"
-            android:layout_height="195dp"
             android:id="@+id/logo"
             android:src="@drawable/logo"
             android:maxHeight="75dp"
             android:maxWidth="75dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_gravity="center_horizontal|top" />
+            android:layout_gravity="center_horizontal|top"
+            android:layout_width="150dp"
+            android:layout_height="150dp" />
+
+        <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="170dp"
+            android:id="@+id/relativeLayout">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/etSenha"
+                android:hint="@string/hint_senha_tela_login"
+                android:layout_below="@+id/etEmail"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="18dp" />
+
+            <Button
+                android:text="@string/botao_cadastrar_tela_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnCadastrar"
+                android:onClick="cadastrarUsuario"
+                android:layout_below="@+id/btnEntrar"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="10dp" />
+
+            <Button
+                android:text="@string/botao_login_tela_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnEntrar"
+                android:onClick="loginUsuario"
+                android:layout_below="@+id/etSenha"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:text="@string/label_Tela_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/tvRecuperarSenha" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/etEmail"
+                android:hint="@string/hint_email_tela_login"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+
+        </RelativeLayout>
     </FrameLayout>
-
-    <RelativeLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="230dp"
-        android:id="@+id/relativeLayout">
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/etEmail"
-            android:hint="@string/hint_email_tela_login" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:ems="10"
-            android:id="@+id/etSenha"
-            android:hint="@string/hint_senha_tela_login"
-            android:layout_below="@+id/etEmail"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="18dp" />
-
-        <Button
-            android:text="@string/botao_cadastrar_tela_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnCadastrar"
-            android:onClick="cadastrarUsuario"
-            android:layout_below="@+id/btnEntrar"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="10dp" />
-
-        <Button
-            android:text="@string/botao_login_tela_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnEntrar"
-            android:onClick="loginUsuario"
-            android:layout_below="@+id/etSenha"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="20dp" />
-
-        <TextView
-            android:text="@string/label_Tela_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/tvRecuperarSenha" />
-
-    </RelativeLayout>
 
 </RelativeLayout>

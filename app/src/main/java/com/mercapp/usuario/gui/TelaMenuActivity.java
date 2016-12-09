@@ -1,5 +1,6 @@
 package com.mercapp.usuario.gui;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -9,6 +10,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -32,6 +34,7 @@ public class TelaMenuActivity extends AppCompatActivity
 
     private GoogleApiClient client;
 
+    private AlertDialog alerta;
     private FragmentManager fragmentManager;
     private Session session = Session.getInstanciaSessao();
 
@@ -141,10 +144,7 @@ public class TelaMenuActivity extends AppCompatActivity
                 getFragmentManager().popBackStack();
                 break;
             case R.id.logoutApp:
-                session.Logout();
-                Intent changeToTelaLogin = new Intent(TelaMenuActivity.this, LoginActivity.class);
-                TelaMenuActivity.this.startActivity(changeToTelaLogin);
-                finish();
+                confirmarSaida();
                 break;
             case R.id.nav_adm:
                 Intent changeToAdm = new Intent(TelaMenuActivity.this, Administrador.class);
@@ -155,5 +155,23 @@ public class TelaMenuActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    private void confirmarSaida(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Sair");
+        builder.setMessage("Deseja Realmente Sair?");
+        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent logoutapp = new Intent(TelaMenuActivity.this, LoginActivity.class);
+                TelaMenuActivity.this.startActivity(logoutapp);
+                finish();
+            }
+        });
+        builder.setNegativeButton("Não", null);
+        alerta = builder.create();
+        alerta.show();
     }
 }
