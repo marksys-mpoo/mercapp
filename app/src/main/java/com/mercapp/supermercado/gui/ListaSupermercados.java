@@ -41,8 +41,8 @@ public class ListaSupermercados extends AppCompatActivity {
 
         SupermercadoNegocio consulta = new SupermercadoNegocio(_context);
         final Cursor cursor = consulta.listaSupermercados();
-        String[] nomeCampos = new String[] {BDHelper.COLUNA_ID_SUPERMERCADO, BDHelper.COLUNA_NOME_SUPERMERCADO, BDHelper.COLUNA_TELEFONE_SUPERMERCADO};
-        int[] idViews = new int[] {R.id.colunaProduto1, R.id.colunaProduto2, R.id.colunaProduto3};
+        String[] nomeCampos = new String[] {BDHelper.COLUNA_NOME_SUPERMERCADO, BDHelper.COLUNA_TELEFONE_SUPERMERCADO};
+        int[] idViews = new int[] {R.id.colunaProduto2, R.id.colunaProduto3};
         dataAdapter = new SimpleCursorAdapter(_context,R.layout.supermercados,cursor,nomeCampos,idViews, 0);
 
         lista = (ListView)findViewById(R.id.lista_supermercados);
@@ -71,7 +71,8 @@ public class ListaSupermercados extends AppCompatActivity {
                 supermercado = supermercadoNegocio.criarSupermercado(cursor);
                 if (supermercado != null) {
                     Integer idSupermercado = supermercado.getId();
-                    alertDeletarItem(idSupermercado);
+                    String nome = supermercado.getNome();
+                    alertDeletarItem(idSupermercado, nome);
                 }
                 return true;
             }
@@ -130,17 +131,17 @@ public class ListaSupermercados extends AppCompatActivity {
         finish();
     }
 
-    private void alertDeletarItem(final Integer idS) {
+    private void alertDeletarItem(final Integer idS, final String nome) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("CRUD Supermercado");
-        builder.setMessage("Deseja deletar o item selecionado? (id = " + idS + " )");
+        builder.setTitle(nome);
+        builder.setMessage("Deseja deletar o supermercado?");
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
                 supermercadoNegocio.deletar(idS);
                 SupermercadoNegocio consulta = new SupermercadoNegocio(_context);
                 Cursor cursorNew = consulta.listaSupermercados();
                 dataAdapter.swapCursor(cursorNew);
-                Toast.makeText(ListaSupermercados.this, "Supermercado de Id = " + idS + " foi deletado.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ListaSupermercados.this, "Supermercado " + nome + " deletado.", Toast.LENGTH_SHORT).show();
             }
         });
         builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {

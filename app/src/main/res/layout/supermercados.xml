@@ -5,22 +5,13 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/colunaProduto1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/textview_coluna1_supermercados"
-        android:textSize="18sp"/>
-
-    <TextView
         android:id="@+id/colunaProduto3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/textview_coluna3_supermercados"
         android:textSize="18sp"
-        android:layout_marginEnd="21dp"
-        android:layout_alignBaseline="@+id/colunaProduto2"
-        android:layout_alignBottom="@+id/colunaProduto2"
-        android:layout_alignParentEnd="true" />
+        android:layout_below="@+id/colunaProduto2"
+        android:layout_alignStart="@+id/colunaProduto2" />
 
     <TextView
         android:id="@+id/colunaProduto2"
@@ -28,7 +19,27 @@
         android:layout_height="wrap_content"
         android:text="@string/textview_coluna2_supermercados"
         android:textSize="18sp"
+        android:layout_marginStart="82dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Nome:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:id="@+id/textView14"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Telefone:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:id="@+id/textView15"
+        android:layout_below="@+id/textView14"
+        android:layout_alignParentStart="true" />
+
 
 </RelativeLayout>

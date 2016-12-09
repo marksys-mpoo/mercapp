@@ -16,8 +16,8 @@
         android:layout_height="match_parent"
         android:id="@+id/lista_supermercados"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView6"
-        android:layout_alignBottom="@+id/adicionarSupermercado" />
+        android:layout_alignBottom="@+id/adicionarSupermercado"
+        android:layout_below="@+id/searchViewSupermercados" />
 
     <TextView
         android:text="@string/titulo_lista_supermercados"
@@ -31,49 +31,6 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <SearchView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/searchViewSupermercados"
-        android:layout_below="@+id/button10"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="11dp"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:text="@string/textview_nome_supermercado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:id="@+id/textView4"
-        android:layout_below="@+id/searchViewSupermercados"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="11dp" />
-
-    <TextView
-        android:text="@string/textview_telefone_supermercado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:id="@+id/textView3"
-        android:layout_marginEnd="13dp"
-        android:layout_alignBaseline="@+id/textView4"
-        android:layout_alignBottom="@+id/textView4"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:text="@string/textview_id_supermercado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:id="@+id/textView6"
-        android:layout_alignBaseline="@+id/textView4"
-        android:layout_alignBottom="@+id/textView4"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView3"
-        android:layout_alignStart="@+id/adicionarSupermercado"
-        android:layout_marginTop="12dp" />
-
     <android.support.design.widget.FloatingActionButton
         android:text="text"
         app:srcCompat="@android:drawable/ic_input_add"
@@ -84,5 +41,12 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:onClick="changeScreenListaToCadastroSupermercados"/>
+
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchViewSupermercados"
+        android:layout_below="@+id/button10"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

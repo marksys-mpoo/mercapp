@@ -56,7 +56,7 @@
 
 
     //Tela_cadastro_supermercado
-    <string name="tela_cadastro_dos_Supermercados">Cadastrar de Supermercados</string>
+    <string name="tela_cadastro_dos_Supermercados">Cadastro de Supermercados</string>
     <string name="tela_busca_dos_Supermercados">Buscar</string>
     <string name="hint_nome_supermercado">Nome</string>
     <string name="hint_numero_telefone_supermercado">Telefone</string>
