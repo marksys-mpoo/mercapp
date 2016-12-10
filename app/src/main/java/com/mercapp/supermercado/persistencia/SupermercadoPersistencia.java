@@ -105,7 +105,7 @@ public class SupermercadoPersistencia {
         return cursor;
     }
 
-    public Supermercado criarSupermercado(Cursor cursor){
+    private Supermercado criarSupermercado(Cursor cursor){
         Supermercado supermercado = new Supermercado();
         supermercado.setId(cursor.getInt(0));
         supermercado.setNome(cursor.getString(1));

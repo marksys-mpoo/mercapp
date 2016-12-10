@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.mercapp.R;
-import com.mercapp.infra.Administrador;
 import com.mercapp.supermercado.dominio.Produto;
 import com.mercapp.supermercado.dominio.Supermercado;
 import com.mercapp.supermercado.negocio.ProdutoNegocio;
@@ -150,9 +149,9 @@ public class CadastroProdutos extends AppCompatActivity {
         int idSupermercado = produto.getIdSupermercado();
         String idDepartamento = produto.getIdDepartamento();
         ProdutoNegocio produtoNegocio = new ProdutoNegocio(_context);
-        produtoCadastrado = produtoNegocio.buscaProduto(id);
+        produtoCadastrado = produtoNegocio.buscar(id);
         if (produtoCadastrado == null) {
-            produtoNegocio.cadastroProduto(nome, descricao, preco, idSupermercado,idDepartamento);
+            produtoNegocio.cadastrar(nome, descricao, preco, idSupermercado,idDepartamento);
             Toast.makeText(this, "Produtos cadastrados com sucesso.", Toast.LENGTH_SHORT).show();
         }else {
             Toast.makeText(this, "Produtos já exitentes!", Toast.LENGTH_SHORT).show();
@@ -188,9 +187,9 @@ public class CadastroProdutos extends AppCompatActivity {
 //        String idSupermercado = produto.getIdSupermercado();
 //        String idDepartamento = produto.getIdDepartamento();
 //        ProdutoNegocio produtoNegocio = new ProdutoNegocio(_context);
-//        produtoCadastrado = produtoNegocio.buscaProduto(id);
+//        produtoCadastrado = produtoNegocio.buscar(id);
 //        if (produtoCadastrado == null) {
-//            produtoNegocio.cadastroProduto(descricao, preco, idSupermercado, idDepartamento);
+//            produtoNegocio.cadastrar(descricao, preco, idSupermercado, idDepartamento);
 //            if (isUltimoProduto == "sim"){
 //                Toast.makeText(this, "Produtos cadastrados com sucesso.", Toast.LENGTH_SHORT).show();
 //            }

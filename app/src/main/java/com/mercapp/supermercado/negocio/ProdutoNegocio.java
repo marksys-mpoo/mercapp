@@ -5,13 +5,7 @@ import android.database.Cursor;
 
 import com.mercapp.infra.Session;
 import com.mercapp.supermercado.dominio.Produto;
-import com.mercapp.supermercado.dominio.Supermercado;
 import com.mercapp.supermercado.persistencia.ProdutoPersistencia;
-import com.mercapp.supermercado.persistencia.SupermercadoPersistencia;
-
-/**
- * Created by WELLINGTON on 07/12/2016.
- */
 
 public class ProdutoNegocio {
 
@@ -22,19 +16,19 @@ public class ProdutoNegocio {
         this._context = _context;
     }
 
-    public Produto buscaProduto(Integer id) {
+    public Produto buscar(Integer id) {
         ProdutoPersistencia produtoPersistencia = new ProdutoPersistencia(_context);
-        Produto produtoSelecionado = produtoPersistencia.buscarProduto(id);
+        Produto produtoSelecionado = produtoPersistencia.buscar(id);
         return produtoSelecionado;
     }
 
-    public Produto buscarProdutoNome(String nome) {
+    public Produto buscar(String nome) {
         ProdutoPersistencia produtoPersistencia = new ProdutoPersistencia(_context);
-        Produto produtoSelecionado = produtoPersistencia.buscarProdutoNome(nome);
+        Produto produtoSelecionado = produtoPersistencia.buscar(nome);
         return produtoSelecionado;
     }
 
-    public void cadastroProduto( String nome,String descricao, Double preco, int idSupermercado,String idDepartamento){
+    public void cadastrar(String nome, String descricao, Double preco, int idSupermercado, String idDepartamento){
         Produto produtoCadastro = new Produto();
         produtoCadastro.setDescricao(descricao);
         produtoCadastro.setPreco(preco);
@@ -42,7 +36,7 @@ public class ProdutoNegocio {
         produtoCadastro.setIdSupermercado(idSupermercado);
         produtoCadastro.setIdDepartamento(idDepartamento);
         ProdutoPersistencia produtoPersistencia = new ProdutoPersistencia(_context);
-        produtoPersistencia.cadastrarProduto(produtoCadastro);
+        produtoPersistencia.cadastrar(produtoCadastro);
     }
 
     public Cursor listaProdutos(){

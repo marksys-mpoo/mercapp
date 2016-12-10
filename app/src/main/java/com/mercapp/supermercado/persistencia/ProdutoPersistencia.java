@@ -8,10 +8,6 @@ import android.database.sqlite.SQLiteDatabase;
 import com.mercapp.infra.BDHelper;
 import com.mercapp.supermercado.dominio.Produto;
 
-/**
- * Created by WELLINGTON on 07/12/2016.
- */
-
 public class ProdutoPersistencia {
     private Context _context;
     private BDHelper bdHelper;
@@ -20,7 +16,7 @@ public class ProdutoPersistencia {
         this._context = _context;
         bdHelper = new BDHelper(_context);
     }
-    public void cadastrarProduto(Produto produto){
+    public void cadastrar(Produto produto){
         SQLiteDatabase db = bdHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(bdHelper.COLUNA_DESCRICAO, produto.getDescricao());
@@ -31,7 +27,7 @@ public class ProdutoPersistencia {
         db.insert(bdHelper.TBL_PRODUTO, null, values);
         db.close();
     }
-    public Produto buscarProduto(Integer id){
+    public Produto buscar(Integer id){
         String id_string = id.toString();
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Produto produto = null;
@@ -44,7 +40,7 @@ public class ProdutoPersistencia {
         db.close();
         return produto;
     }
-    public Produto buscarProdutoNome(String nome){
+    public Produto buscar(String nome){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Produto produto = null;
         Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_PRODUTO +
