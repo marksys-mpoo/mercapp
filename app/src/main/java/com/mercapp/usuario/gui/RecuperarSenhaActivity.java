@@ -8,11 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mercapp.R;
-import com.mercapp.infra.Session;
 import com.mercapp.usuario.dominio.Usuario;
 import com.mercapp.usuario.negocio.UsuarioNegocio;
 
@@ -83,7 +81,7 @@ public class RecuperarSenhaActivity extends AppCompatActivity implements View.On
         protected String doInBackground(String... params) {
             try{
                 usuarioNegocio = new UsuarioNegocio(context);
-                usuario = usuarioNegocio.buscaUsuario(rec);
+                usuario = usuarioNegocio.buscar(rec);
                 msg = usuario.getSenha();
                 if (msg != null) {
                     Toast.makeText(getApplicationContext(), "Enviando email para "+ usuario.getEmail(), Toast.LENGTH_SHORT).show();

@@ -5,10 +5,6 @@ import android.content.Context;
 import com.mercapp.usuario.dominio.Pessoa;
 import com.mercapp.usuario.persistencia.PessoaPersistencia;
 
-/**
- * Created by WELLINGTON on 07/12/2016.
- */
-
 public class PessoaNegocio {
 
     private Context _context;
@@ -17,19 +13,19 @@ public class PessoaNegocio {
         this._context = _context;
     }
 
-    public Pessoa buscarPessoa(int usuarioId){
+    public Pessoa buscar(int usuarioId){
         PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(_context);
-        Pessoa pessoaLogada = pessoaPersistencia.buscarPessoa(usuarioId);
+        Pessoa pessoaLogada = pessoaPersistencia.buscar(usuarioId);
         return pessoaLogada;
     }
 
-    public Pessoa buscarPessoa(String numeroCartao){
+    public Pessoa buscar(String numeroCartao){
         PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(_context);
-        Pessoa pessoaLogada = pessoaPersistencia.buscarPessoa(numeroCartao);
+        Pessoa pessoaLogada = pessoaPersistencia.buscar(numeroCartao);
         return pessoaLogada;
     }
 
-    public void cadastroPessoa(String nome, String telefone, String numeroCartao){
+    public void cadastro(String nome, String telefone, String numeroCartao){
         Pessoa pessoaCadastro = new Pessoa();
 
         pessoaCadastro.setNome(nome);
@@ -37,11 +33,11 @@ public class PessoaNegocio {
         pessoaCadastro.setNumeroCartao(numeroCartao);
 
         PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(_context);
-        pessoaPersistencia.cadastrarPessoa(pessoaCadastro);
+        pessoaPersistencia.cadastrar(pessoaCadastro);
     }
 
-    public void editarPessoa(Pessoa pessoa){
+    public void editar(Pessoa pessoa){
         PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(_context);
-        pessoaPersistencia.editarPessoa(pessoa);
+        pessoaPersistencia.editar(pessoa);
     }
 }

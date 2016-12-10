@@ -42,7 +42,7 @@ public class CadastroActivity extends AppCompatActivity {
         String senha = etSenha.getText().toString().trim();
 
         usuarioNegocio = new UsuarioNegocio(_context);
-        usuarioCadastro = usuarioNegocio.buscaUsuario(email);
+        usuarioCadastro = usuarioNegocio.buscar(email);
 
         if ((usuarioCadastro == null) && (validarCampos())){
             criptografia = CriptografiaSenha.getInstancia(senha);

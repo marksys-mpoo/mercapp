@@ -2,24 +2,22 @@ package com.mercapp.usuario.negocio;
 
 import android.content.Context;
 
-import com.mercapp.usuario.dominio.Pessoa;
 import com.mercapp.usuario.dominio.Usuario;
-import com.mercapp.usuario.persistencia.PessoaPersistencia;
 import com.mercapp.usuario.persistencia.UsuarioPersistencia;
 
 public class UsuarioNegocio {
 
     private Context _context;
 
-    public Usuario buscaUsuario(String email, String senha) {
+    public Usuario buscar(String email, String senha) {
         UsuarioPersistencia usuarioPersistencia = new UsuarioPersistencia(_context);
-        Usuario usuarioLogado = usuarioPersistencia.buscarUsuario(email, senha);
+        Usuario usuarioLogado = usuarioPersistencia.buscar(email, senha);
         return usuarioLogado;
     }
 
-    public Usuario buscaUsuario(String email) {
+    public Usuario buscar(String email) {
         UsuarioPersistencia usuarioPersistencia = new UsuarioPersistencia(_context);
-        Usuario usuarioLogado = usuarioPersistencia.buscarUsuario(email);
+        Usuario usuarioLogado = usuarioPersistencia.buscar(email);
         return usuarioLogado;
     }
 
@@ -36,29 +34,6 @@ public class UsuarioNegocio {
         usuarioCadastro.setSenha(senhaTela);
 
         UsuarioPersistencia usuarioPersistencia = new UsuarioPersistencia(_context);
-        usuarioPersistencia.cadastrarUsuario(usuarioCadastro);
+        usuarioPersistencia.cadastrar(usuarioCadastro);
     }
-
-//    public Pessoa buscarPessoa(int usuarioId){
-//        PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(_context);
-//        Pessoa pessoaLogada = pessoaPersistencia.buscarPessoa(usuarioId);
-//        return pessoaLogada;
-//    }
-//
-//    public Pessoa buscarPessoa(String numeroCartao){
-//        PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(_context);
-//        Pessoa pessoaLogada = pessoaPersistencia.buscarPessoa(numeroCartao);
-//        return pessoaLogada;
-//    }
-//
-//    public void cadastroPessoa(String nome, String telefone, String numeroCartao){
-//        Pessoa pessoaCadastro = new Pessoa();
-//
-//        pessoaCadastro.setNome(nome);
-//        pessoaCadastro.setTelefone(telefone);
-//        pessoaCadastro.setNumeroCartao(numeroCartao);
-//
-//        PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(_context);
-//        pessoaPersistencia.cadastrarPessoa(pessoaCadastro);
-//    }
 }

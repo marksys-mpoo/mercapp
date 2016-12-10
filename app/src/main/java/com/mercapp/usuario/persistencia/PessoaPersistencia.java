@@ -20,7 +20,7 @@ public class PessoaPersistencia {
         bdHelper = new BDHelper(_context);
     }
 
-    public void cadastrarPessoa(Pessoa pessoa){
+    public void cadastrar(Pessoa pessoa){
         SQLiteDatabase db = bdHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -33,7 +33,7 @@ public class PessoaPersistencia {
         db.close();
     }
 
-    public void editarPessoa(Pessoa pessoa){
+    public void editar(Pessoa pessoa){
         SQLiteDatabase db = bdHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -45,7 +45,7 @@ public class PessoaPersistencia {
         db.close();
     }
 
-    public Pessoa buscarPessoa(String numeroCartao){
+    public Pessoa buscar(String numeroCartao){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
 
         Pessoa pessoa = null;
@@ -61,7 +61,7 @@ public class PessoaPersistencia {
         return pessoa;
     }
 
-    public Pessoa buscarPessoa(int usuario){
+    public Pessoa buscar(int usuario){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
 
         Pessoa pessoa = null;
@@ -77,7 +77,7 @@ public class PessoaPersistencia {
         return pessoa;
     }
 
-    public Pessoa criarPessoa(Cursor cursor){
+    private Pessoa criarPessoa(Cursor cursor){
 
         Pessoa pessoa = new Pessoa();
         pessoa.setId(cursor.getInt(0));

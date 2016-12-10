@@ -19,7 +19,6 @@ import com.mercapp.usuario.negocio.UsuarioNegocio;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import com.mercapp.usuario.gui.RecuperarSenhaActivity;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -64,13 +63,13 @@ public class LoginActivity extends AppCompatActivity {
             UsuarioNegocio usuarioNegocio = new UsuarioNegocio(_context);
             criptografia =  criptografiaSenha.getInstancia(senha);
             senhaCriptografada = criptografia.getSenhaCriptografada();
-            Usuario logarTest = usuarioNegocio.buscaUsuario(email,senhaCriptografada);
+            Usuario logarTest = usuarioNegocio.buscar(email,senhaCriptografada);
 
             if (logarTest != null) {
                 session.setUsuarioLogado(logarTest);
                 PessoaNegocio pessoaNegocio = new PessoaNegocio(_context);
-                if (pessoaNegocio.buscarPessoa(logarTest.getId()) != null) {
-                    session.setPessoaLogada(pessoaNegocio.buscarPessoa(logarTest.getId()));
+                if (pessoaNegocio.buscar(logarTest.getId()) != null) {
+                    session.setPessoaLogada(pessoaNegocio.buscar(logarTest.getId()));
                     Intent changeToTelaPrincipal = new Intent(LoginActivity.this, TelaMenuActivity.class);
                     LoginActivity.this.startActivity(changeToTelaPrincipal);
                     Toast.makeText(this, "Bem-Vindo - " + session.getPessoaLogada().getNome(), Toast.LENGTH_SHORT).show();

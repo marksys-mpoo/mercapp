@@ -14,7 +14,6 @@ import com.mercapp.R;
 import com.mercapp.infra.Session;
 import com.mercapp.usuario.dominio.Pessoa;
 import com.mercapp.usuario.negocio.PessoaNegocio;
-import com.mercapp.usuario.negocio.UsuarioNegocio;
 
 public class CadastroPessoaActivity extends AppCompatActivity {
 
@@ -56,14 +55,14 @@ public class CadastroPessoaActivity extends AppCompatActivity {
                 session.getPessoaLogada().setNome(nome);
                 session.getPessoaLogada().setTelefone(telefone);
                 session.getPessoaLogada().setNumeroCartao(numeroCartao);
-                pessoaNegocio.editarPessoa(session.getPessoaLogada());
+                pessoaNegocio.editar(session.getPessoaLogada());
                 Toast.makeText(this, "Alterações Salvas " + session.getPessoaLogada().getNome(), Toast.LENGTH_SHORT).show();
                 Intent changeToTelaPrincipal = new Intent(CadastroPessoaActivity.this, TelaMenuActivity.class);
                 CadastroPessoaActivity.this.startActivity(changeToTelaPrincipal);
                 finish();
             } else {
-            pessoaNegocio.cadastroPessoa(nome, telefone, numeroCartao);
-            Pessoa pessoa = pessoaNegocio.buscarPessoa(numeroCartao);
+            pessoaNegocio.cadastro(nome, telefone, numeroCartao);
+            Pessoa pessoa = pessoaNegocio.buscar(numeroCartao);
             session.setPessoaLogada(pessoa);
             Intent changeToTelaPrincipal = new Intent(CadastroPessoaActivity.this, TelaMenuActivity.class);
             CadastroPessoaActivity.this.startActivity(changeToTelaPrincipal);

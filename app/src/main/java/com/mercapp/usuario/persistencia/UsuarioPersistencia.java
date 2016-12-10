@@ -22,7 +22,7 @@ public class UsuarioPersistencia {
         bdHelper= new BDHelper(_context);
     }
 
-    public void cadastrarUsuario(Usuario usuario){
+    public void cadastrar(Usuario usuario){
         SQLiteDatabase db = bdHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -33,7 +33,7 @@ public class UsuarioPersistencia {
         db.close();
     }
 
-    public Usuario buscarUsuario(String email, String senha){
+    public Usuario buscar(String email, String senha){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
 
         Usuario usuario = null;
@@ -50,7 +50,7 @@ public class UsuarioPersistencia {
         return usuario;
     }
 
-    public Usuario buscarUsuario(String email){
+    public Usuario buscar(String email){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
 
         Usuario usuario = null;
