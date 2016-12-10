@@ -39,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
 
         etEmail = (EditText) findViewById(R.id.etEmail);
         etSenha = (EditText) findViewById(R.id.etSenha);
+        etEmail.requestFocus();
 
         btnLogar = (Button) findViewById(R.id.btnEntrar);
         btnCadastrar = (Button) findViewById(R.id.btnCadastrar);

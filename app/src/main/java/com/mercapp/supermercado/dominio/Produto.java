@@ -5,6 +5,7 @@ public class Produto {
     private String descricao;
     private String nome;
     private Double preco;
+    private Supermercado supermercado;
     private int idSupermercado;
     private String idDepartamento;
 
@@ -47,6 +48,13 @@ public class Produto {
 
     public void setIdSupermercado(int idSupermercado) {
         this.idSupermercado = idSupermercado;
+    }
+    public Supermercado getSupermercado() {
+        return supermercado;
+    }
+
+    public void setSupermercado(Supermercado supermercado) {
+        this.supermercado = supermercado;
     }
 
     public String getIdDepartamento() {

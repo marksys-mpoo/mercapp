@@ -26,7 +26,8 @@ public class CadastroSupermercados extends AppCompatActivity {
     private String textBotaoFuncao;
     private String nomeSupermercado, telefoneSupermercado;
 
-    private Context _context = CadastroSupermercados.this;    private Session session = Session.getInstanciaSessao();
+    private Context _context = CadastroSupermercados.this;
+    private Session session = Session.getInstanciaSessao();
     private SupermercadoNegocio supermercadoNegocio;
     private Supermercado supermercado, supermercadoEditado;
     private EditText etSupermercadoNome, etSupermercadoTelefone, etLogintude, etLatitude;

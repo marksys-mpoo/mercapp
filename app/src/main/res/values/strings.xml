@@ -50,9 +50,8 @@
     <string name="titulo_tela_cadastro_produtos">Cadastro de Produtos</string>
     <string name="botao_cadastrar_produtos_direto">Salvar</string>
     <string name="botao_voltar_tela_cadastro_produtos">Voltar</string>
-    <string name="nome_vazio_tela_cadastro_produtos">Campo "Nome" não pode ser vazio!</string>
-    <string name="descricao_vazio_tela_cadastro_produtos">Campo "Descrição" não pode ser vazio!</string>
-    <string name="preco_vazio_tela_cadastro_produtos">Campo "preço" não pode ser vazio!</string>
+    <string name="campo_vazio_tela_cadastro_produtos"> O campo não pode ser vazio!</string>
+
 
 
     //Tela_cadastro_supermercado

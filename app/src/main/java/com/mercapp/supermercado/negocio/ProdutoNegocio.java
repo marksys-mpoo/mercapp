@@ -28,15 +28,15 @@ public class ProdutoNegocio {
         return produtoSelecionado;
     }
 
-    public void cadastrar(String nome, String descricao, Double preco, int idSupermercado, String idDepartamento){
-        Produto produtoCadastro = new Produto();
-        produtoCadastro.setDescricao(descricao);
-        produtoCadastro.setPreco(preco);
-        produtoCadastro.setNome(nome);
-        produtoCadastro.setIdSupermercado(idSupermercado);
-        produtoCadastro.setIdDepartamento(idDepartamento);
+    public void cadastrar(Produto produto){
+//        Produto produtoCadastro = new Produto();
+//        produtoCadastro.setDescricao(produto.getDescricao());
+//        produtoCadastro.setPreco(produto.getPreco());
+//        produtoCadastro.setNome(produto.getNome());
+//        produtoCadastro.setSupermercado(produto.getSupermercado());
+//        produtoCadastro.setIdDepartamento(produto.getIdDepartamento());
         ProdutoPersistencia produtoPersistencia = new ProdutoPersistencia(_context);
-        produtoPersistencia.cadastrar(produtoCadastro);
+        produtoPersistencia.cadastrar(produto);
     }
 
     public Cursor listaProdutos(){

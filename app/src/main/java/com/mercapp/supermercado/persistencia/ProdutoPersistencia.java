@@ -68,7 +68,10 @@ public class ProdutoPersistencia {
         produto.setId(cursor.getInt(0));
         produto.setDescricao(cursor.getString(1));
         produto.setPreco(cursor.getDouble(2));
-        produto.setIdSupermercado(cursor.getInt(3));
+        int idSupermercado = cursor.getInt(3);
+//        SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(_context);
+//        supermercadoPersistencia.
+        produto.setIdSupermercado(idSupermercado);
         return produto;
     }
     public Cursor listaDadosProdutosDoSupermercado(String idSupermercado){
