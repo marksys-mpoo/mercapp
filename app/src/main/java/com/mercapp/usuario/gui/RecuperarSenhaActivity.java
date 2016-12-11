@@ -81,14 +81,22 @@ public class RecuperarSenhaActivity extends AppCompatActivity implements View.On
         protected String doInBackground(String... params) {
             try{
                 usuarioNegocio = new UsuarioNegocio(context);
+                /*
                 usuario = usuarioNegocio.buscar(rec);
+                */
+                Usuario usuario = new Usuario();
+                usuario.setEmail(rec);
+                Usuario usuarioCadastrado = usuarioNegocio.buscar(usuario);
+                /*
                 msg = usuario.getSenha();
+                */
+                msg = usuarioCadastrado.getSenha();
                 if (msg != null) {
                     Toast.makeText(getApplicationContext(), "Enviando email para "+ usuario.getEmail(), Toast.LENGTH_SHORT).show();
 
                     Message message = new MimeMessage(session);
                     message.setFrom(new InternetAddress("marksys.mercapp@gmail.com"));
-                    message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("wellingtonluiz123456@gmail.com"));
+                    message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("peticormei@gmail.com"));
                     message.setSubject(sub);
                     message.setContent(msg, "text/html; charset=utf-8");
                     Transport.send(message);

@@ -46,7 +46,7 @@ public class UsuarioPersistencia {
         return usuarioDB;
     }
 // Fim metodo novo
-
+/*
     public Usuario buscar(String email, String senha){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
 
@@ -79,7 +79,7 @@ public class UsuarioPersistencia {
         db.close();
         return usuario;
     }
-
+*/
     private Usuario criarUsuario(Cursor cursor){
         Usuario usuario = new Usuario();
         usuario.setId(cursor.getInt(0));

@@ -16,7 +16,7 @@ public class UsuarioNegocio {
         return usuarioLogado;
     }
 // Fim metodo novo
-
+/*
     public Usuario buscar(String email, String senha) {
         UsuarioPersistencia usuarioPersistencia = new UsuarioPersistencia(_context);
         Usuario usuarioLogado = usuarioPersistencia.buscar(email, senha);
@@ -28,9 +28,8 @@ public class UsuarioNegocio {
         Usuario usuarioLogado = usuarioPersistencia.buscar(email);
         return usuarioLogado;
     }
-
-    public UsuarioNegocio(Context context)
-    {
+*/
+    public UsuarioNegocio(Context context) {
         _context = context;
     }
 
