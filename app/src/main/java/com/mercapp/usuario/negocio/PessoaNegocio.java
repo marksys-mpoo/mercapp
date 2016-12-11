@@ -19,21 +19,22 @@ public class PessoaNegocio {
         return pessoaLogada;
     }
 
-    public Pessoa buscar(String numeroCartao){
+//    public Pessoa buscar(String numeroCartao){
+//        PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(_context);
+//        Pessoa pessoaLogada = pessoaPersistencia.buscar(numeroCartao);
+//        return pessoaLogada;
+//    }
+
+      public void cadastro (Pessoa pessoa) {
+//    public void cadastro(String nome, String telefone, String numeroCartao){
+//        Pessoa pessoaCadastro = new Pessoa();
+//
+//       pessoaCadastro.setNome(nome);
+//        pessoaCadastro.setTelefone(telefone);
+//        pessoaCadastro.setNumeroCartao(numeroCartao);
+//
         PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(_context);
-        Pessoa pessoaLogada = pessoaPersistencia.buscar(numeroCartao);
-        return pessoaLogada;
-    }
-
-    public void cadastro(String nome, String telefone, String numeroCartao){
-        Pessoa pessoaCadastro = new Pessoa();
-
-        pessoaCadastro.setNome(nome);
-        pessoaCadastro.setTelefone(telefone);
-        pessoaCadastro.setNumeroCartao(numeroCartao);
-
-        PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(_context);
-        pessoaPersistencia.cadastrar(pessoaCadastro);
+        pessoaPersistencia.cadastrar(pessoa);
     }
 
     public void editar(Pessoa pessoa){
