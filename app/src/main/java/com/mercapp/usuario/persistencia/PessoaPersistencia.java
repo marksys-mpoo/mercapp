@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteDatabase;
 import com.mercapp.infra.BDHelper;
 import com.mercapp.infra.Session;
 import com.mercapp.usuario.dominio.Pessoa;
-import com.mercapp.usuario.dominio.Usuario;
 
 public class PessoaPersistencia {
 
@@ -46,32 +45,6 @@ public class PessoaPersistencia {
         db.close();
     }
 
-    public Pessoa buscar(Usuario usuario){
-        SQLiteDatabase db = bdHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + bdHelper.TBL_PESSOA +
-                " WHERE " + bdHelper.COLUNA_ID_USUARIO_PESSOA + " LIKE ? ", new String[]{Integer.toString(usuario.getId())});
-        Pessoa pessoaDB = null;
-        if (cursor.moveToFirst()){
-            pessoaDB = criarPessoa(cursor);
-        }
-        cursor.close();
-        db.close();
-        return pessoaDB;
-    }
-
-    public Pessoa buscar(Pessoa pessoa){
-        SQLiteDatabase db = bdHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + bdHelper.TBL_PESSOA +
-                " WHERE " + bdHelper.COLUNA_NUMEROCARTAO + " LIKE ? ", new String[]{pessoa.getNumeroCartao()});
-        Pessoa pessoaDB = null;
-        if (cursor.moveToFirst()){
-            pessoaDB = criarPessoa(cursor);
-        }
-        cursor.close();
-        db.close();
-        return pessoaDB;
-    }
-/*
     public Pessoa buscar(String numeroCartao){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
 
@@ -103,7 +76,6 @@ public class PessoaPersistencia {
         db.close();
         return pessoa;
     }
-*/
 
     private Pessoa criarPessoa(Cursor cursor){
 

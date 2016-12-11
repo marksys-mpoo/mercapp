@@ -45,52 +45,34 @@ public class CadastroPessoaActivity extends AppCompatActivity {
 
     public void cadastroPessoa(View view){
 
-        Pessoa pessoa = objetoPessoa();
-
-//        String nome = etNome.getText().toString().trim();
-//        String telefone = etTelefone.getText().toString().trim();
-//        String numeroCartao = etNumeroCartao.getText().toString().trim();
+        String nome = etNome.getText().toString().trim();
+        String telefone = etTelefone.getText().toString().trim();
+        String numeroCartao = etNumeroCartao.getText().toString().trim();
 
         if (validarCamposPessoa()){
             pessoaNegocio = new PessoaNegocio(_context);
             if (session.getPessoaLogada() != null){
-//                session.getPessoaLogada().setNome(nome);
-//                session.getPessoaLogada().setTelefone(telefone);
-//                session.getPessoaLogada().setNumeroCartao(numeroCartao);
-//                pessoaNegocio.editar(session.getPessoaLogada());
-                session.setPessoaLogada(pessoa);
-                pessoaNegocio.editar(pessoa);
+                session.getPessoaLogada().setNome(nome);
+                session.getPessoaLogada().setTelefone(telefone);
+                session.getPessoaLogada().setNumeroCartao(numeroCartao);
+                pessoaNegocio.editar(session.getPessoaLogada());
                 Toast.makeText(this, "Alterações Salvas " + session.getPessoaLogada().getNome(), Toast.LENGTH_SHORT).show();
                 Intent changeToTelaPrincipal = new Intent(CadastroPessoaActivity.this, TelaMenuActivity.class);
                 CadastroPessoaActivity.this.startActivity(changeToTelaPrincipal);
                 finish();
             } else {
-//            pessoaNegocio.cadastro(nome, telefone, numeroCartao);
-            pessoaNegocio.cadastro(pessoa);
-//            Pessoa pessoa = pessoaNegocio.buscar(numeroCartao);
+            pessoaNegocio.cadastro(nome, telefone, numeroCartao);
+            Pessoa pessoa = pessoaNegocio.buscar(numeroCartao);
             session.setPessoaLogada(pessoa);
             Intent changeToTelaPrincipal = new Intent(CadastroPessoaActivity.this, TelaMenuActivity.class);
             CadastroPessoaActivity.this.startActivity(changeToTelaPrincipal);
-//            Toast.makeText(this, "Bem-Vindo - "+ nome, Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, "Bem-Vindo - "+ pessoa.getNome(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Bem-Vindo - "+ nome, Toast.LENGTH_SHORT).show();
             finish();
             }
         }else {
             Toast.makeText(this, "Existem campos vazios", Toast.LENGTH_SHORT).show();
         }
     }
-
-// Metodo novo
-
-    private Pessoa objetoPessoa () {
-        Pessoa pessoa = new Pessoa();
-        pessoa.setNome(etNome.getText().toString().trim());
-        pessoa.setTelefone(etTelefone.getText().toString().trim());
-        pessoa.setNumeroCartao(etNumeroCartao.getText().toString().trim());
-        return pessoa;
-    }
-
-// Fim metodo novo
 
     private boolean validarCamposPessoa(){
         String nome = etNome.getText().toString().trim();

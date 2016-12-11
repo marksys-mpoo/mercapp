@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.mercapp.R;
-import com.mercapp.infra.CriptografiaSenha;
 import com.mercapp.usuario.dominio.Usuario;
 import com.mercapp.usuario.negocio.UsuarioNegocio;
 
@@ -20,44 +19,40 @@ import java.util.regex.Pattern;
 
 public class CadastroActivity extends AppCompatActivity {
 
-    private Context _context = CadastroActivity.this;
     private EditText etEmail, etSenha, etConfirmar;
     private Button btnEfetuarCadastro;
-    private Usuario usuarioCadastro;
+    private Context _context = CadastroActivity.this;
     private UsuarioNegocio usuarioNegocio;
+    private Usuario usuarioCadastro;
     private String senhaCriptografada;
     private CriptografiaSenha criptografia;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
-        etEmail = (EditText)findViewById(R.id.etEmail);
-        etSenha = (EditText)findViewById(R.id.etSenha);
-        etConfirmar = (EditText)findViewById(R.id.etConfirmaSenha);
-        btnEfetuarCadastro = (Button)findViewById(R.id.btnEfetuarCadastro);
+
+        etEmail = (EditText) findViewById(R.id.etEmail);
+        etSenha = (EditText) findViewById(R.id.etSenha);
+        etConfirmar = (EditText) findViewById(R.id.etConfirmaSenha);
+        btnEfetuarCadastro = (Button) findViewById(R.id.btnEfetuarCadastro);
     }
 
     public void efetuarCadastro(View view) {
-
-        Usuario usuario = objetoUsuario();
-//        String email = etEmail.getText().toString().trim();
-//        String senha = etSenha.getText().toString().trim();
+        String email = etEmail.getText().toString().trim();
+        String senha = etSenha.getText().toString().trim();
 
         usuarioNegocio = new UsuarioNegocio(_context);
-//        usuarioCadastro = usuarioNegocio.buscar(email);
-        usuarioCadastro = usuarioNegocio.buscar(usuario);
+        usuarioCadastro = usuarioNegocio.buscar(email);
 
         if ((usuarioCadastro == null) && (validarCampos())){
-//            criptografia = CriptografiaSenha.getInstancia(senha);
-//            senhaCriptografada = criptografia.getSenhaCriptografada();
-//            usuarioNegocio.cadastro(email, senhaCriptografada);
-            usuarioNegocio.cadastro(usuario);
-//            Toast.makeText(this, "Cadastro efetuado com sucesso\r\n Faça o login - "+ email, Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, "Cadastro efetuado com sucesso\r\n Faça o login - "+ usuario.getEmail(), Toast.LENGTH_SHORT).show();
+            criptografia = CriptografiaSenha.getInstancia(senha);
+            senhaCriptografada = criptografia.getSenhaCriptografada();
+
+            usuarioNegocio.cadastro(email, senhaCriptografada);
+            Toast.makeText(this, "Cadastro efetuado com sucesso\r\n Faça o login - "+ email, Toast.LENGTH_SHORT).show();
             voltarLogin(view);
         } else{
-            Toast.makeText(this, "Cadastrado não pode ser efetuado!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Usuário já cadastrado!", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -67,21 +62,6 @@ public class CadastroActivity extends AppCompatActivity {
         startActivity(voltarlogin);
         finish();
     }
-
-// Metodo novo
-    private Usuario objetoUsuario() {
-        Usuario usuario = new Usuario();
-        usuario.setEmail(etEmail.getText().toString().trim());
-        usuario.setSenha(criptografia(etSenha.getText().toString().trim()));
-        return usuario;
-    }
-
-    private String criptografia(String senha) {
-        criptografia = CriptografiaSenha.getInstancia(senha);
-        senhaCriptografada = criptografia.getSenhaCriptografada();
-        return senhaCriptografada;
-    }
-// Fim metodo novo
 
     private boolean validarCampos(){
 

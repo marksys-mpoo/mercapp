@@ -32,21 +32,7 @@ public class UsuarioPersistencia {
         db.insert(bdHelper.TBL_USUARIO, null, values);
         db.close();
     }
-// Metodo novo
-    public Usuario buscar(Usuario usuario) {
-        SQLiteDatabase db = bdHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM "+bdHelper.TBL_USUARIO +
-                " WHERE "+bdHelper.COLUNA_EMAIL+" LIKE ? ", new String[]{usuario.getEmail()});
-        Usuario usuarioDB = null;
-        if (cursor.moveToFirst()){
-            usuarioDB = criarUsuario(cursor);
-        }
-        cursor.close();
-        db.close();
-        return usuarioDB;
-    }
-// Fim metodo novo
-/*
+
     public Usuario buscar(String email, String senha){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
 
@@ -79,7 +65,7 @@ public class UsuarioPersistencia {
         db.close();
         return usuario;
     }
-*/
+
     private Usuario criarUsuario(Cursor cursor){
         Usuario usuario = new Usuario();
         usuario.setId(cursor.getInt(0));

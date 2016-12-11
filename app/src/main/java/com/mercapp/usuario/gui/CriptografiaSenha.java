@@ -1,4 +1,4 @@
-package com.mercapp.infra;
+package com.mercapp.usuario.gui;
 
 import java.util.HashMap;
 
