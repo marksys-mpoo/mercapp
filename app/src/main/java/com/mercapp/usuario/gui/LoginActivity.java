@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mercapp.R;
+import com.mercapp.infra.CriptografiaSenha;
 import com.mercapp.infra.Session;
 import com.mercapp.usuario.dominio.Usuario;
 import com.mercapp.usuario.negocio.PessoaNegocio;
