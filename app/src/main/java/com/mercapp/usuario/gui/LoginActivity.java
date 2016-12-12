@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mercapp.R;
+import com.mercapp.infra.Administrador;
 import com.mercapp.infra.Session;
 import com.mercapp.usuario.dominio.Usuario;
 import com.mercapp.usuario.negocio.PessoaNegocio;
@@ -56,7 +57,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void loginUsuario(View view){
-
+        Intent i = new Intent(this, Administrador.class);
+        startActivity(i);
+        finish();
         if (validarCampos()) {
             String email = etEmail.getText().toString().trim();
             String senha = etSenha.getText().toString().trim();

@@ -5,6 +5,7 @@ import android.database.Cursor;
 
 import com.mercapp.infra.Session;
 import com.mercapp.supermercado.dominio.Produto;
+import com.mercapp.supermercado.dominio.Supermercado;
 import com.mercapp.supermercado.persistencia.ProdutoPersistencia;
 
 public class ProdutoNegocio {
@@ -28,13 +29,15 @@ public class ProdutoNegocio {
         return produtoSelecionado;
     }
 
-    public void cadastrar(Produto produto){
-//        Produto produtoCadastro = new Produto();
-//        produtoCadastro.setDescricao(produto.getDescricao());
-//        produtoCadastro.setPreco(produto.getPreco());
-//        produtoCadastro.setNome(produto.getNome());
-//        produtoCadastro.setSupermercado(produto.getSupermercado());
-//        produtoCadastro.setIdDepartamento(produto.getIdDepartamento());
+    public void cadastrar(String nome, String descricao, double preco, Supermercado nomesupermercado, String idDepartamento){
+
+
+        Produto produto = new Produto();
+        produto.setNome(nome);
+        produto.setDescricao(descricao);
+        produto.setPreco(preco);
+        produto.setIdDepartamento(idDepartamento);
+        produto.setSupermercado(nomesupermercado);
         ProdutoPersistencia produtoPersistencia = new ProdutoPersistencia(_context);
         produtoPersistencia.cadastrar(produto);
     }

@@ -5,8 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.mercapp.infra.BDHelper;
 import com.mercapp.supermercado.dominio.Produto;
+import com.mercapp.supermercado.dominio.Supermercado;
 
 public class ProdutoPersistencia {
     private Context _context;
@@ -45,6 +47,7 @@ public class ProdutoPersistencia {
         Produto produto = null;
         Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_PRODUTO +
                 " WHERE "+ bdHelper.COLUNA_NOME_PRODUTO+" LIKE ? ", new String[]{nome});
+
         if (cursor.moveToFirst()){
             produto = criarProduto(cursor);
         }
@@ -56,7 +59,7 @@ public class ProdutoPersistencia {
     public Cursor listaDadosProdutos(){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Cursor cursor;
-        cursor = db.rawQuery("SELECT * FROM " + BDHelper.TBL_PRODUTO, null);
+        cursor = db.query(BDHelper.TBL_PRODUTO,null,null,null,null,null,null);
         if(cursor!=null){
             cursor.moveToFirst();
         }
@@ -94,5 +97,6 @@ public class ProdutoPersistencia {
         db.close();
         return cursor;
     }
+
 
 }
