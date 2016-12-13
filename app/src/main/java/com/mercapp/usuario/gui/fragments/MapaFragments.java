@@ -28,6 +28,9 @@ import com.mercapp.supermercado.dominio.Supermercado;
 import com.mercapp.supermercado.gui.CadastroSupermercados;
 import com.mercapp.supermercado.negocio.SupermercadoNegocio;
 
+import java.util.Iterator;
+import java.util.List;
+
 public class MapaFragments extends SupportMapFragment implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener, GoogleMap.OnMapClickListener,
         android.location.LocationListener {
 
@@ -101,20 +104,13 @@ public class MapaFragments extends SupportMapFragment implements OnMapReadyCallb
 
     private void addMarcadoresNoMapa() {
         SupermercadoNegocio consulta = new SupermercadoNegocio(_context);
-        Cursor cursor = consulta.listaSupermercados();
-        try {
-            if (cursor.moveToFirst()) {
-                do {
-                    String nomeSupermercado = cursor.getString(1);
-                    Double latitude = cursor.getDouble(3);
-                    Double longitude = cursor.getDouble(4);
-                    LatLng coordenadas = new LatLng(latitude, longitude);
-                    customAddMaker(coordenadas, nomeSupermercado);
-                } while (cursor.moveToNext());
-            }
-        } finally {
-            cursor.close();
+        List<Supermercado> supermercados = consulta.listaSupermercados();
+        Iterator iterator = supermercados.iterator();
+        while (iterator.hasNext()){
+            Supermercado supermercado = (Supermercado) iterator.next();
+            customAddMaker(supermercado.getCoordenadas(), supermercado.getNome());
         }
+
     }
 
     public void customAddMaker(LatLng latLng, String titulo){

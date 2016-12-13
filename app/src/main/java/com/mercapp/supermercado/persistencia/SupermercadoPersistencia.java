@@ -5,13 +5,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
-import com.google.android.gms.games.internal.api.StatsImpl;
 import com.google.android.gms.maps.model.LatLng;
 import com.mercapp.infra.BDHelper;
-import com.mercapp.supermercado.dominio.Produto;
 import com.mercapp.supermercado.dominio.Supermercado;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SupermercadoPersistencia {
 
@@ -24,26 +24,35 @@ public class SupermercadoPersistencia {
         bdHelper = new BDHelper(_context);
     }
 
-    public void cadastrarAtualizar(Integer id, String textBotaoFuncao, Supermercado supermercado){
+    public void cadastrar(Supermercado supermercado){
         SQLiteDatabase db = bdHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
+
         values.put(bdHelper.COLUNA_NOME_SUPERMERCADO, supermercado.getNome());
         values.put(bdHelper.COLUNA_TELEFONE_SUPERMERCADO, supermercado.getTelefone());
         values.put(bdHelper.COLUNA_LATITUDE_SUPERMERCADO, supermercado.getCoordenadas().latitude);
         values.put(bdHelper.COLUNA_LONGITUDE_SUPERMERCADO, supermercado.getCoordenadas().longitude);
-        if (textBotaoFuncao == "salvar") {
-            db.insert(bdHelper.TBL_SUPERMERCADO, null, values);
-        } else if (textBotaoFuncao == "atualizar") {
-            String where;
-            where = bdHelper.COLUNA_ID_SUPERMERCADO + "=" + id;
-            db.update(bdHelper.TBL_SUPERMERCADO,values,where,null);
-        }
+
+        db.insert(bdHelper.TBL_SUPERMERCADO, null, values);
         db.close();
     }
 
-    public void deletar(int id){
+    public void editar(Supermercado supermercado){
         SQLiteDatabase db = bdHelper.getWritableDatabase();
-        String where = bdHelper.COLUNA_ID_SUPERMERCADO + "=" + id;
+        ContentValues values = new ContentValues();
+
+        values.put(bdHelper.COLUNA_NOME_SUPERMERCADO, supermercado.getNome());
+        values.put(bdHelper.COLUNA_TELEFONE_SUPERMERCADO, supermercado.getTelefone());
+        values.put(bdHelper.COLUNA_LATITUDE_SUPERMERCADO, supermercado.getCoordenadas().latitude);
+        values.put(bdHelper.COLUNA_LONGITUDE_SUPERMERCADO, supermercado.getCoordenadas().longitude);
+
+        db.update(bdHelper.TBL_SUPERMERCADO, values, "_id = ?", new String[]{""+supermercado.getId()});
+        db.close();
+    }
+
+    public void deletar(Supermercado supermercado){
+        SQLiteDatabase db = bdHelper.getWritableDatabase();
+        String where = bdHelper.COLUNA_ID_SUPERMERCADO + "=" + supermercado.getId();
         db.delete(bdHelper.TBL_SUPERMERCADO, where, null);
         db.close();
     }
@@ -61,27 +70,33 @@ public class SupermercadoPersistencia {
         return supermercado;
     }
 
-    public Cursor listarSupermercadosPorParteDoNome(String inputText) throws SQLException {
+    public List<Supermercado> listarSupermercadosPorParteDoNome(String inputText) throws SQLException {
+        List<Supermercado> supermercados = new ArrayList<>();
         SQLiteDatabase db = bdHelper.getReadableDatabase();
-        Cursor cursor = null;
-        cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_SUPERMERCADO +
+        Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_SUPERMERCADO +
                 " WHERE "+ bdHelper.COLUNA_NOME_SUPERMERCADO+" LIKE '%" + inputText + "%'", null, null);
-        if(cursor!=null){
-            cursor.moveToFirst();
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()){
+            supermercados.add(criarSupermercado(cursor));
+            cursor.moveToNext();
         }
+        cursor.close();
         db.close();
-        return cursor;
+        return supermercados;
     }
 
-    public Cursor listaDados(){
+    public List<Supermercado> listaDados(){
+        List<Supermercado> supermercados = new ArrayList<>();
         SQLiteDatabase db = bdHelper.getReadableDatabase();
-        Cursor cursor;
-        cursor = db.rawQuery("SELECT * FROM " + BDHelper.TBL_SUPERMERCADO, null);
-        if(cursor!=null){
-            cursor.moveToFirst();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + BDHelper.TBL_SUPERMERCADO, null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()){
+            supermercados.add(criarSupermercado(cursor));
+            cursor.moveToNext();
         }
+        cursor.close();
         db.close();
-        return cursor;
+        return supermercados;
     }
 
     public Cursor listaDadosProdutosDoSupermercado(String idSupermercado){
@@ -105,7 +120,7 @@ public class SupermercadoPersistencia {
         return cursor;
     }
 
-    public Supermercado criarSupermercado(Cursor cursor){
+    private Supermercado criarSupermercado(Cursor cursor){
         Supermercado supermercado = new Supermercado();
         supermercado.setId(cursor.getInt(0));
         supermercado.setNome(cursor.getString(1));

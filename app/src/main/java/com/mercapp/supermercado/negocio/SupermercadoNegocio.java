@@ -8,6 +8,8 @@ import com.mercapp.infra.Session;
 import com.mercapp.supermercado.dominio.Supermercado;
 import com.mercapp.supermercado.persistencia.SupermercadoPersistencia;
 
+import java.util.List;
+
 
 public class SupermercadoNegocio {
 
@@ -25,25 +27,31 @@ public class SupermercadoNegocio {
         _context = context;
     }
 
-    public void cadastrarAtualizar(Integer id, String textBotaoFuncao, String nome, String telefone, LatLng coordenadas){
+    public void cadastrar(String nome, String telefone, LatLng coordenadas){
         Supermercado supermercadoCadastro = new Supermercado();
         supermercadoCadastro.setNome(nome);
         supermercadoCadastro.setTelefone(telefone);
         supermercadoCadastro.setCoordenadas(coordenadas);
         SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(_context);
-        supermercadoPersistencia.cadastrarAtualizar(id, textBotaoFuncao, supermercadoCadastro);
+        supermercadoPersistencia.cadastrar(supermercadoCadastro);
     }
 
-    public Cursor listaSupermercados(){
+
+    public void editar(Supermercado supermercado){
+        SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(_context);
+        supermercadoPersistencia.editar(supermercado);
+    }
+
+    public List<Supermercado> listaSupermercados(){
         SupermercadoPersistencia consulta = new SupermercadoPersistencia(_context);
-        Cursor cursor = consulta.listaDados();
-        return cursor;
+        List<Supermercado> supermercados = consulta.listaDados();
+        return supermercados;
     }
 
-    public Cursor listarSupermercadosPorParteDoNome(String inputText){
+    public List<Supermercado> listarSupermercadosPorParteDoNome(String inputText){
         SupermercadoPersistencia listagem = new SupermercadoPersistencia(_context);
-        Cursor cursor = listagem.listarSupermercadosPorParteDoNome(inputText);
-        return cursor;
+        List<Supermercado> supermercados = listagem.listarSupermercadosPorParteDoNome(inputText);
+        return supermercados;
     }
 
     public Cursor listaProdutosDoSupermercado(String idSuper){
@@ -74,14 +82,8 @@ public class SupermercadoNegocio {
         sessao.setDepartamentoSelecionado(departamento);
     }
 
-    public Supermercado criarSupermercado(Cursor cursor) {
+    public void deletar(Supermercado supermercado){
         SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(_context);
-        Supermercado supermercado = supermercadoPersistencia.criarSupermercado(cursor);
-        return supermercado;
-    }
-
-    public void deletar(int id){
-        SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(_context);
-        supermercadoPersistencia.deletar(id);
+        supermercadoPersistencia.deletar(supermercado);
     }
 }

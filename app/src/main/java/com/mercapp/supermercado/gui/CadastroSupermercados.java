@@ -8,12 +8,10 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.mercapp.R;
 import com.mercapp.infra.Session;
-import com.mercapp.supermercado.dominio.Supermercado;
 import com.mercapp.supermercado.negocio.SupermercadoNegocio;
 import com.mercapp.usuario.gui.TelaMenuActivity;
 
@@ -21,18 +19,14 @@ public class CadastroSupermercados extends AppCompatActivity {
 
     private static final String stringVazia = "";
     private static final String stringInicial ="0.0";
-    private static final String textBotaoFuncaoEditar ="atualizar";
-    private static final String textBotaoFuncaoCadastrar ="salvar";
-    private String textBotaoFuncao;
-    private String nomeSupermercado, telefoneSupermercado;
 
     private Context _context = CadastroSupermercados.this;
     private Session session = Session.getInstanciaSessao();
-    private SupermercadoNegocio supermercadoNegocio;
-    private Supermercado supermercado, supermercadoEditado;
+    private SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(_context);
     private EditText etSupermercadoNome, etSupermercadoTelefone, etLogintude, etLatitude;
     private Button btnSalvarEditar;
-    private String funcao;
+    private String latitude;
+    private String longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,133 +39,63 @@ public class CadastroSupermercados extends AppCompatActivity {
         etLogintude = (EditText) findViewById(R.id.etSupLong);
         btnSalvarEditar = (Button) findViewById(R.id.btnCadastrarSupermercado);
 
-        funcao = session.getFuncaoCrudSupermercado().toString();
-
-        if (funcao == "alterar") {
-            nomeSupermercado = session.getSupermercadoSelecionado().getNome().toString();
-            telefoneSupermercado = session.getSupermercadoSelecionado().getTelefone().toString();
-            Double coordLat = session.getSupermercadoSelecionado().getCoordenadas().latitude;
-            Double coordLong = session.getSupermercadoSelecionado().getCoordenadas().longitude;
-            String coordLatString = coordLat.toString();
-            String coordLongString = coordLong.toString();
-            etSupermercadoNome.setText(nomeSupermercado);
-            etSupermercadoTelefone.setText(telefoneSupermercado);
-            etLatitude.setText(coordLatString);
-            etLogintude.setText(coordLongString);
-            textBotaoFuncao = textBotaoFuncaoEditar;
+        Bundle bundle = getIntent().getExtras();
+        if (bundle.containsKey("CoordLat")) {
+            Double coordLat = bundle.getDouble("CoordLat");
+            latitude = coordLat.toString();
+            etLatitude.setText(latitude);
+        }
+        if (bundle.containsKey("CoordLong")) {
+            Double coordLong = bundle.getDouble("CoordLong");
+            longitude = coordLong.toString();
+            etLogintude.setText(longitude);
         }
 
-        if (funcao == "cadastrar") {
-            Bundle bundle = getIntent().getExtras();
-            if (bundle.containsKey("CoordLat")) {
-                Double coordLat = bundle.getDouble("CoordLat");
-                String coordLatString = coordLat.toString();
-                etLatitude.setText(coordLatString);
-            }
-            if (bundle.containsKey("CoordLong")) {
-                Double coordLong = bundle.getDouble("CoordLong");
-                String coordLongString = coordLong.toString();
-                etLogintude.setText(coordLongString);
-            }
-            nomeSupermercado = "";
-            telefoneSupermercado = "";
-            textBotaoFuncao = textBotaoFuncaoCadastrar;
+        if (session.getSupermercadoSelecionado() != null) {
+            carregaDados();
         }
-
-        if (funcao == "editar") {
-
-            Bundle bundle = getIntent().getExtras();
-            if (bundle.containsKey("CoordLat")) {
-                Double coordLat = bundle.getDouble("CoordLat");
-                String coordLatString = coordLat.toString();
-                etLatitude.setText(coordLatString);
-            }
-
-            if (bundle.containsKey("CoordLong")) {
-                Double coordLong = bundle.getDouble("CoordLong");
-                String coordLongString = coordLong.toString();
-                etLogintude.setText(coordLongString);
-            }
-
-            nomeSupermercado = session.getSupermercadoSelecionado().getNome().toString();
-            telefoneSupermercado = session.getSupermercadoSelecionado().getTelefone().toString();
-            etSupermercadoNome.setText(nomeSupermercado);
-            etSupermercadoTelefone.setText(telefoneSupermercado);
-            textBotaoFuncao = session.getTextButaoFuncaoSupermercado().toString();;
-        }
-
-        btnSalvarEditar.setText(textBotaoFuncao);
     }
 
-    public void cadastrarAtualizar(View view) {
-        String nome = etSupermercadoNome.getText().toString().trim();
-        String telefone = etSupermercadoTelefone.getText().toString().trim();
-        Double latitude = Double.parseDouble(etLatitude.getText().toString().trim());
-        Double longitude = Double.parseDouble(etLogintude.getText().toString().trim());
-        Integer id = 0;
+    public void cadastroSupermercado(View view) {
 
-        if (textBotaoFuncao == "salvar") {
-            id = 0; // Não vai ser usado pois no cadastro Id no banco é auto incrementado.
-            if(validarCamposDouble() && validarCampos()) {
-                LatLng coordenadas = new LatLng(latitude, longitude);
-                supermercadoNegocio = new SupermercadoNegocio(_context);
-                supermercado = supermercadoNegocio.buscaSupermercado(nome);
-                if (supermercado == null) {
-                    supermercadoNegocio.cadastrarAtualizar(id, textBotaoFuncao, nome, telefone, coordenadas);
-                    Toast.makeText(this, "Supermercado " + nome + " cadastrado com sucesso.", Toast.LENGTH_SHORT).show();
-                    onBackPressed();
-                } else {
-                    Toast.makeText(this, "Supermercado já existente!", Toast.LENGTH_SHORT).show();
-                }
+        if (validarCampos()) {
+
+            String nome = etSupermercadoNome.getText().toString();
+            String telefone = etSupermercadoTelefone.getText().toString();
+            Double latitudeD = Double.parseDouble(etLatitude.getText().toString());
+            Double longitudeD = Double.parseDouble(etLogintude.getText().toString());
+            LatLng latLng = new LatLng(latitudeD, longitudeD);
+
+
+            if (session.getSupermercadoSelecionado() != null) {
+                session.getSupermercadoSelecionado().setNome(nome);
+                session.getSupermercadoSelecionado().setTelefone(telefone);
+                session.getSupermercadoSelecionado().setCoordenadas(latLng);
+                supermercadoNegocio.editar(session.getSupermercadoSelecionado());
+            } else {
+                supermercadoNegocio.cadastrar(nome, telefone, latLng);
             }
-        } else if (textBotaoFuncao == "atualizar") {
-            id = session.getSupermercadoSelecionado().getId();
-            if(validarCamposDouble() && validarCampos()) {
-                LatLng coordenadas = new LatLng(latitude, longitude);
-                supermercadoNegocio = new SupermercadoNegocio(_context);
-                supermercado = supermercadoNegocio.buscaSupermercado(nome);
-                supermercadoNegocio.cadastrarAtualizar(id, textBotaoFuncao, nome, telefone, coordenadas);
-                Toast.makeText(this, "Supermercado " + nome + " atualizado.", Toast.LENGTH_SHORT).show();
-                onBackPressed();
-            }
+            Intent changeToListaSupermercado = new Intent(CadastroSupermercados.this, ListaSupermercados.class);
+            CadastroSupermercados.this.startActivity(changeToListaSupermercado);
+            finish();
         }
+    }
+
+    private void carregaDados() {
+        Double coordLat = session.getSupermercadoSelecionado().getCoordenadas().latitude;
+        Double coordLong = session.getSupermercadoSelecionado().getCoordenadas().longitude;
+        String coordLatString = coordLat.toString();
+        String coordLongString = coordLong.toString();
+        etSupermercadoNome.setText(session.getSupermercadoSelecionado().getNome());
+        etSupermercadoTelefone.setText(session.getSupermercadoSelecionado().getTelefone());
+        etLatitude.setText(coordLatString);
+        etLogintude.setText(coordLongString);
     }
 
     public void changeScreenCadastroSupermercadoToMapa(View view) {
-        nomeSupermercado = etSupermercadoNome.getText().toString().trim();
-        telefoneSupermercado = etSupermercadoTelefone.getText().toString().trim();
-        Supermercado supermercadoEditado = new Supermercado();
-        supermercadoEditado.setNome(nomeSupermercado);
-        supermercadoEditado.setTelefone(telefoneSupermercado);
-        if (textBotaoFuncao == "salvar") {
-            supermercadoEditado.setId(0);
-        } else if (textBotaoFuncao == "atualizar") {
-            Integer idSupermercadoSessao = session.getSupermercadoSelecionado().getId();
-            supermercadoEditado.setId(idSupermercadoSessao);
-        }
-        SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(_context);
-        supermercadoNegocio.iniciarSessaoSupermercado(supermercadoEditado);
-        supermercadoNegocio.iniciarSessaoFuncaoCrud("editar");
-        supermercadoNegocio.iniciarSessaotextButaoFuncaoCrud(textBotaoFuncao);
         Intent addCoordenadas = new Intent(CadastroSupermercados.this, TelaMenuActivity.class);
         startActivity(addCoordenadas);
         finish();
-    }
-
-    private  boolean validarCamposDouble(){
-        boolean result;
-        if (etLatitude.getText().toString().equals(stringInicial)) {
-            etLatitude.requestFocus();
-            etLatitude.setError(getString(R.string.latitude_vazio_tela_cadastro_produtos));
-            result = false;
-        }else if(etLogintude.getText().toString().equals(stringInicial)) {
-            etLogintude.requestFocus();
-            etLogintude.setError(getString(R.string.longitude_vazio_tela_cadastro_produtos));
-            result = false;
-        }else{
-            result = true;
-        }
-        return result;
     }
 
     @Override
@@ -192,10 +116,12 @@ public class CadastroSupermercados extends AppCompatActivity {
     private boolean validarCampos(){
         String nomeSupermercado = etSupermercadoNome.getText().toString();
         String telefonesupermercado = etSupermercadoTelefone.getText().toString();
-        return verificaVazios(nomeSupermercado, telefonesupermercado);
+        String latitudeD = etLatitude.getText().toString();
+        String longitudeD = etLogintude.getText().toString();
+        return verificaVazios(nomeSupermercado, telefonesupermercado, latitudeD, longitudeD);
     }
 
-    private boolean verificaVazios(String nomeSupermercado, String telefonesupermercado) {
+    private boolean verificaVazios(String nomeSupermercado, String telefonesupermercado, String latitude, String longitude) {
         boolean result;
         if (TextUtils.isEmpty(nomeSupermercado)) {
             etSupermercadoNome.requestFocus();
@@ -204,6 +130,15 @@ public class CadastroSupermercados extends AppCompatActivity {
         } else if (TextUtils.isEmpty(telefonesupermercado)) {
             etSupermercadoTelefone.requestFocus();
             etSupermercadoTelefone.setError(getString(R.string.telefone_vazio_tela_cadastro_supermrecados));
+            result = false;
+        } else if (etLatitude.getText().toString().equals(stringInicial)){
+            etLatitude.requestFocus();
+            etLatitude.setError(getString(R.string.latitude_vazio_tela_cadastro_produtos));
+            result = false;
+        }
+        else if (etLogintude.getText().toString().equals(stringInicial)){
+            etLogintude.requestFocus();
+            etLogintude.setError(getString(R.string.longitude_vazio_tela_cadastro_produtos));
             result = false;
         }else {
             result = true;
