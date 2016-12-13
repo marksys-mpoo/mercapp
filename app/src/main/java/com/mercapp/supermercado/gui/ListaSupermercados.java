@@ -44,6 +44,7 @@ public class ListaSupermercados extends AppCompatActivity {
 
         lista = (ListView)findViewById(R.id.lista_supermercados);
         lista.setAdapter(dataAdapter);
+        lista.setTextFilterEnabled(true);
 
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -81,11 +82,11 @@ public class ListaSupermercados extends AppCompatActivity {
             }
             @Override
             public boolean onQueryTextChange(String text) {
-                dataAdapter.getFilter().filter(text.toString());
+                dataAdapter = new SupermercadoListAdapter(_context, supermercadoNegocio.listarSupermercadosPorParteDoNome(text));
+                lista.setAdapter(dataAdapter);
                 return false;
             }
         });
-
     }
 
     public void changeTelaListaSupermercadosToTelaAdmimistrador(View view) {

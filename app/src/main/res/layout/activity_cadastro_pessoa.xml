@@ -64,7 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnCadastroPessoa"
-                android:onClick="cadastroPessoa (CadastroPessoaActivity)"
+                android:onClick="cadastroPessoa"
                 android:layout_marginTop="35dp" />
 
         </LinearLayout>
