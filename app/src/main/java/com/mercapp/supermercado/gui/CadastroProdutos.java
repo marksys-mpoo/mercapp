@@ -49,16 +49,9 @@ public class CadastroProdutos extends AppCompatActivity {
             preco = Double.parseDouble(setpreco.getText().toString().trim());
             supermercadoNegocio = new SupermercadoNegocio(_context);
             Supermercado supermercado = supermercadoNegocio.buscaSupermercado(nomeSupermercado);
-            ProdutoNegocio produtoNegocio = new ProdutoNegocio(_context);
-            produtoCadastrado = produtoNegocio.buscar(nome);
             if (supermercado != null){
-                if( produtoCadastrado == null) {
-                    produtoNegocio.cadastrar(nome, descricao, preco, supermercado, idDepartamento);
-                    Toast.makeText(this, "Produtos cadastrados com sucesso.", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(this, "Produtos já exitentes!", Toast.LENGTH_SHORT).show();
-                }
-
+                Produto produto = CriarProduto(nome, descricao, preco, supermercado, idDepartamento);
+                efetuarCadastroProduto(produto);
             }else {
 //                Toast.makeText(this, "Este supermercado não existe.", Toast.LENGTH_SHORT).show();
                 //Cria o gerador do AlertDialog
@@ -87,6 +80,18 @@ public class CadastroProdutos extends AppCompatActivity {
             }
         } else {
             Toast.makeText(this, "O cadastro não foi realizado.", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    private void efetuarCadastroProduto(Produto produto) {
+        ProdutoNegocio produtoNegocio = new ProdutoNegocio(_context);
+        produtoCadastrado = produtoNegocio.buscar(produto.getId());
+        if (produtoCadastrado == null) {
+            produtoNegocio.cadastrar(produto);
+            Toast.makeText(this, "Produtos cadastrados com sucesso.", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(this, "Produtos já exitentes!", Toast.LENGTH_SHORT).show();
         }
 
     }
