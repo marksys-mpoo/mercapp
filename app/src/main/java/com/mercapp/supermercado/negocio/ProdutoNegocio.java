@@ -1,11 +1,12 @@
 package com.mercapp.supermercado.negocio;
 
 import android.content.Context;
-import android.database.Cursor;
 
 import com.mercapp.infra.Session;
 import com.mercapp.supermercado.dominio.Produto;
 import com.mercapp.supermercado.persistencia.ProdutoPersistencia;
+
+import java.util.List;
 
 public class ProdutoNegocio {
 
@@ -29,20 +30,14 @@ public class ProdutoNegocio {
     }
 
     public void cadastrar(Produto produto){
-//        Produto produtoCadastro = new Produto();
-//        produtoCadastro.setDescricao(produto.getDescricao());
-//        produtoCadastro.setPreco(produto.getPreco());
-//        produtoCadastro.setNome(produto.getNome());
-//        produtoCadastro.setSupermercado(produto.getSupermercado());
-//        produtoCadastro.setIdDepartamento(produto.getIdDepartamento());
         ProdutoPersistencia produtoPersistencia = new ProdutoPersistencia(_context);
         produtoPersistencia.cadastrar(produto);
     }
 
-    public Cursor listaProdutos(){
+    public List<Produto> listaProdutos(){
         ProdutoPersistencia consulta = new ProdutoPersistencia(_context);
-        Cursor cursor = consulta.listaDadosProdutos();
-        return cursor;
+        List<Produto> produtos = consulta.listaDadosProdutos();
+        return produtos;
     }
 
     public void iniciarSessao(Produto produto){

@@ -2,23 +2,24 @@ package com.mercapp.supermercado.gui;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.support.v4.widget.SimpleCursorAdapter;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
 
 import com.mercapp.R;
 import com.mercapp.infra.Administrador;
-import com.mercapp.infra.BDHelper;
+import com.mercapp.infra.ProdutosListAdapter;
+import com.mercapp.supermercado.dominio.Produto;
 import com.mercapp.supermercado.negocio.ProdutoNegocio;
-import com.mercapp.supermercado.negocio.SupermercadoNegocio;
+
+import java.util.List;
 
 public class ListaProdutos extends AppCompatActivity {
 
     private ListView lista;
     private Context _context = ListaProdutos.this;
+    private ProdutosListAdapter dataAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +30,10 @@ public class ListaProdutos extends AppCompatActivity {
 
     private void listarProdutosGeral() {
         ProdutoNegocio buscaProdutos = new ProdutoNegocio(_context);
-        Cursor cursor = buscaProdutos.listaProdutos();
-        String[] colunasBD = new String[] {BDHelper.COLUNA_NOME_PRODUTO,BDHelper.COLUNA_DESCRICAO, BDHelper.COLUNA_PRECO_PRODUTO, BDHelper.COLUNA_ID_SUPERMERCADO_PRODUTO};
-        int[] idListView = new int[] {R.id.colunaProduto1, R.id.colunaProduto2, R.id.colunaProduto3, R.id.colunaProduto4};
-        SimpleCursorAdapter adaptador = new SimpleCursorAdapter(_context,R.layout.produtos_geral,cursor,colunasBD,idListView, 0);
+        List<Produto> produtos = buscaProdutos.listaProdutos();
         lista = (ListView)findViewById(R.id.lista_produtos_geral);
-        lista.setAdapter(adaptador);
+        dataAdapter = new ProdutosListAdapter(this, produtos);
+        lista.setAdapter(dataAdapter);
     }
 
     @Override
