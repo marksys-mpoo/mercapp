@@ -26,13 +26,13 @@ public class Validacao {
     public static final int EN_ROUTE = 3;
     public static final int DINERS_CLUB = 4;
 
-    private static final String stringInicial ="0.0";
+    private static final String stringInicial = "0.0";
 
     private static final int[] weightCPF = {11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
     private static final int[] weightCNPJ = {6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
 
-    private static final String[] cardNames = { "Visa", "Mastercard",
-            "American Express", "En Route", "Diner's CLub/Carte Blanche", };
+    private static final String[] cardNames = {"Visa", "Mastercard",
+            "American Express", "En Route", "Diner's CLub/Carte Blanche",};
 
     private static int computeDigit(String str, int[] weight) {
         int sum = 0;
@@ -45,7 +45,7 @@ public class Validacao {
     }
 
     public static boolean isValidCPF(String cpf) {
-        cpf = onlyNumbers((CharSequence)cpf);
+        cpf = onlyNumbers((CharSequence) cpf);
         if ((cpf == null) || (cpf.length() != 11)) return false;
 
         Integer digitA = computeDigit(cpf.substring(0, 9), weightCPF);
@@ -61,7 +61,7 @@ public class Validacao {
         Integer digitB = computeDigit(cnpj.substring(0, 12) + digitA, weightCNPJ);
         return cnpj.equals(cnpj.substring(0, 12) + digitA.toString() + digitB.toString());
     }
-    
+
     private static String onlyNumbers(CharSequence s) {
         return s.toString().replaceAll("\\D+", "");
     }
@@ -203,7 +203,7 @@ public class Validacao {
         return result;
     }
 
-    public static boolean validarEmail(String email, Context context, EditText etEmail ) {
+    public static boolean validarEmail(String email, Context context, EditText etEmail) {
         boolean result;
         String regExpn =
                 "^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
@@ -228,11 +228,11 @@ public class Validacao {
         return result;
     }
 
-    public static boolean semEspaco(String email,Context context,EditText etEmail) {
+    public static boolean semEspaco(String email, Context context, EditText etEmail) {
         boolean result;
         int idx = email.indexOf(" ");
 
-        if (idx != -1){
+        if (idx != -1) {
             etEmail.requestFocus();
             etEmail.setError(context.getString(R.string.email_senha_invalido));
             result = true;
@@ -243,14 +243,14 @@ public class Validacao {
         return result;
     }
 
-    public static boolean tamanhoInválido(String email, String senha, Context context,EditText etEmail, EditText etSenha ) {
+    public static boolean tamanhoInválido(String email, String senha, Context context, EditText etEmail, EditText etSenha) {
         boolean result;
 
         if (!(email.length() > 3)) {
             etEmail.requestFocus();
             etEmail.setError(context.getString(R.string.login_tamanho_invalido));
             result = false;
-        } else if (!(senha.length() > 2)){
+        } else if (!(senha.length() > 2)) {
             etSenha.requestFocus();
             etSenha.setError(context.getString(R.string.login_senha_tamanho_invalido));
             result = false;
@@ -260,13 +260,13 @@ public class Validacao {
         return result;
     }
 
-    public static boolean confirmarSenha(String senha, String confirmarSenha, Context context, EditText etConfirmar){
+    public static boolean confirmarSenha(String senha, String confirmarSenha, Context context, EditText etConfirmar) {
 
         boolean result;
 
-        if(senha.equals(confirmarSenha)){
+        if (senha.equals(confirmarSenha)) {
             result = true;
-        }else{
+        } else {
             etConfirmar.requestFocus();
             etConfirmar.setError(context.getString(R.string.senha_diferentes));
             result = false;
@@ -276,7 +276,7 @@ public class Validacao {
 
     // Tela Cadastro de Supermercado
     public static boolean verificaVaziosSupermercado(String nomeSupermercado,
-                                         String telefonesupermercado,Context context, EditText etSupermercadoNome, EditText etSupermercadoTelefone, EditText etLatitude, EditText etLogintude) {
+                                                     String telefonesupermercado, Context context, EditText etSupermercadoNome, EditText etSupermercadoTelefone, EditText etLatitude, EditText etLogintude) {
         boolean result;
         if (TextUtils.isEmpty(nomeSupermercado)) {
             etSupermercadoNome.requestFocus();
@@ -302,8 +302,8 @@ public class Validacao {
     }
 
     // Tela Cadastro de Produto
-    public static boolean verificaVazios(String nome, String descricao, String supermercado, Context context,
-                                         EditText setnome, EditText setdescricao, EditText setSupermercado) {
+    public static boolean verificaVaziosProduto(String nome, String descricao, Context context,
+                                         EditText setnome, EditText setdescricao) {
         boolean result;
         if (TextUtils.isEmpty(nome)) {
             setnome.requestFocus();
@@ -313,14 +313,10 @@ public class Validacao {
             setdescricao.requestFocus();
             setdescricao.setError(context.getString(R.string.campo_vazio_tela_cadastro_produtos));
             result = false;
-        } else if (TextUtils.isEmpty(supermercado)) {
-            setSupermercado.requestFocus();
-            setSupermercado.setError(context.getString(R.string.campo_vazio_tela_cadastro_produtos));
-            result = false;
-        }else {
+        } else {
             result = true;
         }
         return result;
     }
-
 }
+

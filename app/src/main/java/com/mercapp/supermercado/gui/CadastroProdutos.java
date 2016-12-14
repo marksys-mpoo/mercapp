@@ -8,7 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.mercapp.R;
@@ -19,14 +22,18 @@ import com.mercapp.supermercado.negocio.ProdutoNegocio;
 import com.mercapp.supermercado.negocio.SupermercadoNegocio;
 import com.mercapp.usuario.negocio.Validacao;
 
+import java.util.List;
+
 public class CadastroProdutos extends AppCompatActivity {
 
     private static final String stringVazia = "";
     private static final String idDepartamento = "1";
+    private String nomeSpinner;
     private Context _context = CadastroProdutos.this;
+    private Spinner spinner;
     private SupermercadoNegocio supermercadoNegocio;
     private Produto produtoCadastrado;
-    private EditText setdescricao, setpreco,setnome, setSupermercado;
+    private EditText setdescricao, setpreco,setnome;
     private double preco;
     private AlertDialog alerta;
     private Session session = Session.getInstanciaSessao();
@@ -36,11 +43,32 @@ public class CadastroProdutos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_produtos);
+        spinner = (Spinner) findViewById(R.id.spinner);
         setnome = (EditText) findViewById(R.id.edtNomeProduto);
         setdescricao = (EditText) findViewById(R.id.edtDescricaoProduto);
         setpreco = (EditText) findViewById(R.id.edtPrecoProduto);
-        setSupermercado = (EditText)findViewById(R.id.edtSupermercadoProduto);
+
         setnome.requestFocus();
+
+        SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(_context);
+        List<String> supermercados = supermercadoNegocio.listaNomeSupermercado();
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, supermercados);
+        ArrayAdapter<String> spinnerArrayAdapter = arrayAdapter;
+        spinnerArrayAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinner.setAdapter(spinnerArrayAdapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                nomeSpinner = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
 
         if (session.getSupermercadoSelecionado() != null) {
             carregaDados();
@@ -52,7 +80,7 @@ public class CadastroProdutos extends AppCompatActivity {
         if (validarCampos() && validarPrecoDouble()){
             String nome = setnome.getText().toString().trim();
             String descricao = setdescricao.getText().toString().trim();
-            String nomeSupermercado = setSupermercado.getText().toString().trim();
+            String nomeSupermercado = nomeSpinner;
 
             preco = Double.parseDouble(setpreco.getText().toString().trim());
             supermercadoNegocio = new SupermercadoNegocio(_context);
@@ -119,7 +147,6 @@ public class CadastroProdutos extends AppCompatActivity {
         String precoEditavel = preco.toString();
         setnome.setText(session.getProdutoSelecionado().getNome());
         setdescricao.setText(session.getProdutoSelecionado().getDescricao());
-        setSupermercado.setText(session.getProdutoSelecionado().getSupermercado().getNome());
         setpreco.setText(precoEditavel);
     }
     private void chamarCadastroSupermercado(){
@@ -166,12 +193,8 @@ public class CadastroProdutos extends AppCompatActivity {
     private boolean validarCampos(){
         String nome = setnome.getText().toString().trim();
         String descricao = setdescricao.getText().toString().trim();
-        String supermercado = setSupermercado.getText().toString().trim();
-        return Validacao.verificaVazios(nome, descricao,supermercado,this,setnome,setdescricao,
-                setSupermercado);
+        return Validacao.verificaVaziosProduto(nome, descricao,this,setnome,setdescricao);
     }
-
-
 
     private void limparCampos(){
         setnome.setText(stringVazia);

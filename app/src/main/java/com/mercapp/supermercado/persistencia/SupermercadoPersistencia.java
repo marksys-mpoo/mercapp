@@ -70,6 +70,19 @@ public class SupermercadoPersistencia {
         return supermercado;
     }
 
+    public Supermercado buscarSupermercado(int id){
+        SQLiteDatabase db = bdHelper.getReadableDatabase();
+        Supermercado supermercado = null;
+        Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_SUPERMERCADO +
+                " WHERE "+ bdHelper.COLUNA_ID_SUPERMERCADO+" LIKE ? ", new String[]{""+id});
+        if (cursor.moveToFirst()){
+            supermercado = criarSupermercado(cursor);
+        }
+        cursor.close();
+        db.close();
+        return supermercado;
+    }
+
     public List<Supermercado> listarSupermercadosPorParteDoNome(String inputText) throws SQLException {
         List<Supermercado> supermercados = new ArrayList<>();
         SQLiteDatabase db = bdHelper.getReadableDatabase();
@@ -92,6 +105,19 @@ public class SupermercadoPersistencia {
         cursor.moveToFirst();
         while(!cursor.isAfterLast()){
             supermercados.add(criarSupermercado(cursor));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        db.close();
+        return supermercados;
+    }
+    public List<String> listaSupermercado (){
+        List<String> supermercados = new ArrayList<>();
+        SQLiteDatabase db = bdHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + BDHelper.TBL_SUPERMERCADO, null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()){
+            supermercados.add(cursor.getString(1));
             cursor.moveToNext();
         }
         cursor.close();

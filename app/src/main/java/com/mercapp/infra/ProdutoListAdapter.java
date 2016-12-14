@@ -44,8 +44,8 @@ public class ProdutoListAdapter extends ArrayAdapter<Produto> {
             TextView preco = (TextView) convertView.findViewById(R.id.colunaProduto3);
             preco.setText(produtoPosicao.getPreco().toString().trim());
 
-//            TextView supermercado = (TextView) convertView.findViewById(R.id.colunaProduto4);
-//            supermercado.setText(produtoPosicao.getSupermercado().getNome());
+            TextView supermercado = (TextView) convertView.findViewById(R.id.colunaProduto4);
+            supermercado.setText(produtoPosicao.getSupermercado().getNome());
 
             return convertView;
         }

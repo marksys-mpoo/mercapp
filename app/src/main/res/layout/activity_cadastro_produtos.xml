@@ -72,14 +72,21 @@
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true" />
 
-    <EditText
+    <TextView
+        android:text="Supermercados"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView12"
+        android:textSize="18sp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
+
+    <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/edtSupermercadoProduto"
-        android:hint="Supermercado" />
+        android:id="@+id/spinner"
+        android:layout_marginTop="11dp"
+        android:layout_below="@+id/textView12"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

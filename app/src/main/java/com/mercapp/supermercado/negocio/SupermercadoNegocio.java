@@ -54,6 +54,12 @@ public class SupermercadoNegocio {
         return supermercados;
     }
 
+    public List<String> listaNomeSupermercado(){
+        SupermercadoPersistencia listagem = new SupermercadoPersistencia(_context);
+        List<String> supermercados = listagem.listaSupermercado();
+        return supermercados;
+    }
+
     public Cursor listaProdutosDoSupermercado(String idSuper){
         SupermercadoPersistencia consulta = new SupermercadoPersistencia(_context);
         Cursor cursor = consulta.listaDadosProdutosDoSupermercado(idSuper);

@@ -27,7 +27,7 @@ public class ProdutoPersistencia {
         values.put(bdHelper.COLUNA_DESCRICAO_PRODUTO, produto.getDescricao());
         values.put(bdHelper.COLUNA_PRECO_PRODUTO, produto.getPreco());
         values.put(bdHelper.COLUNA_NOME_PRODUTO, produto.getNome());
-        values.put(bdHelper.COLUNA_ID_SUPERMERCADO_PRODUTO, produto.getIdSupermercado());
+        values.put(bdHelper.COLUNA_ID_SUPERMERCADO_PRODUTO, produto.getSupermercado().getId());
         values.put(bdHelper.COLUNA_PRODUTO_DEPARTAMENTO, produto.getIdDepartamento());
         db.insert(bdHelper.TBL_PRODUTO, null, values);
         db.close();
@@ -99,10 +99,9 @@ public class ProdutoPersistencia {
         produto.setNome(cursor.getString(1));
         produto.setDescricao(cursor.getString(2));
         produto.setPreco(cursor.getDouble(3));
-//        int idSupermercado = cursor.getInt(3);
-////        SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(_context);
-////        supermercadoPersistencia.buscarSupermercado(idSupermercado);
-////        produto.setSupermercado(idSupermercado);
+        SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(_context);
+        Supermercado supermercado = supermercadoPersistencia.buscarSupermercado(cursor.getInt(4));
+        produto.setSupermercado(supermercado);
         return produto;
     }
 
@@ -149,32 +148,4 @@ public class ProdutoPersistencia {
         db.close();
         return produtos;
     }
-
-
-
-    //    public List<Produto> listaDadosProdutos(){
-//        List<Produto> produtos = new ArrayList<>();
-//        SQLiteDatabase db = bdHelper.getReadableDatabase();
-//        Cursor cursor = db.query(BDHelper.TBL_PRODUTO, null, null, null, null, null, null);
-//        cursor.moveToFirst();
-//        while(!cursor.isAfterLast()){
-//            produtos.add(criarProduto(cursor));
-//            cursor.moveToNext();
-//        }
-//        cursor.close();
-//        db.close();
-//        return produtos;
-//    }
-
-    //    private Produto criarProduto(Cursor cursor){
-//        Produto produto = new Produto();
-//        produto.setId(cursor.getInt(0));
-//        produto.setDescricao(cursor.getString(1));
-//        produto.setPreco(cursor.getDouble(2));
-//        int idSupermercado = cursor.getInt(3);
-////        SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(_context);
-////        supermercadoPersistencia.criarSupermercado(idSupermercado);
-//        produto.setIdSupermercado(idSupermercado);
-//        return produto;
-//    }
 }
