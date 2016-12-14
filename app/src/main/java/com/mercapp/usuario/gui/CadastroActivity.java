@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.mercapp.R;
 import com.mercapp.usuario.dominio.Usuario;
 import com.mercapp.usuario.negocio.UsuarioNegocio;
+import com.mercapp.usuario.negocio.Validacao;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -72,101 +73,11 @@ public class CadastroActivity extends AppCompatActivity {
     }
 
     private boolean isaBoolean(String email, String senha, String confirmarSenha) {
-        return !verificaVazios(email, senha)  && !semEspaco(email) && tamanhoInválido(email, senha)
-                && validarEmail(email) && confirmarSenha(senha, confirmarSenha);
+        return !Validacao.verificaVazios(email, senha, this, etEmail,etSenha)
+                && !Validacao.semEspaco(email,this,etEmail)
+                && Validacao.tamanhoInválido(email, senha, this,etEmail,etSenha)
+                && Validacao.validarEmail(email,this,etEmail)
+                && Validacao.confirmarSenha(senha, confirmarSenha, this,etConfirmar);
     }
-
-
-    private boolean verificaVazios(String email, String senha) {
-
-        boolean result;
-
-        if (TextUtils.isEmpty(email)) {
-            etEmail.requestFocus();
-            etEmail.setError(getString(R.string.email_vazio));
-            result = true;
-        } else if (TextUtils.isEmpty(senha)) {
-            etSenha.requestFocus();
-            etSenha.setError(getString(R.string.senha_vazio));
-            result = true;
-        }
-        result = false;
-
-        return result;
-    }
-
-    private boolean tamanhoInválido(String email, String senha) {
-
-        boolean result;
-
-        if (!(email.length() > 3)) {
-            etEmail.requestFocus();
-            etEmail.setError(getString(R.string.login_tamanho_invalido));
-            result = false;
-        } else if (!(senha.length() > 2)){
-            etSenha.requestFocus();
-            etSenha.setError(getString(R.string.login_senha_tamanho_invalido));
-            result = false;
-        }
-        result = true;
-
-        return result;
-    }
-
-    private boolean semEspaco(String email) {
-        boolean result;
-        int idx = email.indexOf(" ");
-
-        if (idx != -1){
-            etEmail.requestFocus();
-            etEmail.setError(getString(R.string.email_senha_invalido));
-            result = true;
-        } else {
-            result = false;
-        }
-
-        return result;
-    }
-
-    public boolean validarEmail(String email)
-    {
-        boolean result;
-        String regExpn =
-                "^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
-                        +"((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
-                        +"[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\."
-                        +"([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
-                        +"[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
-                        +"([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$";
-
-        CharSequence inputStr = email;
-
-        Pattern pattern = Pattern.compile(regExpn,Pattern.CASE_INSENSITIVE);
-        Matcher matcher = pattern.matcher(inputStr);
-
-        if(matcher.matches()) {
-            result = true;
-        }else {
-            etEmail.requestFocus();
-            etEmail.setError(getString(R.string.email_invalido));
-            result = false;
-        }
-        return result;
-    }
-
-    public boolean confirmarSenha(String senha, String confirmarSenha){
-
-        boolean result;
-
-        if(senha.equals(confirmarSenha)){
-            result = true;
-        }else{
-            etConfirmar.requestFocus();
-            etConfirmar.setError(getString(R.string.senha_diferentes));
-            result = false;
-        }
-        return result;
-    }
-
 
 }

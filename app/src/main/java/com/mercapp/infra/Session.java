@@ -1,10 +1,16 @@
 package com.mercapp.infra;
 
+import android.content.Context;
+import android.text.TextUtils;
+import android.widget.EditText;
+
 import com.google.android.gms.maps.model.LatLng;
+import com.mercapp.R;
 import com.mercapp.supermercado.dominio.Produto;
 import com.mercapp.supermercado.dominio.Supermercado;
 import com.mercapp.usuario.dominio.Pessoa;
 import com.mercapp.usuario.dominio.Usuario;
+import com.mercapp.usuario.gui.LoginActivity;
 
 public class Session {
     private static Session instanciaSessao = new Session();
@@ -16,11 +22,11 @@ public class Session {
     private String funcaoCrudSupermercado;
     private String textButaoFuncaoSupermercado;
 
-    public Produto getProdutoSelecao() {
-        return produtoSelecao;
+    public Produto getProdutoSelecionado() {
+        return produtoSelecionado;
     }
 
-    private Produto produtoSelecao;
+    private Produto produtoSelecionado;
 
     public static Session getInstanciaSessao() {
         return instanciaSessao;
@@ -49,8 +55,8 @@ public class Session {
     public void setSupermercadoSelecionado(Supermercado supermercadoSelecionado) {
         this.supermercadoSelecionado = supermercadoSelecionado;
     }
-    public void setProdutoSelecao(Produto produtoSelecao) {
-        this.produtoSelecao = produtoSelecao;
+    public void setProdutoSelecionado(Produto produtoSelecionado) {
+        this.produtoSelecionado = produtoSelecionado;
     }
     public void Logout() {
         this.pessoaLogada = null;
@@ -87,5 +93,6 @@ public class Session {
     public void setTextButaoFuncaoSupermercado(String textButaoFuncaoSupermercado) {
         this.textButaoFuncaoSupermercado = textButaoFuncaoSupermercado;
     }
+
 
 }

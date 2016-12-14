@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,9 +16,7 @@ import com.mercapp.infra.Session;
 import com.mercapp.usuario.dominio.Usuario;
 import com.mercapp.usuario.negocio.PessoaNegocio;
 import com.mercapp.usuario.negocio.UsuarioNegocio;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.mercapp.usuario.negocio.Validacao;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -57,14 +54,15 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void loginUsuario(View view){
-        Intent i = new Intent(this, Administrador.class);
-        startActivity(i);
-        finish();
+//        Intent i = new Intent(this, Administrador.class);
+//        startActivity(i);
+//        finish();
         if (validarCampos()) {
             String email = etEmail.getText().toString().trim();
             String senha = etSenha.getText().toString().trim();
 
             UsuarioNegocio usuarioNegocio = new UsuarioNegocio(_context);
+
             criptografia =  criptografiaSenha.getInstancia(senha);
             senhaCriptografada = criptografia.getSenhaCriptografada();
             Usuario logarTest = usuarioNegocio.buscar(email,senhaCriptografada);
@@ -84,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                     finish();
                 }
             } else {
-                Toast.makeText(this, "Email ou senha inválido!", Toast.LENGTH_SHORT).show();                }
+                Toast.makeText(this, R.string.email_senha_invalido, Toast.LENGTH_SHORT).show();                }
         }
     }
 
@@ -99,81 +97,10 @@ public class LoginActivity extends AppCompatActivity {
     private boolean validarCampos(){
         String email = etEmail.getText().toString().trim();
         String senha = etSenha.getText().toString().trim();
-        return (!verificaVazios(email, senha)  && !semEspaco(email) && tamanhoInválido(email, senha) && validarEmail(email));
-    }
-
-    private boolean verificaVazios(String email, String senha) {
-
-        boolean result;
-
-        if (TextUtils.isEmpty(email)) {
-            etEmail.requestFocus();
-            etEmail.setError(getString(R.string.email_vazio));
-            result = true;
-        } else if (TextUtils.isEmpty(senha)) {
-            etSenha.requestFocus();
-            etSenha.setError(getString(R.string.senha_vazio));
-            result = true;
-        }
-        result = false;
-
-        return result;
-    }
-    private boolean tamanhoInválido(String email, String senha) {
-        boolean result;
-
-        if (!(email.length() > 3)) {
-            etEmail.requestFocus();
-            etEmail.setError(getString(R.string.login_tamanho_invalido));
-            result = false;
-        } else if (!(senha.length() > 2)){
-            etSenha.requestFocus();
-            etSenha.setError(getString(R.string.login_senha_tamanho_invalido));
-            result = false;
-        }
-        result = true;
-
-        return result;
-    }
-
-    private boolean semEspaco(String email) {
-        boolean result;
-        int idx = email.indexOf(" ");
-
-        if (idx != -1){
-            etEmail.requestFocus();
-            etEmail.setError(getString(R.string.email_senha_invalido));
-            result = true;
-        } else {
-            result = false;
-        }
-
-        return result;
-    }
-
-    public boolean validarEmail(String email) {
-        boolean result;
-        String regExpn =
-                "^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
-                        + "((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
-                        + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\."
-                        + "([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
-                        + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
-                        + "([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$";
-
-        CharSequence inputStr = email;
-
-        Pattern pattern = Pattern.compile(regExpn, Pattern.CASE_INSENSITIVE);
-        Matcher matcher = pattern.matcher(inputStr);
-
-        if (matcher.matches()) {
-            result = true;
-        } else {
-            etEmail.requestFocus();
-            etEmail.setError(getString(R.string.email_invalido));
-            result = false;
-        }
-        return result;
+        return (!Validacao.verificaVazios(email, senha,this, etEmail, etSenha)
+                && !Validacao.semEspaco(email, this, etEmail)
+                && Validacao.tamanhoInválido(email, senha, this, etEmail,etSenha)
+                && Validacao.validarEmail(email,this, etEmail));
     }
 
 }

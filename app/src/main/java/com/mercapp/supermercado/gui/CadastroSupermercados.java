@@ -14,11 +14,12 @@ import com.mercapp.R;
 import com.mercapp.infra.Session;
 import com.mercapp.supermercado.negocio.SupermercadoNegocio;
 import com.mercapp.usuario.gui.TelaMenuActivity;
+import com.mercapp.usuario.negocio.Validacao;
 
 public class CadastroSupermercados extends AppCompatActivity {
 
     private static final String stringVazia = "";
-    private static final String stringInicial ="0.0";
+
 
     private Context _context = CadastroSupermercados.this;
     private Session session = Session.getInstanciaSessao();
@@ -105,44 +106,22 @@ public class CadastroSupermercados extends AppCompatActivity {
         finish();
     }
 
-    private void limparCampos(){
-        etSupermercadoNome.setText(stringVazia);
-        etSupermercadoTelefone.setText(stringVazia);
-        etLatitude.setText(stringInicial);
-        etLogintude.setText(stringInicial);
-        etLatitude.requestFocus();
-    }
+//    private void limparCampos(){
+//        etSupermercadoNome.setText(stringVazia);
+//        etSupermercadoTelefone.setText(stringVazia);
+//        etLatitude.setText(stringInicial);
+//        etLogintude.setText(stringInicial);
+//        etLatitude.requestFocus();
+//    }
 
     private boolean validarCampos(){
         String nomeSupermercado = etSupermercadoNome.getText().toString();
         String telefonesupermercado = etSupermercadoTelefone.getText().toString();
-        String latitudeD = etLatitude.getText().toString();
-        String longitudeD = etLogintude.getText().toString();
-        return verificaVazios(nomeSupermercado, telefonesupermercado, latitudeD, longitudeD);
+//        String latitudeD = etLatitude.getText().toString();
+//        String longitudeD = etLogintude.getText().toString();
+        return Validacao.verificaVaziosSupermercado(nomeSupermercado,telefonesupermercado,this,
+                etSupermercadoNome,etSupermercadoTelefone,etLatitude,etLogintude);
     }
 
-    private boolean verificaVazios(String nomeSupermercado, String telefonesupermercado, String latitude, String longitude) {
-        boolean result;
-        if (TextUtils.isEmpty(nomeSupermercado)) {
-            etSupermercadoNome.requestFocus();
-            etSupermercadoNome.setError(getString(R.string.nome_vazio_tela_cadastro_supermrecados));
-            result = false;
-        } else if (TextUtils.isEmpty(telefonesupermercado)) {
-            etSupermercadoTelefone.requestFocus();
-            etSupermercadoTelefone.setError(getString(R.string.telefone_vazio_tela_cadastro_supermrecados));
-            result = false;
-        } else if (etLatitude.getText().toString().equals(stringInicial)){
-            etLatitude.requestFocus();
-            etLatitude.setError(getString(R.string.latitude_vazio_tela_cadastro_produtos));
-            result = false;
-        }
-        else if (etLogintude.getText().toString().equals(stringInicial)){
-            etLogintude.requestFocus();
-            etLogintude.setError(getString(R.string.longitude_vazio_tela_cadastro_produtos));
-            result = false;
-        }else {
-            result = true;
-        }
-        return result;
-    }
+
 }

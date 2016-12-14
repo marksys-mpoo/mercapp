@@ -14,6 +14,7 @@ import com.mercapp.R;
 import com.mercapp.infra.Session;
 import com.mercapp.usuario.dominio.Pessoa;
 import com.mercapp.usuario.negocio.PessoaNegocio;
+import com.mercapp.usuario.negocio.Validacao;
 
 public class CadastroPessoaActivity extends AppCompatActivity {
 
@@ -22,6 +23,7 @@ public class CadastroPessoaActivity extends AppCompatActivity {
     private Session session = Session.getInstanciaSessao();
     private Context _context = CadastroPessoaActivity.this;
     private PessoaNegocio pessoaNegocio;
+    private boolean validaCartao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +31,10 @@ public class CadastroPessoaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro_pessoa);
         etNome = (EditText) findViewById(R.id.etNome);
         etTelefone = (EditText) findViewById(R.id.etTelefone);
+        etTelefone.addTextChangedListener(Mask.insert(Mask.MaskType.TEL, etTelefone));
         etNumeroCartao = (EditText) findViewById(R.id.etNumeroCartao);
         btnCadastroPessoa = (Button) findViewById(R.id.btnCadastroPessoa);
+
 
         if (session.getPessoaLogada() != null){
             defineText(session.getPessoaLogada());
@@ -46,10 +50,20 @@ public class CadastroPessoaActivity extends AppCompatActivity {
     public void cadastroPessoa(View view){
 
         String nome = etNome.getText().toString().trim();
-        String telefone = etTelefone.getText().toString().trim();
-        String numeroCartao = etNumeroCartao.getText().toString().trim();
+        String apenasNumerotelefone = Mask.unmask(etTelefone.getText().toString().trim());
+        String telefone = apenasNumerotelefone ;
+        String numeroCartao = etNumeroCartao.getText().toString().trim() ;
+        int encontraTipoCartao = Validacao.getCardID(numeroCartao);
+        if(encontraTipoCartao != -1) {
+            try {
+                validaCartao = Validacao.validCC(numeroCartao);
+                Toast.makeText(this, "Cartão " + Validacao.getCardName(Validacao.getCardID(numeroCartao)), Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
-        if (validarCamposPessoa()){
+        if (validarCamposPessoa() && validaCartao){
             pessoaNegocio = new PessoaNegocio(_context);
             if (session.getPessoaLogada() != null){
                 session.getPessoaLogada().setNome(nome);
@@ -70,7 +84,7 @@ public class CadastroPessoaActivity extends AppCompatActivity {
             finish();
             }
         }else {
-            Toast.makeText(this, "Existem campos vazios", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Existem campos vazios ou o cartão é inválido", Toast.LENGTH_SHORT).show();
         }
     }
 

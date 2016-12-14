@@ -1,17 +1,32 @@
 package com.mercapp.usuario.negocio;
 
 
+import android.content.Context;
+import android.text.TextUtils;
+import android.widget.EditText;
+
+import com.mercapp.R;
+import com.mercapp.usuario.gui.LoginActivity;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Created by jrvansuita on 17/11/15.
  */
 
-public class Validation {
+public class Validacao {
+
+    //Validações da tela de cadastro de Pessoa
+
     public static final int INVALID = -1;
     public static final int VISA = 0;
     public static final int MASTERCARD = 1;
     public static final int AMERICAN_EXPRESS = 2;
     public static final int EN_ROUTE = 3;
     public static final int DINERS_CLUB = 4;
+
+    private static final String stringInicial ="0.0";
 
     private static final int[] weightCPF = {11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
     private static final int[] weightCNPJ = {6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
@@ -166,6 +181,146 @@ public class Validation {
             e.printStackTrace();
             return false;
         }
+    }
+
+
+    //Validações da tela de Login e Cadastro de Usuario
+    public static boolean verificaVazios(String email, String senha, Context context, EditText etEmail, EditText etSenha) {
+
+        boolean result;
+
+        if (TextUtils.isEmpty(email)) {
+            etEmail.requestFocus();
+            etEmail.setError(context.getString(R.string.email_vazio));
+            result = true;
+        } else if (TextUtils.isEmpty(senha)) {
+            etSenha.requestFocus();
+            etSenha.setError(context.getString(R.string.senha_vazio));
+            result = true;
+        }
+        result = false;
+
+        return result;
+    }
+
+    public static boolean validarEmail(String email, Context context, EditText etEmail ) {
+        boolean result;
+        String regExpn =
+                "^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
+                        + "((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                        + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\."
+                        + "([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                        + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
+                        + "([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$";
+
+        CharSequence inputStr = email;
+
+        Pattern pattern = Pattern.compile(regExpn, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(inputStr);
+
+        if (matcher.matches()) {
+            result = true;
+        } else {
+            etEmail.requestFocus();
+            etEmail.setError(context.getString(R.string.email_invalido));
+            result = false;
+        }
+        return result;
+    }
+
+    public static boolean semEspaco(String email,Context context,EditText etEmail) {
+        boolean result;
+        int idx = email.indexOf(" ");
+
+        if (idx != -1){
+            etEmail.requestFocus();
+            etEmail.setError(context.getString(R.string.email_senha_invalido));
+            result = true;
+        } else {
+            result = false;
+        }
+
+        return result;
+    }
+
+    public static boolean tamanhoInválido(String email, String senha, Context context,EditText etEmail, EditText etSenha ) {
+        boolean result;
+
+        if (!(email.length() > 3)) {
+            etEmail.requestFocus();
+            etEmail.setError(context.getString(R.string.login_tamanho_invalido));
+            result = false;
+        } else if (!(senha.length() > 2)){
+            etSenha.requestFocus();
+            etSenha.setError(context.getString(R.string.login_senha_tamanho_invalido));
+            result = false;
+        }
+        result = true;
+
+        return result;
+    }
+
+    public static boolean confirmarSenha(String senha, String confirmarSenha, Context context, EditText etConfirmar){
+
+        boolean result;
+
+        if(senha.equals(confirmarSenha)){
+            result = true;
+        }else{
+            etConfirmar.requestFocus();
+            etConfirmar.setError(context.getString(R.string.senha_diferentes));
+            result = false;
+        }
+        return result;
+    }
+
+    // Tela Cadastro de Supermercado
+    public static boolean verificaVaziosSupermercado(String nomeSupermercado,
+                                         String telefonesupermercado,Context context, EditText etSupermercadoNome, EditText etSupermercadoTelefone, EditText etLatitude, EditText etLogintude) {
+        boolean result;
+        if (TextUtils.isEmpty(nomeSupermercado)) {
+            etSupermercadoNome.requestFocus();
+            etSupermercadoNome.setError(context.getString(R.string.nome_vazio_tela_cadastro_supermrecados));
+            result = false;
+        } else if (TextUtils.isEmpty(telefonesupermercado)) {
+            etSupermercadoTelefone.requestFocus();
+            etSupermercadoTelefone.setError(context.getString(R.string.telefone_vazio_tela_cadastro_supermrecados));
+            result = false;
+        } else if (etLatitude.getText().toString().equals(stringInicial)) {
+            etLatitude.requestFocus();
+            etLatitude.setError(context.getString(R.string.latitude_vazio_tela_cadastro_produtos));
+            result = false;
+        } else if (etLogintude.getText().toString().equals(stringInicial)) {
+            etLogintude.requestFocus();
+            etLogintude.setError(context.getString(R.string.longitude_vazio_tela_cadastro_produtos));
+            result = false;
+        } else {
+            result = true;
+        }
+        return result;
+
+    }
+
+    // Tela Cadastro de Produto
+    public static boolean verificaVazios(String nome, String descricao, String supermercado, Context context,
+                                         EditText setnome, EditText setdescricao, EditText setSupermercado) {
+        boolean result;
+        if (TextUtils.isEmpty(nome)) {
+            setnome.requestFocus();
+            setnome.setError(context.getString(R.string.campo_vazio_tela_cadastro_produtos));
+            result = false;
+        } else if (TextUtils.isEmpty(descricao)) {
+            setdescricao.requestFocus();
+            setdescricao.setError(context.getString(R.string.campo_vazio_tela_cadastro_produtos));
+            result = false;
+        } else if (TextUtils.isEmpty(supermercado)) {
+            setSupermercado.requestFocus();
+            setSupermercado.setError(context.getString(R.string.campo_vazio_tela_cadastro_produtos));
+            result = false;
+        }else {
+            result = true;
+        }
+        return result;
     }
 
 }

@@ -1,9 +1,11 @@
 package com.mercapp.supermercado.negocio;
 
 import android.content.Context;
+import android.database.Cursor;
 
 import com.mercapp.infra.Session;
 import com.mercapp.supermercado.dominio.Produto;
+import com.mercapp.supermercado.dominio.Supermercado;
 import com.mercapp.supermercado.persistencia.ProdutoPersistencia;
 
 import java.util.List;
@@ -29,19 +31,40 @@ public class ProdutoNegocio {
         return produtoSelecionado;
     }
 
-    public void cadastrar(Produto produto){
+    public void cadastrar(String nome, String descricao, double preco, Supermercado nomesupermercado, String idDepartamento){
+        Produto produtoCadastro = new Produto();
+        produtoCadastro.setDescricao(descricao);
+        produtoCadastro.setPreco(preco);
+        produtoCadastro.setNome(nome);
+        produtoCadastro.setSupermercado(nomesupermercado);
+        produtoCadastro.setIdDepartamento(idDepartamento);
         ProdutoPersistencia produtoPersistencia = new ProdutoPersistencia(_context);
-        produtoPersistencia.cadastrar(produto);
+        produtoPersistencia.cadastrar(produtoCadastro);
     }
 
+//    public Cursor listaProdutos(){
+//        ProdutoPersistencia consulta = new ProdutoPersistencia(_context);
+//        Cursor cursor = consulta.listaDadosProdutos();
+//        return cursor;
+//    }
+    public void editar(Produto produto){
+        ProdutoPersistencia produtoPersistencia = new ProdutoPersistencia(_context);
+        produtoPersistencia.editar(produto);
+    }
+    public void deletar(Produto produto){
+        ProdutoPersistencia produtoPersistencia= new ProdutoPersistencia(_context);
+        produtoPersistencia.deletar(produto);
+    }
     public List<Produto> listaProdutos(){
         ProdutoPersistencia consulta = new ProdutoPersistencia(_context);
-        List<Produto> produtos = consulta.listaDadosProdutos();
-        return produtos;
+        List<Produto> produtos = consulta.listaDados();
+        return produtos ;
     }
 
-    public void iniciarSessao(Produto produto){
-        sessao.setProdutoSelecao(produto);
-    }
+//    public void iniciarSessao(Produto produto){
+//        sessao.setProdutoSelecao(produto);
+//    }
+
+
 
 }
