@@ -22,6 +22,7 @@ import com.mercapp.infra.Administrador;
 import com.mercapp.infra.ProdutoListAdapter;
 import com.mercapp.infra.BDHelper;
 import com.mercapp.infra.Session;
+import com.mercapp.infra.SupermercadoListAdapter;
 import com.mercapp.supermercado.dominio.Produto;
 import com.mercapp.supermercado.dominio.Supermercado;
 import com.mercapp.supermercado.negocio.ProdutoNegocio;
@@ -85,7 +86,8 @@ public class ListaProdutos extends AppCompatActivity {
             }
             @Override
             public boolean onQueryTextChange(String text) {
-                dataAdapter.getFilter().filter(text.toString());
+                dataAdapter = new ProdutoListAdapter(_context, produtoNegocio.listarProdutosPorParteDoNome(text));
+                lista.setAdapter(dataAdapter);
                 return false;
             }
         });

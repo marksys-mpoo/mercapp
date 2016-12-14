@@ -31,6 +31,12 @@ public class ProdutoNegocio {
         return produtoSelecionado;
     }
 
+    public List<Produto> listarProdutosPorParteDoNome(String inputText){
+        ProdutoPersistencia listagem = new ProdutoPersistencia(_context);
+        List<Produto> produtos = listagem.listarProdutosPorParteDoNome(inputText);
+        return produtos;
+    }
+
     public void cadastrar(String nome, String descricao, double preco, Supermercado nomesupermercado, String idDepartamento){
         Produto produtoCadastro = new Produto();
         produtoCadastro.setDescricao(descricao);

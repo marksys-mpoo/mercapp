@@ -3,6 +3,7 @@ package com.mercapp.supermercado.persistencia;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.mercapp.infra.BDHelper;
@@ -124,6 +125,21 @@ public class ProdutoPersistencia {
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_PRODUTO +
                 " WHERE "+ bdHelper.COLUNA_ID_SUPERMERCADO_PRODUTO +" LIKE ? AND "+ bdHelper.COLUNA_PRODUTO_DEPARTAMENTO +" LIKE ? " , new String[]{idSupermercado,idDepartamento});
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()){
+            produtos.add(criarProduto(cursor));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        db.close();
+        return produtos;
+    }
+
+    public List<Produto> listarProdutosPorParteDoNome(String inputText) throws SQLException {
+        List<Produto> produtos = new ArrayList<>();
+        SQLiteDatabase db = bdHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_PRODUTO +
+                " WHERE "+ bdHelper.COLUNA_NOME_PRODUTO+" LIKE '%" + inputText + "%'", null, null);
         cursor.moveToFirst();
         while(!cursor.isAfterLast()){
             produtos.add(criarProduto(cursor));
