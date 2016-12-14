@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.mercapp.infra.BDHelper;
 import com.mercapp.supermercado.dominio.Produto;
+import com.mercapp.supermercado.dominio.Supermercado;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +57,7 @@ public class ProdutoPersistencia {
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Produto produto = null;
         Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_PRODUTO +
-                " WHERE "+ bdHelper.COLUNA_ID_PRODUTO+" LIKE ? ", new String[]{id_string});
+                " WHERE "+ bdHelper.COLUNA_ID_PRODUTO +" LIKE ? ", new String[]{id_string});
         if (cursor.moveToFirst()){
             produto = criarProduto(cursor);
         }
@@ -94,8 +95,13 @@ public class ProdutoPersistencia {
     private Produto criarProduto(Cursor cursor){
         Produto produto = new Produto();
         produto.setId(cursor.getInt(0));
-        produto.setDescricao(cursor.getString(1));
-        produto.setPreco(cursor.getDouble(2));
+        produto.setNome(cursor.getString(1));
+        produto.setDescricao(cursor.getString(2));
+        produto.setPreco(cursor.getDouble(3));
+//        int idSupermercado = cursor.getInt(3);
+////        SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(_context);
+////        supermercadoPersistencia.buscarSupermercado(idSupermercado);
+////        produto.setSupermercado(idSupermercado);
         return produto;
     }
 

@@ -36,16 +36,16 @@ public class ProdutoListAdapter extends ArrayAdapter<Produto> {
             convertView = LayoutInflater.from(this._context).inflate(R.layout.produtos_geral, null);
 
             TextView nome = (TextView) convertView.findViewById(R.id.colunaProduto1);
-            nome.setText(produtoPosicao.getNome());
+            nome.setText(produtoPosicao.getNome().toString());
 
             TextView descricao = (TextView) convertView.findViewById(R.id.colunaProduto2);
-            descricao.setText(produtoPosicao.getDescricao());
+            descricao.setText(produtoPosicao.getDescricao().toString());
 
             TextView preco = (TextView) convertView.findViewById(R.id.colunaProduto3);
             preco.setText(produtoPosicao.getPreco().toString().trim());
 
-            TextView supermercado = (TextView) convertView.findViewById(R.id.colunaProduto4);
-            supermercado.setText(produtoPosicao.getSupermercado().getId());
+//            TextView supermercado = (TextView) convertView.findViewById(R.id.colunaProduto4);
+//            supermercado.setText(produtoPosicao.getSupermercado().getNome());
 
             return convertView;
         }
