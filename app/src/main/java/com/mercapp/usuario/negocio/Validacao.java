@@ -11,10 +11,6 @@ import com.mercapp.usuario.gui.LoginActivity;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by jrvansuita on 17/11/15.
- */
-
 public class Validacao {
 
     //Validações da tela de cadastro de Pessoa
@@ -197,8 +193,9 @@ public class Validacao {
             etSenha.requestFocus();
             etSenha.setError(context.getString(R.string.senha_vazio));
             result = true;
+        } else {
+            result = false;
         }
-        result = false;
 
         return result;
     }
@@ -254,8 +251,9 @@ public class Validacao {
             etSenha.requestFocus();
             etSenha.setError(context.getString(R.string.login_senha_tamanho_invalido));
             result = false;
+        } else {
+            result = true;
         }
-        result = true;
 
         return result;
     }
