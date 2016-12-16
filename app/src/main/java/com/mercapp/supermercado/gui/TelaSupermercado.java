@@ -83,6 +83,7 @@ public class TelaSupermercado extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        session.setSupermercadoSelecionado(null);
         Intent voltarTelaMenuMapa = new Intent(TelaSupermercado.this, TelaMenuActivity.class);
         startActivity(voltarTelaMenuMapa);
         finish();
