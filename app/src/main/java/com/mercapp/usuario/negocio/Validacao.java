@@ -6,7 +6,6 @@ import android.text.TextUtils;
 import android.widget.EditText;
 
 import com.mercapp.R;
-import com.mercapp.usuario.gui.LoginActivity;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

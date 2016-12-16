@@ -1,7 +1,6 @@
 package com.mercapp.supermercado.negocio;
 
 import android.content.Context;
-import android.database.Cursor;
 
 import com.mercapp.infra.Session;
 import com.mercapp.supermercado.dominio.Produto;

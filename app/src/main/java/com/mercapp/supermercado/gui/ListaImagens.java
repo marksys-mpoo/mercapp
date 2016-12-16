@@ -1,21 +1,12 @@
 package com.mercapp.supermercado.gui;
 
 import android.content.Context;
-import android.content.res.AssetManager;
-import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
+import android.support.v7.app.AppCompatActivity;
 
 import com.mercapp.R;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 
 public class ListaImagens extends AppCompatActivity {
 
