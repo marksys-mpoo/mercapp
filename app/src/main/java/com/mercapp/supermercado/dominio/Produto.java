@@ -9,6 +9,9 @@ public class Produto {
     private int idSupermercado;
     private String idDepartamento;
     private int imageProduto;
+    private int posicaoSpinner;
+    private int posicaoSpinnerImagem;
+
 
     public String getNome() {
         return nome;
@@ -71,6 +74,22 @@ public class Produto {
 
     public void setImageProduto(int imageProduto) {
         this.imageProduto = imageProduto;
+    }
+
+    public int getPosicaoSpinner() {
+        return posicaoSpinner;
+    }
+
+    public void setPosicaoSpinner(int posicaoSpinner) {
+        this.posicaoSpinner = posicaoSpinner;
+    }
+
+    public int getPosicaoSpinnerImagem() {
+        return posicaoSpinnerImagem;
+    }
+
+    public void setPosicaoSpinnerImagem(int posicaoSpinnerImagem) {
+        this.posicaoSpinnerImagem = posicaoSpinnerImagem;
     }
 
 }

@@ -51,6 +51,7 @@ public class ListaProdutos extends AppCompatActivity {
 
         lista = (ListView)findViewById(R.id.lista_produtos);
         lista.setAdapter(dataAdapter);
+        lista.setTextFilterEnabled(true);
 
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             // Editar Produtos.

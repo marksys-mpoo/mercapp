@@ -21,12 +21,12 @@ public class Session {
     private LatLng coordenadas;
     private String funcaoCrudSupermercado;
     private String textButaoFuncaoSupermercado;
+    private Produto produtoSelecionado;
+
 
     public Produto getProdutoSelecionado() {
         return produtoSelecionado;
     }
-
-    private Produto produtoSelecionado;
 
     public static Session getInstanciaSessao() {
         return instanciaSessao;

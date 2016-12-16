@@ -70,7 +70,10 @@ public class SQLScript {
         produtoBuilder.append("descricao  text not null,  ");
         produtoBuilder.append("preco  real not null,  ");
         produtoBuilder.append("_id_supermercado integer not null,  ");
-        produtoBuilder.append("_id_departamento text not null );  ");
+        produtoBuilder.append("_id_departamento text not null,  ");
+        produtoBuilder.append("posicaoSpinnerSupermercado int not null,  ");
+        produtoBuilder.append("posicaoSpinnerImagemProduto int not null );  ");
+
         return produtoBuilder.toString();
     }
 }

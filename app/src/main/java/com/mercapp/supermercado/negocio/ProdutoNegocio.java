@@ -37,7 +37,8 @@ public class ProdutoNegocio {
         return produtos;
     }
 
-    public void cadastrar(String nome, int imagem, String descricao, double preco, Supermercado nomesupermercado, String idDepartamento){
+    public void cadastrar(String nome, int imagem, String descricao, double preco, Supermercado nomesupermercado, String idDepartamento,
+                          int posicaoSpinnerSupermercado, int posicaoSpinnerImagemProduto){
         Produto produtoCadastro = new Produto();
         produtoCadastro.setDescricao(descricao);
         produtoCadastro.setPreco(preco);
@@ -45,6 +46,9 @@ public class ProdutoNegocio {
         produtoCadastro.setImageProduto(imagem);
         produtoCadastro.setSupermercado(nomesupermercado);
         produtoCadastro.setIdDepartamento(idDepartamento);
+        produtoCadastro.setPosicaoSpinner(posicaoSpinnerSupermercado);
+        produtoCadastro.setPosicaoSpinnerImagem(posicaoSpinnerImagemProduto);
+
         ProdutoPersistencia produtoPersistencia = new ProdutoPersistencia(_context);
         produtoPersistencia.cadastrar(produtoCadastro);
     }

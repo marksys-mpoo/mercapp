@@ -51,6 +51,8 @@ public class BDHelper extends SQLiteOpenHelper {
     public static final String COLUNA_PRECO_PRODUTO = "preco";
     public static final String COLUNA_ID_SUPERMERCADO_PRODUTO = "_id_supermercado";
     public static final String COLUNA_PRODUTO_DEPARTAMENTO = "_id_departamento";
+    public static final String COLUNA_POSICAO_SPINNER_SUPERMERCADO = "posicaoSpinnerSupermercado";
+    public static final String COLUNA_POSICAO_SPINNER_IMAGEM_PRODUTO = "posicaoSpinnerImagemProduto";
 
     //Tabela Carrinho
     public static final String TBL_CARRINHO = "carrinho";

@@ -1,9 +1,7 @@
 package com.mercapp.supermercado.dominio;
 
 import com.google.android.gms.maps.model.LatLng;
-
-public class Supermercado {
-
+    public class Supermercado {
     private int id;
     private String nome;
     private String telefone;

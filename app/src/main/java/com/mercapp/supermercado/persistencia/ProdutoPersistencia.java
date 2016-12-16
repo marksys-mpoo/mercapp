@@ -30,6 +30,9 @@ public class ProdutoPersistencia {
         values.put(bdHelper.COLUNA_IMAGEM_PRODUTO, produto.getImageProduto());
         values.put(bdHelper.COLUNA_ID_SUPERMERCADO_PRODUTO, produto.getSupermercado().getId());
         values.put(bdHelper.COLUNA_PRODUTO_DEPARTAMENTO, produto.getIdDepartamento());
+        values.put(bdHelper.COLUNA_POSICAO_SPINNER_SUPERMERCADO, produto.getPosicaoSpinner());
+        values.put(bdHelper.COLUNA_POSICAO_SPINNER_IMAGEM_PRODUTO, produto.getPosicaoSpinnerImagem());
+
         db.insert(bdHelper.TBL_PRODUTO, null, values);
         db.close();
     }

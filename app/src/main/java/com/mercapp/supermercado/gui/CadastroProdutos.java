@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -35,7 +34,7 @@ public class CadastroProdutos extends AppCompatActivity {
     private Produto produtoCadastrado;
     private EditText setdescricao, setpreco,setnome, setimagem;
     private String imagemStr;
-    private int imagem;
+    private int imagem, posicaoSpinner, posicaoSpinnerImagem;
     private double preco;
     private AlertDialog alerta;
     private Session session = Session.getInstanciaSessao();
@@ -76,6 +75,7 @@ public class CadastroProdutos extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 nomeSpinner = parent.getItemAtPosition(position).toString();
+                posicaoSpinner = position;
             }
 
             @Override
@@ -94,6 +94,7 @@ public class CadastroProdutos extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 nomeSpinnerImagem = parent.getItemAtPosition(position).toString();
+                posicaoSpinnerImagem = position;
             }
 
             @Override
@@ -102,7 +103,7 @@ public class CadastroProdutos extends AppCompatActivity {
             }
         });
 
-        if (session.getSupermercadoSelecionado() != null) {
+        if (session.getProdutoSelecionado() != null) {
             carregaDados();
         }
     }
@@ -126,9 +127,11 @@ public class CadastroProdutos extends AppCompatActivity {
                     session.getProdutoSelecionado().setNome(nome);
                     session.getProdutoSelecionado().setDescricao(descricao);
                     session.getProdutoSelecionado().setSupermercado(supermercado);
+                    session.getProdutoSelecionado().setPosicaoSpinner(posicaoSpinner);
+                    session.getProdutoSelecionado().setPosicaoSpinner(posicaoSpinnerImagem);
                     produtoNegocio.editar(session.getProdutoSelecionado());
                 } else {
-                    produtoNegocio.cadastrar(nome, imagem, descricao, preco,supermercado, idDepartamento);
+                    produtoNegocio.cadastrar(nome, imagem, descricao, preco, supermercado, idDepartamento, posicaoSpinner, posicaoSpinnerImagem);
                 }
                 Intent changeToListaProdutos = new Intent(CadastroProdutos.this, ListaProdutos.class);
                 CadastroProdutos.this.startActivity(changeToListaProdutos);
@@ -183,7 +186,12 @@ public class CadastroProdutos extends AppCompatActivity {
         setnome.setText(session.getProdutoSelecionado().getNome());
         setdescricao.setText(session.getProdutoSelecionado().getDescricao());
         setpreco.setText(precoEditavel);
+        //spinner.setSelection(1);
+        //spinnerImagens.setSelection(4);
+        spinner.setSelection(session.getProdutoSelecionado().getPosicaoSpinner());
+        spinnerImagens.setSelection(session.getProdutoSelecionado().getPosicaoSpinnerImagem());
     }
+
     private void chamarCadastroSupermercado(){
         Intent intent  = new Intent(this, ListaSupermercados.class);
         CadastroProdutos.this.startActivity(intent);
