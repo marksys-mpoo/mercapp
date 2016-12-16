@@ -41,9 +41,15 @@ public class CadastroProdutos extends AppCompatActivity {
     private Session session = Session.getInstanciaSessao();
     private ProdutoNegocio produtoNegocio = new ProdutoNegocio(_context);
     private String[] strProdutosDrawable = {
-            "dp_acougue",
-            "dp_bebidas",
-            "dp_frios"
+            "img_arroz",
+            "img_creme_leite",
+            "img_leite",
+            "img_maca",
+            "img_pao",
+            "img_pizza",
+            "img_refrigerante",
+            "img_sabonete",
+            "img_shampoo"
     };
 
     @Override
