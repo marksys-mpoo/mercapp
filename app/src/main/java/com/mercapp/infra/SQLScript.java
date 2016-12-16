@@ -66,6 +66,7 @@ public class SQLScript {
         produtoBuilder.append("CREATE TABLE  produto  (  ");
         produtoBuilder.append("_id integer primary key autoincrement,   ");
         produtoBuilder.append("nomeProduto  text not null,  ");
+        produtoBuilder.append("imagemProduto int not null,  ");
         produtoBuilder.append("descricao  text not null,  ");
         produtoBuilder.append("preco  real not null,  ");
         produtoBuilder.append("_id_supermercado integer not null,  ");

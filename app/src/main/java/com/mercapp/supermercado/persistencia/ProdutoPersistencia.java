@@ -27,6 +27,7 @@ public class ProdutoPersistencia {
         values.put(bdHelper.COLUNA_DESCRICAO_PRODUTO, produto.getDescricao());
         values.put(bdHelper.COLUNA_PRECO_PRODUTO, produto.getPreco());
         values.put(bdHelper.COLUNA_NOME_PRODUTO, produto.getNome());
+        values.put(bdHelper.COLUNA_IMAGEM_PRODUTO, produto.getImageProduto());
         values.put(bdHelper.COLUNA_ID_SUPERMERCADO_PRODUTO, produto.getSupermercado().getId());
         values.put(bdHelper.COLUNA_PRODUTO_DEPARTAMENTO, produto.getIdDepartamento());
         db.insert(bdHelper.TBL_PRODUTO, null, values);
@@ -97,10 +98,11 @@ public class ProdutoPersistencia {
         Produto produto = new Produto();
         produto.setId(cursor.getInt(0));
         produto.setNome(cursor.getString(1));
-        produto.setDescricao(cursor.getString(2));
-        produto.setPreco(cursor.getDouble(3));
+        produto.setImageProduto(cursor.getInt(2));
+        produto.setDescricao(cursor.getString(3));
+        produto.setPreco(cursor.getDouble(4));
         SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(_context);
-        Supermercado supermercado = supermercadoPersistencia.buscarSupermercado(cursor.getInt(4));
+        Supermercado supermercado = supermercadoPersistencia.buscarSupermercado(cursor.getInt(5));
         produto.setSupermercado(supermercado);
         return produto;
     }

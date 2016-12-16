@@ -8,7 +8,7 @@ public class Produto {
     private Supermercado supermercado;
     private int idSupermercado;
     private String idDepartamento;
-
+    private int imageProduto;
 
     public String getNome() {
         return nome;
@@ -65,5 +65,12 @@ public class Produto {
         this.idDepartamento = idDepartamento;
     }
 
+    public int getImageProduto() {
+        return imageProduto;
+    }
+
+    public void setImageProduto(int imageProduto) {
+        this.imageProduto = imageProduto;
+    }
 
 }

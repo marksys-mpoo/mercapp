@@ -92,7 +92,9 @@
         <activity android:name=".supermercado.gui.ListaProdutosDoSupermercado" />
         <activity android:name=".infra.SobreActivity" />
         <activity android:name=".infra.Administrador" />
-        <activity android:name=".usuario.gui.RecuperarSenhaActivity"/>
+        <activity android:name=".usuario.gui.RecuperarSenhaActivity" />
+        <activity android:name=".supermercado.gui.ListaImagens" />
+        <activity android:name=".infra.ImagemListAdapter"></activity>
     </application>
 
 </manifest>

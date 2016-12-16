@@ -53,7 +53,6 @@
     <string name="campo_vazio_tela_cadastro_produtos"> O campo não pode ser vazio!</string>
 
 
-
     //Tela_cadastro_supermercado
     <string name="tela_cadastro_dos_Supermercados">Cadastro de Supermercados</string>
     <string name="tela_busca_dos_Supermercados">Buscar</string>

@@ -1,10 +1,13 @@
 package com.mercapp.infra;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mercapp.R;
@@ -13,15 +16,10 @@ import com.mercapp.supermercado.dominio.Produto;
 
 import java.util.List;
 
-/**
- * Created by WELLINGTON on 13/12/2016.
- */
-
 public class ProdutoListAdapter extends ArrayAdapter<Produto> {
 
         private Context _context;
         private List<Produto> produtos;
-
 
         public ProdutoListAdapter(Context context, List<Produto> produtos) {
             super(context, 0, produtos);
@@ -46,6 +44,11 @@ public class ProdutoListAdapter extends ArrayAdapter<Produto> {
 
             TextView supermercado = (TextView) convertView.findViewById(R.id.colunaProduto4);
             supermercado.setText(produtoPosicao.getSupermercado().getNome());
+
+            ImageView imagem = (ImageView) convertView.findViewById(R.id.iconProdutoGeral);
+            int idImagem = produtoPosicao.getImageProduto();
+            Drawable drawable = ContextCompat.getDrawable(_context, idImagem);
+            imagem.setImageDrawable(drawable);
 
             return convertView;
         }

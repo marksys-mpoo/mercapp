@@ -11,11 +11,15 @@
     <dimen name="marginTabelaDepartamentos">3dp</dimen>
 
     // Tabela Produtos (Titulo das Colunas)
-    <dimen name="marginTabelaColunasProdutos">22dp</dimen> // Tela produtos.xml
-    <dimen name="marginTabelaColunasProdutosTela">20dp</dimen> // Tela activity_lista_produtos_do_supermercado.xml
+    <dimen name="marginTabelaColunasProdutos">22dp</dimen>
+    // Tela produtos.xml
+    <dimen name="marginTabelaColunasProdutosTela">20dp</dimen>
+    // Tela activity_lista_produtos_do_supermercado.xml
 
     // Tabela Produtos Geral (Titulo das Colunas)
-    <dimen name="marginTabelaColunasProdutosGeral">12dp</dimen> // Tela produtos_geral.xml
-    <dimen name="marginTabelaColunasProdutosTelaGeral">16dp</dimen> // Tela activity_lista_produtos.xml (Sem uso no momento)
+    <dimen name="marginTabelaColunasProdutosGeral">12dp</dimen>
+    // Tela produtos_geral.xml
+    <dimen name="marginTabelaColunasProdutosTelaGeral">16dp</dimen>
+    // Tela activity_lista_produtos.xml (Sem uso no momento)
 
 </resources>

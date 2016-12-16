@@ -67,7 +67,6 @@ public class CadastroSupermercados extends AppCompatActivity {
             Double longitudeD = Double.parseDouble(etLogintude.getText().toString());
             LatLng latLng = new LatLng(latitudeD, longitudeD);
 
-
             if (session.getSupermercadoSelecionado() != null) {
                 session.getSupermercadoSelecionado().setNome(nome);
                 session.getSupermercadoSelecionado().setTelefone(telefone);

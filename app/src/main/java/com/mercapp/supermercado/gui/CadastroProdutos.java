@@ -28,16 +28,23 @@ public class CadastroProdutos extends AppCompatActivity {
 
     private static final String stringVazia = "";
     private static final String idDepartamento = "1";
-    private String nomeSpinner;
+    private String nomeSpinner, nomeSpinnerImagem;
     private Context _context = CadastroProdutos.this;
-    private Spinner spinner;
+    private Spinner spinner, spinnerImagens;
     private SupermercadoNegocio supermercadoNegocio;
     private Produto produtoCadastrado;
-    private EditText setdescricao, setpreco,setnome;
+    private EditText setdescricao, setpreco,setnome, setimagem;
+    private String imagemStr;
+    private int imagem;
     private double preco;
     private AlertDialog alerta;
     private Session session = Session.getInstanciaSessao();
     private ProdutoNegocio produtoNegocio = new ProdutoNegocio(_context);
+    private String[] strProdutosDrawable = {
+            "dp_acougue",
+            "dp_bebidas",
+            "dp_frios"
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +54,8 @@ public class CadastroProdutos extends AppCompatActivity {
         setnome = (EditText) findViewById(R.id.edtNomeProduto);
         setdescricao = (EditText) findViewById(R.id.edtDescricaoProduto);
         setpreco = (EditText) findViewById(R.id.edtPrecoProduto);
+        //setimagem = (EditText) findViewById(R.id.edtImagemProduto);
+        spinnerImagens = (Spinner) findViewById(R.id.spinnerImagens);
 
         setnome.requestFocus();
 
@@ -69,6 +78,23 @@ public class CadastroProdutos extends AppCompatActivity {
             }
         });
 
+        // Spinner das Imagens
+        ArrayAdapter<String> arrayAdapterImagem = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, strProdutosDrawable);
+        ArrayAdapter<String> spinnerArrayAdapterImagem = arrayAdapterImagem;
+        spinnerArrayAdapterImagem.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinnerImagens.setAdapter(spinnerArrayAdapterImagem);
+
+        spinnerImagens.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                nomeSpinnerImagem = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         if (session.getSupermercadoSelecionado() != null) {
             carregaDados();
@@ -83,6 +109,9 @@ public class CadastroProdutos extends AppCompatActivity {
             String nomeSupermercado = nomeSpinner;
 
             preco = Double.parseDouble(setpreco.getText().toString().trim());
+            //imagemStr = setimagem.getText().toString().trim();
+            imagem = getResources().getIdentifier(nomeSpinnerImagem , "drawable", getPackageName());
+
             supermercadoNegocio = new SupermercadoNegocio(_context);
             Supermercado supermercado = supermercadoNegocio.buscaSupermercado(nomeSupermercado);
 
@@ -93,7 +122,7 @@ public class CadastroProdutos extends AppCompatActivity {
                     session.getProdutoSelecionado().setSupermercado(supermercado);
                     produtoNegocio.editar(session.getProdutoSelecionado());
                 } else {
-                    produtoNegocio.cadastrar(nome, descricao, preco,supermercado, idDepartamento);
+                    produtoNegocio.cadastrar(nome, imagem, descricao, preco,supermercado, idDepartamento);
                 }
                 Intent changeToListaProdutos = new Intent(CadastroProdutos.this, ListaProdutos.class);
                 CadastroProdutos.this.startActivity(changeToListaProdutos);
@@ -194,6 +223,12 @@ public class CadastroProdutos extends AppCompatActivity {
         String nome = setnome.getText().toString().trim();
         String descricao = setdescricao.getText().toString().trim();
         return Validacao.verificaVaziosProduto(nome, descricao,this,setnome,setdescricao);
+    }
+
+    public void changeToImagens(View view) {
+        Intent voltarMenu = new Intent(CadastroProdutos.this, ListaImagens.class);
+        startActivity(voltarMenu);
+        finish();
     }
 
     private void limparCampos(){

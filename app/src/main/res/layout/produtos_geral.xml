@@ -5,52 +5,24 @@
     android:orientation="vertical" >
 
 
-    <TextView
-        android:text="Preço:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView21"
-        android:layout_below="@+id/textView6"
-        android:textSize="18sp"
-        android:layout_marginTop="5sp"/>
+    <ImageView
+        android:id="@+id/iconProdutoGeral"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/dp_bebidas"
+        android:layout_below="@+id/textView4"
+        android:layout_alignParentStart="true" />
 
     <TextView
-        android:text="Supermercado:"
+        android:text="Nome:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView22"
-        android:layout_below="@+id/textView21"
-        android:textSize="18sp"
-        android:layout_marginTop="5sp"/>
-
-    <TextView
-        android:id="@+id/colunaProduto3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/textview_coluna3_produtos"
-        android:textSize="18sp"
-        android:layout_below="@+id/colunaProduto2"
-        android:layout_alignStart="@+id/colunaProduto2"
-        android:layout_marginTop="5sp"/>
-
-    <TextView
-        android:id="@+id/colunaProduto4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/textview_coluna4_produtos"
-        android:textSize="18sp"
-        android:layout_below="@+id/colunaProduto3"
-        android:layout_alignStart="@+id/colunaProduto3"
-        android:layout_marginTop="5sp"/>
-
-    <TextView
-        android:text="Nome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
         android:id="@+id/textView4"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/iconProdutoGeral" />
 
     <TextView
         android:text="Descrição:"
@@ -59,7 +31,34 @@
         android:id="@+id/textView6"
         android:textSize="18sp"
         android:layout_below="@+id/textView4"
-        android:layout_alignParentStart="true" />
+        android:layout_toEndOf="@+id/iconProdutoGeral" />
+
+    <TextView
+        android:text="Preço:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView21"
+        android:textSize="18sp"
+        android:layout_below="@+id/textView6"
+        android:layout_toEndOf="@+id/iconProdutoGeral" />
+
+    <TextView
+        android:text="Supermercado:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView22"
+        android:textSize="18sp"
+        android:layout_below="@+id/textView21"
+        android:layout_toEndOf="@+id/iconProdutoGeral" />
+
+    <TextView
+        android:text="Coluna 1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/colunaProduto1"
+        android:textSize="18sp"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/textView4" />
 
     <TextView
         android:id="@+id/colunaProduto2"
@@ -69,17 +68,26 @@
         android:textSize="18sp"
         android:layout_centerInParent="false"
         android:layout_alignWithParentIfMissing="false"
-        android:layout_alignBaseline="@+id/textView6"
-        android:layout_alignBottom="@+id/textView6"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/colunaProduto1"
+        android:layout_toEndOf="@+id/textView6" />
 
     <TextView
-        android:text="Coluna 1"
+        android:id="@+id/colunaProduto3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/colunaProduto1"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/colunaProduto2"
-        android:textSize="18sp" />
+        android:text="@string/textview_coluna3_produtos"
+        android:textSize="18sp"
+        android:layout_below="@+id/textView6"
+        android:layout_toEndOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/colunaProduto4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textview_coluna4_produtos"
+        android:textSize="18sp"
+        android:layout_alignBaseline="@+id/textView22"
+        android:layout_alignBottom="@+id/textView22"
+        android:layout_toEndOf="@+id/textView22" />
 
 </RelativeLayout>
