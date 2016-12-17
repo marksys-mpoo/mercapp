@@ -49,7 +49,6 @@ public class RecuperarSenhaActivity extends AppCompatActivity implements View.On
         contrasenha = "mercapp2016";
         sub = "Recuperação de Senha";
 
-//        context = this;
         recuperarSenha = (Button) findViewById(R.id.btnRecuperarSenha);
         recuperarSenha.setOnClickListener(this);
     }
@@ -89,7 +88,6 @@ public class RecuperarSenhaActivity extends AppCompatActivity implements View.On
                 usuario = usuarioNegocio.buscar(rec);
                 msg = usuario.getSenha();
                 if (msg != null) {
-//                   Toast.makeText(getApplicationContext(), "Enviando email para "+ usuario.getEmail(), Toast.LENGTH_SHORT).show();
                     Message message = new MimeMessage(session);
                     message.setFrom(new InternetAddress("marksys.mercapp@gmail.com"));
                     message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("wellingtonluiz123456@gmail.com"));

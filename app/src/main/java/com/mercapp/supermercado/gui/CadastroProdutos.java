@@ -59,9 +59,7 @@ public class CadastroProdutos extends AppCompatActivity {
         setnome = (EditText) findViewById(R.id.edtNomeProduto);
         setdescricao = (EditText) findViewById(R.id.edtDescricaoProduto);
         setpreco = (EditText) findViewById(R.id.edtPrecoProduto);
-        //setimagem = (EditText) findViewById(R.id.edtImagemProduto);
         spinnerImagens = (Spinner) findViewById(R.id.spinnerImagens);
-
         setnome.requestFocus();
 
         SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(_context);
@@ -116,7 +114,6 @@ public class CadastroProdutos extends AppCompatActivity {
             String nomeSupermercado = nomeSpinner;
 
             preco = Double.parseDouble(setpreco.getText().toString().trim());
-            //imagemStr = setimagem.getText().toString().trim();
             imagem = getResources().getIdentifier(nomeSpinnerImagem , "drawable", getPackageName());
 
             supermercadoNegocio = new SupermercadoNegocio(_context);
@@ -137,18 +134,14 @@ public class CadastroProdutos extends AppCompatActivity {
                 CadastroProdutos.this.startActivity(changeToListaProdutos);
                 finish();
             }else {
-//                Toast.makeText(this, "Este supermercado não existe.", Toast.LENGTH_SHORT).show();
                 //Cria o gerador do AlertDialog
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                //define o titulo
-//                builder.setTitle("");
                 //define a mensagem
                 builder.setMessage("Este supermercado não está Registrado, deseja cadastrar?");
                 //define um botão como positivo
                 builder.setPositiveButton("Cadastrar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface arg0, int arg1) {
                       chamarCadastroSupermercado();
-//                        Toast.makeText(getApplication(), "Para continuar é preciso ter o supermercado cadastrado.", Toast.LENGTH_SHORT).show();
                     }
                 });
                 //define um botão como negativo.
@@ -168,26 +161,12 @@ public class CadastroProdutos extends AppCompatActivity {
 
     }
 
-//    private void efetuarCadastroProduto(Produto produto) {
-//        ProdutoNegocio produtoNegocio = new ProdutoNegocio(_context);
-//        produtoCadastrado = produtoNegocio.buscar(produto.getId());
-//        if (produtoCadastrado == null) {
-//            produtoNegocio.cadastrar(produto);
-//            Toast.makeText(this, "Produtos cadastrados com sucesso.", Toast.LENGTH_SHORT).show();
-//        }else {
-//            Toast.makeText(this, "Produtos já exitentes!", Toast.LENGTH_SHORT).show();
-//        }
-//
-//    }
-
     private void carregaDados() {
         Double preco = session.getProdutoSelecionado().getPreco();
         String precoEditavel = preco.toString();
         setnome.setText(session.getProdutoSelecionado().getNome());
         setdescricao.setText(session.getProdutoSelecionado().getDescricao());
         setpreco.setText(precoEditavel);
-        //spinner.setSelection(1);
-        //spinnerImagens.setSelection(4);
         spinner.setSelection(session.getProdutoSelecionado().getPosicaoSpinner());
         spinnerImagens.setSelection(session.getProdutoSelecionado().getPosicaoSpinnerImagem());
     }
@@ -209,16 +188,6 @@ public class CadastroProdutos extends AppCompatActivity {
         }
         return  result;
     }
-
-//    private Produto CriarProduto(String nome, String descricao, double preco, Supermercado nomesupermercado, String idDepartamento) {
-//        Produto produto = new Produto();
-//        produto.setNome(nome);
-//        produto.setDescricao(descricao);
-//        produto.setPreco(preco);
-//        produto.setIdDepartamento(idDepartamento);
-//        produto.setSupermercado(nomesupermercado);
-//        return produto;
-//    }
 
     public void changeTelaCadatroProdutosToTelaAdministrador(View view) {
         Intent voltarMenu = new Intent(CadastroProdutos.this, ListaProdutos.class);

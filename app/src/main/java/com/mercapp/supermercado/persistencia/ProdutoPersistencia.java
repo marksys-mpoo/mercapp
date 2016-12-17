@@ -85,7 +85,6 @@ public class ProdutoPersistencia {
     public List<Produto> listaDados(){
         List<Produto> produtos = new ArrayList<>();
         SQLiteDatabase db = bdHelper.getReadableDatabase();
-//        Cursor cursor = db.rawQuery("SELECT * FROM " + BDHelper.TBL_PRODUTO, null);
         Cursor cursor = db.query(BDHelper.TBL_PRODUTO, null, null, null, null, null, null);
         cursor.moveToFirst();
         while(!cursor.isAfterLast()){

@@ -6,7 +6,6 @@ public class Produto {
     private String nome;
     private Double preco;
     private Supermercado supermercado;
-    private int idSupermercado;
     private String idDepartamento;
     private int imageProduto;
     private int posicaoSpinner;
@@ -45,13 +44,6 @@ public class Produto {
         this.preco = preco;
     }
 
-    public int getIdSupermercado() {
-        return idSupermercado;
-    }
-
-    public void setIdSupermercado(int idSupermercado) {
-        this.idSupermercado = idSupermercado;
-    }
     public Supermercado getSupermercado() {
         return supermercado;
     }

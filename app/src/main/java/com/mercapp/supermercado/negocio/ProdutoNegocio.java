@@ -52,11 +52,6 @@ public class ProdutoNegocio {
         produtoPersistencia.cadastrar(produtoCadastro);
     }
 
-//    public Cursor listaProdutos(){
-//        ProdutoPersistencia consulta = new ProdutoPersistencia(_context);
-//        Cursor cursor = consulta.listaDadosProdutos();
-//        return cursor;
-//    }
     public void editar(Produto produto){
         ProdutoPersistencia produtoPersistencia = new ProdutoPersistencia(_context);
         produtoPersistencia.editar(produto);
@@ -70,11 +65,4 @@ public class ProdutoNegocio {
         List<Produto> produtos = consulta.listaDados();
         return produtos ;
     }
-
-//    public void iniciarSessao(Produto produto){
-//        sessao.setProdutoSelecao(produto);
-//    }
-
-
-
 }

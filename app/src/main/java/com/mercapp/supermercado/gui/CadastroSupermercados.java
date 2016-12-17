@@ -104,19 +104,10 @@ public class CadastroSupermercados extends AppCompatActivity {
         finish();
     }
 
-//    private void limparCampos(){
-//        etSupermercadoNome.setText(stringVazia);
-//        etSupermercadoTelefone.setText(stringVazia);
-//        etLatitude.setText(stringInicial);
-//        etLogintude.setText(stringInicial);
-//        etLatitude.requestFocus();
-//    }
 
     private boolean validarCampos(){
         String nomeSupermercado = etSupermercadoNome.getText().toString();
         String telefonesupermercado = etSupermercadoTelefone.getText().toString();
-//        String latitudeD = etLatitude.getText().toString();
-//        String longitudeD = etLogintude.getText().toString();
         return Validacao.verificaVaziosSupermercado(nomeSupermercado,telefonesupermercado,this,
                 etSupermercadoNome,etSupermercadoTelefone,etLatitude,etLogintude);
     }

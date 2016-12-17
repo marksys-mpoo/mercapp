@@ -21,9 +21,7 @@ public class ListaImagens extends AppCompatActivity {
         int[] resArray = new int[ID_Fields.length];
         for (int i = 0; i < ID_Fields.length; i++) {
             try {
-                //System.out.println("R.drawable." + f.getName());
                 resArray[i] = ID_Fields[i].getInt(null);
-                //System.out.println("GetInt = " + ID_Fields[i].getInt(null));
             } catch (Exception e) {
                 e.printStackTrace();
             }

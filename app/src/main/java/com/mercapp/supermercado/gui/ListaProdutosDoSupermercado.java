@@ -68,7 +68,6 @@ public class ListaProdutosDoSupermercado extends AppCompatActivity {
         Integer idSupermercado = session.getSupermercadoSelecionado().getId();
         String idSupermercado_string = idSupermercado.toString();
         Cursor cursor = buscaProdutos.listaProdutosDoSupermercado(idSupermercado_string);
-//        String[] nomeCampos = new String[] {BDHelper.COLUNA_ID_PRODUTO, BDHelper.COLUNA_DESCRICAO, BDHelper.COLUNA_PRECO_PRODUTO, BDHelper.COLUNA_ID_SUPERMERCADO_PRODUTO};
         String[] nomeCampos = new String[] {BDHelper.COLUNA_ID_PRODUTO, BDHelper.COLUNA_DESCRICAO_PRODUTO, BDHelper.COLUNA_PRECO_PRODUTO};
         int[] idViews = new int[] { R.id.colunaProduto2, R.id.colunaProduto3, R.id.colunaProduto4};
         SimpleCursorAdapter adaptador = new SimpleCursorAdapter(_context,R.layout.produtos,cursor,nomeCampos,idViews, 0);

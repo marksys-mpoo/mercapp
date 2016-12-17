@@ -53,9 +53,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void loginUsuario(View view){
-//        Intent i = new Intent(this, Administrador.class);
-//        startActivity(i);
-//        finish();
+
         if (validarCampos()) {
             String email = etEmail.getText().toString().trim();
             String senha = etSenha.getText().toString().trim();
