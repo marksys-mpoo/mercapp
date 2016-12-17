@@ -100,7 +100,6 @@ public class TelaMenuActivity extends AppCompatActivity
         transaction.replace(R.id.container, fragment, name);
 
         transaction.commit();
-
     }
 
     /** Menu do navigation drawer
