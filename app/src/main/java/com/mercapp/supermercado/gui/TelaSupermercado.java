@@ -29,7 +29,6 @@ public class TelaSupermercado extends AppCompatActivity {
         String foneSM = session.getSupermercadoSelecionado().getTelefone().toString();
         etFoneSupermercado = (TextView) findViewById(R.id.telefoneSessao);
         etFoneSupermercado.setText(foneSM);
-
     }
 
     public void tela_de_produtos(View view) {
@@ -73,7 +72,6 @@ public class TelaSupermercado extends AppCompatActivity {
     }
 
     public void selecionarDepartamento(String departamentoSelecionado) {
-
         SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(_context);
         supermercadoNegocio.iniciarSessaoProduto(departamentoSelecionado);
         Intent voltarMenu = new Intent(TelaSupermercado.this, ListaProdutosDoSupermercado.class);
