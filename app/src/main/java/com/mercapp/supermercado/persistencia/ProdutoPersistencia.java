@@ -32,6 +32,7 @@ public class ProdutoPersistencia {
         values.put(bdHelper.COLUNA_PRODUTO_DEPARTAMENTO, produto.getIdDepartamento());
         values.put(bdHelper.COLUNA_POSICAO_SPINNER_SUPERMERCADO, produto.getPosicaoSpinner());
         values.put(bdHelper.COLUNA_POSICAO_SPINNER_IMAGEM_PRODUTO, produto.getPosicaoSpinnerImagem());
+        System.out.println("posição imagem persistencia =  " + produto.getPosicaoSpinnerImagem());
 
         db.insert(bdHelper.TBL_PRODUTO, null, values);
         db.close();
@@ -103,6 +104,8 @@ public class ProdutoPersistencia {
         produto.setImageProduto(cursor.getInt(2));
         produto.setDescricao(cursor.getString(3));
         produto.setPreco(cursor.getDouble(4));
+        produto.setPosicaoSpinner(cursor.getInt(7));
+        produto.setPosicaoSpinnerImagem(cursor.getInt(8));
         SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(_context);
         Supermercado supermercado = supermercadoPersistencia.buscarSupermercado(cursor.getInt(5));
         produto.setSupermercado(supermercado);

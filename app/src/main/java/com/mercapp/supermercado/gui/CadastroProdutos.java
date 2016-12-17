@@ -74,6 +74,7 @@ public class CadastroProdutos extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 nomeSpinner = parent.getItemAtPosition(position).toString();
                 posicaoSpinner = position;
+                System.out.println("posição super =  " + posicaoSpinner);
             }
 
             @Override
@@ -93,6 +94,7 @@ public class CadastroProdutos extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 nomeSpinnerImagem = parent.getItemAtPosition(position).toString();
                 posicaoSpinnerImagem = position;
+                System.out.println("posição imagem =  " + posicaoSpinnerImagem);
             }
 
             @Override
@@ -168,6 +170,7 @@ public class CadastroProdutos extends AppCompatActivity {
         setdescricao.setText(session.getProdutoSelecionado().getDescricao());
         setpreco.setText(precoEditavel);
         spinner.setSelection(session.getProdutoSelecionado().getPosicaoSpinner());
+        System.out.println("posição Teste carrega dados imagem =  " + session.getProdutoSelecionado().getPosicaoSpinnerImagem());
         spinnerImagens.setSelection(session.getProdutoSelecionado().getPosicaoSpinnerImagem());
     }
 
