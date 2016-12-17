@@ -96,6 +96,7 @@ public class ListaProdutos extends AppCompatActivity {
     }
     public void adcionarProduto(View view) {
         // Adiconar novos Produtos.
+        session.setProdutoSelecionado(null);
         Intent cadastrarProdutos = new Intent(ListaProdutos.this, CadastroProdutos.class);
         startActivity(cadastrarProdutos);
         finish();
