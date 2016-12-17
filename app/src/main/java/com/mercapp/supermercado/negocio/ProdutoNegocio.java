@@ -12,7 +12,7 @@ import java.util.List;
 public class ProdutoNegocio {
 
     private Context _context;
-    private Session sessao = Session.getInstanciaSessao();
+    private Session session = Session.getInstanciaSessao();
 
     public ProdutoNegocio(Context _context) {
         this._context = _context;

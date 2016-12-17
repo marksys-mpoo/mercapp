@@ -36,25 +36,25 @@ public class CadastroPessoaActivity extends AppCompatActivity {
         btnCadastroPessoa = (Button) findViewById(R.id.btnCadastroPessoa);
 
 
-        if (session.getPessoaLogada() != null){
+        if (session.getPessoaLogada() != null) {
             defineText(session.getPessoaLogada());
         }
     }
 
-    public void defineText(Pessoa pessoa){
+    public void defineText(Pessoa pessoa) {
         etNome.setText(pessoa.getNome());
         etTelefone.setText(pessoa.getTelefone());
         etNumeroCartao.setText(pessoa.getNumeroCartao());
     }
 
-    public void cadastroPessoa(View view){
+    public void cadastroPessoa(View view) {
 
         String nome = etNome.getText().toString().trim();
         String apenasNumerotelefone = Mask.unmask(etTelefone.getText().toString().trim());
-        String telefone = apenasNumerotelefone ;
-        String numeroCartao = etNumeroCartao.getText().toString().trim() ;
+        String telefone = apenasNumerotelefone;
+        String numeroCartao = etNumeroCartao.getText().toString().trim();
         int encontraTipoCartao = Validacao.getCardID(numeroCartao);
-        if(encontraTipoCartao != -1) {
+        if (encontraTipoCartao != -1) {
             try {
                 validaCartao = Validacao.validCC(numeroCartao);
                 Toast.makeText(this, "Cartão " + Validacao.getCardName(Validacao.getCardID(numeroCartao)), Toast.LENGTH_SHORT).show();
@@ -63,9 +63,9 @@ public class CadastroPessoaActivity extends AppCompatActivity {
             }
         }
 
-        if (validarCamposPessoa() && validaCartao){
+        if (validarCamposPessoa() && validaCartao) {
             pessoaNegocio = new PessoaNegocio(_context);
-            if (session.getPessoaLogada() != null){
+            if (session.getPessoaLogada() != null) {
                 session.getPessoaLogada().setNome(nome);
                 session.getPessoaLogada().setTelefone(telefone);
                 session.getPessoaLogada().setNumeroCartao(numeroCartao);
@@ -75,42 +75,26 @@ public class CadastroPessoaActivity extends AppCompatActivity {
                 CadastroPessoaActivity.this.startActivity(changeToTelaPrincipal);
                 finish();
             } else {
-            pessoaNegocio.cadastro(nome, telefone, numeroCartao);
-            Pessoa pessoa = pessoaNegocio.buscar(numeroCartao);
-            session.setPessoaLogada(pessoa);
-            Intent changeToTelaPrincipal = new Intent(CadastroPessoaActivity.this, TelaMenuActivity.class);
-            CadastroPessoaActivity.this.startActivity(changeToTelaPrincipal);
-            Toast.makeText(this, "Bem-Vindo - "+ nome, Toast.LENGTH_SHORT).show();
-            finish();
+                pessoaNegocio.cadastro(nome, telefone, numeroCartao);
+                Pessoa pessoa = pessoaNegocio.buscar(numeroCartao);
+                session.setPessoaLogada(pessoa);
+                Intent changeToTelaPrincipal = new Intent(CadastroPessoaActivity.this, TelaMenuActivity.class);
+                CadastroPessoaActivity.this.startActivity(changeToTelaPrincipal);
+                Toast.makeText(this, "Bem-Vindo - " + nome, Toast.LENGTH_SHORT).show();
+                finish();
             }
-        }else {
+        } else {
             Toast.makeText(this, "Existem campos vazios ou o cartão é inválido", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private boolean validarCamposPessoa(){
+    private boolean validarCamposPessoa() {
         String nome = etNome.getText().toString().trim();
         String telefone = etTelefone.getText().toString().trim();
         String numeroCartao = etNumeroCartao.getText().toString().trim();
-        return (!verificaVaziosPessoa(nome, telefone, numeroCartao));
-    }
-
-    private boolean verificaVaziosPessoa(String nome, String telefone, String numeroCartao){
-        boolean result;
-        if (TextUtils.isEmpty(nome)) {
-            etNome.requestFocus();
-            etNome.setError(getString(R.string.campo_vazio));
-            result = true;
-        } else if (TextUtils.isEmpty(telefone)) {
-            etTelefone.requestFocus();
-            etTelefone.setError(getString(R.string.campo_vazio));
-            result = true;
-        } else if(TextUtils.isEmpty(numeroCartao)) {
-            etNumeroCartao.requestFocus();
-            etNumeroCartao.setError(getString(R.string.campo_vazio));
-            result = true;
-        }
-        result = false;
-        return result;
+        return (!Validacao.verificaVaziosPessoa(nome, telefone, numeroCartao,
+                this, etNome, etTelefone, etNumeroCartao));
     }
 }
+
+

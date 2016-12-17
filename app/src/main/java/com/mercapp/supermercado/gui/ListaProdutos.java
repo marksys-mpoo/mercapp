@@ -26,7 +26,7 @@ public class ListaProdutos extends AppCompatActivity {
     private ListView lista;
     private Context _context = ListaProdutos.this;
     private ProdutoListAdapter dataAdapter;
-    private Session sessao = Session.getInstanciaSessao();
+    private Session session = Session.getInstanciaSessao();
     ProdutoNegocio produtoNegocio = new ProdutoNegocio(_context);
     private AlertDialog alerta;
     SearchView searchView;
@@ -36,7 +36,6 @@ public class ListaProdutos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_produtos);
-//        listarProdutosGeral();
         ProdutoNegocio consulta = new ProdutoNegocio(_context);
         List<Produto> produtos = consulta.listaProdutos();
         dataAdapter = new ProdutoListAdapter(_context, produtos);
@@ -51,7 +50,7 @@ public class ListaProdutos extends AppCompatActivity {
             public void onItemClick(AdapterView<?> listView, View view, int position, long id) {
                 Produto produto = (Produto) listView.getItemAtPosition(position);
                 if (produto != null) {
-                    sessao.setProdutoSelecionado(produto);
+                    session.setProdutoSelecionado(produto);
                     Intent editarProdudo = new Intent(ListaProdutos.this, CadastroProdutos.class);
                     startActivity(editarProdudo);
                     finish();
@@ -87,17 +86,6 @@ public class ListaProdutos extends AppCompatActivity {
 
     }
 
-//    private void listarProdutosGeral() {
-//        // Adiconar novos Produtos.
-//        ProdutoNegocio buscaProdutos = new ProdutoNegocio(_context);
-//        Cursor cursor = buscaProdutos.listaProdutos();
-//        String[] colunasBD = new String[] {BDHelper.COLUNA_NOME_PRODUTO,BDHelper.COLUNA_DESCRICAO_PRODUTO, BDHelper.COLUNA_PRECO_PRODUTO, BDHelper.COLUNA_ID_SUPERMERCADO_PRODUTO};
-//        int[] idListView = new int[] {R.id.colunaProduto1, R.id.colunaProduto2, R.id.colunaProduto3, R.id.colunaProduto4};
-//        SimpleCursorAdapter adaptador = new SimpleCursorAdapter(_context,R.layout.produtos_geral,cursor,colunasBD,idListView, 0);
-//        lista = (ListView)findViewById(R.id.lista_produtos_geral);
-//        lista.setAdapter(adaptador);
-//
-//    }
 
     @Override
     public void onBackPressed() {
@@ -124,7 +112,7 @@ public class ListaProdutos extends AppCompatActivity {
                 Toast.makeText(getApplication(), "Supermercado " + produto.getNome() + " deletado.", Toast.LENGTH_SHORT).show();
                 dataAdapter.remove(dataAdapter.getItem(position));
                 dataAdapter.notifyDataSetChanged();
-                sessao.setProdutoSelecionado(null);
+                session.setProdutoSelecionado(null);
             }
         });
         builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {

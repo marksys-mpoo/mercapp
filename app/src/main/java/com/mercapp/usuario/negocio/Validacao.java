@@ -178,6 +178,28 @@ public class Validacao {
         }
     }
 
+    public static boolean verificaVaziosPessoa(String nome, String telefone, String numeroCartao,Context context,
+                                                EditText etNome, EditText etTelefone, EditText etNumeroCartao){
+        boolean result;
+        if (TextUtils.isEmpty(nome)) {
+            etNome.requestFocus();
+            etNome.setError(context.getString(R.string.campo_vazio));
+            result = true;
+        } else if (TextUtils.isEmpty(telefone)) {
+            etTelefone.requestFocus();
+            etTelefone.setError(context.getString(R.string.campo_vazio));
+            result = true;
+        } else if(TextUtils.isEmpty(numeroCartao)) {
+            etNumeroCartao.requestFocus();
+            etNumeroCartao.setError(context.getString(R.string.campo_vazio));
+            result = true;
+        }
+        else {
+            result = false;
+        }
+        return result;
+    }
+
 
     //Validações da tela de Login e Cadastro de Usuario
     public static boolean verificaVazios(String email, String senha, Context context, EditText etEmail, EditText etSenha) {
@@ -315,7 +337,6 @@ public class Validacao {
         }
         return result;
     }
-
 
 }
 
