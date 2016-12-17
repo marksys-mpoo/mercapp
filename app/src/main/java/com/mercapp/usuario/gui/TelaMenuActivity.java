@@ -145,6 +145,11 @@ public class TelaMenuActivity extends AppCompatActivity
                 TelaMenuActivity.this.startActivity(changeToAdm);
                 finish();
                 break;
+            case R.id.nav_ajuda:
+                Intent changeToAjuda = new Intent(TelaMenuActivity.this, AjudaActivity.class);
+                TelaMenuActivity.this.startActivity(changeToAjuda);
+                finish();
+                break;
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

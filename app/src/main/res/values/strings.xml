@@ -19,6 +19,7 @@
     <string name="nav_drawer_configuracoes">Configurações</string>
 
     nav_drawer_configuracoes
+    <string name="nav_drawer_ajuda">Ajuda</string>
     <string name="nav_drawer_sair">Sair</string>
 
 
