@@ -40,80 +40,79 @@
             android:textColorHighlight="#990000"
             android:onClick="web" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:textSize="17dp"
-            android:textColor="@android:color/tertiary_text_light"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/descricao_tela_sobre"
-            android:id="@+id/sobre_descricao"
-            android:gravity="top"
-            android:layout_below="@+id/tvNomeSite"
-            android:layout_alignParentStart="true" />
+       <WebView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:textSize="17dp"
+           android:textColor="@android:color/tertiary_text_light"
+           android:textAppearance="?android:attr/textAppearanceMedium"
+           android:text="@string/descricao_tela_sobre"
+           android:id="@+id/sobreDescricao"
+           android:gravity="top"
+           android:layout_below="@+id/tvNomeSite"
+           android:layout_alignParentStart="true" />
+
+
+   </RelativeLayout>
+
+    </ScrollView>
 
     <TextView
-        android:text="@string/desenvolvedores_tela_sobre"
+        android:text="@string/site_tela_sobre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView16"
-        android:layout_marginTop="17dp"
-        android:layout_below="@+id/sobre_descricao"
+        android:id="@+id/textviewSite"
+        android:linksClickable="true"
+        android:autoLink="web|email"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+     android:text="@string/tela_sobre_wellington"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:id="@+id/textView20"
+        android:textAlignment="center"
+        android:layout_above="@+id/textviewSite"
         android:layout_alignParentStart="true" />
 
     <TextView
-        android:text="@string/tela_sobre_wellington"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView20"
-        android:layout_below="@+id/textView19"
-        android:layout_alignStart="@+id/textView19"
-        android:textAlignment="center" />
-
-    <TextView
-        android:text="@string/tela_sobre_filipe"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView17"
-        android:layout_below="@+id/textView20"
-        android:layout_alignStart="@+id/textView20"
-        android:textAlignment="center" />
-
-    <TextView
-        android:text="@string/tela_sobre_lucas"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView19"
-        android:layout_below="@+id/textView18"
-        android:layout_alignParentEnd="true"
-        android:textAlignment="center" />
+     android:text="@string/tela_sobre_lucas"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:id="@+id/textView19"
+        android:textAlignment="center"
+        android:layout_above="@+id/textView20"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:text="@string/tela_sobre_jobson"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView18"
-        android:layout_below="@+id/textView16"
-        android:layout_alignParentStart="true"
         android:textAlignment="center"
-        android:autoLink="web" />
+        android:autoLink="web"
+        android:layout_above="@+id/textView20"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="14dp" />
 
     <TextView
-        android:text="@string/site_tela_sobre"
+     android:text="@string/tela_sobre_filipe"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:id="@+id/textView17"
+        android:textAlignment="center"
+        android:layout_above="@+id/textView18"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="@string/desenvolvedores_tela_sobre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView17"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/textviewSite"
-        android:linksClickable="true"
-        android:autoLink="web|email"
-       />
-
-
-    </RelativeLayout>
-
-    </ScrollView>
+        android:id="@+id/textView16"
+        android:layout_alignBaseline="@+id/textView17"
+        android:layout_alignBottom="@+id/textView17"
+        android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>
