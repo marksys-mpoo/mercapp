@@ -66,9 +66,9 @@ public class SupermercadoNegocio {
         return cursor;
     }
 
-    public Cursor listaProdutosPorDepartamentoNegocio(String idSupermercado, String idDepartamento){
+    public Cursor listaProdutosPorDepartamentoNegocio(String idSupermercado, int numDepartamento){
         SupermercadoPersistencia consulta = new SupermercadoPersistencia(_context);
-        Cursor cursor = consulta.listaProdutosDoSupermercadoPorDepartamentoPersistencia(idSupermercado, idDepartamento);
+        Cursor cursor = consulta.listaProdutosDoSupermercadoPorDepartamentoPersistencia(idSupermercado, numDepartamento);
         return cursor;
     }
 

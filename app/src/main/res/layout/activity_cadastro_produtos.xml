@@ -24,13 +24,13 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
+        android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/edtPrecoProduto"
-        android:hint="Preço "
-        android:layout_below="@+id/edtDescricaoProduto"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="25px" />
+        android:layout_marginTop="11dp"
+        android:id="@+id/edtNomeProduto"
+        android:hint="Nome "
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="match_parent"
@@ -38,21 +38,19 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/edtDescricaoProduto"
-        android:layout_below="@+id/edtNomeProduto"
-        android:layout_alignParentStart="true"
         android:hint="Descrição"
-        android:layout_marginTop="25px" />
+        android:layout_below="@+id/edtNomeProduto"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:inputType="numberDecimal"
         android:ems="10"
-        android:layout_marginTop="33dp"
-        android:id="@+id/edtNomeProduto"
-        android:hint="Nome "
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/edtPrecoProduto"
+        android:hint="Preço "
+        android:layout_below="@+id/edtDescricaoProduto"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:text="Supermercados"
@@ -60,7 +58,15 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView12"
         android:textSize="18sp"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/edtPrecoProduto"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="33dp" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:layout_below="@+id/textView12"
         android:layout_alignParentStart="true" />
 
     <Button
@@ -73,14 +79,13 @@
         android:layout_alignParentStart="true" />
 
     <TextView
-        android:text="Imagem"
+        android:text="Departamentos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView13"
+        android:id="@+id/textView14"
         android:textSize="18sp"
         android:layout_below="@+id/spinner"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="25dp" />
+        android:layout_alignParentStart="true" />
 
     <Spinner
         android:layout_width="match_parent"
@@ -92,8 +97,17 @@
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/spinner"
-        android:layout_below="@+id/textView12"
+        android:id="@+id/spinnerDepartamento"
+        android:layout_below="@+id/textView14"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Imagens"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView13"
+        android:textSize="18sp"
+        android:layout_below="@+id/spinnerDepartamento"
         android:layout_alignParentStart="true" />
 
 </RelativeLayout>

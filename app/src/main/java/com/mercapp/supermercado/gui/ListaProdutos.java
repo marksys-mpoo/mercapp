@@ -90,8 +90,8 @@ public class ListaProdutos extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         // voltar para a tela adminstrador.
-        Intent voltarMenu = new Intent(ListaProdutos.this, Administrador.class);
-        startActivity(voltarMenu);
+        Intent voltarAdm = new Intent(ListaProdutos.this, Administrador.class);
+        startActivity(voltarAdm);
         finish();
     }
     public void adcionarProduto(View view) {
@@ -106,11 +106,11 @@ public class ListaProdutos extends AppCompatActivity {
         // deletar Produtos.
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(produto.getNome());
-        builder.setMessage("Deseja deletar o supermercado?");
+        builder.setMessage("Deseja deletar o produto?");
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
                 produtoNegocio.deletar(produto);
-                Toast.makeText(getApplication(), "Supermercado " + produto.getNome() + " deletado.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplication(), "Produto " + produto.getNome() + " deletado.", Toast.LENGTH_SHORT).show();
                 dataAdapter.remove(dataAdapter.getItem(position));
                 dataAdapter.notifyDataSetChanged();
                 session.setProdutoSelecionado(null);

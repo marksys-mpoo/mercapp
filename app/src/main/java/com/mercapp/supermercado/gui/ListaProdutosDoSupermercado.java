@@ -28,35 +28,35 @@ public class ListaProdutosDoSupermercado extends AppCompatActivity {
         setContentView(R.layout.activity_lista_produtos_do_supermercado);
         Integer idSupermercado = session.getSupermercadoSelecionado().getId();
         String nomeSM = session.getSupermercadoSelecionado().getNome().toString();
-        String idDepartamento = session.getDepartamentoSelecionado();
+        String numeroDepartamento = session.getDepartamentoSelecionado();
 
         String idSupermercado_string = idSupermercado.toString();
 
         etNomeSupermercado = (TextView) findViewById(R.id.tituloSupermercado);
         etNomeSupermercado.setText(nomeSM);
         etDepartamentoSelecionado = (TextView) findViewById(R.id.tituloDepartamento);
-        if (idDepartamento != "Todos") {
-            if (idDepartamento == "1") {
+        if (numeroDepartamento != "Todos") {
+            if (numeroDepartamento == "1") {
                 this.setDepartamentoSelecionado("Padaria");
-            } else if (idDepartamento == "2") {
+            } else if (numeroDepartamento == "2") {
                 this.setDepartamentoSelecionado("Frios");
-            } else if (idDepartamento == "3") {
+            } else if (numeroDepartamento == "3") {
                 this.setDepartamentoSelecionado("Açougue");
-            } else if (idDepartamento == "4") {
+            } else if (numeroDepartamento == "4") {
                 this.setDepartamentoSelecionado("Frutas");
-            } else if (idDepartamento == "5") {
+            } else if (numeroDepartamento == "5") {
                 this.setDepartamentoSelecionado("Bebidas");
-            } else if (idDepartamento == "6") {
+            } else if (numeroDepartamento == "6") {
                 this.setDepartamentoSelecionado("Mercearia");
-            } else if (idDepartamento == "7") {
+            } else if (numeroDepartamento == "7") {
                 this.setDepartamentoSelecionado("Higiene");
-            } else if (idDepartamento == "8") {
+            } else if (numeroDepartamento == "8") {
                 this.setDepartamentoSelecionado("Limpeza");
-            } else if (idDepartamento == "9") {
+            } else if (numeroDepartamento == "9") {
                 this.setDepartamentoSelecionado("Bazar");
             }
             etDepartamentoSelecionado.setText(this.getDepartamentoSelecionado());
-            this.buscaProdutosPorDepartamento(idSupermercado_string, idDepartamento);
+            this.buscaProdutosPorDepartamento(idSupermercado_string, numeroDepartamento);
         } else {
             this.buscarTodosProdutosDoSupermercado();
             etDepartamentoSelecionado.setText("Produtos");
@@ -75,9 +75,10 @@ public class ListaProdutosDoSupermercado extends AppCompatActivity {
         lista.setAdapter(adaptador);
     }
 
-    public void buscaProdutosPorDepartamento(String idSupermercado, String idDepartamento) {
+    public void buscaProdutosPorDepartamento(String idSupermercado, String strDepartamento) {
+        int numDepartamento =  Integer.parseInt(strDepartamento) - 1;
         SupermercadoNegocio buscaProdutos = new SupermercadoNegocio(_context);
-        Cursor cursor = buscaProdutos.listaProdutosPorDepartamentoNegocio(idSupermercado, idDepartamento);
+        Cursor cursor = buscaProdutos.listaProdutosPorDepartamentoNegocio(idSupermercado, numDepartamento);
         String[] nomeCampos = new String[] {BDHelper.COLUNA_IMAGEM_PRODUTO, BDHelper.COLUNA_DESCRICAO_PRODUTO, BDHelper.COLUNA_PRECO_PRODUTO};
         int[] idViews = new int[] {R.id.iconProduto, R.id.colunaProduto2, R.id.colunaProduto3};
         SimpleCursorAdapter adaptador = new SimpleCursorAdapter(_context,R.layout.produtos,cursor,nomeCampos,idViews, 0);

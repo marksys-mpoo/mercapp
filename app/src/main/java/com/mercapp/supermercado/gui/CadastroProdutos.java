@@ -26,15 +26,14 @@ import java.util.List;
 public class CadastroProdutos extends AppCompatActivity {
 
     private static final String stringVazia = "";
-    private static final String idDepartamento = "1";
-    private String nomeSpinner, nomeSpinnerImagem;
+    private String nomeSpinnerSupermercado, nomeSpinnerImagem, nomeSpinnerDepartamento;
     private Context _context = CadastroProdutos.this;
-    private Spinner spinner, spinnerImagens;
+    private Spinner spinnerSupermercado, spinnerImagens, spinnerDepartamento;
     private SupermercadoNegocio supermercadoNegocio;
     private Produto produtoCadastrado;
     private EditText setdescricao, setpreco,setnome, setimagem;
     private String imagemStr;
-    private int imagem, posicaoSpinner, posicaoSpinnerImagem;
+    private int imagem, posicaoSpinnerSupermercado, posicaoSpinnerImagem, posicaoSpinnerDepartamento;
     private double preco;
     private AlertDialog alerta;
     private Session session = Session.getInstanciaSessao();
@@ -50,16 +49,28 @@ public class CadastroProdutos extends AppCompatActivity {
             "img_sabonete",
             "img_shampoo"
     };
+    private String[] departamentos = {
+            "Padaria",
+            "Frios",
+            "Açougue",
+            "Frutas",
+            "Bebidas",
+            "Mercearia",
+            "Higiene",
+            "Limpeza",
+            "Bazar"
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_produtos);
-        spinner = (Spinner) findViewById(R.id.spinner);
         setnome = (EditText) findViewById(R.id.edtNomeProduto);
         setdescricao = (EditText) findViewById(R.id.edtDescricaoProduto);
         setpreco = (EditText) findViewById(R.id.edtPrecoProduto);
+        spinnerSupermercado = (Spinner) findViewById(R.id.spinner);
         spinnerImagens = (Spinner) findViewById(R.id.spinnerImagens);
+        spinnerDepartamento = (Spinner) findViewById(R.id.spinnerDepartamento);
         setnome.requestFocus();
 
         SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(_context);
@@ -67,14 +78,13 @@ public class CadastroProdutos extends AppCompatActivity {
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, supermercados);
         ArrayAdapter<String> spinnerArrayAdapter = arrayAdapter;
         spinnerArrayAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        spinner.setAdapter(spinnerArrayAdapter);
+        spinnerSupermercado.setAdapter(spinnerArrayAdapter);
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinnerSupermercado.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                nomeSpinner = parent.getItemAtPosition(position).toString();
-                posicaoSpinner = position;
-                System.out.println("posição super =  " + posicaoSpinner);
+                nomeSpinnerSupermercado = parent.getItemAtPosition(position).toString();
+                posicaoSpinnerSupermercado = position;
             }
 
             @Override
@@ -94,7 +104,29 @@ public class CadastroProdutos extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 nomeSpinnerImagem = parent.getItemAtPosition(position).toString();
                 posicaoSpinnerImagem = position;
-                System.out.println("posição imagem =  " + posicaoSpinnerImagem);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        if (session.getProdutoSelecionado() != null) {
+            carregaDados();
+        }
+
+        // Spinner dos Departamentos
+        ArrayAdapter<String> arrayAdapterDepartamento = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, departamentos);
+        ArrayAdapter<String> spinnerArrayAdapterDepartamento = arrayAdapterDepartamento;
+        spinnerArrayAdapterDepartamento.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinnerDepartamento.setAdapter(spinnerArrayAdapterDepartamento);
+
+        spinnerDepartamento.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                nomeSpinnerDepartamento = parent.getItemAtPosition(position).toString();
+                posicaoSpinnerDepartamento = position;
             }
 
             @Override
@@ -113,8 +145,7 @@ public class CadastroProdutos extends AppCompatActivity {
         if (validarCampos() && validarPrecoDouble()){
             String nome = setnome.getText().toString().trim();
             String descricao = setdescricao.getText().toString().trim();
-            String nomeSupermercado = nomeSpinner;
-
+            String nomeSupermercado = nomeSpinnerSupermercado;
             preco = Double.parseDouble(setpreco.getText().toString().trim());
             imagem = getResources().getIdentifier(nomeSpinnerImagem , "drawable", getPackageName());
 
@@ -126,13 +157,15 @@ public class CadastroProdutos extends AppCompatActivity {
                     session.getProdutoSelecionado().setNome(nome);
                     session.getProdutoSelecionado().setDescricao(descricao);
                     session.getProdutoSelecionado().setSupermercado(supermercado);
-                    session.getProdutoSelecionado().setPosicaoSpinner(posicaoSpinner);
-                    session.getProdutoSelecionado().setPosicaoSpinner(posicaoSpinnerImagem);
+                    session.getProdutoSelecionado().setNumeroDepartamento(posicaoSpinnerDepartamento);
+                    session.getProdutoSelecionado().setPosicaoSpinnerSupermercado(posicaoSpinnerSupermercado);
+                    session.getProdutoSelecionado().setPosicaoSpinnerImagem(posicaoSpinnerImagem);
                     produtoNegocio.editar(session.getProdutoSelecionado());
                 } else {
-                    produtoNegocio.cadastrar(nome, imagem, descricao, preco, supermercado, idDepartamento, posicaoSpinner, posicaoSpinnerImagem);
+                    produtoNegocio.cadastrar(nome, imagem, descricao, preco, supermercado, posicaoSpinnerDepartamento, posicaoSpinnerSupermercado, posicaoSpinnerImagem);
                 }
                 Intent changeToListaProdutos = new Intent(CadastroProdutos.this, ListaProdutos.class);
+                session.setProdutoSelecionado(null);
                 CadastroProdutos.this.startActivity(changeToListaProdutos);
                 finish();
             }else {
@@ -169,9 +202,9 @@ public class CadastroProdutos extends AppCompatActivity {
         setnome.setText(session.getProdutoSelecionado().getNome());
         setdescricao.setText(session.getProdutoSelecionado().getDescricao());
         setpreco.setText(precoEditavel);
-        spinner.setSelection(session.getProdutoSelecionado().getPosicaoSpinner());
-        System.out.println("posição Teste carrega dados imagem =  " + session.getProdutoSelecionado().getPosicaoSpinnerImagem());
+        spinnerSupermercado.setSelection(session.getProdutoSelecionado().getPosicaoSpinnerSupermercado());
         spinnerImagens.setSelection(session.getProdutoSelecionado().getPosicaoSpinnerImagem());
+        spinnerDepartamento.setSelection(session.getProdutoSelecionado().getNumeroDepartamento());
     }
 
     private void chamarCadastroSupermercado(){
@@ -192,16 +225,10 @@ public class CadastroProdutos extends AppCompatActivity {
         return  result;
     }
 
-    public void changeTelaCadatroProdutosToTelaAdministrador(View view) {
-        Intent voltarMenu = new Intent(CadastroProdutos.this, ListaProdutos.class);
-        startActivity(voltarMenu);
-        finish();
-    }
-
     @Override
     public void onBackPressed() {
-        Intent voltarMenu = new Intent(CadastroProdutos.this, ListaProdutos.class);
-        startActivity(voltarMenu);
+        Intent voltarLista = new Intent(CadastroProdutos.this, ListaProdutos.class);
+        startActivity(voltarLista);
         finish();
     }
 

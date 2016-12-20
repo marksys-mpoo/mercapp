@@ -6,11 +6,10 @@ public class Produto {
     private String nome;
     private Double preco;
     private Supermercado supermercado;
-    private String idDepartamento;
+    private int numeroDepartamento;
     private int imageProduto;
-    private int posicaoSpinner;
+    private int posicaoSpinnerSupermercado;
     private int posicaoSpinnerImagem;
-
 
     public String getNome() {
         return nome;
@@ -52,12 +51,12 @@ public class Produto {
         this.supermercado = supermercado;
     }
 
-    public String getIdDepartamento() {
-        return idDepartamento;
+    public int getNumeroDepartamento() {
+        return numeroDepartamento;
     }
 
-    public void setIdDepartamento(String idDepartamento) {
-        this.idDepartamento = idDepartamento;
+    public void setNumeroDepartamento(int departamento) {
+        this.numeroDepartamento = departamento;
     }
 
     public int getImageProduto() {
@@ -68,12 +67,12 @@ public class Produto {
         this.imageProduto = imageProduto;
     }
 
-    public int getPosicaoSpinner() {
-        return posicaoSpinner;
+    public int getPosicaoSpinnerSupermercado() {
+        return posicaoSpinnerSupermercado;
     }
 
-    public void setPosicaoSpinner(int posicaoSpinner) {
-        this.posicaoSpinner = posicaoSpinner;
+    public void setPosicaoSpinnerSupermercado(int posicaoSpinnerSupermercado) {
+        this.posicaoSpinnerSupermercado = posicaoSpinnerSupermercado;
     }
 
     public int getPosicaoSpinnerImagem() {
