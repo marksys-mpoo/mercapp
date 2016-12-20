@@ -66,7 +66,7 @@
     <string name="hint_latitude_supermercado">Latitude</string>
     <string name="hint_longitude_supermercado">Longitude</string>
     <string name="selecionar_coordenadas">Usar o Mapa</string>
-    <string name="ajuda_mapa">Pressionar o local desejado no mapa por mais de 1 segundo.</string>
+    <string name="ajuda_mapa">Pressionar o local desejado no mapa por mais de 1 segundo, para conseguir a localização do supermercado que deseja cadastrar.</string>
     <string name="nome_vazio_tela_cadastro_supermrecados">Campo "Nome" não pode ser vazio!</string>
     <string name="telefone_vazio_tela_cadastro_supermrecados">Campo "Telefone" não pode ser vazio!</string>
     <string name="latitude_vazio_tela_cadastro_produtos">Campo "Latitude" não pode ser vazio!</string>

@@ -87,13 +87,13 @@
         android:layout_alignParentEnd="true"
         android:onClick="changeScreenCadastroSupermercadoToMapa"/>
 
-    <TextView
+    <WebView
         android:text="@string/ajuda_mapa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnUsarMapa"
         android:layout_centerHorizontal="true"
-        android:id="@+id/textView13" />
+        android:id="@+id/ajudaMapa" />
 
     <EditText
         android:layout_width="match_parent"
@@ -102,7 +102,7 @@
         android:ems="10"
         android:id="@+id/etSupNome"
         android:hint="@string/hint_nome_supermercado"
-        android:layout_below="@+id/textView13"
+        android:layout_below="@+id/ajudaMapa"
         android:layout_alignParentStart="true"
         android:layout_marginTop="11dp" />
 

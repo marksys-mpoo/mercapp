@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -12,6 +13,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.mercapp.R;
 import com.mercapp.infra.Session;
 import com.mercapp.supermercado.negocio.SupermercadoNegocio;
+import com.mercapp.usuario.gui.Mask;
 import com.mercapp.usuario.gui.TelaMenuActivity;
 import com.mercapp.usuario.negocio.Validacao;
 
@@ -32,12 +34,16 @@ public class CadastroSupermercados extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_supermercado);
+        justificarTextoAjuda();
 
         etSupermercadoNome = (EditText) findViewById(R.id.etSupNome);
         etSupermercadoTelefone = (EditText) findViewById(R.id.etSupTelefone);
+        etSupermercadoTelefone.addTextChangedListener(Mask.insert(Mask.MaskType.TEL, etSupermercadoTelefone));
+
         etLatitude = (EditText) findViewById(R.id.etSupLat);
         etLogintude = (EditText) findViewById(R.id.etSupLong);
         btnSalvarEditar = (Button) findViewById(R.id.btnCadastrarSupermercado);
+        etSupermercadoNome.requestFocus();
 
         Bundle bundle = getIntent().getExtras();
         if (bundle.containsKey("CoordLat")) {
@@ -54,6 +60,19 @@ public class CadastroSupermercados extends AppCompatActivity {
         if (session.getSupermercadoSelecionado() != null) {
             carregaDados();
         }
+
+
+    }
+
+    public void justificarTextoAjuda() {
+        WebView view = (WebView) findViewById(R.id.ajudaMapa);
+        String text;
+        text = "<html><body><p align=\"justify\">";
+        text+= "Pressionar o local desejado no mapa por mais de" +
+                " 1 segundo, para conseguir a " +
+                "localização do supermercado que deseja cadastrar.";
+        text+= "</p></body></html>";
+        view.loadData(text,"text/html;charset=UTF-8",null);
     }
 
     public void cadastroSupermercado(View view) {
@@ -107,7 +126,8 @@ public class CadastroSupermercados extends AppCompatActivity {
 
     private boolean validarCampos(){
         String nomeSupermercado = etSupermercadoNome.getText().toString();
-        String telefonesupermercado = etSupermercadoTelefone.getText().toString();
+        String apenasNumerotelefone = Mask.unmask(etSupermercadoTelefone.getText().toString().trim());
+        String telefonesupermercado = apenasNumerotelefone;
         return Validacao.verificaVaziosSupermercado(nomeSupermercado,telefonesupermercado,this,
                 etSupermercadoNome,etSupermercadoTelefone,etLatitude,etLogintude);
     }
