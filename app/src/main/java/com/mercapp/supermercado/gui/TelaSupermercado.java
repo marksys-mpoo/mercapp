@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.mercapp.R;
@@ -15,6 +16,7 @@ import com.mercapp.usuario.gui.TelaMenuActivity;
 public class TelaSupermercado extends AppCompatActivity {
 
     private TextView etNomeSupermercado, etFoneSupermercado;
+    private Button btnOfertas;
     private Session session = Session.getInstanciaSessao();
     private Context _context = null;
 
@@ -29,6 +31,9 @@ public class TelaSupermercado extends AppCompatActivity {
         String foneSM = session.getSupermercadoSelecionado().getTelefone().toString();
         etFoneSupermercado = (TextView) findViewById(R.id.telefoneSessao);
         etFoneSupermercado.setText(foneSM);
+
+        btnOfertas = (Button) findViewById(R.id.btnOfertas);
+
     }
 
     public void tela_de_produtos(View view) {

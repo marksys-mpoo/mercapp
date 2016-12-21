@@ -201,7 +201,7 @@
         android:text="Ofertas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button3"
+        android:id="@+id/btnOfertas"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:onClick="ofertas" />
