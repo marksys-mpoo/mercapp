@@ -143,11 +143,11 @@
     //tela_sobre
     <string name="nome_tela_sobre">MercApp</string>
     <!--<string name="descricao_tela_sobre">O projeto MercApp  tem como objetivo permitir que-->
-        <!--o cliente realize suas compras em poucos minutos pelo seu Smartphone.-->
-        <!--O cliente irá buscar um supermercado de sua preferência que esteja cadastrado no-->
-        <!--aplicativo, selecionar os produtos, a forma de pagamento e receber tudo no conforto de sua casa.-->
-        <!--Neste contexto os clientes terão mais tempo para fazer outras coisas no dia-a-dia ao-->
-        <!--invés de perder tempo no supermercado e supermercado terá. </string>-->
+    <!--o cliente realize suas compras em poucos minutos pelo seu Smartphone.-->
+    <!--O cliente irá buscar um supermercado de sua preferência que esteja cadastrado no-->
+    <!--aplicativo, selecionar os produtos, a forma de pagamento e receber tudo no conforto de sua casa.-->
+    <!--Neste contexto os clientes terão mais tempo para fazer outras coisas no dia-a-dia ao-->
+    <!--invés de perder tempo no supermercado e supermercado terá. </string>-->
     <string name="desenvolvedores_tela_sobre">Desenvolvedores:</string>
     <string name="tela_sobre_wellington">Wellington Luiz</string>
     <string name="tela_sobre_jobson">Jobson Pereira</string>

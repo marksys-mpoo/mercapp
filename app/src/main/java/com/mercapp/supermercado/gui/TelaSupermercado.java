@@ -79,6 +79,12 @@ public class TelaSupermercado extends AppCompatActivity {
         finish();
     }
 
+    public void ofertas(){
+        Intent irOfertas = new Intent(TelaSupermercado.this, Ofertas.class);
+        startActivity(irOfertas);
+        finish();
+    }
+
     @Override
     public void onBackPressed() {
         session.setSupermercadoSelecionado(null);
