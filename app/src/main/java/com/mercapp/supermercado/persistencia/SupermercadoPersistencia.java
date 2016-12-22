@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.mercapp.infra.BDHelper;
+import com.mercapp.supermercado.dominio.Produto;
 import com.mercapp.supermercado.dominio.Supermercado;
 
 import java.util.ArrayList;
@@ -123,27 +124,6 @@ public class SupermercadoPersistencia {
         cursor.close();
         db.close();
         return supermercados;
-    }
-
-    public Cursor listaDadosProdutosDoSupermercado(String idSupermercado){
-        SQLiteDatabase db = bdHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_PRODUTO +
-                " WHERE "+ bdHelper.COLUNA_ID_SUPERMERCADO_PRODUTO+" LIKE ? ", new String[]{idSupermercado});
-        if(cursor!=null){
-            cursor.moveToFirst();
-        }
-        db.close();
-        return cursor;
-    }
-    public Cursor listaProdutosDoSupermercadoPorDepartamentoPersistencia(String idSupermercado, int numDepartamento){
-        SQLiteDatabase db = bdHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_PRODUTO +
-                " WHERE "+ bdHelper.COLUNA_ID_SUPERMERCADO_PRODUTO +" LIKE ? AND "+ bdHelper.COLUNA_PRODUTO_DEPARTAMENTO +" LIKE ? " , new String[]{idSupermercado,""+numDepartamento});
-        if(cursor!=null){
-            cursor.moveToFirst();
-        }
-        db.close();
-        return cursor;
     }
 
     private Supermercado criarSupermercado(Cursor cursor){

@@ -65,4 +65,16 @@ public class ProdutoNegocio {
         List<Produto> produtos = consulta.listaDados();
         return produtos ;
     }
+
+    public List<Produto> listaProdutosDoSupermercado(String idSuper){
+        ProdutoPersistencia consulta = new ProdutoPersistencia(_context);
+        List<Produto> produtos = consulta.listaDadosProdutosDoSupermercado(idSuper);
+        return produtos;
+    }
+
+    public List<Produto> listaProdutosPorDepartamentoNegocio(String idSupermercado, String numDepartamento){
+        ProdutoPersistencia consulta = new ProdutoPersistencia(_context);
+        List<Produto> produtos = consulta.listaProdutosDoSupermercadoPorDepartamentoPersistencia(idSupermercado, numDepartamento);
+        return produtos;
+    }
 }

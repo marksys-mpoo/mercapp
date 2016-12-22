@@ -60,18 +60,6 @@ public class SupermercadoNegocio {
         return supermercados;
     }
 
-    public Cursor listaProdutosDoSupermercado(String idSuper){
-        SupermercadoPersistencia consulta = new SupermercadoPersistencia(_context);
-        Cursor cursor = consulta.listaDadosProdutosDoSupermercado(idSuper);
-        return cursor;
-    }
-
-    public Cursor listaProdutosPorDepartamentoNegocio(String idSupermercado, int numDepartamento){
-        SupermercadoPersistencia consulta = new SupermercadoPersistencia(_context);
-        Cursor cursor = consulta.listaProdutosDoSupermercadoPorDepartamentoPersistencia(idSupermercado, numDepartamento);
-        return cursor;
-    }
-
     public void iniciarSessaoSupermercado(Supermercado supermercado){
         sessao.setSupermercadoSelecionado(supermercado);
     }

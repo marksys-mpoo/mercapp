@@ -32,7 +32,6 @@ public class ProdutoPersistencia {
         values.put(bdHelper.COLUNA_PRODUTO_DEPARTAMENTO, produto.getNumeroDepartamento());
         values.put(bdHelper.COLUNA_POSICAO_SPINNER_SUPERMERCADO, produto.getPosicaoSpinnerSupermercado());
         values.put(bdHelper.COLUNA_POSICAO_SPINNER_IMAGEM_PRODUTO, produto.getPosicaoSpinnerImagem());
-        //System.out.println("posição imagem persistencia =  " + produto.getPosicaoSpinnerImagem());
 
         db.insert(bdHelper.TBL_PRODUTO, null, values);
         db.close();
