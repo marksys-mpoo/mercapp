@@ -46,11 +46,12 @@
            android:textSize="17dp"
            android:textColor="@android:color/tertiary_text_light"
            android:textAppearance="?android:attr/textAppearanceMedium"
-           android:text="@string/descricao_tela_sobre"
            android:id="@+id/sobreDescricao"
            android:gravity="top"
            android:layout_below="@+id/tvNomeSite"
            android:layout_alignParentStart="true" />
+           <!--android:text="@string/descricao_tela_sobre"-->
+
 
 
    </RelativeLayout>

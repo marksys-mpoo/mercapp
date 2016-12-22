@@ -15,31 +15,30 @@
         android:src="@drawable/dp_bebidas" />
 
     <TextView
-        android:id="@+id/colunaProduto3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/textview_coluna3_produtos"
-        android:textSize="18sp"
-        android:layout_below="@+id/colunaProduto2"
-        android:layout_alignStart="@+id/colunaProduto2" />
-
-    <TextView
         android:id="@+id/colunaProduto2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/textview_coluna2_produtos"
         android:textSize="18sp"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/textView3"
-        android:layout_marginStart="13dp" />
+        android:layout_alignBottom="@+id/iconProduto"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="Nome:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:id="@+id/textView3"
+        android:layout_above="@+id/textView29"
+        android:layout_toEndOf="@+id/iconProduto" />
 
     <TextView
         android:text="Descrição:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
-        android:id="@+id/textView3"
-        android:layout_alignParentTop="true"
+        android:id="@+id/textView29"
+        android:layout_alignBottom="@+id/iconProduto"
         android:layout_toEndOf="@+id/iconProduto" />
 
     <TextView
@@ -48,7 +47,25 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:id="@+id/textView7"
-        android:layout_below="@+id/textView3"
+        android:layout_below="@+id/textView29"
         android:layout_toEndOf="@+id/iconProduto" />
+
+    <TextView
+        android:id="@+id/colunaProduto1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textview_coluna1_produtos"
+        android:textSize="18sp"
+        android:layout_above="@+id/colunaProduto2"
+        android:layout_alignStart="@+id/colunaProduto2" />
+
+    <TextView
+        android:id="@+id/colunaProduto3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textview_coluna3_produtos"
+        android:textSize="18sp"
+        android:layout_below="@+id/colunaProduto2"
+        android:layout_alignStart="@+id/colunaProduto2" />
 
 </RelativeLayout>

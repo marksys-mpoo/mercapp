@@ -8,8 +8,6 @@ import android.webkit.WebView;
 import com.mercapp.R;
 import com.mercapp.usuario.gui.TelaMenuActivity;
 
-import static com.mercapp.R.string.descricao_tela_sobre;
-
 public class SobreActivity extends AppCompatActivity {
 
     private String descricaoTelaSobre = "O projeto MercApp  tem como objetivo permitir que " +
@@ -26,9 +24,7 @@ public class SobreActivity extends AppCompatActivity {
         justificarTextoSobre();
     }
 
-
-
-
+    @Override
     public void onBackPressed() {
         Intent voltarMenu = new Intent(this, TelaMenuActivity.class);
         startActivity(voltarMenu);

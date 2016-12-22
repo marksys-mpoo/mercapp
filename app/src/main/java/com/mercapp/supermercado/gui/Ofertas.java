@@ -30,8 +30,8 @@ public class Ofertas extends AppCompatActivity {
     }
 
     public void voltar(View view){
-        Intent voltar = new Intent(Ofertas.this, TelaSupermercado.class);
-        startActivity(voltar);
+        Intent back = new Intent(Ofertas.this, TelaSupermercado.class);
+        startActivity(back);
         finish();
     }
 }

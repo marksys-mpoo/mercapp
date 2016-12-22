@@ -88,7 +88,6 @@
         android:onClick="changeScreenCadastroSupermercadoToMapa"/>
 
     <WebView
-        android:text="@string/ajuda_mapa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnUsarMapa"

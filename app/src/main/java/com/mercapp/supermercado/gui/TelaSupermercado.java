@@ -84,7 +84,7 @@ public class TelaSupermercado extends AppCompatActivity {
         finish();
     }
 
-    public void ofertas(){
+    public void ofertas(View view){
         Intent irOfertas = new Intent(TelaSupermercado.this, Ofertas.class);
         startActivity(irOfertas);
         finish();

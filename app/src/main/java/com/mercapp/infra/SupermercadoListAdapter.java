@@ -30,7 +30,7 @@ public class SupermercadoListAdapter extends ArrayAdapter<Supermercado> {
 
         convertView = LayoutInflater.from(this._context).inflate(R.layout.supermercados, null);
 
-        TextView nome = (TextView) convertView.findViewById(R.id.colunaProduto2);
+        TextView nome = (TextView) convertView.findViewById(R.id.colunaProduto1);
         nome.setText(supermercadoPosicao.getNome());
 
         TextView telefone = (TextView) convertView.findViewById(R.id.colunaProduto3);
