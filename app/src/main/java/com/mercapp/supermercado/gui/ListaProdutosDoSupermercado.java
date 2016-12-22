@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -66,6 +68,16 @@ public class ListaProdutosDoSupermercado extends AppCompatActivity {
             this.buscarTodosProdutosDoSupermercado();
             etDepartamentoSelecionado.setText("Produtos");
         }
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> listView, View view, int position, long id) {
+                Produto produto = (Produto) listView.getItemAtPosition(position);
+                session.setProdutoSelecionado(produto);
+                Intent editarProdudo = new Intent(ListaProdutosDoSupermercado.this, DescricaoProduto.class);
+                startActivity(editarProdudo);
+                finish();
+                }
+            });
     }
 
     public void buscarTodosProdutosDoSupermercado() {

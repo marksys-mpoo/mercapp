@@ -96,7 +96,8 @@
         <activity android:name=".supermercado.gui.ListaImagens" />
         <activity android:name=".infra.ImagemListAdapter" />
         <activity android:name=".usuario.gui.AjudaActivity" />
-        <activity android:name=".supermercado.gui.Ofertas"></activity>
+        <activity android:name=".supermercado.gui.Ofertas" />
+        <activity android:name=".supermercado.gui.DescricaoProduto"></activity>
     </application>
 
 </manifest>
