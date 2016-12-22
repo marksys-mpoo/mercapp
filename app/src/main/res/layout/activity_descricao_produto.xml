@@ -41,7 +41,7 @@
                 android:padding="8dp">
 
                 <TextView
-                    android:text="<nome>"
+                    android:text="nome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/nomeProduto"
@@ -62,7 +62,7 @@
                         android:textAlignment="viewStart" />
 
                     <TextView
-                        android:text="<preco>"
+                        android:text="preco"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/precoProduto"
@@ -90,7 +90,7 @@
                 android:layout_marginBottom="4dp" />
 
             <TextView
-                android:text="<descricao>"
+                android:text="descricao"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/descricaoProduto"

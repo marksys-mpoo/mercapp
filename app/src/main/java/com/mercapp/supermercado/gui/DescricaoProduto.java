@@ -7,21 +7,24 @@ import android.widget.TextView;
 
 import com.mercapp.R;
 import com.mercapp.infra.Session;
+import com.mercapp.supermercado.dominio.Produto;
 
 public class DescricaoProduto extends AppCompatActivity {
 
     private Session session = Session.getInstanciaSessao();
-    private String nome;
-    private String descricao;
-    private String preco;
+    private Produto produto = session.getProdutoSelecionado();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_descricao_produto);
 
-        TextView textView1 = (TextView) findViewById(R.id.textView33);
-        textView1.setText(session.getProdutoSelecionado().getNome());
+        TextView nomeProduto = (TextView) findViewById(R.id.nomeProduto);
+        nomeProduto.setText(produto.getNome());
+        TextView precoProduto = (TextView) findViewById((R.id.precoProduto));
+        precoProduto.setText(produto.getPreco().toString());
+        TextView descricaoProduto = (TextView) findViewById((R.id.descricaoProduto));
+        descricaoProduto.setText(produto.getDescricao());
 
     }
 
