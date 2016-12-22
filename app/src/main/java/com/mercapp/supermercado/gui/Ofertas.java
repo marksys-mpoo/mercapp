@@ -3,6 +3,7 @@ package com.mercapp.supermercado.gui;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import com.mercapp.R;
@@ -28,7 +29,7 @@ public class Ofertas extends AppCompatActivity {
         finish();
     }
 
-    public void voltar(){
+    public void voltar(View view){
         Intent voltar = new Intent(Ofertas.this, TelaSupermercado.class);
         startActivity(voltar);
         finish();
