@@ -10,11 +10,11 @@
         android:layout_height="wrap_content"
         android:text="@string/textview_coluna3_supermercados"
         android:textSize="18sp"
-        android:layout_below="@+id/colunaProduto1"
-        android:layout_alignStart="@+id/colunaProduto1" />
+        android:layout_below="@+id/colunaProduto2"
+        android:layout_alignStart="@+id/colunaProduto2" />
 
     <TextView
-        android:id="@+id/colunaProduto1"
+        android:id="@+id/colunaProduto2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/textview_coluna2_supermercados"
