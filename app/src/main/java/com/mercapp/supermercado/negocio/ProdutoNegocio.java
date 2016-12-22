@@ -72,7 +72,7 @@ public class ProdutoNegocio {
         return produtos;
     }
 
-    public List<Produto> listaProdutosPorDepartamentoNegocio(String idSupermercado, String numDepartamento){
+    public List<Produto> listaProdutosPorDepartamentoNegocio(String idSupermercado, int numDepartamento){
         ProdutoPersistencia consulta = new ProdutoPersistencia(_context);
         List<Produto> produtos = consulta.listaProdutosDoSupermercadoPorDepartamentoPersistencia(idSupermercado, numDepartamento);
         return produtos;

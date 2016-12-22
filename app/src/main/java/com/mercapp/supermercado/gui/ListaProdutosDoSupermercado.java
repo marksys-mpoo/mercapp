@@ -41,23 +41,23 @@ public class ListaProdutosDoSupermercado extends AppCompatActivity {
         etNomeSupermercado.setText(nomeSM);
         etDepartamentoSelecionado = (TextView) findViewById(R.id.tituloDepartamento);
         if (numeroDepartamento != "Todos") {
-            if (numeroDepartamento == "0") {
+            if (numeroDepartamento == "1") {
                 this.setDepartamentoSelecionado("Padaria");
-            } else if (numeroDepartamento == "1") {
-                this.setDepartamentoSelecionado("Frios");
             } else if (numeroDepartamento == "2") {
-                this.setDepartamentoSelecionado("Açougue");
+                this.setDepartamentoSelecionado("Frios");
             } else if (numeroDepartamento == "3") {
-                this.setDepartamentoSelecionado("Frutas");
+                this.setDepartamentoSelecionado("Açougue");
             } else if (numeroDepartamento == "4") {
-                this.setDepartamentoSelecionado("Bebidas");
+                this.setDepartamentoSelecionado("Frutas");
             } else if (numeroDepartamento == "5") {
-                this.setDepartamentoSelecionado("Mercearia");
+                this.setDepartamentoSelecionado("Bebidas");
             } else if (numeroDepartamento == "6") {
-                this.setDepartamentoSelecionado("Higiene");
+                this.setDepartamentoSelecionado("Mercearia");
             } else if (numeroDepartamento == "7") {
-                this.setDepartamentoSelecionado("Limpeza");
+                this.setDepartamentoSelecionado("Higiene");
             } else if (numeroDepartamento == "8") {
+                this.setDepartamentoSelecionado("Limpeza");
+            } else if (numeroDepartamento == "9") {
                 this.setDepartamentoSelecionado("Bazar");
             }
             etDepartamentoSelecionado.setText(this.getDepartamentoSelecionado());
@@ -79,7 +79,8 @@ public class ListaProdutosDoSupermercado extends AppCompatActivity {
 
     public void buscaProdutosPorDepartamento(String idSupermercado, String departamento) {
         ProdutoNegocio buscaProdutos = new ProdutoNegocio(_context);
-        List<Produto> produtos = buscaProdutos.listaProdutosPorDepartamentoNegocio(idSupermercado, departamento);
+        int intdepartamento = Integer.parseInt(session.getDepartamentoSelecionado()) - 1;
+        List<Produto> produtos = buscaProdutos.listaProdutosPorDepartamentoNegocio(idSupermercado, intdepartamento);
         ProdutoListAdapter adaptador = new ProdutoListAdapter(this, produtos);
         lista = (ListView)findViewById(R.id.lista_produtos_do_supermercado);
         lista.setAdapter(adaptador);

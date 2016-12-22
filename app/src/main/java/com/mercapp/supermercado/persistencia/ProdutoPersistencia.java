@@ -130,11 +130,11 @@ public class ProdutoPersistencia {
         return produtos;
     }
 
-    public List<Produto> listaProdutosDoSupermercadoPorDepartamentoPersistencia(String idSupermercado, String idDepartamento){
+    public List<Produto> listaProdutosDoSupermercadoPorDepartamentoPersistencia(String idSupermercado, int idDepartamento){
         List<Produto> produtos = new ArrayList<>();
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_PRODUTO +
-                " WHERE "+ bdHelper.COLUNA_ID_SUPERMERCADO_PRODUTO +" LIKE ? AND "+ bdHelper.COLUNA_PRODUTO_DEPARTAMENTO +" LIKE ? " , new String[]{idSupermercado,idDepartamento});
+                " WHERE "+ bdHelper.COLUNA_ID_SUPERMERCADO_PRODUTO +" LIKE ? AND "+ bdHelper.COLUNA_PRODUTO_DEPARTAMENTO +" LIKE ? " , new String[]{idSupermercado,idDepartamento+""});
         cursor.moveToFirst();
         while(!cursor.isAfterLast()){
             produtos.add(criarProduto(cursor));
