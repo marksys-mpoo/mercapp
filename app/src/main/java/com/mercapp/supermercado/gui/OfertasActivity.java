@@ -9,7 +9,7 @@ import android.widget.Button;
 import com.mercapp.R;
 import com.mercapp.infra.Session;
 
-public class Ofertas extends AppCompatActivity {
+public class OfertasActivity extends AppCompatActivity {
 
     private Session session = Session.getInstanciaSessao();
     private Button btnVoltar;
@@ -24,13 +24,13 @@ public class Ofertas extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        Intent voltar = new Intent(Ofertas.this, TelaSupermercado.class);
+        Intent voltar = new Intent(OfertasActivity.this, TelaSupermercadoActivity.class);
         startActivity(voltar);
         finish();
     }
 
     public void voltar(View view){
-        Intent back = new Intent(Ofertas.this, TelaSupermercado.class);
+        Intent back = new Intent(OfertasActivity.this, TelaSupermercadoActivity.class);
         startActivity(back);
         finish();
     }

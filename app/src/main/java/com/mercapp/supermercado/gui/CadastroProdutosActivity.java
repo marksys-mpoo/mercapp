@@ -23,11 +23,11 @@ import com.mercapp.usuario.negocio.Validacao;
 
 import java.util.List;
 
-public class CadastroProdutos extends AppCompatActivity {
+public class CadastroProdutosActivity extends AppCompatActivity {
 
     private static final String stringVazia = "";
     private String nomeSpinnerSupermercado, nomeSpinnerImagem, nomeSpinnerDepartamento;
-    private Context _context = CadastroProdutos.this;
+    private Context _context = CadastroProdutosActivity.this;
     private Spinner spinnerSupermercado, spinnerImagens, spinnerDepartamento;
     private SupermercadoNegocio supermercadoNegocio;
     private Produto produtoCadastrado;
@@ -154,46 +154,70 @@ public class CadastroProdutos extends AppCompatActivity {
 
             if (supermercado != null){
                 if (session.getProdutoSelecionado() != null) {
-                    session.getProdutoSelecionado().setNome(nome);
-                    session.getProdutoSelecionado().setDescricao(descricao);
-                    session.getProdutoSelecionado().setSupermercado(supermercado);
-                    session.getProdutoSelecionado().setNumeroDepartamento(posicaoSpinnerDepartamento);
-                    session.getProdutoSelecionado().setPosicaoSpinnerSupermercado(posicaoSpinnerSupermercado);
-                    session.getProdutoSelecionado().setPosicaoSpinnerImagem(posicaoSpinnerImagem);
+                    produtoSelecionado(nome, descricao, supermercado);
                     produtoNegocio.editar(session.getProdutoSelecionado());
                 } else {
-                    produtoNegocio.cadastrar(nome, imagem, descricao, preco, supermercado, posicaoSpinnerDepartamento, posicaoSpinnerSupermercado, posicaoSpinnerImagem);
+                    Produto produto = criarProduto(nome, imagem, descricao, preco, supermercado, posicaoSpinnerDepartamento, posicaoSpinnerSupermercado, posicaoSpinnerImagem);
+                    produtoNegocio.cadastrar(produto);
                 }
-                Intent changeToListaProdutos = new Intent(CadastroProdutos.this, ListaProdutos.class);
+                Intent changeToListaProdutos = new Intent(CadastroProdutosActivity.this, ListaProdutosActivity.class);
                 session.setProdutoSelecionado(null);
-                CadastroProdutos.this.startActivity(changeToListaProdutos);
+                CadastroProdutosActivity.this.startActivity(changeToListaProdutos);
                 finish();
             }else {
-                //Cria o gerador do AlertDialog
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                //define a mensagem
-                builder.setMessage("Este supermercado não está Registrado, deseja cadastrar?");
-                //define um botão como positivo
-                builder.setPositiveButton("Cadastrar", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface arg0, int arg1) {
-                      chamarCadastroSupermercado();
-                    }
-                });
-                //define um botão como negativo.
-                builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        Toast.makeText(getApplication(), "Para continuar é preciso ter o supermercado cadastrado.", Toast.LENGTH_SHORT).show();
-                    }
-                });
-                //cria o AlertDialog
-                alerta = builder.create();
-                //Exibe
-                alerta.show();
+                criarAlertDialog();
             }
         } else {
             Toast.makeText(this, "O cadastro não foi realizado.", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    private Produto criarProduto(String nome, int imagem, String descricao, double preco, Supermercado nomesupermercado, int numeroDepartamento,
+                    int posicaoSpinnerSupermercado, int posicaoSpinnerImagemProduto){
+        Produto produtoCadastro = new Produto();
+        produtoCadastro.setDescricao(descricao);
+        produtoCadastro.setPreco(preco);
+        produtoCadastro.setNome(nome);
+        produtoCadastro.setImageProduto(imagem);
+        produtoCadastro.setSupermercado(nomesupermercado);
+        produtoCadastro.setNumeroDepartamento(numeroDepartamento);
+        produtoCadastro.setPosicaoSpinnerSupermercado(posicaoSpinnerSupermercado);
+        produtoCadastro.setPosicaoSpinnerImagem(posicaoSpinnerImagemProduto);
+
+        return produtoCadastro;
+    }
+
+    private void criarAlertDialog() {
+        //Cria o gerador do AlertDialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        //define a mensagem
+        builder.setMessage("Este supermercado não está Registrado, deseja cadastrar?");
+        //define um botão como positivo
+        builder.setPositiveButton("Cadastrar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+              chamarCadastroSupermercado();
+            }
+        });
+        //define um botão como negativo.
+        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+                Toast.makeText(getApplication(), "Para continuar é preciso ter o supermercado cadastrado.", Toast.LENGTH_SHORT).show();
+            }
+        });
+        //cria o AlertDialog
+        alerta = builder.create();
+        //Exibe
+        alerta.show();
+    }
+
+    private void produtoSelecionado(String nome, String descricao, Supermercado supermercado) {
+        session.getProdutoSelecionado().setNome(nome);
+        session.getProdutoSelecionado().setDescricao(descricao);
+        session.getProdutoSelecionado().setSupermercado(supermercado);
+        session.getProdutoSelecionado().setNumeroDepartamento(posicaoSpinnerDepartamento);
+        session.getProdutoSelecionado().setPosicaoSpinnerSupermercado(posicaoSpinnerSupermercado);
+        session.getProdutoSelecionado().setPosicaoSpinnerImagem(posicaoSpinnerImagem);
     }
 
     private void carregaDados() {
@@ -208,8 +232,8 @@ public class CadastroProdutos extends AppCompatActivity {
     }
 
     private void chamarCadastroSupermercado(){
-        Intent intent  = new Intent(this, ListaSupermercados.class);
-        CadastroProdutos.this.startActivity(intent);
+        Intent intent  = new Intent(this, ListaSupermercadosActivity.class);
+        CadastroProdutosActivity.this.startActivity(intent);
         finish();
     }
 
@@ -227,7 +251,7 @@ public class CadastroProdutos extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent voltarLista = new Intent(CadastroProdutos.this, ListaProdutos.class);
+        Intent voltarLista = new Intent(CadastroProdutosActivity.this, ListaProdutosActivity.class);
         startActivity(voltarLista);
         finish();
     }
@@ -239,7 +263,7 @@ public class CadastroProdutos extends AppCompatActivity {
     }
 
     public void changeToImagens(View view) {
-        Intent voltarMenu = new Intent(CadastroProdutos.this, ListaImagens.class);
+        Intent voltarMenu = new Intent(CadastroProdutosActivity.this, ListaImagens.class);
         startActivity(voltarMenu);
         finish();
     }

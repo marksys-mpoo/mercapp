@@ -24,7 +24,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.mercapp.R;
 import com.mercapp.supermercado.dominio.Supermercado;
-import com.mercapp.supermercado.gui.CadastroSupermercados;
+import com.mercapp.supermercado.gui.CadastroSupermercadosActivity;
 import com.mercapp.supermercado.negocio.SupermercadoNegocio;
 
 import java.util.Iterator;
@@ -103,7 +103,7 @@ public class MapaFragments extends SupportMapFragment implements OnMapReadyCallb
 
     private void addMarcadoresNoMapa() {
         SupermercadoNegocio consulta = new SupermercadoNegocio(_context);
-        List<Supermercado> supermercados = consulta.listaSupermercados();
+        List<Supermercado> supermercados = consulta.listar();
         Iterator iterator = supermercados.iterator();
         while (iterator.hasNext()){
             Supermercado supermercado = (Supermercado) iterator.next();
@@ -181,7 +181,7 @@ public class MapaFragments extends SupportMapFragment implements OnMapReadyCallb
     @Override
     public void onMapLongClick(LatLng latLng) {
         Toast.makeText(getActivity(), "Coordenadas registradas!", Toast.LENGTH_LONG).show();
-        Intent cadastrar = new Intent(getActivity(), CadastroSupermercados.class);
+        Intent cadastrar = new Intent(getActivity(), CadastroSupermercadosActivity.class);
         cadastrar.putExtra("CoordLat",latLng.latitude);
         cadastrar.putExtra("CoordLong",latLng.longitude);
         startActivity(cadastrar);

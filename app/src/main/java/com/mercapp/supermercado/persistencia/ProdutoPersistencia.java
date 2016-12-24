@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.mercapp.infra.BDHelper;
+import com.mercapp.infra.persistencia.BDHelper;
 import com.mercapp.supermercado.dominio.Produto;
 import com.mercapp.supermercado.dominio.Supermercado;
 
@@ -85,7 +85,7 @@ public class ProdutoPersistencia {
         db.close();
         return produto;
     }
-    public List<Produto> listaDados(){
+    public List<Produto> listar(){
         List<Produto> produtos = new ArrayList<>();
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Cursor cursor = db.query(BDHelper.TBL_PRODUTO, null, null, null, null, null, null);
@@ -110,7 +110,7 @@ public class ProdutoPersistencia {
         produto.setPosicaoSpinnerSupermercado(cursor.getInt(7));
         produto.setPosicaoSpinnerImagem(cursor.getInt(8));
         SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(_context);
-        Supermercado supermercado = supermercadoPersistencia.buscarSupermercado(cursor.getInt(5));
+        Supermercado supermercado = supermercadoPersistencia.buscar(cursor.getInt(5));
         produto.setSupermercado(supermercado);
         return produto;
     }
@@ -130,7 +130,7 @@ public class ProdutoPersistencia {
         return produtos;
     }
 
-    public List<Produto> listaProdutosDoSupermercadoPorDepartamentoPersistencia(String idSupermercado, int idDepartamento){
+    public List<Produto> listar(String idSupermercado, int idDepartamento){
         List<Produto> produtos = new ArrayList<>();
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_PRODUTO +
@@ -145,7 +145,7 @@ public class ProdutoPersistencia {
         return produtos;
     }
 
-    public List<Produto> listarProdutosPorParteDoNome(String inputText) throws SQLException {
+    public List<Produto> listar(String inputText) throws SQLException {
         List<Produto> produtos = new ArrayList<>();
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_PRODUTO +

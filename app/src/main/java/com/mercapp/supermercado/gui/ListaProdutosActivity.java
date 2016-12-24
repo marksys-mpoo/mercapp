@@ -14,17 +14,16 @@ import android.widget.Toast;
 
 import com.mercapp.R;
 import com.mercapp.infra.Administrador;
-import com.mercapp.infra.ProdutoListAdapter;
 import com.mercapp.infra.Session;
 import com.mercapp.supermercado.dominio.Produto;
 import com.mercapp.supermercado.negocio.ProdutoNegocio;
 
 import java.util.List;
 
-public class ListaProdutos extends AppCompatActivity {
+public class ListaProdutosActivity extends AppCompatActivity {
 
     private ListView lista;
-    private Context _context = ListaProdutos.this;
+    private Context _context = ListaProdutosActivity.this;
     private ProdutoListAdapter dataAdapter;
     private Session session = Session.getInstanciaSessao();
     ProdutoNegocio produtoNegocio = new ProdutoNegocio(_context);
@@ -37,7 +36,7 @@ public class ListaProdutos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_produtos);
         ProdutoNegocio consulta = new ProdutoNegocio(_context);
-        List<Produto> produtos = consulta.listaProdutos();
+        List<Produto> produtos = consulta.listar();
         dataAdapter = new ProdutoListAdapter(_context, produtos);
 
         lista = (ListView)findViewById(R.id.lista_produtos);
@@ -51,7 +50,7 @@ public class ListaProdutos extends AppCompatActivity {
                 Produto produto = (Produto) listView.getItemAtPosition(position);
                 if (produto != null) {
                     session.setProdutoSelecionado(produto);
-                    Intent editarProdudo = new Intent(ListaProdutos.this, CadastroProdutos.class);
+                    Intent editarProdudo = new Intent(ListaProdutosActivity.this, CadastroProdutosActivity.class);
                     startActivity(editarProdudo);
                     finish();
                 }
@@ -78,7 +77,7 @@ public class ListaProdutos extends AppCompatActivity {
             }
             @Override
             public boolean onQueryTextChange(String text) {
-                dataAdapter = new ProdutoListAdapter(_context, produtoNegocio.listarProdutosPorParteDoNome(text));
+                dataAdapter = new ProdutoListAdapter(_context, produtoNegocio.listar(text));
                 lista.setAdapter(dataAdapter);
                 return false;
             }
@@ -90,14 +89,14 @@ public class ListaProdutos extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         // voltar para a tela adminstrador.
-        Intent voltarAdm = new Intent(ListaProdutos.this, Administrador.class);
+        Intent voltarAdm = new Intent(ListaProdutosActivity.this, Administrador.class);
         startActivity(voltarAdm);
         finish();
     }
     public void adcionarProduto(View view) {
         // Adiconar novos Produtos.
         session.setProdutoSelecionado(null);
-        Intent cadastrarProdutos = new Intent(ListaProdutos.this, CadastroProdutos.class);
+        Intent cadastrarProdutos = new Intent(ListaProdutosActivity.this, CadastroProdutosActivity.class);
         startActivity(cadastrarProdutos);
         finish();
     }

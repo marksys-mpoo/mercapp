@@ -13,7 +13,7 @@ import com.mercapp.infra.Session;
 import com.mercapp.supermercado.negocio.SupermercadoNegocio;
 import com.mercapp.usuario.gui.TelaMenuActivity;
 
-public class TelaSupermercado extends AppCompatActivity {
+public class TelaSupermercadoActivity extends AppCompatActivity {
 
     private TextView etNomeSupermercado, etFoneSupermercado;
     private Button btnOfertas;
@@ -79,13 +79,13 @@ public class TelaSupermercado extends AppCompatActivity {
     public void selecionarDepartamento(String departamentoSelecionado) {
         SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(_context);
         supermercadoNegocio.iniciarSessaoProduto(departamentoSelecionado);
-        Intent voltarMenu = new Intent(TelaSupermercado.this, ListaProdutosDoSupermercado.class);
+        Intent voltarMenu = new Intent(TelaSupermercadoActivity.this, ListaProdutosDoSupermercadoActivity.class);
         startActivity(voltarMenu);
         finish();
     }
 
     public void ofertas(View view){
-        Intent irOfertas = new Intent(TelaSupermercado.this, Ofertas.class);
+        Intent irOfertas = new Intent(TelaSupermercadoActivity.this, OfertasActivity.class);
         startActivity(irOfertas);
         finish();
     }
@@ -93,7 +93,7 @@ public class TelaSupermercado extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         session.setSupermercadoSelecionado(null);
-        Intent voltarTelaMenuMapa = new Intent(TelaSupermercado.this, TelaMenuActivity.class);
+        Intent voltarTelaMenuMapa = new Intent(TelaSupermercadoActivity.this, TelaMenuActivity.class);
         startActivity(voltarTelaMenuMapa);
         finish();
     }

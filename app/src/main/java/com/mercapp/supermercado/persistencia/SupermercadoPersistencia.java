@@ -7,8 +7,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.google.android.gms.maps.model.LatLng;
-import com.mercapp.infra.BDHelper;
-import com.mercapp.supermercado.dominio.Produto;
+import com.mercapp.infra.persistencia.BDHelper;
 import com.mercapp.supermercado.dominio.Supermercado;
 
 import java.util.ArrayList;
@@ -58,7 +57,7 @@ public class SupermercadoPersistencia {
         db.close();
     }
 
-    public Supermercado buscarSupermercado(String nome){
+    public Supermercado buscar(String nome){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Supermercado supermercado = null;
         Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_SUPERMERCADO +
@@ -71,7 +70,7 @@ public class SupermercadoPersistencia {
         return supermercado;
     }
 
-    public Supermercado buscarSupermercado(int id){
+    public Supermercado buscar(int id){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Supermercado supermercado = null;
         Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_SUPERMERCADO +
@@ -84,7 +83,7 @@ public class SupermercadoPersistencia {
         return supermercado;
     }
 
-    public List<Supermercado> listarSupermercadosPorParteDoNome(String inputText) throws SQLException {
+    public List<Supermercado> listar(String inputText) throws SQLException {
         List<Supermercado> supermercados = new ArrayList<>();
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_SUPERMERCADO +
@@ -99,7 +98,7 @@ public class SupermercadoPersistencia {
         return supermercados;
     }
 
-    public List<Supermercado> listaDados(){
+    public List<Supermercado> listar(){
         List<Supermercado> supermercados = new ArrayList<>();
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + BDHelper.TBL_SUPERMERCADO, null);

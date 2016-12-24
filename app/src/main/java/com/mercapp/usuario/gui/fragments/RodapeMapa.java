@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.mercapp.R;
 import com.mercapp.infra.Session;
-import com.mercapp.supermercado.gui.TelaSupermercado;
+import com.mercapp.supermercado.gui.TelaSupermercadoActivity;
 
 
 public class RodapeMapa extends Fragment {
@@ -41,7 +41,7 @@ public class RodapeMapa extends Fragment {
         Button bt3=(Button)context.findViewById(R.id.rodape_to_Supermercado);
         bt3.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
-                Intent supermercado = new Intent(getActivity(), TelaSupermercado.class);
+                Intent supermercado = new Intent(getActivity(), TelaSupermercadoActivity.class);
                 startActivity(supermercado);
                 getActivity().finish();
 

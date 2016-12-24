@@ -6,10 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.mercapp.R;
-import com.mercapp.supermercado.gui.CadastroProdutos;
-import com.mercapp.supermercado.gui.CadastroSupermercados;
-import com.mercapp.supermercado.gui.ListaProdutos;
-import com.mercapp.supermercado.gui.ListaSupermercados;
+import com.mercapp.supermercado.gui.CadastroProdutosActivity;
+import com.mercapp.supermercado.gui.CadastroSupermercadosActivity;
+import com.mercapp.supermercado.gui.ListaProdutosActivity;
+import com.mercapp.supermercado.gui.ListaSupermercadosActivity;
 import com.mercapp.usuario.gui.TelaMenuActivity;
 
 public class Administrador extends AppCompatActivity {
@@ -21,7 +21,7 @@ public class Administrador extends AppCompatActivity {
     }
 
     public void changeTelaAdministradorToCadastroSupermercado(View view) {
-        Intent cadastrar = new Intent(Administrador.this, CadastroSupermercados.class);
+        Intent cadastrar = new Intent(Administrador.this, CadastroSupermercadosActivity.class);
         cadastrar.putExtra("CoordLat",0);
         cadastrar.putExtra("CoordLong",0);
         startActivity(cadastrar);
@@ -35,17 +35,17 @@ public class Administrador extends AppCompatActivity {
     }
 
     public void changeTelaAdministradorToCadastroProdutos(View view) {
-        Intent voltarMenu = new Intent(Administrador.this, CadastroProdutos.class);
+        Intent voltarMenu = new Intent(Administrador.this, CadastroProdutosActivity.class);
         startActivity(voltarMenu);
         finish();
     }
     public void changeTelaAdministradorToListaSupermercado(View view) {
-        Intent voltarMenu = new Intent(Administrador.this, ListaSupermercados.class);
+        Intent voltarMenu = new Intent(Administrador.this, ListaSupermercadosActivity.class);
         startActivity(voltarMenu);
         finish();
     }
     public void changeTelaAdministradorToListaProdutos(View view) {
-        Intent voltarMenu = new Intent(Administrador.this, ListaProdutos.class);
+        Intent voltarMenu = new Intent(Administrador.this, ListaProdutosActivity.class);
         startActivity(voltarMenu);
         finish();
     }

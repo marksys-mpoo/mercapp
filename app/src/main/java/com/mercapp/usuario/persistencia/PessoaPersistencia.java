@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.mercapp.infra.BDHelper;
+import com.mercapp.infra.persistencia.BDHelper;
 import com.mercapp.infra.Session;
 import com.mercapp.usuario.dominio.Pessoa;
 

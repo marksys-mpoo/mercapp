@@ -30,24 +30,13 @@ public class ProdutoNegocio {
         return produtoSelecionado;
     }
 
-    public List<Produto> listarProdutosPorParteDoNome(String inputText){
+    public List<Produto> listar(String inputText){
         ProdutoPersistencia listagem = new ProdutoPersistencia(_context);
-        List<Produto> produtos = listagem.listarProdutosPorParteDoNome(inputText);
+        List<Produto> produtos = listagem.listar(inputText);
         return produtos;
     }
 
-    public void cadastrar(String nome, int imagem, String descricao, double preco, Supermercado nomesupermercado, int numeroDepartamento,
-                          int posicaoSpinnerSupermercado, int posicaoSpinnerImagemProduto){
-        Produto produtoCadastro = new Produto();
-        produtoCadastro.setDescricao(descricao);
-        produtoCadastro.setPreco(preco);
-        produtoCadastro.setNome(nome);
-        produtoCadastro.setImageProduto(imagem);
-        produtoCadastro.setSupermercado(nomesupermercado);
-        produtoCadastro.setNumeroDepartamento(numeroDepartamento);
-        produtoCadastro.setPosicaoSpinnerSupermercado(posicaoSpinnerSupermercado);
-        produtoCadastro.setPosicaoSpinnerImagem(posicaoSpinnerImagemProduto);
-
+    public void cadastrar(Produto produtoCadastro){
         ProdutoPersistencia produtoPersistencia = new ProdutoPersistencia(_context);
         produtoPersistencia.cadastrar(produtoCadastro);
     }
@@ -60,9 +49,9 @@ public class ProdutoNegocio {
         ProdutoPersistencia produtoPersistencia= new ProdutoPersistencia(_context);
         produtoPersistencia.deletar(produto);
     }
-    public List<Produto> listaProdutos(){
+    public List<Produto> listar(){
         ProdutoPersistencia consulta = new ProdutoPersistencia(_context);
-        List<Produto> produtos = consulta.listaDados();
+        List<Produto> produtos = consulta.listar();
         return produtos ;
     }
 
@@ -72,9 +61,9 @@ public class ProdutoNegocio {
         return produtos;
     }
 
-    public List<Produto> listaProdutosPorDepartamentoNegocio(String idSupermercado, int numDepartamento){
+    public List<Produto> listar(String idSupermercado, int numDepartamento){
         ProdutoPersistencia consulta = new ProdutoPersistencia(_context);
-        List<Produto> produtos = consulta.listaProdutosDoSupermercadoPorDepartamentoPersistencia(idSupermercado, numDepartamento);
+        List<Produto> produtos = consulta.listar(idSupermercado, numDepartamento);
         return produtos;
     }
 }

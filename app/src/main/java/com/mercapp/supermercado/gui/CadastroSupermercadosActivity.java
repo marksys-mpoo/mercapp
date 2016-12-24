@@ -17,12 +17,12 @@ import com.mercapp.usuario.gui.Mask;
 import com.mercapp.usuario.gui.TelaMenuActivity;
 import com.mercapp.usuario.negocio.Validacao;
 
-public class CadastroSupermercados extends AppCompatActivity {
+public class CadastroSupermercadosActivity extends AppCompatActivity {
 
     private static final String stringVazia = "";
 
 
-    private Context _context = CadastroSupermercados.this;
+    private Context _context = CadastroSupermercadosActivity.this;
     private Session session = Session.getInstanciaSessao();
     private SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(_context);
     private EditText etSupermercadoNome, etSupermercadoTelefone, etLogintude, etLatitude;
@@ -93,8 +93,8 @@ public class CadastroSupermercados extends AppCompatActivity {
             } else {
                 supermercadoNegocio.cadastrar(nome, telefone, latLng);
             }
-            Intent changeToListaSupermercado = new Intent(CadastroSupermercados.this, ListaSupermercados.class);
-            CadastroSupermercados.this.startActivity(changeToListaSupermercado);
+            Intent changeToListaSupermercado = new Intent(CadastroSupermercadosActivity.this, ListaSupermercadosActivity.class);
+            CadastroSupermercadosActivity.this.startActivity(changeToListaSupermercado);
             finish();
         }
     }
@@ -111,14 +111,14 @@ public class CadastroSupermercados extends AppCompatActivity {
     }
 
     public void changeScreenCadastroSupermercadoToMapa(View view) {
-        Intent addCoordenadas = new Intent(CadastroSupermercados.this, TelaMenuActivity.class);
+        Intent addCoordenadas = new Intent(CadastroSupermercadosActivity.this, TelaMenuActivity.class);
         startActivity(addCoordenadas);
         finish();
     }
 
     @Override
     public void onBackPressed() {
-        Intent voltarMenu = new Intent(CadastroSupermercados.this, ListaSupermercados.class);
+        Intent voltarMenu = new Intent(CadastroSupermercadosActivity.this, ListaSupermercadosActivity.class);
         startActivity(voltarMenu);
         finish();
     }

@@ -1,4 +1,4 @@
-package com.mercapp.infra;
+package com.mercapp.supermercado.gui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

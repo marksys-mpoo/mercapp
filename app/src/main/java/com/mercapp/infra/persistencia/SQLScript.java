@@ -1,4 +1,4 @@
-package com.mercapp.infra;
+package com.mercapp.infra.persistencia;
 
 public class SQLScript {
     public static String getTabelaUsuario() {

@@ -18,7 +18,7 @@ public class SupermercadoNegocio {
 
     public Supermercado buscaSupermercado(String nome) {
         SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(_context);
-        Supermercado supermercadoSelecionado = supermercadoPersistencia.buscarSupermercado(nome);
+        Supermercado supermercadoSelecionado = supermercadoPersistencia.buscar(nome);
         return supermercadoSelecionado;
     }
 
@@ -42,15 +42,15 @@ public class SupermercadoNegocio {
         supermercadoPersistencia.editar(supermercado);
     }
 
-    public List<Supermercado> listaSupermercados(){
+    public List<Supermercado> listar(){
         SupermercadoPersistencia consulta = new SupermercadoPersistencia(_context);
-        List<Supermercado> supermercados = consulta.listaDados();
+        List<Supermercado> supermercados = consulta.listar();
         return supermercados;
     }
 
-    public List<Supermercado> listarSupermercadosPorParteDoNome(String inputText){
+    public List<Supermercado> listar(String inputText){
         SupermercadoPersistencia listagem = new SupermercadoPersistencia(_context);
-        List<Supermercado> supermercados = listagem.listarSupermercadosPorParteDoNome(inputText);
+        List<Supermercado> supermercados = listagem.listar(inputText);
         return supermercados;
     }
 

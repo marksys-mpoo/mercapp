@@ -2,9 +2,7 @@ package com.mercapp.supermercado.gui;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,19 +10,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.mercapp.R;
-import com.mercapp.infra.BDHelper;
-import com.mercapp.infra.ProdutoListAdapter;
 import com.mercapp.infra.Session;
 import com.mercapp.supermercado.dominio.Produto;
 import com.mercapp.supermercado.negocio.ProdutoNegocio;
-import com.mercapp.supermercado.negocio.SupermercadoNegocio;
 
 import java.util.List;
 
-public class ListaProdutosDoSupermercado extends AppCompatActivity {
+public class ListaProdutosDoSupermercadoActivity extends AppCompatActivity {
 
     private ListView lista;
-    private Context _context = ListaProdutosDoSupermercado.this;
+    private Context _context = ListaProdutosDoSupermercadoActivity.this;
     private Session session = Session.getInstanciaSessao();
     private String departamentoSelecionado;
     private TextView etDepartamentoSelecionado, etNomeSupermercado;
@@ -73,7 +68,7 @@ public class ListaProdutosDoSupermercado extends AppCompatActivity {
             public void onItemClick(AdapterView<?> listView, View view, int position, long id) {
                 Produto produto = (Produto) listView.getItemAtPosition(position);
                 session.setProdutoSelecionado(produto);
-                Intent editarProdudo = new Intent(ListaProdutosDoSupermercado.this, DescricaoProduto.class);
+                Intent editarProdudo = new Intent(ListaProdutosDoSupermercadoActivity.this, DescricaoProdutoActivity.class);
                 startActivity(editarProdudo);
                 finish();
                 }
@@ -92,7 +87,7 @@ public class ListaProdutosDoSupermercado extends AppCompatActivity {
     public void buscaProdutosPorDepartamento(String idSupermercado, String departamento) {
         ProdutoNegocio buscaProdutos = new ProdutoNegocio(_context);
         int intdepartamento = Integer.parseInt(session.getDepartamentoSelecionado()) - 1;
-        List<Produto> produtos = buscaProdutos.listaProdutosPorDepartamentoNegocio(idSupermercado, intdepartamento);
+        List<Produto> produtos = buscaProdutos.listar(idSupermercado, intdepartamento);
         ProdutoListAdapter adaptador = new ProdutoListAdapter(this, produtos);
         lista = (ListView)findViewById(R.id.lista_produtos_do_supermercado);
         lista.setAdapter(adaptador);
@@ -100,7 +95,7 @@ public class ListaProdutosDoSupermercado extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent voltarTelaSupermercado = new Intent(ListaProdutosDoSupermercado.this, TelaSupermercado.class);
+        Intent voltarTelaSupermercado = new Intent(ListaProdutosDoSupermercadoActivity.this, TelaSupermercadoActivity.class);
         startActivity(voltarTelaSupermercado);
         finish();
     }

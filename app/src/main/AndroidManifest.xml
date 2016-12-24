@@ -52,7 +52,7 @@
             android:name=".usuario.gui.CadastroActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".supermercado.gui.TelaSupermercado"
+            android:name=".supermercado.gui.TelaSupermercadoActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".usuario.gui.TelaMenuActivity"
@@ -62,7 +62,7 @@
             android:name=".usuario.gui.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".supermercado.gui.CadastroSupermercados"
+            android:name=".supermercado.gui.CadastroSupermercadosActivity"
             android:screenOrientation="portrait" />
 
         <!--
@@ -86,18 +86,18 @@
             android:value="@integer/google_play_services_version" />
 
         <activity android:name=".usuario.gui.CadastroPessoaActivity" />
-        <activity android:name=".supermercado.gui.ListaSupermercados" />
-        <activity android:name=".supermercado.gui.ListaProdutos" />
-        <activity android:name=".supermercado.gui.CadastroProdutos" />
-        <activity android:name=".supermercado.gui.ListaProdutosDoSupermercado" />
+        <activity android:name=".supermercado.gui.ListaSupermercadosActivity" />
+        <activity android:name=".supermercado.gui.ListaProdutosActivity" />
+        <activity android:name=".supermercado.gui.CadastroProdutosActivity" />
+        <activity android:name=".supermercado.gui.ListaProdutosDoSupermercadoActivity" />
         <activity android:name=".infra.SobreActivity" />
         <activity android:name=".infra.Administrador" />
         <activity android:name=".usuario.gui.RecuperarSenhaActivity" />
         <activity android:name=".supermercado.gui.ListaImagens" />
-        <activity android:name=".infra.ImagemListAdapter" />
+        <activity android:name=".supermercado.gui.ImagemListAdapter" />
         <activity android:name=".usuario.gui.AjudaActivity" />
-        <activity android:name=".supermercado.gui.Ofertas" />
-        <activity android:name=".supermercado.gui.DescricaoProduto"></activity>
+        <activity android:name=".supermercado.gui.OfertasActivity" />
+        <activity android:name=".supermercado.gui.DescricaoProdutoActivity"></activity>
     </application>
 
 </manifest>

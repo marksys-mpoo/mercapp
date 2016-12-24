@@ -1,4 +1,4 @@
-package com.mercapp.infra;
+package com.mercapp.supermercado.gui;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
