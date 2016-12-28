@@ -31,7 +31,7 @@ public class CadastroPessoaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro_pessoa);
         etNome = (EditText) findViewById(R.id.etNome);
         etTelefone = (EditText) findViewById(R.id.etTelefone);
-        etTelefone.addTextChangedListener(Mask.insert(Mask.MaskType.TEL, etTelefone));
+        etTelefone.addTextChangedListener(Mask.insert(Mask.MaskType.CELL, etTelefone));
         etNumeroCartao = (EditText) findViewById(R.id.etNumeroCartao);
         btnCadastroPessoa = (Button) findViewById(R.id.btnCadastroPessoa);
 

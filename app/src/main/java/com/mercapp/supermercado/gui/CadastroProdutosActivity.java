@@ -238,13 +238,11 @@ public class CadastroProdutosActivity extends AppCompatActivity {
     }
 
     private boolean validarPrecoDouble(){
-        boolean result;
+        boolean result = true;
         if (setpreco.getText().toString().equals("")) {
             setpreco.requestFocus();
             setpreco.setError(getString(R.string.campo_vazio_tela_cadastro_produtos));
             result = false;
-        }else{
-            result = true;
         }
         return  result;
     }
