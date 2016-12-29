@@ -150,7 +150,7 @@
                         android:text="+"
                         android:layout_width="45dp"
                         android:id="@+id/btnMais"
-                        android:layout_weight="0"
+                        android:layout_weight="0.33"
                         android:layout_height="45dp"
                         android:textAlignment="center"
                         android:textAllCaps="false"
