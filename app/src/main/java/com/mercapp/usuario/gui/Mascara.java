@@ -5,7 +5,7 @@ import android.text.TextWatcher;
 import android.widget.EditText;
 
 
-public abstract class Mask {
+public abstract class Mascara {
 
     public enum MaskType {
         CNPJ("##.###.###/####-##"), CPF("###.###.###-##"), CEP("#####-###"), TEL("(##) ####-####"),
@@ -33,7 +33,7 @@ public abstract class Mask {
         String result = s;
 
         if (!s.contains(".")) {
-            String str = Mask.unmask(s.toString());
+            String str = Mascara.unmask(s.toString());
             result = "";
 
             int i = 0;
@@ -70,7 +70,7 @@ public abstract class Mask {
                 }
 
                 if (!s.toString().isEmpty() && (s.toString().length() > old.length())) {
-                    String str = Mask.unmask(s.toString());
+                    String str = Mascara.unmask(s.toString());
                     String mask = "";
 
                     int i = 0;

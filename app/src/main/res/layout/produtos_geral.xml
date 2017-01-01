@@ -52,24 +52,6 @@
         android:layout_toEndOf="@+id/iconProdutoGeral" />
 
     <TextView
-        android:text="Coluna 1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/colunaProduto1"
-        android:textSize="18sp"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/textView4" />
-
-    <TextView
-        android:id="@+id/colunaProduto3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/textview_coluna3_produtos"
-        android:textSize="18sp"
-        android:layout_below="@+id/textView6"
-        android:layout_toEndOf="@+id/textView4" />
-
-    <TextView
         android:id="@+id/colunaProduto4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -80,6 +62,24 @@
         android:layout_toEndOf="@+id/textView22" />
 
     <TextView
+        android:id="@+id/colunaProduto3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textview_coluna3_produtos"
+        android:textSize="18sp"
+        android:layout_below="@+id/colunaProduto2"
+        android:layout_toEndOf="@+id/textView22" />
+
+    <TextView
+        android:text="Coluna 1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/colunaProduto1"
+        android:textSize="18sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/colunaProduto3" />
+
+    <TextView
         android:id="@+id/colunaProduto2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -87,8 +87,7 @@
         android:textSize="18sp"
         android:layout_centerInParent="false"
         android:layout_alignWithParentIfMissing="false"
-        android:layout_alignBaseline="@+id/textView6"
-        android:layout_alignBottom="@+id/textView6"
-        android:layout_toEndOf="@+id/textView6" />
+        android:layout_below="@+id/colunaProduto1"
+        android:layout_alignStart="@+id/colunaProduto3" />
 
 </RelativeLayout>

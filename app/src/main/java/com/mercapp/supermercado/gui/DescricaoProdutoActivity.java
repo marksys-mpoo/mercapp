@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mercapp.R;
@@ -32,6 +33,9 @@ public class DescricaoProdutoActivity extends AppCompatActivity {
         precoProduto.setText(produto.getPreco().toString());
         TextView descricaoProduto = (TextView) findViewById((R.id.descricaoProduto));
         descricaoProduto.setText(produto.getDescricao());
+        ImageView imgProduto = (ImageView) findViewById(R.id.imgProduto);
+        imgProduto.setImageResource(produto.getImageProduto());
+
         quantidadeProduto =(TextView)findViewById(R.id.quantProduto);
         context=this;
         mais = (Button) findViewById(R.id.btnMais);

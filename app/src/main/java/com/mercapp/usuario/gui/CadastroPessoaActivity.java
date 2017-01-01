@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,7 +30,7 @@ public class CadastroPessoaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro_pessoa);
         etNome = (EditText) findViewById(R.id.etNome);
         etTelefone = (EditText) findViewById(R.id.etTelefone);
-        etTelefone.addTextChangedListener(Mask.insert(Mask.MaskType.CELL, etTelefone));
+        etTelefone.addTextChangedListener(Mascara.insert(Mascara.MaskType.CELL, etTelefone));
         etNumeroCartao = (EditText) findViewById(R.id.etNumeroCartao);
         btnCadastroPessoa = (Button) findViewById(R.id.btnCadastroPessoa);
 
@@ -50,7 +49,7 @@ public class CadastroPessoaActivity extends AppCompatActivity {
     public void cadastroPessoa(View view) {
 
         String nome = etNome.getText().toString().trim();
-        String apenasNumerotelefone = Mask.unmask(etTelefone.getText().toString().trim());
+        String apenasNumerotelefone = Mascara.unmask(etTelefone.getText().toString().trim());
         String telefone = apenasNumerotelefone;
         String numeroCartao = etNumeroCartao.getText().toString().trim();
         int encontraTipoCartao = Validacao.getCardID(numeroCartao);

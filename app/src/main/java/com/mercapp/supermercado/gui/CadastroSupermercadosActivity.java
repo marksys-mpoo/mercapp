@@ -13,7 +13,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.mercapp.R;
 import com.mercapp.infra.Session;
 import com.mercapp.supermercado.negocio.SupermercadoNegocio;
-import com.mercapp.usuario.gui.Mask;
+import com.mercapp.usuario.gui.Mascara;
 import com.mercapp.usuario.gui.TelaMenuActivity;
 import com.mercapp.usuario.negocio.Validacao;
 
@@ -38,7 +38,7 @@ public class CadastroSupermercadosActivity extends AppCompatActivity {
 
         etSupermercadoNome = (EditText) findViewById(R.id.etSupNome);
         etSupermercadoTelefone = (EditText) findViewById(R.id.etSupTelefone);
-        etSupermercadoTelefone.addTextChangedListener(Mask.insert(Mask.MaskType.TEL, etSupermercadoTelefone));
+        etSupermercadoTelefone.addTextChangedListener(Mascara.insert(Mascara.MaskType.TEL, etSupermercadoTelefone));
 
         etLatitude = (EditText) findViewById(R.id.etSupLat);
         etLogintude = (EditText) findViewById(R.id.etSupLong);
@@ -126,7 +126,7 @@ public class CadastroSupermercadosActivity extends AppCompatActivity {
 
     private boolean validarCampos(){
         String nomeSupermercado = etSupermercadoNome.getText().toString();
-        String apenasNumerotelefone = Mask.unmask(etSupermercadoTelefone.getText().toString().trim());
+        String apenasNumerotelefone = Mascara.unmask(etSupermercadoTelefone.getText().toString().trim());
         String telefonesupermercado = apenasNumerotelefone;
         return Validacao.verificaVaziosSupermercado(nomeSupermercado,telefonesupermercado,this,
                 etSupermercadoNome,etSupermercadoTelefone,etLatitude,etLogintude);
