@@ -14,12 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProdutoPersistencia {
-    private Context _context;
+    private Context context;
     private BDHelper bdHelper;
 
-    public ProdutoPersistencia(Context _context) {
-        this._context = _context;
-        bdHelper = new BDHelper(_context);
+    public ProdutoPersistencia(Context context) {
+        this.context = context;
+        bdHelper = new BDHelper(context);
     }
     public void cadastrar(Produto produto){
         SQLiteDatabase db = bdHelper.getWritableDatabase();
@@ -61,11 +61,11 @@ public class ProdutoPersistencia {
     }
 
     public Produto buscar(Integer id){
-        String id_string = id.toString();
+        String idString = id.toString();
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Produto produto = null;
         Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_PRODUTO +
-                " WHERE "+ bdHelper.COLUNA_ID_PRODUTO +" LIKE ? ", new String[]{id_string});
+                " WHERE "+ bdHelper.COLUNA_ID_PRODUTO +" LIKE ? ", new String[]{idString});
         if (cursor.moveToFirst()){
             produto = criarProduto(cursor);
         }
@@ -109,7 +109,7 @@ public class ProdutoPersistencia {
         produto.setNumeroDepartamento(cursor.getInt(6));
         produto.setPosicaoSpinnerSupermercado(cursor.getInt(7));
         produto.setPosicaoSpinnerImagem(cursor.getInt(8));
-        SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(_context);
+        SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(context);
         Supermercado supermercado = supermercadoPersistencia.buscar(cursor.getInt(5));
         produto.setSupermercado(supermercado);
         return produto;
@@ -134,7 +134,7 @@ public class ProdutoPersistencia {
         List<Produto> produtos = new ArrayList<>();
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_PRODUTO +
-                " WHERE "+ bdHelper.COLUNA_ID_SUPERMERCADO_PRODUTO +" LIKE ? AND "+ bdHelper.COLUNA_PRODUTO_DEPARTAMENTO +" LIKE ? " , new String[]{idSupermercado,idDepartamento+""});
+                " WHERE "+ bdHelper.COLUNA_ID_SUPERMERCADO_PRODUTO +" LIKE ? AND "+ bdHelper.COLUNA_PRODUTO_DEPARTAMENTO +" LIKE ? " , new String[]{idSupermercado, Integer.toString(idDepartamento)});
         cursor.moveToFirst();
         while(!cursor.isAfterLast()){
             produtos.add(criarProduto(cursor));

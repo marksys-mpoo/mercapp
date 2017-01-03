@@ -7,24 +7,23 @@ import com.mercapp.usuario.persistencia.UsuarioPersistencia;
 
 public class UsuarioNegocio {
 
-    private Context _context;
-
-    public Usuario buscar(String email, String senha) {
-        UsuarioPersistencia usuarioPersistencia = new UsuarioPersistencia(_context);
-        Usuario usuarioLogado = usuarioPersistencia.buscar(email, senha);
-        return usuarioLogado;
-    }
-
-    public Usuario buscar(String email) {
-        UsuarioPersistencia usuarioPersistencia = new UsuarioPersistencia(_context);
-        Usuario usuarioLogado = usuarioPersistencia.buscar(email);
-        return usuarioLogado;
-    }
+    private Context context;
 
     public UsuarioNegocio(Context context)
     {
-        _context = context;
+        this.context = context;
     }
+    
+    public Usuario buscar(String email, String senha) {
+        UsuarioPersistencia usuarioPersistencia = new UsuarioPersistencia(context);
+        return usuarioPersistencia.buscar(email, senha);
+    }
+
+    public Usuario buscar(String email) {
+        UsuarioPersistencia usuarioPersistencia = new UsuarioPersistencia(context);
+        return usuarioPersistencia.buscar(email);
+    }
+
 
     public void cadastro(String emailTela, String senhaTela){
 
@@ -33,7 +32,7 @@ public class UsuarioNegocio {
         usuarioCadastro.setEmail(emailTela);
         usuarioCadastro.setSenha(senhaTela);
 
-        UsuarioPersistencia usuarioPersistencia = new UsuarioPersistencia(_context);
+        UsuarioPersistencia usuarioPersistencia = new UsuarioPersistencia(context);
         usuarioPersistencia.cadastrar(usuarioCadastro);
     }
 }

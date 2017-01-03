@@ -18,12 +18,12 @@ import java.util.List;
 
 public class ProdutoListAdapter extends ArrayAdapter<Produto> {
 
-        private Context _context;
+        private Context context;
         private List<Produto> produtos;
 
         public ProdutoListAdapter(Context context, List<Produto> produtos) {
             super(context, 0, produtos);
-            this._context = context;
+            this.context = context;
             this.produtos = produtos;
         }
 
@@ -31,7 +31,7 @@ public class ProdutoListAdapter extends ArrayAdapter<Produto> {
         public View getView(int position, View convertView, ViewGroup parent) {
             Produto produtoPosicao = this.produtos.get(position);
 
-            convertView = LayoutInflater.from(this._context).inflate(R.layout.produtos_geral, null);
+            convertView = LayoutInflater.from(this.context).inflate(R.layout.produtos_geral, null);
 
             TextView nome = (TextView) convertView.findViewById(R.id.colunaProduto1);
             nome.setText(produtoPosicao.getNome().toString());
@@ -47,7 +47,7 @@ public class ProdutoListAdapter extends ArrayAdapter<Produto> {
 
             ImageView imagem = (ImageView) convertView.findViewById(R.id.iconProdutoGeral);
             int idImagem = produtoPosicao.getImageProduto();
-            Drawable drawable = ContextCompat.getDrawable(_context, idImagem);
+            Drawable drawable = ContextCompat.getDrawable(context, idImagem);
             imagem.setImageDrawable(drawable);
 
             return convertView;

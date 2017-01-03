@@ -26,9 +26,9 @@ public class ListaProdutosActivity extends AppCompatActivity {
     private Context _context = ListaProdutosActivity.this;
     private ProdutoListAdapter dataAdapter;
     private Session session = Session.getInstanciaSessao();
-    ProdutoNegocio produtoNegocio = new ProdutoNegocio(_context);
+    private ProdutoNegocio produtoNegocio = new ProdutoNegocio(_context);
     private AlertDialog alerta;
-    SearchView searchView;
+    private SearchView searchView;
 
 
     @Override

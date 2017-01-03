@@ -34,12 +34,11 @@ public class TelaMenuActivity extends AppCompatActivity
 
     private GoogleApiClient client;
 
-    private AlertDialog alerta;
     private FragmentManager fragmentManager;
     private Session session = Session.getInstanciaSessao();
 
-    TextView emailUsuario;
-    TextView nomePessoa;
+    private TextView emailUsuario;
+    private TextView nomePessoa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,15 +92,6 @@ public class TelaMenuActivity extends AppCompatActivity
         return true;
     }
 
-    private void showFragment (Fragment fragment, String name) {
-
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-
-        transaction.replace(R.id.container, fragment, name);
-
-        transaction.commit();
-    }
-
     /** Menu do navigation drawer
      * **/
     @SuppressWarnings("StatementWithEmptyBody")
@@ -118,22 +108,19 @@ public class TelaMenuActivity extends AppCompatActivity
                 finish();
                 break;
             case R.id.nav_historico:
-                Toast.makeText(this, "Desculpe o transtorno, estamos implementando", Toast.LENGTH_SHORT).show();
-                break;
+                aviso();
             case R.id.nav_sobre:
                 Intent sobre = new Intent(TelaMenuActivity.this, SobreActivity.class);
                 TelaMenuActivity.this.startActivity(sobre);
                 finish();
                 break;
             case R.id.nav_carrinho:
-                Toast.makeText(this, "Desculpe o transtorno, estamos implementando", Toast.LENGTH_SHORT).show();
+                aviso();
                 break;
             case R.id.nav_descontos:
-                Toast.makeText(this, "Desculpe o transtorno, estamos implementando", Toast.LENGTH_SHORT).show();
-                break;
+                aviso();
             case R.id.nav_configuracao:
-                Toast.makeText(this, "Desculpe o transtorno, estamos implementando", Toast.LENGTH_SHORT).show();
-                break;
+                aviso();
             case R.id.nav_mapa:
                 getFragmentManager().popBackStack();
                 break;
@@ -156,6 +143,11 @@ public class TelaMenuActivity extends AppCompatActivity
         return true;
     }
 
+    private void aviso() {
+        Toast.makeText(this, "Desculpe o transtorno, estamos implementando", Toast.LENGTH_SHORT).show();
+        return;
+    }
+
 
     private void confirmarSaida(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -170,7 +162,7 @@ public class TelaMenuActivity extends AppCompatActivity
             }
         });
         builder.setNegativeButton("Não", null);
-        alerta = builder.create();
+        AlertDialog alerta = builder.create();
         alerta.show();
     }
 }

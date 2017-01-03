@@ -31,12 +31,12 @@ public class RecuperarSenhaActivity extends AppCompatActivity implements View.On
     private EditText email;
     private Button recuperarSenha;
     private String correo, contrasenha;
-    Session session;
+    private Session session;
     private UsuarioNegocio usuarioNegocio;
     private Usuario usuario;
-    ProgressDialog pdialog = null;
-    Context context = this;
-    String rec, msg, sub;
+    private ProgressDialog pdialog = null;
+    private Context context = this;
+    private String rec, msg, sub;
 
 
 

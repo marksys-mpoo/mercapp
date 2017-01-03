@@ -19,12 +19,9 @@ import com.mercapp.usuario.negocio.Validacao;
 
 public class CadastroSupermercadosActivity extends AppCompatActivity {
 
-    private static final String stringVazia = "";
-
-
-    private Context _context = CadastroSupermercadosActivity.this;
+    private Context context = CadastroSupermercadosActivity.this;
     private Session session = Session.getInstanciaSessao();
-    private SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(_context);
+    private SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(context);
     private EditText etSupermercadoNome, etSupermercadoTelefone, etLogintude, etLatitude;
     private Button btnSalvarEditar;
     private String latitude;

@@ -1,7 +1,5 @@
 package com.mercapp.usuario.gui;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 
 public class CriptografiaSenha {
@@ -16,6 +14,15 @@ public class CriptografiaSenha {
     private String senha = "senha";
 
     private static CriptografiaSenha criptografia = new CriptografiaSenha();
+
+    private CriptografiaSenha() {
+        for (int i = 0; i < 52; i++) {
+            alfa[i] = letras.charAt(i);
+        }
+        for (int i = 0; i < 10; i ++) {
+            nume[i] = numeros.charAt(i);
+        }
+    }
 
     public static CriptografiaSenha getInstancia(String senha) {
         criptografia.setSenhaOriginal(senha);
@@ -62,14 +69,6 @@ public class CriptografiaSenha {
         return 2 + x + y;
     }
 
-    private CriptografiaSenha() {
-        for (int i = 0; i < 52; i++) {
-            alfa[i] = letras.charAt(i);
-        }
-        for (int i = 0; i < 10; i ++) {
-            nume[i] = numeros.charAt(i);
-        }
-    }
 
 }
 

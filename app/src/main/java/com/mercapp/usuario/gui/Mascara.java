@@ -11,7 +11,7 @@ public abstract class Mascara {
         CNPJ("##.###.###/####-##"), CPF("###.###.###-##"), CEP("#####-###"), TEL("(##) ####-####"),
         CELL("(##) #####-####");
 
-        String mask;
+        private String mask;
 
         MaskType(String s) {
             mask = s;
@@ -57,8 +57,8 @@ public abstract class Mascara {
 
     public static TextWatcher insert(final MaskType type, final EditText ediTxt) {
         return new TextWatcher() {
-            boolean isUpdating;
-            String old = "";
+            private boolean isUpdating;
+            private String old = "";
 
             public void onTextChanged(CharSequence s, int start, int before,
                                       int count) {

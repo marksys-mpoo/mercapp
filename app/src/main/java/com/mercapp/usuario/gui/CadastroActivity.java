@@ -18,7 +18,7 @@ public class CadastroActivity extends AppCompatActivity {
 
     private EditText etEmail, etSenha, etConfirmar;
     private Button btnEfetuarCadastro;
-    private Context _context = CadastroActivity.this;
+    private Context context = CadastroActivity.this;
     private UsuarioNegocio usuarioNegocio;
     private Usuario usuarioCadastro;
     private String senhaCriptografada;
@@ -38,7 +38,7 @@ public class CadastroActivity extends AppCompatActivity {
         String email = etEmail.getText().toString().trim();
         String senha = etSenha.getText().toString().trim();
 
-        usuarioNegocio = new UsuarioNegocio(_context);
+        usuarioNegocio = new UsuarioNegocio(context);
         usuarioCadastro = usuarioNegocio.buscar(email);
 
         if ((usuarioCadastro == null) && (validarCampos())){

@@ -63,8 +63,8 @@ public class Validacao {
 
 
     public static boolean validCC(String number) throws Exception {
-        int CardID;
-        if ((CardID = getCardID(number)) != -1)
+        int cardID;
+        if ((cardID = getCardID(number)) != -1)
             return validCCNumber(number);
         return false;
     }
@@ -132,7 +132,7 @@ public class Validacao {
 
     public static boolean isNumber(String n) {
         try {
-            double d = Double.valueOf(n).doubleValue();
+            double value = Double.valueOf(n).doubleValue();
             return true;
         } catch (NumberFormatException e) {
             e.printStackTrace();

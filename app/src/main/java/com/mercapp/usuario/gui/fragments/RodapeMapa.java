@@ -21,9 +21,9 @@ public class RodapeMapa extends Fragment {
     private FragmentManager fragmentManager;
     private Session session = Session.getInstanciaSessao();
 
-    final FragmentManager fm = getFragmentManager();
+    private final FragmentManager fm = getFragmentManager();
 
-    Activity context;
+    private Activity context;
     private FragmentManager supportFragmentManager;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

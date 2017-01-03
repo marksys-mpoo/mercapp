@@ -7,22 +7,20 @@ import com.mercapp.usuario.persistencia.PessoaPersistencia;
 
 public class PessoaNegocio {
 
-    private Context _context;
+    private Context context;
 
-    public PessoaNegocio(Context _context) {
-        this._context = _context;
+    public PessoaNegocio(Context context) {
+        this.context = context;
     }
 
     public Pessoa buscar(int usuarioId){
-        PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(_context);
-        Pessoa pessoaLogada = pessoaPersistencia.buscar(usuarioId);
-        return pessoaLogada;
+        PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(context);
+        return pessoaPersistencia.buscar(usuarioId);
     }
 
     public Pessoa buscar(String numeroCartao){
-        PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(_context);
-        Pessoa pessoaLogada = pessoaPersistencia.buscar(numeroCartao);
-        return pessoaLogada;
+        PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(context);
+        return pessoaPersistencia.buscar(numeroCartao);
     }
 
     public void cadastro(String nome, String telefone, String numeroCartao){
@@ -32,12 +30,12 @@ public class PessoaNegocio {
         pessoaCadastro.setTelefone(telefone);
         pessoaCadastro.setNumeroCartao(numeroCartao);
 
-        PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(_context);
+        PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(context);
         pessoaPersistencia.cadastrar(pessoaCadastro);
     }
 
     public void editar(Pessoa pessoa){
-        PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(_context);
+        PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(context);
         pessoaPersistencia.editar(pessoa);
     }
 }

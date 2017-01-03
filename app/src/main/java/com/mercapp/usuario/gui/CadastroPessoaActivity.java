@@ -20,7 +20,7 @@ public class CadastroPessoaActivity extends AppCompatActivity {
     private EditText etNome, etTelefone, etNumeroCartao;
     private Button btnCadastroPessoa;
     private Session session = Session.getInstanciaSessao();
-    private Context _context = CadastroPessoaActivity.this;
+    private Context context = CadastroPessoaActivity.this;
     private PessoaNegocio pessoaNegocio;
     private boolean validaCartao;
 
@@ -63,7 +63,7 @@ public class CadastroPessoaActivity extends AppCompatActivity {
         }
 
         if (validarCamposPessoa() && validaCartao) {
-            pessoaNegocio = new PessoaNegocio(_context);
+            pessoaNegocio = new PessoaNegocio(context);
             if (session.getPessoaLogada() != null) {
                 session.getPessoaLogada().setNome(nome);
                 session.getPessoaLogada().setTelefone(telefone);

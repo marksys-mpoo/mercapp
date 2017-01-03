@@ -1,9 +1,8 @@
 package com.mercapp.supermercado.gui;
 
-import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,7 +19,6 @@ public class DescricaoProdutoActivity extends AppCompatActivity {
     private Button menos;
     private Button mais;
     private TextView quantidadeProduto;
-    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,26 +27,25 @@ public class DescricaoProdutoActivity extends AppCompatActivity {
 
         TextView nomeProduto = (TextView) findViewById(R.id.nomeProduto);
         nomeProduto.setText(produto.getNome());
-        TextView precoProduto = (TextView) findViewById((R.id.precoProduto));
+        TextView precoProduto = (TextView) findViewById(R.id.precoProduto);
         precoProduto.setText(produto.getPreco().toString());
-        TextView descricaoProduto = (TextView) findViewById((R.id.descricaoProduto));
+        TextView descricaoProduto = (TextView) findViewById(R.id.descricaoProduto);
         descricaoProduto.setText(produto.getDescricao());
         ImageView imgProduto = (ImageView) findViewById(R.id.imgProduto);
         imgProduto.setImageResource(produto.getImageProduto());
 
         quantidadeProduto =(TextView)findViewById(R.id.quantProduto);
-        context=this;
         mais = (Button) findViewById(R.id.btnMais);
         menos = (Button) findViewById(R.id.btnMenos);
 
         mais.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String present_value_string = quantidadeProduto.getText().toString();
-                int present_value_int = Integer.parseInt(present_value_string);
-                present_value_int++;
+                String presentValueString = quantidadeProduto.getText().toString();
+                int presentValueInt = Integer.parseInt(presentValueString);
+                presentValueInt++;
 
-                quantidadeProduto.setText(String.valueOf(present_value_int));
+                quantidadeProduto.setText(String.valueOf(presentValueInt));
             }
         });
 
@@ -56,13 +53,13 @@ public class DescricaoProdutoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String present_value_string = quantidadeProduto.getText().toString();
-                int present_value_int = Integer.parseInt(present_value_string);
-                if (present_value_int > 0){
-                    present_value_int--;
+                String presentValueString = quantidadeProduto.getText().toString();
+                int presentValueInt = Integer.parseInt(presentValueString);
+                if (presentValueInt > 0){
+                    presentValueInt--;
                 }
 
-                quantidadeProduto.setText(String.valueOf(present_value_int));
+                quantidadeProduto.setText(String.valueOf(presentValueInt));
             }
         });
 

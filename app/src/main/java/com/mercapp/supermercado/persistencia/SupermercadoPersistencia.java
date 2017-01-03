@@ -15,13 +15,13 @@ import java.util.List;
 
 public class SupermercadoPersistencia {
 
-    private Context _context;
+    private Context context;
     private BDHelper bdHelper;
 
     public SupermercadoPersistencia(Context context)
     {
-        _context = context;
-        bdHelper = new BDHelper(_context);
+        this.context = context;
+        bdHelper = new BDHelper(this.context);
     }
 
     public void cadastrar(Supermercado supermercado){
@@ -74,7 +74,7 @@ public class SupermercadoPersistencia {
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Supermercado supermercado = null;
         Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_SUPERMERCADO +
-                " WHERE "+ bdHelper.COLUNA_ID_SUPERMERCADO+" LIKE ? ", new String[]{""+id});
+                " WHERE "+ bdHelper.COLUNA_ID_SUPERMERCADO+" LIKE ? ", new String[]{Integer.toString(id)});
         if (cursor.moveToFirst()){
             supermercado = criarSupermercado(cursor);
         }

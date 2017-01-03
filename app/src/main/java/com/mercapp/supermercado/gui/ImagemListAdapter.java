@@ -12,8 +12,5 @@ public class ImagemListAdapter extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_imagem_list_adapter);
-
-        //convertView = LayoutInflater.from(this._context).inflate(R.layout.produtos_geral, null);
-
     }
 }

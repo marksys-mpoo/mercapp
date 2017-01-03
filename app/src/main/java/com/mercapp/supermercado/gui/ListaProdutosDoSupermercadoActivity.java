@@ -19,7 +19,7 @@ import java.util.List;
 public class ListaProdutosDoSupermercadoActivity extends AppCompatActivity {
 
     private ListView lista;
-    private Context _context = ListaProdutosDoSupermercadoActivity.this;
+    private Context context = ListaProdutosDoSupermercadoActivity.this;
     private Session session = Session.getInstanciaSessao();
     private String departamentoSelecionado;
     private TextView etDepartamentoSelecionado, etNomeSupermercado;
@@ -32,7 +32,7 @@ public class ListaProdutosDoSupermercadoActivity extends AppCompatActivity {
         String nomeSM = session.getSupermercadoSelecionado().getNome().toString();
         String numeroDepartamento = session.getDepartamentoSelecionado();
 
-        String idSupermercado_string = idSupermercado.toString();
+        String idSupermercadoString = idSupermercado.toString();
 
         etNomeSupermercado = (TextView) findViewById(R.id.tituloSupermercado);
         etNomeSupermercado.setText(nomeSM);
@@ -58,7 +58,7 @@ public class ListaProdutosDoSupermercadoActivity extends AppCompatActivity {
                 this.setDepartamentoSelecionado("Bazar");
             }
             etDepartamentoSelecionado.setText(this.getDepartamentoSelecionado());
-            this.buscaProdutosPorDepartamento(idSupermercado_string, numeroDepartamento);
+            this.buscaProdutosPorDepartamento(idSupermercadoString, numeroDepartamento);
         } else {
             this.buscarTodosProdutosDoSupermercado();
             etDepartamentoSelecionado.setText("Produtos");
@@ -76,7 +76,7 @@ public class ListaProdutosDoSupermercadoActivity extends AppCompatActivity {
     }
 
     public void buscarTodosProdutosDoSupermercado() {
-        ProdutoNegocio buscaProdutos = new ProdutoNegocio(_context);
+        ProdutoNegocio buscaProdutos = new ProdutoNegocio(context);
         Integer idSupermercado = session.getSupermercadoSelecionado().getId();
         List<Produto> produtos = buscaProdutos.listaProdutosDoSupermercado(idSupermercado.toString());
         ProdutoListAdapter adaptador = new ProdutoListAdapter(this, produtos);
@@ -85,7 +85,7 @@ public class ListaProdutosDoSupermercadoActivity extends AppCompatActivity {
     }
 
     public void buscaProdutosPorDepartamento(String idSupermercado, String departamento) {
-        ProdutoNegocio buscaProdutos = new ProdutoNegocio(_context);
+        ProdutoNegocio buscaProdutos = new ProdutoNegocio(context);
         int intdepartamento = Integer.parseInt(session.getDepartamentoSelecionado()) - 1;
         List<Produto> produtos = buscaProdutos.listar(idSupermercado, intdepartamento);
         ProdutoListAdapter adaptador = new ProdutoListAdapter(this, produtos);

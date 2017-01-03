@@ -11,15 +11,15 @@ import com.mercapp.usuario.dominio.Usuario;
 
 public class UsuarioPersistencia {
 
-    private Context _context;
+    private Context context;
 
     private BDHelper bdHelper;
 
 
     public UsuarioPersistencia(Context context)
     {
-        _context = context;
-        bdHelper= new BDHelper(_context);
+        this.context = context;
+        bdHelper= new BDHelper(this.context);
     }
 
     public void cadastrar(Usuario usuario){

@@ -20,20 +20,17 @@ public class ProdutoNegocio {
 
     public Produto buscar(Integer id) {
         ProdutoPersistencia produtoPersistencia = new ProdutoPersistencia(_context);
-        Produto produtoSelecionado = produtoPersistencia.buscar(id);
-        return produtoSelecionado;
+        return produtoPersistencia.buscar(id);
     }
 
     public Produto buscar(String nome) {
         ProdutoPersistencia produtoPersistencia = new ProdutoPersistencia(_context);
-        Produto produtoSelecionado = produtoPersistencia.buscar(nome);
-        return produtoSelecionado;
+        return produtoPersistencia.buscar(nome);
     }
 
     public List<Produto> listar(String inputText){
         ProdutoPersistencia listagem = new ProdutoPersistencia(_context);
-        List<Produto> produtos = listagem.listar(inputText);
-        return produtos;
+        return listagem.listar(inputText);
     }
 
     public void cadastrar(Produto produtoCadastro){
@@ -51,19 +48,16 @@ public class ProdutoNegocio {
     }
     public List<Produto> listar(){
         ProdutoPersistencia consulta = new ProdutoPersistencia(_context);
-        List<Produto> produtos = consulta.listar();
-        return produtos ;
+        return consulta.listar();
     }
 
     public List<Produto> listaProdutosDoSupermercado(String idSuper){
         ProdutoPersistencia consulta = new ProdutoPersistencia(_context);
-        List<Produto> produtos = consulta.listaDadosProdutosDoSupermercado(idSuper);
-        return produtos;
+        return consulta.listaDadosProdutosDoSupermercado(idSuper);
     }
 
     public List<Produto> listar(String idSupermercado, int numDepartamento){
         ProdutoPersistencia consulta = new ProdutoPersistencia(_context);
-        List<Produto> produtos = consulta.listar(idSupermercado, numDepartamento);
-        return produtos;
+        return consulta.listar(idSupermercado, numDepartamento);
     }
 }

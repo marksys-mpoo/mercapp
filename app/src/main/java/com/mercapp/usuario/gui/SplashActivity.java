@@ -19,6 +19,7 @@ public class SplashActivity extends AppCompatActivity {
 
         progressBar = (ProgressBar)findViewById(R.id.barraProgresso);
         final Thread timer = new Thread(){
+            @Override
             public void run(){
                 mbActive = true;
                 try {

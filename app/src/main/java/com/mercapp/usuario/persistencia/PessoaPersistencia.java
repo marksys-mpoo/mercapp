@@ -11,13 +11,13 @@ import com.mercapp.usuario.dominio.Pessoa;
 
 public class PessoaPersistencia {
 
-    private Context _context;
+    private Context context;
     private BDHelper bdHelper;
     private Session session = Session.getInstanciaSessao();
 
     public PessoaPersistencia(Context context){
-        _context = context;
-        bdHelper = new BDHelper(_context);
+        this.context = context;
+        bdHelper = new BDHelper(this.context);
     }
 
     public void cadastrar(Pessoa pessoa){

@@ -15,10 +15,8 @@ import com.mercapp.usuario.gui.TelaMenuActivity;
 
 public class TelaSupermercadoActivity extends AppCompatActivity {
 
-    private TextView etNomeSupermercado, etFoneSupermercado;
-    private Button btnOfertas;
     private Session session = Session.getInstanciaSessao();
-    private Context _context = null;
+    private Context context = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,13 +24,13 @@ public class TelaSupermercadoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tela_supermercado);
 
         String nomeSM = session.getSupermercadoSelecionado().getNome().toString();
-        etNomeSupermercado = (TextView) findViewById(R.id.supermercadoSessao);
+        TextView etNomeSupermercado = (TextView) findViewById(R.id.supermercadoSessao);
         etNomeSupermercado.setText(nomeSM);
         String foneSM = session.getSupermercadoSelecionado().getTelefone().toString();
-        etFoneSupermercado = (TextView) findViewById(R.id.telefoneSessao);
+        TextView etFoneSupermercado = (TextView) findViewById(R.id.telefoneSessao);
         etFoneSupermercado.setText(foneSM);
 
-        btnOfertas = (Button) findViewById(R.id.btnOfertas);
+        Button btnOfertas = (Button) findViewById(R.id.btnOfertas);
 
     }
 
@@ -77,7 +75,7 @@ public class TelaSupermercadoActivity extends AppCompatActivity {
     }
 
     public void selecionarDepartamento(String departamentoSelecionado) {
-        SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(_context);
+        SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(context);
         supermercadoNegocio.iniciarSessaoProduto(departamentoSelecionado);
         Intent voltarMenu = new Intent(TelaSupermercadoActivity.this, ListaProdutosDoSupermercadoActivity.class);
         startActivity(voltarMenu);

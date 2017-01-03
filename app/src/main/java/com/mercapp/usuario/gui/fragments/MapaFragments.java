@@ -36,8 +36,8 @@ public class MapaFragments extends SupportMapFragment implements OnMapReadyCallb
     private FragmentManager fragmentManager;
 
     private Context _context = null;
-    Activity context;
-    TextView superSelecionado, txtView;
+    private Activity context;
+    private TextView superSelecionado, txtView;
     private Marker marker;
     private static  final String TAG = "MapaFragments";
     private GoogleMap mMap;
@@ -170,12 +170,6 @@ public class MapaFragments extends SupportMapFragment implements OnMapReadyCallb
     @Override
     public void onProviderDisabled(String provider) {
         //Toast.makeText(getActivity(), "Prov Desabi", Toast.LENGTH_LONG).show();
-    }
-    private void showTela (Fragment fragment, String name) {
-        fragmentManager = getFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.container, fragment, name);
-        transaction.commit();
     }
 
     @Override

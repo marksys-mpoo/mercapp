@@ -25,11 +25,10 @@ public class ListaSupermercadosActivity extends AppCompatActivity {
 
     private Session session = Session.getInstanciaSessao();
     private ListView lista;
-    private Context _context = ListaSupermercadosActivity.this;
+    private Context context = ListaSupermercadosActivity.this;
     private SupermercadoListAdapter dataAdapter;
-    private SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(_context);
-    private AlertDialog alerta;
-    SearchView searchView;
+    private SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(context);
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +36,7 @@ public class ListaSupermercadosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_supermercados);
 
-        SupermercadoNegocio consulta = new SupermercadoNegocio(_context);
+        SupermercadoNegocio consulta = new SupermercadoNegocio(context);
         List<Supermercado> supermercados = consulta.listar();
         dataAdapter = new SupermercadoListAdapter(this, supermercados);
 
@@ -76,12 +75,11 @@ public class ListaSupermercadosActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String text) {
-                // TODO Auto-generated method stub
                 return false;
             }
             @Override
             public boolean onQueryTextChange(String text) {
-                dataAdapter = new SupermercadoListAdapter(_context, supermercadoNegocio.listar(text));
+                dataAdapter = new SupermercadoListAdapter(context, supermercadoNegocio.listar(text));
                 lista.setAdapter(dataAdapter);
                 return false;
             }
@@ -128,7 +126,7 @@ public class ListaSupermercadosActivity extends AppCompatActivity {
                 Toast.makeText(ListaSupermercadosActivity.this, "Ação cancelada pelo usuário.", Toast.LENGTH_SHORT).show();
             }
         });
-        alerta = builder.create();
+        AlertDialog alerta = builder.create();
         alerta.show();
     }
 

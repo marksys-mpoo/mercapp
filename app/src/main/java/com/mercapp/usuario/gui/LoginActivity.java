@@ -23,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     private Session session = Session.getInstanciaSessao();
     private Button btnLogar, btnCadastrar;
     private EditText etEmail, etSenha;
-    private Context _context = LoginActivity.this;
+    private Context context = LoginActivity.this;
     private CriptografiaSenha criptografiaSenha;
     private String senhaCriptografada;
     private CriptografiaSenha criptografia;
@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
             String email = etEmail.getText().toString().trim();
             String senha = etSenha.getText().toString().trim();
 
-            UsuarioNegocio usuarioNegocio = new UsuarioNegocio(_context);
+            UsuarioNegocio usuarioNegocio = new UsuarioNegocio(context);
 
             criptografia =  criptografiaSenha.getInstancia(senha);
             senhaCriptografada = criptografia.getSenhaCriptografada();
@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
 
             if (logarTest != null) {
                 session.setUsuarioLogado(logarTest);
-                PessoaNegocio pessoaNegocio = new PessoaNegocio(_context);
+                PessoaNegocio pessoaNegocio = new PessoaNegocio(context);
                 if (pessoaNegocio.buscar(logarTest.getId()) != null) {
                     session.setPessoaLogada(pessoaNegocio.buscar(logarTest.getId()));
                     Intent changeToTelaPrincipal = new Intent(LoginActivity.this, TelaMenuActivity.class);

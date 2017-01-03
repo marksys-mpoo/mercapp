@@ -14,13 +14,13 @@ import java.util.List;
 
 public class SupermercadoListAdapter extends ArrayAdapter<Supermercado> {
 
-    private Context _context;
+    private Context context;
     private List<Supermercado> supermercados;
 
 
     public SupermercadoListAdapter(Context context, List<Supermercado> supermercados) {
         super(context, 0, supermercados);
-        this._context = context;
+        this.context = context;
         this.supermercados = supermercados;
     }
 
@@ -28,7 +28,7 @@ public class SupermercadoListAdapter extends ArrayAdapter<Supermercado> {
     public View getView(int position, View convertView, ViewGroup parent) {
         Supermercado supermercadoPosicao = this.supermercados.get(position);
 
-        convertView = LayoutInflater.from(this._context).inflate(R.layout.supermercados, null);
+        convertView = LayoutInflater.from(this.context).inflate(R.layout.supermercados, null);
 
         TextView nome = (TextView) convertView.findViewById(R.id.colunaProduto2);
         nome.setText(supermercadoPosicao.getNome());

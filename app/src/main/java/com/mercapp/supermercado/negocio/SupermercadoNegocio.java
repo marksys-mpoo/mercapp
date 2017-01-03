@@ -1,7 +1,6 @@
 package com.mercapp.supermercado.negocio;
 
 import android.content.Context;
-import android.database.Cursor;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.mercapp.infra.Session;
@@ -13,51 +12,48 @@ import java.util.List;
 
 public class SupermercadoNegocio {
 
-    private Context _context;
+    private Context context;
     private Session sessao = Session.getInstanciaSessao();
-
-    public Supermercado buscaSupermercado(String nome) {
-        SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(_context);
-        Supermercado supermercadoSelecionado = supermercadoPersistencia.buscar(nome);
-        return supermercadoSelecionado;
-    }
 
     public SupermercadoNegocio(Context context)
     {
-        _context = context;
+        this.context = context;
     }
+    
+    public Supermercado buscaSupermercado(String nome) {
+        SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(context);
+        return supermercadoPersistencia.buscar(nome);
+    }
+
 
     public void cadastrar(String nome, String telefone, LatLng coordenadas){
         Supermercado supermercadoCadastro = new Supermercado();
         supermercadoCadastro.setNome(nome);
         supermercadoCadastro.setTelefone(telefone);
         supermercadoCadastro.setCoordenadas(coordenadas);
-        SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(_context);
+        SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(context);
         supermercadoPersistencia.cadastrar(supermercadoCadastro);
     }
 
 
     public void editar(Supermercado supermercado){
-        SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(_context);
+        SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(context);
         supermercadoPersistencia.editar(supermercado);
     }
 
     public List<Supermercado> listar(){
-        SupermercadoPersistencia consulta = new SupermercadoPersistencia(_context);
-        List<Supermercado> supermercados = consulta.listar();
-        return supermercados;
+        SupermercadoPersistencia consulta = new SupermercadoPersistencia(context);
+        return consulta.listar();
     }
 
     public List<Supermercado> listar(String inputText){
-        SupermercadoPersistencia listagem = new SupermercadoPersistencia(_context);
-        List<Supermercado> supermercados = listagem.listar(inputText);
-        return supermercados;
+        SupermercadoPersistencia listagem = new SupermercadoPersistencia(context);
+        return listagem.listar(inputText);
     }
 
     public List<String> listaNomeSupermercado(){
-        SupermercadoPersistencia listagem = new SupermercadoPersistencia(_context);
-        List<String> supermercados = listagem.listaSupermercado();
-        return supermercados;
+        SupermercadoPersistencia listagem = new SupermercadoPersistencia(context);
+        return listagem.listaSupermercado();
     }
 
     public void iniciarSessaoSupermercado(Supermercado supermercado){
@@ -77,7 +73,7 @@ public class SupermercadoNegocio {
     }
 
     public void deletar(Supermercado supermercado){
-        SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(_context);
+        SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(context);
         supermercadoPersistencia.deletar(supermercado);
     }
 }

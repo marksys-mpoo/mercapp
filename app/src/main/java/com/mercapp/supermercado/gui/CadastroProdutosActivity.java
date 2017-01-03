@@ -266,11 +266,4 @@ public class CadastroProdutosActivity extends AppCompatActivity {
         finish();
     }
 
-    private void limparCampos(){
-        setnome.setText(stringVazia);
-        setdescricao.setText(stringVazia);
-        setpreco.setText(stringVazia);
-        setnome.requestFocus();
-    }
-
 }
