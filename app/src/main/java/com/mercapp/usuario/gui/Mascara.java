@@ -12,14 +12,18 @@ public abstract class Mascara {
         CELL("(##) #####-####");
 
         private String mask;
+        public void setMask(String mask) {
+            this.mask = mask;
+        }
+        public String getMask() {
+            return mask;
+        }
 
         MaskType(String s) {
             mask = s;
         }
 
-        public String getMask() {
-            return mask;
-        }
+
     }
 
 
@@ -57,15 +61,30 @@ public abstract class Mascara {
 
     public static TextWatcher insert(final MaskType type, final EditText ediTxt) {
         return new TextWatcher() {
-            private boolean isUpdating;
+
             private String old = "";
+            private boolean isUpdating;
+            public boolean isUpdating() {
+                return isUpdating;
+            }
+
+            public void setUpdating(boolean updating) {
+                isUpdating = updating;
+            }
+            public String getOld() {
+                return old;
+            }
+
+            public void setOld(String old) {
+                this.old = old;
+            }
 
             public void onTextChanged(CharSequence s, int start, int before,
                                       int count) {
 
-                if (isUpdating){
-                    isUpdating = false;
-                    old = s.toString();
+                if (isUpdating()){
+                    setUpdating(false);
+                    setOld(s.toString());
                     return;
                 }
 
@@ -86,11 +105,11 @@ public abstract class Mascara {
                         }
                         i++;
                     }
-                    isUpdating = true;
+                    setUpdating(true);
                     ediTxt.setText(mask);
                     ediTxt.setSelection(mask.length());
                 }else{
-                    old = s.toString();
+                    setOld(s.toString());
                 }
             }
 

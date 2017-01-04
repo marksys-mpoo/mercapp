@@ -145,7 +145,7 @@ public class ProdutoPersistencia {
         return produtos;
     }
 
-    public List<Produto> listar(String inputText) throws SQLException {
+    public List<Produto> listar(String inputText){
         List<Produto> produtos = new ArrayList<>();
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_PRODUTO +

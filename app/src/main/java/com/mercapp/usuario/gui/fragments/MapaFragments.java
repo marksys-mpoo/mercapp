@@ -1,16 +1,13 @@
 package com.mercapp.usuario.gui.fragments;
 
-import android.app.Activity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -34,61 +31,96 @@ public class MapaFragments extends SupportMapFragment implements OnMapReadyCallb
         android.location.LocationListener {
 
     private FragmentManager fragmentManager;
-
     private Context _context = null;
-    private Activity context;
-    private TextView superSelecionado, txtView;
     private Marker marker;
     private static  final String TAG = "MapaFragments";
     private GoogleMap mMap;
     private LocationManager locationManager;
     private Location location;
 
+    public Context get_context() {
+        return _context;
+    }
+
+    public void set_context(Context _context) {
+        this._context = _context;
+    }
+
+    public void setMarker(Marker marker) {
+        this.marker = marker;
+    }
+
+    public GoogleMap getmMap() {
+        return mMap;
+    }
+
+    public void setmMap(GoogleMap mMap) {
+        this.mMap = mMap;
+    }
+
+    public LocationManager getLocationManager() {
+        return locationManager;
+    }
+
+    public void setLocationManager(LocationManager locationManager) {
+        this.locationManager = locationManager;
+    }
+
+    public static String getTAG() {
+        return TAG;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getMapAsync(this);
-        _context = this.getActivity();
+        set_context(this.getActivity());
     }
     @Override
     public void onResume() {
         super.onResume();
         // Ativa GPS
         LocationManager lM = (LocationManager)getActivity().getSystemService(Context.LOCATION_SERVICE);
-        lM.requestLocationUpdates(android.location.LocationManager.GPS_PROVIDER, 0, 100, this);
+        final int distanciaMinima = 100;
+        lM.requestLocationUpdates(android.location.LocationManager.GPS_PROVIDER, 0, distanciaMinima, this);
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        locationManager = (LocationManager)getActivity().getSystemService(Context.LOCATION_SERVICE);
-        locationManager.removeUpdates(this);
+        setLocationManager((LocationManager)getActivity().getSystemService(Context.LOCATION_SERVICE));
+        getLocationManager().removeUpdates(this);
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         final FragmentManager fragmentManager = getFragmentManager();
         try {
-            locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-            mMap = googleMap;
-            mMap.setOnMapClickListener(this);
-            mMap.setOnMapLongClickListener(this);
-            mMap.getUiSettings().setZoomControlsEnabled(true);
-            mMap.setMyLocationEnabled(true);
+            setLocationManager((LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE));
+            setmMap(googleMap);
+            getmMap().setOnMapClickListener(this);
+            getmMap().setOnMapLongClickListener(this);
+            getmMap().getUiSettings().setZoomControlsEnabled(true);
+            getmMap().setMyLocationEnabled(true);
             visualizacaoMapa();
             addMarcadoresNoMapa();
             eventosWaypoints(fragmentManager);
         } catch (SecurityException ex) {
-            Log.e(TAG, "Error", ex);
+            Log.e(getTAG(), "Error", ex);
         }
     }
 
     private void visualizacaoMapa() {
         //Localização inicial com zoom animate
-        LatLng recife = new LatLng(-8.062272, -34.9126937);
-        CameraPosition cameraPosition = new CameraPosition.Builder().target(recife).zoom(12).bearing(0).tilt(45).build();
+        final double latitudeInicial = -8.062272;
+        final double longetudeInicial = -34.9126937;
+        LatLng recife = new LatLng(latitudeInicial, longetudeInicial);
+        final int zommInicial = 12;
+        final int posicaoCameraInicial = 45;
+        CameraPosition cameraPosition = new CameraPosition.Builder().target(recife).zoom(zommInicial).bearing(0).tilt(posicaoCameraInicial).build();
         CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
-        mMap.animateCamera(cameraUpdate, 3000, new GoogleMap.CancelableCallback() {
+        final int tempoAnimacao = 3000;
+        getmMap().animateCamera(cameraUpdate, tempoAnimacao, new GoogleMap.CancelableCallback() {
             @Override
             public void onFinish() {
                 Log.i("Script", "CancelableCallback.onFinish()");
@@ -102,7 +134,7 @@ public class MapaFragments extends SupportMapFragment implements OnMapReadyCallb
     }
 
     private void addMarcadoresNoMapa() {
-        SupermercadoNegocio consulta = new SupermercadoNegocio(_context);
+        SupermercadoNegocio consulta = new SupermercadoNegocio(get_context());
         List<Supermercado> supermercados = consulta.listar();
         Iterator iterator = supermercados.iterator();
         while (iterator.hasNext()){
@@ -115,11 +147,11 @@ public class MapaFragments extends SupportMapFragment implements OnMapReadyCallb
     public void customAddMaker(LatLng latLng, String titulo){
         MarkerOptions options = new MarkerOptions();
         options.position(latLng).title(titulo).draggable(true);
-        marker = mMap.addMarker(options);
+        setMarker(getmMap().addMarker(options));
     }
 
     private void eventosWaypoints(final FragmentManager fragmentManager) {
-        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener()
+        getmMap().setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener()
         {
             @Override
             public boolean onMarkerClick(Marker marcador) {
@@ -143,7 +175,7 @@ public class MapaFragments extends SupportMapFragment implements OnMapReadyCallb
     }
 
     public Supermercado selecionarSupermercado(String texto) {
-        SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(_context);
+        SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(get_context());
         Supermercado supermercadoSelecionado = supermercadoNegocio.buscaSupermercado(texto);
         if (supermercadoSelecionado != null) {
             supermercadoNegocio.iniciarSessaoSupermercado(supermercadoSelecionado);

@@ -2,13 +2,15 @@ package com.mercapp.usuario.gui;
 
 import java.util.HashMap;
 
-public class CriptografiaSenha {
+public final class CriptografiaSenha {
 
-    private char[] alfa = new char[52];
-    private char[] nume = new char[10];
+    private final int vAlfa = 52;
+    private final int vNume = 10;
+    private final char[] alfa = new char[vAlfa];
+    private final char[] nume = new char[vNume];
 
-    private String letras = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ";
-    private String numeros = "0123456789";
+    private final String letras = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ";
+    private final String numeros = "0123456789";
 
     private HashMap<Character, String> valores = new HashMap<Character, String>();
     private String senha = "senha";
@@ -16,10 +18,10 @@ public class CriptografiaSenha {
     private static CriptografiaSenha criptografia = new CriptografiaSenha();
 
     private CriptografiaSenha() {
-        for (int i = 0; i < 52; i++) {
+        for (int i = 0; i < vAlfa; i++) {
             alfa[i] = letras.charAt(i);
         }
-        for (int i = 0; i < 10; i ++) {
+        for (int i = 0; i < vNume; i ++) {
             nume[i] = numeros.charAt(i);
         }
     }
@@ -41,20 +43,24 @@ public class CriptografiaSenha {
     private void setSenhaOriginal(String senha) {
         this.senha = senha;
 
-        for (int i = 0; i < 52; i++) {
+        for (int i = 0; i < vAlfa; i++) {
             if ((i % 2) == 0) { // minúsculas
-                valores.put(alfa[i], String.format("%02X", logica((senha.length() * i) % 2014)));
+                final int mod2016 = 2016;
+                valores.put(alfa[i], String.format("%02X", logica((senha.length() * i) % mod2016)));
             }
             else if ((i % 2) != 0) { // maiúsculas
-                valores.put(alfa[i], String.format("%02x", logica((senha.length() * i) % 2013)));
+                final int mod2015 = 2015;
+                valores.put(alfa[i], String.format("%02x", logica((senha.length() * i) % mod2015)));
             }
         }
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < vNume; i++) {
             if ((i % 2) == 0) { // pares
-                valores.put(nume[i], String.format("%02X", logica((senha.length() * i) % 2012)));
+                final int mod2014 = 2014;
+                valores.put(nume[i], String.format("%02X", logica((senha.length() * i) % mod2014)));
             }
             else if ((i % 2) != 0) { // ímpares
-                valores.put(nume[i], String.format("%02x", logica((senha.length() * i) % 2011)));
+                final int mod2013 = 2013;
+                valores.put(nume[i], String.format("%02x", logica((senha.length() * i) % mod2013)));
             }
         }
     }

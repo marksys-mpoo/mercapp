@@ -56,7 +56,6 @@ public class CadastroPessoaActivity extends AppCompatActivity {
         if (encontraTipoCartao != -1) {
             try {
                 validaCartao = Validacao.validCC(numeroCartao);
-                Toast.makeText(this, "Cartão " + Validacao.getCardName(Validacao.getCardID(numeroCartao)), Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -79,8 +78,10 @@ public class CadastroPessoaActivity extends AppCompatActivity {
                 session.setPessoaLogada(pessoa);
                 Intent changeToTelaPrincipal = new Intent(CadastroPessoaActivity.this, TelaMenuActivity.class);
                 CadastroPessoaActivity.this.startActivity(changeToTelaPrincipal);
-                Toast.makeText(this, "Bem-Vindo - " + nome, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Bem-Vindo - " + nome + "\nCompre com o seu cartão." + Validacao.getCardName(Validacao.getCardID(numeroCartao)), Toast.LENGTH_SHORT).show();
                 finish();
+
+
             }
         } else {
             Toast.makeText(this, "Existem campos vazios ou o cartão é inválido", Toast.LENGTH_SHORT).show();
@@ -94,6 +95,14 @@ public class CadastroPessoaActivity extends AppCompatActivity {
         return (!Validacao.verificaVaziosPessoa(nome, telefone, numeroCartao,
                 this, etNome, etTelefone, etNumeroCartao));
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent voltarMapa = new Intent(getApplication(), TelaMenuActivity.class);
+        startActivity(voltarMapa);
+        finish();
+    }
+
 }
 
 

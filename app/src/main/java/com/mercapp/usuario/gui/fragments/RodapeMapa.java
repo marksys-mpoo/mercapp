@@ -18,17 +18,23 @@ import com.mercapp.supermercado.gui.TelaSupermercadoActivity;
 
 public class RodapeMapa extends Fragment {
 
-    private FragmentManager fragmentManager;
     private Session session = Session.getInstanciaSessao();
-
-    private final FragmentManager fm = getFragmentManager();
-
     private Activity context;
-    private FragmentManager supportFragmentManager;
+
+
+    @Override
+    public Activity getContext() {
+        return context;
+    }
+
+    public void setContext(Activity context) {
+        this.context = context;
+    }
+
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        context=getActivity();
+        setContext(getActivity());
         return inflater.inflate(R.layout.fragment_rodape_mapa, container, false);
     }
 
@@ -38,7 +44,7 @@ public class RodapeMapa extends Fragment {
         String superSessao = session.getSupermercadoSelecionado().getNome().toString();
         setTextSupermercado(superSessao);
 
-        Button bt3=(Button)context.findViewById(R.id.rodape_to_Supermercado);
+        Button bt3=(Button)getContext().findViewById(R.id.rodape_to_Supermercado);
         bt3.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
                 Intent supermercado = new Intent(getActivity(), TelaSupermercadoActivity.class);

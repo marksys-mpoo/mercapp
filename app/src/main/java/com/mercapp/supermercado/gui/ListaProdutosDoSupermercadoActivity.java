@@ -37,24 +37,24 @@ public class ListaProdutosDoSupermercadoActivity extends AppCompatActivity {
         etNomeSupermercado = (TextView) findViewById(R.id.tituloSupermercado);
         etNomeSupermercado.setText(nomeSM);
         etDepartamentoSelecionado = (TextView) findViewById(R.id.tituloDepartamento);
-        if (numeroDepartamento != "Todos") {
-            if (numeroDepartamento == "1") {
+        if (!(numeroDepartamento.equals("Todos"))) {
+            if (numeroDepartamento.equals("1")) {
                 this.setDepartamentoSelecionado("Padaria");
-            } else if (numeroDepartamento == "2") {
+            } else if (numeroDepartamento.equals("2")) {
                 this.setDepartamentoSelecionado("Frios");
-            } else if (numeroDepartamento == "3") {
+            } else if (numeroDepartamento .equals( "3")) {
                 this.setDepartamentoSelecionado("Açougue");
-            } else if (numeroDepartamento == "4") {
+            } else if (numeroDepartamento.equals( "4")) {
                 this.setDepartamentoSelecionado("Frutas");
-            } else if (numeroDepartamento == "5") {
+            } else if (numeroDepartamento .equals("5")) {
                 this.setDepartamentoSelecionado("Bebidas");
-            } else if (numeroDepartamento == "6") {
+            } else if (numeroDepartamento.equals("6")) {
                 this.setDepartamentoSelecionado("Mercearia");
-            } else if (numeroDepartamento == "7") {
+            } else if (numeroDepartamento.equals("7")) {
                 this.setDepartamentoSelecionado("Higiene");
-            } else if (numeroDepartamento == "8") {
+            } else if (numeroDepartamento.equals("8")) {
                 this.setDepartamentoSelecionado("Limpeza");
-            } else if (numeroDepartamento == "9") {
+            } else if (numeroDepartamento.equals("9")) {
                 this.setDepartamentoSelecionado("Bazar");
             }
             etDepartamentoSelecionado.setText(this.getDepartamentoSelecionado());

@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.mercapp.infra.Session;
 import com.mercapp.supermercado.dominio.Produto;
-import com.mercapp.supermercado.dominio.Supermercado;
 import com.mercapp.supermercado.persistencia.ProdutoPersistencia;
 
 import java.util.List;

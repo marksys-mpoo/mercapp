@@ -7,28 +7,43 @@ import android.widget.ProgressBar;
 import com.mercapp.R;
 
 public class SplashActivity extends AppCompatActivity {
-    private static int TEMPO_SPLASH = 1000;
+    private static final int TEMPO_SPLASH = 1000;
+    private boolean mbActive;
+    private ProgressBar progressBar;
 
-    protected boolean mbActive;
-    protected ProgressBar progressBar;
+    public boolean isMbActive() {
+        return mbActive;
+    }
+
+    public void setMbActive(boolean mbActive) {
+        this.mbActive = mbActive;
+    }
+
+    public ProgressBar getProgressBar() {
+        return progressBar;
+    }
+
+    public void setProgressBar(ProgressBar progressBar) {
+        this.progressBar = progressBar;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        progressBar = (ProgressBar)findViewById(R.id.barraProgresso);
+        setProgressBar((ProgressBar)findViewById(R.id.barraProgresso));
         final Thread timer = new Thread(){
             @Override
             public void run(){
-                mbActive = true;
+                setMbActive(true);
                 try {
                     int tempPassado = 0;
-                    while(mbActive && (tempPassado < TEMPO_SPLASH )){
+                    while(isMbActive() && (tempPassado < TEMPO_SPLASH )){
                         // enquanto o tempoPassado for menor que 1s
                         // Soma 100 milisegundos
                         sleep(100);
-                        if(mbActive) {
+                        if(isMbActive()) {
                             tempPassado += 100;
                             updateProgress(tempPassado);
                         }
@@ -48,9 +63,9 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void updateProgress(int tempPassado) {
-        if (progressBar != null){
-            final int progress = progressBar.getMax() * tempPassado /TEMPO_SPLASH;
-            progressBar.setProgress(progress);
+        if (getProgressBar() != null){
+            final int progress = getProgressBar().getMax() * tempPassado /TEMPO_SPLASH;
+            getProgressBar().setProgress(progress);
         }
     }
 

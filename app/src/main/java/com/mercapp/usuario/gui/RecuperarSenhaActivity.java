@@ -2,6 +2,7 @@ package com.mercapp.usuario.gui;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -36,9 +37,53 @@ public class RecuperarSenhaActivity extends AppCompatActivity implements View.On
     private Usuario usuario;
     private ProgressDialog pdialog = null;
     private Context context = this;
-    private String rec, msg, sub;
+    private String rec;
+    private String msg;
+    private String sub;
 
+    public String getSub() {
+        return sub;
+    }
 
+    public void setSub(String sub) {
+        this.sub = sub;
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    public String getRec() {
+        return rec;
+    }
+
+    public void setRec(String rec) {
+        this.rec = rec;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public ProgressDialog getPdialog() {
+        return pdialog;
+    }
+
+    public void setPdialog(ProgressDialog pdialog) {
+        this.pdialog = pdialog;
+    }
+
+    public Session getSession() {
+        return session;
+    }
+
+    public void setSession(Session session) {
+        this.session = session;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +92,7 @@ public class RecuperarSenhaActivity extends AppCompatActivity implements View.On
         email = (EditText) findViewById(R.id.edtEmailRecuperarSenha);
         correo = "marksys.mercapp@gmail.com";
         contrasenha = "mercapp2016";
-        sub = "Recuperação de Senha";
+        setSub("Recuperação de Senha");
 
         recuperarSenha = (Button) findViewById(R.id.btnRecuperarSenha);
         recuperarSenha.setOnClickListener(this);
@@ -58,7 +103,7 @@ public class RecuperarSenhaActivity extends AppCompatActivity implements View.On
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        rec = email.getText().toString();
+        setRec(email.getText().toString());
 
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
@@ -67,13 +112,13 @@ public class RecuperarSenhaActivity extends AppCompatActivity implements View.On
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.port", "465");
 
-        session = javax.mail.Session.getDefaultInstance(props, new Authenticator() {
+        setSession(javax.mail.Session.getDefaultInstance(props, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication("marksys.mercapp@gmail.com", "mercapp2016");
             }
-        });
+        }));
 
-        pdialog = ProgressDialog.show(context, "", "Aguarde... ", true);
+        setPdialog(ProgressDialog.show(getContext(), "", "Aguarde... ", true));
 
         RetreiveFeedTask task = new RetreiveFeedTask();
         task.execute();
@@ -84,15 +129,15 @@ public class RecuperarSenhaActivity extends AppCompatActivity implements View.On
         @Override
         protected String doInBackground(String... params) {
             try{
-                usuarioNegocio = new UsuarioNegocio(context);
-                usuario = usuarioNegocio.buscar(rec);
-                msg = usuario.getSenha();
-                if (msg != null) {
-                    Message message = new MimeMessage(session);
+                usuarioNegocio = new UsuarioNegocio(getContext());
+                usuario = usuarioNegocio.buscar(getRec());
+                setMsg(usuario.getSenha());
+                if (getMsg() != null) {
+                    Message message = new MimeMessage(getSession());
                     message.setFrom(new InternetAddress("marksys.mercapp@gmail.com"));
                     message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("wellingtonluiz123456@gmail.com"));
-                    message.setSubject(sub);
-                    message.setContent(msg, "text/html; charset=utf-8");
+                    message.setSubject(getSub());
+                    message.setContent(getMsg(), "text/html; charset=utf-8");
                     Transport.send(message);
                 }
            } catch(MessagingException e) {
@@ -105,8 +150,16 @@ public class RecuperarSenhaActivity extends AppCompatActivity implements View.On
 
         @Override
         protected void onPostExecute(String result) {
-            pdialog.dismiss();
+            getPdialog().dismiss();
             Toast.makeText(getApplicationContext(), "Message enviada com sucesso.", Toast.LENGTH_LONG).show();
         }
     }
+    @Override
+    public void onBackPressed() {
+        Intent voltarLogin = new Intent(getApplication(), LoginActivity.class);
+        startActivity(voltarLogin);
+        finish();
+    }
+
+
 }

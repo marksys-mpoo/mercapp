@@ -83,7 +83,7 @@ public class SupermercadoPersistencia {
         return supermercado;
     }
 
-    public List<Supermercado> listar(String inputText) throws SQLException {
+    public List<Supermercado> listar(String inputText){
         List<Supermercado> supermercados = new ArrayList<>();
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_SUPERMERCADO +

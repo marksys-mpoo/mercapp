@@ -30,26 +30,64 @@ public class ListaSupermercadosActivity extends AppCompatActivity {
     private SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(context);
     private SearchView searchView;
 
+    public Session getSession() {
+        return session;
+    }
+
+    public SearchView getSearchView() {
+        return searchView;
+    }
+
+    public void setSearchView(SearchView searchView) {
+        this.searchView = searchView;
+    }
+
+    public SupermercadoNegocio getSupermercadoNegocio() {
+        return supermercadoNegocio;
+    }
+
+
+    public SupermercadoListAdapter getDataAdapter() {
+        return dataAdapter;
+    }
+
+    public void setDataAdapter(SupermercadoListAdapter dataAdapter) {
+        this.dataAdapter = dataAdapter;
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    public ListView getLista() {
+        return lista;
+    }
+
+    public void setLista(ListView lista) {
+        this.lista = lista;
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_supermercados);
 
-        SupermercadoNegocio consulta = new SupermercadoNegocio(context);
+        SupermercadoNegocio consulta = new SupermercadoNegocio(getContext());
         List<Supermercado> supermercados = consulta.listar();
-        dataAdapter = new SupermercadoListAdapter(this, supermercados);
+        setDataAdapter(new SupermercadoListAdapter(this, supermercados));
 
-        lista = (ListView)findViewById(R.id.lista_supermercados);
-        lista.setAdapter(dataAdapter);
-        lista.setTextFilterEnabled(true);
+        setLista((ListView)findViewById(R.id.lista_supermercados));
+        getLista().setAdapter(getDataAdapter());
+        getLista().setTextFilterEnabled(true);
 
-        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        getLista().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> listView, View view, int position, long id) {
                 Supermercado supermercado = (Supermercado) listView.getItemAtPosition(position);
                 if (supermercado != null) {
-                    session.setSupermercadoSelecionado(supermercado);
+                    getSession().setSupermercadoSelecionado(supermercado);
                     Intent editarSupermercado = new Intent(ListaSupermercadosActivity.this, CadastroSupermercadosActivity.class);
                     editarSupermercado.putExtra("CoordLat",0);
                     editarSupermercado.putExtra("CoordLong",0);
@@ -70,17 +108,17 @@ public class ListaSupermercadosActivity extends AppCompatActivity {
             }
         });
 
-        searchView =(SearchView) findViewById(R.id.searchViewSupermercados);
+        setSearchView((SearchView) findViewById(R.id.searchViewSupermercados));
 
-        searchView.setOnQueryTextListener(new OnQueryTextListener() {
+        getSearchView().setOnQueryTextListener(new OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String text) {
                 return false;
             }
             @Override
             public boolean onQueryTextChange(String text) {
-                dataAdapter = new SupermercadoListAdapter(context, supermercadoNegocio.listar(text));
-                lista.setAdapter(dataAdapter);
+                setDataAdapter(new SupermercadoListAdapter(getContext(), getSupermercadoNegocio().listar(text)));
+                getLista().setAdapter(getDataAdapter());
                 return false;
             }
         });
@@ -94,7 +132,7 @@ public class ListaSupermercadosActivity extends AppCompatActivity {
 
     public void changeScreenListaToCadastroSupermercados(View view) { // Botao (+)
         Intent addSupermercado = new Intent(ListaSupermercadosActivity.this, CadastroSupermercadosActivity.class);
-        session.setSupermercadoSelecionado(null);
+        getSession().setSupermercadoSelecionado(null);
         addSupermercado.putExtra("CoordLat",0);
         addSupermercado.putExtra("CoordLong",0);
         startActivity(addSupermercado);
@@ -114,16 +152,16 @@ public class ListaSupermercadosActivity extends AppCompatActivity {
         builder.setMessage("Deseja deletar o supermercado?");
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
-                supermercadoNegocio.deletar(supermercado);
+                getSupermercadoNegocio().deletar(supermercado);
                 Toast.makeText(ListaSupermercadosActivity.this, "Supermercado " + supermercado.getNome() + " deletado.", Toast.LENGTH_SHORT).show();
-                dataAdapter.remove(dataAdapter.getItem(position));
-                dataAdapter.notifyDataSetChanged();
-                session.setSupermercadoSelecionado(null);
+                getDataAdapter().remove(getDataAdapter().getItem(position));
+                getDataAdapter().notifyDataSetChanged();
+                getSession().setSupermercadoSelecionado(null);
             }
         });
         builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
-                Toast.makeText(ListaSupermercadosActivity.this, "Ação cancelada pelo usuário.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Ação cancelada pelo usuário.", Toast.LENGTH_SHORT).show();
             }
         });
         AlertDialog alerta = builder.create();

@@ -25,14 +25,11 @@ import java.util.List;
 
 public class CadastroProdutosActivity extends AppCompatActivity {
 
-    private static final String stringVazia = "";
-    private String nomeSpinnerSupermercado, nomeSpinnerImagem, nomeSpinnerDepartamento;
+    private String nomeSpinnerSupermercado, nomeSpinnerImagem;
     private Context _context = CadastroProdutosActivity.this;
     private Spinner spinnerSupermercado, spinnerImagens, spinnerDepartamento;
     private SupermercadoNegocio supermercadoNegocio;
-    private Produto produtoCadastrado;
-    private EditText setdescricao, setpreco,setnome, setimagem;
-    private String imagemStr;
+    private EditText setdescricao, setpreco,setnome;
     private int imagem, posicaoSpinnerSupermercado, posicaoSpinnerImagem, posicaoSpinnerDepartamento;
     private double preco;
     private AlertDialog alerta;
@@ -125,7 +122,7 @@ public class CadastroProdutosActivity extends AppCompatActivity {
         spinnerDepartamento.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                nomeSpinnerDepartamento = parent.getItemAtPosition(position).toString();
+                String nomeSpinnerDepartamento = parent.getItemAtPosition(position).toString();
                 posicaoSpinnerDepartamento = position;
             }
 
