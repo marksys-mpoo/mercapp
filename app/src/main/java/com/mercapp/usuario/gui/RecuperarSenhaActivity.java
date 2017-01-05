@@ -30,8 +30,6 @@ import javax.mail.internet.MimeMessage;
 public class RecuperarSenhaActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText email;
-    private Button recuperarSenha;
-    private String correo, contrasenha;
     private Session session;
     private UsuarioNegocio usuarioNegocio;
     private Usuario usuario;
@@ -90,11 +88,11 @@ public class RecuperarSenhaActivity extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recuperar_senha);
         email = (EditText) findViewById(R.id.edtEmailRecuperarSenha);
-        correo = "marksys.mercapp@gmail.com";
-        contrasenha = "mercapp2016";
+        String correo = "marksys.mercapp@gmail.com";
+        String contrasenha = "mercapp2016";
         setSub("Recuperação de Senha");
 
-        recuperarSenha = (Button) findViewById(R.id.btnRecuperarSenha);
+        Button recuperarSenha = (Button) findViewById(R.id.btnRecuperarSenha);
         recuperarSenha.setOnClickListener(this);
     }
 

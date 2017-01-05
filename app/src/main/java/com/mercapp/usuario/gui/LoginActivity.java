@@ -21,13 +21,10 @@ import com.mercapp.usuario.negocio.Validacao;
 public class LoginActivity extends AppCompatActivity {
 
     private Session session = Session.getInstanciaSessao();
-    private Button btnLogar, btnCadastrar;
-    private EditText etEmail, etSenha;
+    private EditText etEmail;
+    private EditText etSenha;
     private Context context = LoginActivity.this;
     private CriptografiaSenha criptografiaSenha;
-    private String senhaCriptografada;
-    private CriptografiaSenha criptografia;
-    private TextView recupSenha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +35,9 @@ public class LoginActivity extends AppCompatActivity {
         etSenha = (EditText) findViewById(R.id.etSenha);
         etEmail.requestFocus();
 
-        btnLogar = (Button) findViewById(R.id.btnEntrar);
-        btnCadastrar = (Button) findViewById(R.id.btnCadastrar);
-        recupSenha = (TextView) findViewById(R.id.tvRecuperarSenha);
+        Button btnLogar = (Button) findViewById(R.id.btnEntrar);
+        Button btnCadastrar = (Button) findViewById(R.id.btnCadastrar);
+        TextView recupSenha = (TextView) findViewById(R.id.tvRecuperarSenha);
         recupSenha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,8 +57,8 @@ public class LoginActivity extends AppCompatActivity {
 
             UsuarioNegocio usuarioNegocio = new UsuarioNegocio(context);
 
-            criptografia =  criptografiaSenha.getInstancia(senha);
-            senhaCriptografada = criptografia.getSenhaCriptografada();
+            CriptografiaSenha criptografia =  criptografiaSenha.getInstancia(senha);
+            String senhaCriptografada = criptografia.getSenhaCriptografada();
             Usuario logarTest = usuarioNegocio.buscar(email,senhaCriptografada);
 
             if (logarTest != null) {

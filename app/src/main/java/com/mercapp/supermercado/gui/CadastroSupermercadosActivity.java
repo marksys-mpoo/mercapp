@@ -23,9 +23,6 @@ public class CadastroSupermercadosActivity extends AppCompatActivity {
     private Session session = Session.getInstanciaSessao();
     private SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(context);
     private EditText etSupermercadoNome, etSupermercadoTelefone, etLogintude, etLatitude;
-    private Button btnSalvarEditar;
-    private String latitude;
-    private String longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,18 +36,18 @@ public class CadastroSupermercadosActivity extends AppCompatActivity {
 
         etLatitude = (EditText) findViewById(R.id.etSupLat);
         etLogintude = (EditText) findViewById(R.id.etSupLong);
-        btnSalvarEditar = (Button) findViewById(R.id.btnCadastrarSupermercado);
+        Button btnSalvarEditar = (Button) findViewById(R.id.btnCadastrarSupermercado);
         etSupermercadoNome.requestFocus();
 
         Bundle bundle = getIntent().getExtras();
         if (bundle.containsKey("CoordLat")) {
             Double coordLat = bundle.getDouble("CoordLat");
-            latitude = coordLat.toString();
+            String latitude = coordLat.toString();
             etLatitude.setText(latitude);
         }
         if (bundle.containsKey("CoordLong")) {
             Double coordLong = bundle.getDouble("CoordLong");
-            longitude = coordLong.toString();
+            String longitude = coordLong.toString();
             etLogintude.setText(longitude);
         }
 

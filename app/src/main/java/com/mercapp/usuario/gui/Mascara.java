@@ -12,6 +12,11 @@ public abstract class Mascara {
         CELL("(##) #####-####");
 
         private String mask;
+
+        MaskType(String s) {
+            mask = s;
+        }
+
         public void setMask(String mask) {
             this.mask = mask;
         }
@@ -19,9 +24,6 @@ public abstract class Mascara {
             return mask;
         }
 
-        MaskType(String s) {
-            mask = s;
-        }
 
 
     }
@@ -37,7 +39,7 @@ public abstract class Mascara {
         String result = s;
 
         if (!s.contains(".")) {
-            String str = Mascara.unmask(s.toString());
+            String str = Mascara.unmask(s);
             result = "";
 
             int i = 0;

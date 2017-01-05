@@ -3,7 +3,6 @@ package com.mercapp.supermercado.persistencia;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.google.android.gms.maps.model.LatLng;
@@ -15,6 +14,8 @@ import java.util.List;
 
 public class SupermercadoPersistencia {
 
+    private static final String SELECT = "SELECT * FROM ";
+    private static final String WHERE = " WHERE ";
     private Context context;
     private BDHelper bdHelper;
 
@@ -60,8 +61,8 @@ public class SupermercadoPersistencia {
     public Supermercado buscar(String nome){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Supermercado supermercado = null;
-        Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_SUPERMERCADO +
-                " WHERE "+ bdHelper.COLUNA_NOME_SUPERMERCADO+" LIKE ? ", new String[]{nome});
+        Cursor cursor = db.rawQuery(SELECT+ bdHelper.TBL_SUPERMERCADO +
+                WHERE + bdHelper.COLUNA_NOME_SUPERMERCADO+" LIKE ? ", new String[]{nome});
         if (cursor.moveToFirst()){
             supermercado = criarSupermercado(cursor);
         }
@@ -73,8 +74,8 @@ public class SupermercadoPersistencia {
     public Supermercado buscar(int id){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Supermercado supermercado = null;
-        Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_SUPERMERCADO +
-                " WHERE "+ bdHelper.COLUNA_ID_SUPERMERCADO+" LIKE ? ", new String[]{Integer.toString(id)});
+        Cursor cursor = db.rawQuery(SELECT+ bdHelper.TBL_SUPERMERCADO +
+                WHERE + bdHelper.COLUNA_ID_SUPERMERCADO+" LIKE ? ", new String[]{Integer.toString(id)});
         if (cursor.moveToFirst()){
             supermercado = criarSupermercado(cursor);
         }
@@ -86,8 +87,8 @@ public class SupermercadoPersistencia {
     public List<Supermercado> listar(String inputText){
         List<Supermercado> supermercados = new ArrayList<>();
         SQLiteDatabase db = bdHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_SUPERMERCADO +
-                " WHERE "+ bdHelper.COLUNA_NOME_SUPERMERCADO+" LIKE '%" + inputText + "%'", null, null);
+        Cursor cursor = db.rawQuery(SELECT+ bdHelper.TBL_SUPERMERCADO +
+                WHERE + bdHelper.COLUNA_NOME_SUPERMERCADO+" LIKE '%" + inputText + "%'", null, null);
         cursor.moveToFirst();
         while(!cursor.isAfterLast()){
             supermercados.add(criarSupermercado(cursor));
@@ -101,7 +102,7 @@ public class SupermercadoPersistencia {
     public List<Supermercado> listar(){
         List<Supermercado> supermercados = new ArrayList<>();
         SQLiteDatabase db = bdHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + BDHelper.TBL_SUPERMERCADO, null);
+        Cursor cursor = db.rawQuery(SELECT + BDHelper.TBL_SUPERMERCADO, null);
         cursor.moveToFirst();
         while(!cursor.isAfterLast()){
             supermercados.add(criarSupermercado(cursor));
@@ -114,7 +115,7 @@ public class SupermercadoPersistencia {
     public List<String> listaSupermercado (){
         List<String> supermercados = new ArrayList<>();
         SQLiteDatabase db = bdHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + BDHelper.TBL_SUPERMERCADO, null);
+        Cursor cursor = db.rawQuery(SELECT + BDHelper.TBL_SUPERMERCADO, null);
         cursor.moveToFirst();
         while(!cursor.isAfterLast()){
             supermercados.add(cursor.getString(1));

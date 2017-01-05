@@ -17,12 +17,7 @@ import com.mercapp.usuario.negocio.Validacao;
 public class CadastroActivity extends AppCompatActivity {
 
     private EditText etEmail, etSenha, etConfirmar;
-    private Button btnEfetuarCadastro;
     private Context context = CadastroActivity.this;
-    private UsuarioNegocio usuarioNegocio;
-    private Usuario usuarioCadastro;
-    private String senhaCriptografada;
-    private CriptografiaSenha criptografia;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,19 +26,19 @@ public class CadastroActivity extends AppCompatActivity {
         etEmail = (EditText) findViewById(R.id.etEmail);
         etSenha = (EditText) findViewById(R.id.etSenha);
         etConfirmar = (EditText) findViewById(R.id.etConfirmaSenha);
-        btnEfetuarCadastro = (Button) findViewById(R.id.btnEfetuarCadastro);
+        Button btnEfetuarCadastro = (Button) findViewById(R.id.btnEfetuarCadastro);
     }
 
     public void efetuarCadastro(View view) {
         String email = etEmail.getText().toString().trim();
         String senha = etSenha.getText().toString().trim();
 
-        usuarioNegocio = new UsuarioNegocio(context);
-        usuarioCadastro = usuarioNegocio.buscar(email);
+        UsuarioNegocio usuarioNegocio = new UsuarioNegocio(context);
+        Usuario usuarioCadastro = usuarioNegocio.buscar(email);
 
         if ((usuarioCadastro == null) && (validarCampos())){
-            criptografia = CriptografiaSenha.getInstancia(senha);
-            senhaCriptografada = criptografia.getSenhaCriptografada();
+            CriptografiaSenha criptografia = CriptografiaSenha.getInstancia(senha);
+            String senhaCriptografada = criptografia.getSenhaCriptografada();
 
             usuarioNegocio.cadastro(email, senhaCriptografada);
             Toast.makeText(this, "Cadastro efetuado com sucesso\r\n Faça o login - "+ email, Toast.LENGTH_SHORT).show();

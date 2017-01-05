@@ -30,20 +30,19 @@ import java.util.List;
 public class MapaFragments extends SupportMapFragment implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener, GoogleMap.OnMapClickListener,
         android.location.LocationListener {
 
-    private FragmentManager fragmentManager;
-    private Context _context = null;
+    private Context context = null;
     private Marker marker;
     private static  final String TAG = "MapaFragments";
     private GoogleMap mMap;
     private LocationManager locationManager;
-    private Location location;
 
-    public Context get_context() {
-        return _context;
+    @Override
+    public Context getContext() {
+        return context;
     }
 
-    public void set_context(Context _context) {
-        this._context = _context;
+    public void setContext(Context context) {
+        this.context = context;
     }
 
     public void setMarker(Marker marker) {
@@ -74,7 +73,7 @@ public class MapaFragments extends SupportMapFragment implements OnMapReadyCallb
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getMapAsync(this);
-        set_context(this.getActivity());
+        setContext(this.getActivity());
     }
     @Override
     public void onResume() {
@@ -134,7 +133,7 @@ public class MapaFragments extends SupportMapFragment implements OnMapReadyCallb
     }
 
     private void addMarcadoresNoMapa() {
-        SupermercadoNegocio consulta = new SupermercadoNegocio(get_context());
+        SupermercadoNegocio consulta = new SupermercadoNegocio(getContext());
         List<Supermercado> supermercados = consulta.listar();
         Iterator iterator = supermercados.iterator();
         while (iterator.hasNext()){
@@ -175,7 +174,7 @@ public class MapaFragments extends SupportMapFragment implements OnMapReadyCallb
     }
 
     public Supermercado selecionarSupermercado(String texto) {
-        SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(get_context());
+        SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(getContext());
         Supermercado supermercadoSelecionado = supermercadoNegocio.buscaSupermercado(texto);
         if (supermercadoSelecionado != null) {
             supermercadoNegocio.iniciarSessaoSupermercado(supermercadoSelecionado);

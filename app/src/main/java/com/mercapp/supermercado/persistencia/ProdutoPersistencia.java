@@ -3,7 +3,6 @@ package com.mercapp.supermercado.persistencia;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.mercapp.infra.persistencia.BDHelper;
@@ -16,6 +15,8 @@ import java.util.List;
 public class ProdutoPersistencia {
     private Context context;
     private BDHelper bdHelper;
+    private static final String SELECT = "SELECT * FROM ";
+    private static final String WHERE = " WHERE ";
 
     public ProdutoPersistencia(Context context) {
         this.context = context;
@@ -64,8 +65,8 @@ public class ProdutoPersistencia {
         String idString = id.toString();
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Produto produto = null;
-        Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_PRODUTO +
-                " WHERE "+ bdHelper.COLUNA_ID_PRODUTO +" LIKE ? ", new String[]{idString});
+        Cursor cursor = db.rawQuery(SELECT+ bdHelper.TBL_PRODUTO +
+                WHERE + bdHelper.COLUNA_ID_PRODUTO +" LIKE ? ", new String[]{idString});
         if (cursor.moveToFirst()){
             produto = criarProduto(cursor);
         }
@@ -76,8 +77,8 @@ public class ProdutoPersistencia {
     public Produto buscar(String nome){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Produto produto = null;
-        Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_PRODUTO +
-                " WHERE "+ bdHelper.COLUNA_NOME_PRODUTO+" LIKE ? ", new String[]{nome});
+        Cursor cursor = db.rawQuery(SELECT + bdHelper.TBL_PRODUTO +
+                WHERE + bdHelper.COLUNA_NOME_PRODUTO+" LIKE ? ", new String[]{nome});
         if (cursor.moveToFirst()){
             produto = criarProduto(cursor);
         }
@@ -118,8 +119,8 @@ public class ProdutoPersistencia {
     public List<Produto> listaDadosProdutosDoSupermercado(String idSupermercado){
         List<Produto> produtos = new ArrayList<>();
         SQLiteDatabase db = bdHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_PRODUTO +
-                " WHERE "+ bdHelper.COLUNA_ID_SUPERMERCADO_PRODUTO+" LIKE ? ", new String[]{idSupermercado});
+        Cursor cursor = db.rawQuery(SELECT + bdHelper.TBL_PRODUTO +
+                WHERE + bdHelper.COLUNA_ID_SUPERMERCADO_PRODUTO+" LIKE ? ", new String[]{idSupermercado});
             cursor.moveToFirst();
         while(!cursor.isAfterLast()){
             produtos.add(criarProduto(cursor));
@@ -148,8 +149,8 @@ public class ProdutoPersistencia {
     public List<Produto> listar(String inputText){
         List<Produto> produtos = new ArrayList<>();
         SQLiteDatabase db = bdHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM "+ bdHelper.TBL_PRODUTO +
-                " WHERE "+ bdHelper.COLUNA_NOME_PRODUTO+" LIKE '%" + inputText + "%'", null, null);
+        Cursor cursor = db.rawQuery(SELECT+ bdHelper.TBL_PRODUTO +
+                WHERE + bdHelper.COLUNA_NOME_PRODUTO+" LIKE '%" + inputText + "%'", null, null);
         cursor.moveToFirst();
         while(!cursor.isAfterLast()){
             produtos.add(criarProduto(cursor));

@@ -26,7 +26,7 @@ import java.util.List;
 public class CadastroProdutosActivity extends AppCompatActivity {
 
     private String nomeSpinnerSupermercado, nomeSpinnerImagem;
-    private Context _context = CadastroProdutosActivity.this;
+    private Context context = CadastroProdutosActivity.this;
     private Spinner spinnerSupermercado, spinnerImagens, spinnerDepartamento;
     private SupermercadoNegocio supermercadoNegocio;
     private EditText setdescricao, setpreco,setnome;
@@ -34,7 +34,7 @@ public class CadastroProdutosActivity extends AppCompatActivity {
     private double preco;
     private AlertDialog alerta;
     private Session session = Session.getInstanciaSessao();
-    private ProdutoNegocio produtoNegocio = new ProdutoNegocio(_context);
+    private ProdutoNegocio produtoNegocio = new ProdutoNegocio(context);
     private String[] strProdutosDrawable = {
             "img_arroz",
             "img_creme_leite",
@@ -70,7 +70,7 @@ public class CadastroProdutosActivity extends AppCompatActivity {
         spinnerDepartamento = (Spinner) findViewById(R.id.spinnerDepartamento);
         setnome.requestFocus();
 
-        SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(_context);
+        SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(context);
         List<String> supermercados = supermercadoNegocio.listaNomeSupermercado();
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, supermercados);
         ArrayAdapter<String> spinnerArrayAdapter = arrayAdapter;
@@ -146,7 +146,7 @@ public class CadastroProdutosActivity extends AppCompatActivity {
             preco = Double.parseDouble(setpreco.getText().toString().trim());
             imagem = getResources().getIdentifier(nomeSpinnerImagem , "drawable", getPackageName());
 
-            supermercadoNegocio = new SupermercadoNegocio(_context);
+            supermercadoNegocio = new SupermercadoNegocio(context);
             Supermercado supermercado = supermercadoNegocio.buscaSupermercado(nomeSupermercado);
 
             if (supermercado != null){

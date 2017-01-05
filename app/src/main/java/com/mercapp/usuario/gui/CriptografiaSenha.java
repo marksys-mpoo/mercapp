@@ -4,25 +4,25 @@ import java.util.HashMap;
 
 public final class CriptografiaSenha {
 
-    private final int vAlfa = 52;
-    private final int vNume = 10;
-    private final char[] alfa = new char[vAlfa];
-    private final char[] nume = new char[vNume];
+    private static final int V_ALFA = 52;
+    private static final int V_NUME = 10;
+    private final char[] alfa = new char[V_ALFA];
+    private final char[] nume = new char[V_NUME];
 
-    private final String letras = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ";
-    private final String numeros = "0123456789";
+    private static final String LETRAS = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ";
+    private static final String NUMEROS = "0123456789";
 
-    private HashMap<Character, String> valores = new HashMap<Character, String>();
+    private HashMap<Character, String> valores = new HashMap<>();
     private String senha = "senha";
 
     private static CriptografiaSenha criptografia = new CriptografiaSenha();
 
     private CriptografiaSenha() {
-        for (int i = 0; i < vAlfa; i++) {
-            alfa[i] = letras.charAt(i);
+        for (int i = 0; i < V_ALFA; i++) {
+            alfa[i] = LETRAS.charAt(i);
         }
-        for (int i = 0; i < vNume; i ++) {
-            nume[i] = numeros.charAt(i);
+        for (int i = 0; i < V_NUME; i ++) {
+            nume[i] = NUMEROS.charAt(i);
         }
     }
 
@@ -43,7 +43,7 @@ public final class CriptografiaSenha {
     private void setSenhaOriginal(String senha) {
         this.senha = senha;
 
-        for (int i = 0; i < vAlfa; i++) {
+        for (int i = 0; i < V_ALFA; i++) {
             if ((i % 2) == 0) { // minúsculas
                 final int mod2016 = 2016;
                 valores.put(alfa[i], String.format("%02X", logica((senha.length() * i) % mod2016)));
@@ -53,7 +53,7 @@ public final class CriptografiaSenha {
                 valores.put(alfa[i], String.format("%02x", logica((senha.length() * i) % mod2015)));
             }
         }
-        for (int i = 0; i < vNume; i++) {
+        for (int i = 0; i < V_NUME; i++) {
             if ((i % 2) == 0) { // pares
                 final int mod2014 = 2014;
                 valores.put(nume[i], String.format("%02X", logica((senha.length() * i) % mod2014)));

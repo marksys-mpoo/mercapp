@@ -18,10 +18,8 @@ import com.mercapp.usuario.negocio.Validacao;
 public class CadastroPessoaActivity extends AppCompatActivity {
 
     private EditText etNome, etTelefone, etNumeroCartao;
-    private Button btnCadastroPessoa;
     private Session session = Session.getInstanciaSessao();
     private Context context = CadastroPessoaActivity.this;
-    private PessoaNegocio pessoaNegocio;
     private boolean validaCartao;
 
     @Override
@@ -32,7 +30,7 @@ public class CadastroPessoaActivity extends AppCompatActivity {
         etTelefone = (EditText) findViewById(R.id.etTelefone);
         etTelefone.addTextChangedListener(Mascara.insert(Mascara.MaskType.CELL, etTelefone));
         etNumeroCartao = (EditText) findViewById(R.id.etNumeroCartao);
-        btnCadastroPessoa = (Button) findViewById(R.id.btnCadastroPessoa);
+        Button btnCadastroPessoa = (Button) findViewById(R.id.btnCadastroPessoa);
 
 
         if (session.getPessoaLogada() != null) {
@@ -62,7 +60,7 @@ public class CadastroPessoaActivity extends AppCompatActivity {
         }
 
         if (validarCamposPessoa() && validaCartao) {
-            pessoaNegocio = new PessoaNegocio(context);
+            PessoaNegocio pessoaNegocio = new PessoaNegocio(context);
             if (session.getPessoaLogada() != null) {
                 session.getPessoaLogada().setNome(nome);
                 session.getPessoaLogada().setTelefone(telefone);
@@ -92,8 +90,9 @@ public class CadastroPessoaActivity extends AppCompatActivity {
         String nome = etNome.getText().toString().trim();
         String telefone = etTelefone.getText().toString().trim();
         String numeroCartao = etNumeroCartao.getText().toString().trim();
-        return (!Validacao.verificaVaziosPessoa(nome, telefone, numeroCartao,
-                this, etNome, etTelefone, etNumeroCartao));
+
+        return !Validacao.verificaVaziosPessoa(nome, telefone, numeroCartao,
+                this, etNome, etTelefone, etNumeroCartao);
     }
 
     @Override

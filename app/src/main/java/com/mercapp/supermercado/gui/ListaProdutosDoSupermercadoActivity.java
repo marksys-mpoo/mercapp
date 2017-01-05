@@ -22,7 +22,6 @@ public class ListaProdutosDoSupermercadoActivity extends AppCompatActivity {
     private Context context = ListaProdutosDoSupermercadoActivity.this;
     private Session session = Session.getInstanciaSessao();
     private String departamentoSelecionado;
-    private TextView etDepartamentoSelecionado, etNomeSupermercado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +33,9 @@ public class ListaProdutosDoSupermercadoActivity extends AppCompatActivity {
 
         String idSupermercadoString = idSupermercado.toString();
 
-        etNomeSupermercado = (TextView) findViewById(R.id.tituloSupermercado);
+        TextView etNomeSupermercado = (TextView) findViewById(R.id.tituloSupermercado);
         etNomeSupermercado.setText(nomeSM);
-        etDepartamentoSelecionado = (TextView) findViewById(R.id.tituloDepartamento);
+        TextView etDepartamentoSelecionado = (TextView) findViewById(R.id.tituloDepartamento);
         if (!(numeroDepartamento.equals("Todos"))) {
             if (numeroDepartamento.equals("1")) {
                 this.setDepartamentoSelecionado("Padaria");

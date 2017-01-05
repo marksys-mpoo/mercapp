@@ -30,14 +30,8 @@ import static com.mercapp.R.id;
 
 public class TelaMenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
-    private GoogleApiClient client;
-
-    private FragmentManager fragmentManager;
+    
     private Session session = Session.getInstanciaSessao();
-
-    private TextView emailUsuario;
-    private TextView nomePessoa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +43,7 @@ public class TelaMenuActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         setEmailNavigation();
@@ -58,8 +52,8 @@ public class TelaMenuActivity extends AppCompatActivity
     }
 
     private void abrirMapaFragments() {
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
-        fragmentManager = getSupportFragmentManager();
+        GoogleApiClient client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+        FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.add(id.container, new MapaFragments(), "Mapa");
         transaction.commitAllowingStateLoss();
@@ -73,9 +67,9 @@ public class TelaMenuActivity extends AppCompatActivity
         String email = session.getUsuarioLogado().getEmail().toString();
         String nome = session.getPessoaLogada().getNome().toString();
 
-        nomePessoa = (TextView)header.findViewById(id.nomeLogado);
+        TextView nomePessoa = (TextView)header.findViewById(id.nomeLogado);
         nomePessoa.setText(nome);
-        emailUsuario = (TextView)header.findViewById(id.emailLogado);
+        TextView emailUsuario = (TextView)header.findViewById(id.emailLogado);
         emailUsuario.setText(email);
     }
 
@@ -108,6 +102,7 @@ public class TelaMenuActivity extends AppCompatActivity
                 break;
             case R.id.nav_historico:
                 aviso();
+                break;
             case R.id.nav_sobre:
                 Intent sobre = new Intent(TelaMenuActivity.this, SobreActivity.class);
                 TelaMenuActivity.this.startActivity(sobre);
@@ -118,8 +113,10 @@ public class TelaMenuActivity extends AppCompatActivity
                 break;
             case R.id.nav_descontos:
                 aviso();
+                break;
             case R.id.nav_configuracao:
                 aviso();
+                break;
             case R.id.nav_mapa:
                 getFragmentManager().popBackStack();
                 break;

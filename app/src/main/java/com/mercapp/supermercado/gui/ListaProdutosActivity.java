@@ -23,10 +23,10 @@ import java.util.List;
 public class ListaProdutosActivity extends AppCompatActivity {
 
     private ListView lista;
-    private Context _context = ListaProdutosActivity.this;
+    private Context context = ListaProdutosActivity.this;
     private ProdutoListAdapter dataAdapter;
     private Session session = Session.getInstanciaSessao();
-    private ProdutoNegocio produtoNegocio = new ProdutoNegocio(_context);
+    private ProdutoNegocio produtoNegocio = new ProdutoNegocio(context);
     private AlertDialog alerta;
     private SearchView searchView;
 
@@ -38,8 +38,8 @@ public class ListaProdutosActivity extends AppCompatActivity {
         this.lista = lista;
     }
 
-    public Context get_context() {
-        return _context;
+    public Context getContext() {
+        return context;
     }
 
     public ProdutoListAdapter getDataAdapter() {
@@ -78,9 +78,9 @@ public class ListaProdutosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_produtos);
-        ProdutoNegocio consulta = new ProdutoNegocio(get_context());
+        ProdutoNegocio consulta = new ProdutoNegocio(getContext());
         List<Produto> produtos = consulta.listar();
-        setDataAdapter(new ProdutoListAdapter(get_context(), produtos));
+        setDataAdapter(new ProdutoListAdapter(getContext(), produtos));
 
         setLista((ListView)findViewById(R.id.lista_produtos));
         getLista().setAdapter(getDataAdapter());
@@ -93,7 +93,7 @@ public class ListaProdutosActivity extends AppCompatActivity {
                 Produto produto = (Produto) listView.getItemAtPosition(position);
                 if (produto != null) {
                     getSession().setProdutoSelecionado(produto);
-                    Intent editarProdudo = new Intent(get_context(), CadastroProdutosActivity.class);
+                    Intent editarProdudo = new Intent(getContext(), CadastroProdutosActivity.class);
                     startActivity(editarProdudo);
                     finish();
                 }
@@ -120,7 +120,7 @@ public class ListaProdutosActivity extends AppCompatActivity {
             }
             @Override
             public boolean onQueryTextChange(String text) {
-                setDataAdapter( new ProdutoListAdapter(get_context(), getProdutoNegocio().listar(text)));
+                setDataAdapter( new ProdutoListAdapter(getContext(), getProdutoNegocio().listar(text)));
                 getLista().setAdapter(getDataAdapter());
                 return false;
             }
@@ -132,14 +132,14 @@ public class ListaProdutosActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         // voltar para a tela adminstrador.
-        Intent voltarAdm = new Intent(get_context(), Administrador.class);
+        Intent voltarAdm = new Intent(getContext(), Administrador.class);
         startActivity(voltarAdm);
         finish();
     }
     public void adcionarProduto(View view) {
         // Adiconar novos Produtos.
         getSession().setProdutoSelecionado(null);
-        Intent cadastrarProdutos = new Intent(get_context(), CadastroProdutosActivity.class);
+        Intent cadastrarProdutos = new Intent(getContext(), CadastroProdutosActivity.class);
         startActivity(cadastrarProdutos);
         finish();
     }

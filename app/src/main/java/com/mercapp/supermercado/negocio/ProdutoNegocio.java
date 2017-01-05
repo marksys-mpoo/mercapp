@@ -2,7 +2,6 @@ package com.mercapp.supermercado.negocio;
 
 import android.content.Context;
 
-import com.mercapp.infra.Session;
 import com.mercapp.supermercado.dominio.Produto;
 import com.mercapp.supermercado.persistencia.ProdutoPersistencia;
 
@@ -10,53 +9,52 @@ import java.util.List;
 
 public class ProdutoNegocio {
 
-    private Context _context;
-    private Session session = Session.getInstanciaSessao();
+    private Context context;
 
-    public ProdutoNegocio(Context _context) {
-        this._context = _context;
+    public ProdutoNegocio(Context context) {
+        this.context = context;
     }
 
     public Produto buscar(Integer id) {
-        ProdutoPersistencia produtoPersistencia = new ProdutoPersistencia(_context);
+        ProdutoPersistencia produtoPersistencia = new ProdutoPersistencia(context);
         return produtoPersistencia.buscar(id);
     }
 
     public Produto buscar(String nome) {
-        ProdutoPersistencia produtoPersistencia = new ProdutoPersistencia(_context);
+        ProdutoPersistencia produtoPersistencia = new ProdutoPersistencia(context);
         return produtoPersistencia.buscar(nome);
     }
 
     public List<Produto> listar(String inputText){
-        ProdutoPersistencia listagem = new ProdutoPersistencia(_context);
+        ProdutoPersistencia listagem = new ProdutoPersistencia(context);
         return listagem.listar(inputText);
     }
 
     public void cadastrar(Produto produtoCadastro){
-        ProdutoPersistencia produtoPersistencia = new ProdutoPersistencia(_context);
+        ProdutoPersistencia produtoPersistencia = new ProdutoPersistencia(context);
         produtoPersistencia.cadastrar(produtoCadastro);
     }
 
     public void editar(Produto produto){
-        ProdutoPersistencia produtoPersistencia = new ProdutoPersistencia(_context);
+        ProdutoPersistencia produtoPersistencia = new ProdutoPersistencia(context);
         produtoPersistencia.editar(produto);
     }
     public void deletar(Produto produto){
-        ProdutoPersistencia produtoPersistencia= new ProdutoPersistencia(_context);
+        ProdutoPersistencia produtoPersistencia= new ProdutoPersistencia(context);
         produtoPersistencia.deletar(produto);
     }
     public List<Produto> listar(){
-        ProdutoPersistencia consulta = new ProdutoPersistencia(_context);
+        ProdutoPersistencia consulta = new ProdutoPersistencia(context);
         return consulta.listar();
     }
 
     public List<Produto> listaProdutosDoSupermercado(String idSuper){
-        ProdutoPersistencia consulta = new ProdutoPersistencia(_context);
+        ProdutoPersistencia consulta = new ProdutoPersistencia(context);
         return consulta.listaDadosProdutosDoSupermercado(idSuper);
     }
 
     public List<Produto> listar(String idSupermercado, int numDepartamento){
-        ProdutoPersistencia consulta = new ProdutoPersistencia(_context);
+        ProdutoPersistencia consulta = new ProdutoPersistencia(context);
         return consulta.listar(idSupermercado, numDepartamento);
     }
 }

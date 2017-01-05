@@ -1,6 +1,5 @@
 package com.mercapp.supermercado.gui;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -9,8 +8,6 @@ import com.mercapp.R;
 import java.lang.reflect.Field;
 
 public class ListaImagens extends AppCompatActivity {
-
-    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

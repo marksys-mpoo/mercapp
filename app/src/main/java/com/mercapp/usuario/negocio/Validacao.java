@@ -21,7 +21,7 @@ public class Validacao {
     public static final int EN_ROUTE = 3;
     public static final int DINERS_CLUB = 4;
 
-    private static final String stringInicial = "0.0";
+    private static final String STRING_INICIAL = "0.0";
 
     private static final int[] weightCPF = {11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
     private static final int[] weightCNPJ = {6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
@@ -305,11 +305,11 @@ public class Validacao {
             etSupermercadoTelefone.requestFocus();
             etSupermercadoTelefone.setError(context.getString(R.string.telefone_vazio_tela_cadastro_supermrecados));
             result = false;
-        } else if (etLatitude.getText().toString().equals(stringInicial)) {
+        } else if (etLatitude.getText().toString().equals(STRING_INICIAL)) {
             etLatitude.requestFocus();
             etLatitude.setError(context.getString(R.string.latitude_vazio_tela_cadastro_produtos));
             result = false;
-        } else if (etLogintude.getText().toString().equals(stringInicial)) {
+        } else if (etLogintude.getText().toString().equals(STRING_INICIAL)) {
             etLogintude.requestFocus();
             etLogintude.setError(context.getString(R.string.longitude_vazio_tela_cadastro_produtos));
             result = false;

@@ -52,7 +52,7 @@ public class Session {
     public void setProdutoSelecionado(Produto produtoSelecionado) {
         this.produtoSelecionado = produtoSelecionado;
     }
-    public void Logout() {
+    public void logout() {
         this.pessoaLogada = null;
     }
 
