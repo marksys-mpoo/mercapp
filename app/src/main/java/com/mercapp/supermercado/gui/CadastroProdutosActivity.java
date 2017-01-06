@@ -68,7 +68,15 @@ public class CadastroProdutosActivity extends AppCompatActivity {
         spinnerImagens = (Spinner) findViewById(R.id.spinnerImagens);
         spinnerDepartamento = (Spinner) findViewById(R.id.spinnerDepartamento);
         setnome.requestFocus();
+        spinnerSupermercados();
+        spinnerImagens();
+        spinnerDepartamentos();
+        if (session.getProdutoSelecionado() != null) {
+            carregaDados();
+        }
+    }
 
+    private void spinnerSupermercados() {
         supermercadoNegocio = new SupermercadoNegocio(context);
         List<String> supermercados = supermercadoNegocio.listaNomeSupermercado();
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, supermercados);
@@ -82,14 +90,32 @@ public class CadastroProdutosActivity extends AppCompatActivity {
                 nomeSpinnerSupermercado = parent.getItemAtPosition(position).toString();
                 posicaoSpinnerSupermercado = position;
             }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+    }
+
+    private void spinnerDepartamentos() {
+        ArrayAdapter<String> arrayAdapterDepartamento = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, departamentos);
+        ArrayAdapter<String> spinnerArrayAdapterDepartamento = arrayAdapterDepartamento;
+        spinnerArrayAdapterDepartamento.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinnerDepartamento.setAdapter(spinnerArrayAdapterDepartamento);
+
+        spinnerDepartamento.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                posicaoSpinnerDepartamento = position;
+            }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
+    }
 
-        // Spinner das Imagens
+    private void spinnerImagens() {
         ArrayAdapter<String> arrayAdapterImagem = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, strProdutosDrawable);
         ArrayAdapter<String> spinnerArrayAdapterImagem = arrayAdapterImagem;
         spinnerArrayAdapterImagem.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
@@ -107,32 +133,6 @@ public class CadastroProdutosActivity extends AppCompatActivity {
 
             }
         });
-
-        if (session.getProdutoSelecionado() != null) {
-            carregaDados();
-        }
-
-        // Spinner dos Departamentos
-        ArrayAdapter<String> arrayAdapterDepartamento = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, departamentos);
-        ArrayAdapter<String> spinnerArrayAdapterDepartamento = arrayAdapterDepartamento;
-        spinnerArrayAdapterDepartamento.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        spinnerDepartamento.setAdapter(spinnerArrayAdapterDepartamento);
-
-        spinnerDepartamento.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                posicaoSpinnerDepartamento = position;
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        if (session.getProdutoSelecionado() != null) {
-            carregaDados();
-        }
     }
 
     public final void pegarConteudoProdutos(View view) {
@@ -165,7 +165,6 @@ public class CadastroProdutosActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "O cadastro não foi realizado.", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     private Produto criarProduto(String nome, int recebeImagem, String descricao, double recebePreco, Supermercado nomesupermercado, int numeroDepartamento,
@@ -208,7 +207,9 @@ public class CadastroProdutosActivity extends AppCompatActivity {
 
     private void produtoSelecionado(String nome, String descricao, Supermercado supermercado) {
         session.getProdutoSelecionado().setNome(nome);
+        session.getProdutoSelecionado().setImageProduto(imagem);
         session.getProdutoSelecionado().setDescricao(descricao);
+        session.getProdutoSelecionado().setPreco(preco);
         session.getProdutoSelecionado().setSupermercado(supermercado);
         session.getProdutoSelecionado().setNumeroDepartamento(posicaoSpinnerDepartamento);
         session.getProdutoSelecionado().setPosicaoSpinnerSupermercado(posicaoSpinnerSupermercado);
