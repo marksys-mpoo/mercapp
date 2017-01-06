@@ -15,12 +15,12 @@ import com.mercapp.usuario.gui.TelaMenuActivity;
 public class Administrador extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected final void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_administrador);
     }
 
-    public void changeTelaAdministradorToCadastroSupermercado(View view) {
+    public final void changeTelaAdministradorToCadastroSupermercado(View view) {
         Intent cadastrar = new Intent(Administrador.this, CadastroSupermercadosActivity.class);
         cadastrar.putExtra("CoordLat",0);
         cadastrar.putExtra("CoordLong",0);
@@ -28,30 +28,30 @@ public class Administrador extends AppCompatActivity {
         finish();
     }
 
-    public void voltarToMenuMapa(View view) {
+    public final void voltarToMenuMapa(View view) {
         Intent voltarMapa = new Intent(Administrador.this, TelaMenuActivity.class);
         startActivity(voltarMapa);
         finish();
     }
 
-    public void changeTelaAdministradorToCadastroProdutos(View view) {
+    public final void changeTelaAdministradorToCadastroProdutos(View view) {
         Intent voltarMenu = new Intent(Administrador.this, CadastroProdutosActivity.class);
         startActivity(voltarMenu);
         finish();
     }
-    public void changeTelaAdministradorToListaSupermercado(View view) {
+    public final void changeTelaAdministradorToListaSupermercado(View view) {
         Intent voltarMenu = new Intent(Administrador.this, ListaSupermercadosActivity.class);
         startActivity(voltarMenu);
         finish();
     }
-    public void changeTelaAdministradorToListaProdutos(View view) {
+    public final void changeTelaAdministradorToListaProdutos(View view) {
         Intent voltarMenu = new Intent(Administrador.this, ListaProdutosActivity.class);
         startActivity(voltarMenu);
         finish();
     }
 
     @Override
-    public void onBackPressed() {
+    public final void onBackPressed() {
         Intent voltarMenu = new Intent(Administrador.this, TelaMenuActivity.class);
         startActivity(voltarMenu);
         finish();

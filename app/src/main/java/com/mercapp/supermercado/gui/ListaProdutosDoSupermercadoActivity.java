@@ -24,7 +24,7 @@ public class ListaProdutosDoSupermercadoActivity extends AppCompatActivity {
     private String departamentoSelecionado;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected  final  void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_produtos_do_supermercado);
         Integer idSupermercado = session.getSupermercadoSelecionado().getId();
@@ -37,27 +37,7 @@ public class ListaProdutosDoSupermercadoActivity extends AppCompatActivity {
         etNomeSupermercado.setText(nomeSM);
         TextView etDepartamentoSelecionado = (TextView) findViewById(R.id.tituloDepartamento);
         if (!(numeroDepartamento.equals("Todos"))) {
-            if (numeroDepartamento.equals("1")) {
-                this.setDepartamentoSelecionado("Padaria");
-            } else if (numeroDepartamento.equals("2")) {
-                this.setDepartamentoSelecionado("Frios");
-            } else if (numeroDepartamento .equals( "3")) {
-                this.setDepartamentoSelecionado("Açougue");
-            } else if (numeroDepartamento.equals( "4")) {
-                this.setDepartamentoSelecionado("Frutas");
-            } else if (numeroDepartamento .equals("5")) {
-                this.setDepartamentoSelecionado("Bebidas");
-            } else if (numeroDepartamento.equals("6")) {
-                this.setDepartamentoSelecionado("Mercearia");
-            } else if (numeroDepartamento.equals("7")) {
-                this.setDepartamentoSelecionado("Higiene");
-            } else if (numeroDepartamento.equals("8")) {
-                this.setDepartamentoSelecionado("Limpeza");
-            } else if (numeroDepartamento.equals("9")) {
-                this.setDepartamentoSelecionado("Bazar");
-            }
-            etDepartamentoSelecionado.setText(this.getDepartamentoSelecionado());
-            this.buscaProdutosPorDepartamento(idSupermercadoString, numeroDepartamento);
+            departamentoSelecionado(numeroDepartamento, idSupermercadoString, etDepartamentoSelecionado);
         } else {
             this.buscarTodosProdutosDoSupermercado();
             etDepartamentoSelecionado.setText("Produtos");
@@ -74,7 +54,31 @@ public class ListaProdutosDoSupermercadoActivity extends AppCompatActivity {
             });
     }
 
-    public void buscarTodosProdutosDoSupermercado() {
+    private void departamentoSelecionado(String numeroDepartamento, String idSupermercadoString, TextView etDepartamentoSelecionado) {
+        if (numeroDepartamento.equals("1")) {
+            this.setDepartamentoSelecionado("Padaria");
+        } else if (numeroDepartamento.equals("2")) {
+            this.setDepartamentoSelecionado("Frios");
+        } else if (numeroDepartamento .equals( "3")) {
+            this.setDepartamentoSelecionado("Açougue");
+        } else if (numeroDepartamento.equals( "4")) {
+            this.setDepartamentoSelecionado("Frutas");
+        } else if (numeroDepartamento .equals("5")) {
+            this.setDepartamentoSelecionado("Bebidas");
+        } else if (numeroDepartamento.equals("6")) {
+            this.setDepartamentoSelecionado("Mercearia");
+        } else if (numeroDepartamento.equals("7")) {
+            this.setDepartamentoSelecionado("Higiene");
+        } else if (numeroDepartamento.equals("8")) {
+            this.setDepartamentoSelecionado("Limpeza");
+        } else if (numeroDepartamento.equals("9")) {
+            this.setDepartamentoSelecionado("Bazar");
+        }
+        etDepartamentoSelecionado.setText(this.getDepartamentoSelecionado());
+        this.buscaProdutosPorDepartamento(idSupermercadoString, numeroDepartamento);
+    }
+
+    public  final void buscarTodosProdutosDoSupermercado() {
         ProdutoNegocio buscaProdutos = new ProdutoNegocio(context);
         Integer idSupermercado = session.getSupermercadoSelecionado().getId();
         List<Produto> produtos = buscaProdutos.listaProdutosDoSupermercado(idSupermercado.toString());
@@ -83,7 +87,7 @@ public class ListaProdutosDoSupermercadoActivity extends AppCompatActivity {
         lista.setAdapter(adaptador);
     }
 
-    public void buscaProdutosPorDepartamento(String idSupermercado, String departamento) {
+    public final  void buscaProdutosPorDepartamento(String idSupermercado, String departamento) {
         ProdutoNegocio buscaProdutos = new ProdutoNegocio(context);
         int intdepartamento = Integer.parseInt(session.getDepartamentoSelecionado()) - 1;
         List<Produto> produtos = buscaProdutos.listar(idSupermercado, intdepartamento);
@@ -93,17 +97,17 @@ public class ListaProdutosDoSupermercadoActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
+    public final  void onBackPressed() {
         Intent voltarTelaSupermercado = new Intent(ListaProdutosDoSupermercadoActivity.this, TelaSupermercadoActivity.class);
         startActivity(voltarTelaSupermercado);
         finish();
     }
-    public String getDepartamentoSelecionado() {
+    public final  String getDepartamentoSelecionado() {
         return departamentoSelecionado;
     }
 
-    public void setDepartamentoSelecionado(String departamentoSelecionado) {
-        this.departamentoSelecionado = departamentoSelecionado;
+    public  final void setDepartamentoSelecionado(String departamentoSelecionados) {
+        this.departamentoSelecionado = departamentoSelecionados;
     }
 
 }

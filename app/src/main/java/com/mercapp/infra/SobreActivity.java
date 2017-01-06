@@ -18,20 +18,20 @@ public class SobreActivity extends AppCompatActivity {
             "invés de perder tempo no supermercado, já o supermercado não terá que contratar mais funcionários.";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected  final void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sobre);
         justificarTextoSobre();
     }
 
     @Override
-    public void onBackPressed() {
+    public final  void onBackPressed() {
         Intent voltarMenu = new Intent(this, TelaMenuActivity.class);
         startActivity(voltarMenu);
         finish();
     }
 
-    public void justificarTextoSobre() {
+    public  final void justificarTextoSobre() {
         WebView view = (WebView) findViewById(R.id.sobreDescricao);
         String text;
         text = "<html><body><p align=\"justify\">"+descricaoTelaSobre+"</p></body></html>";

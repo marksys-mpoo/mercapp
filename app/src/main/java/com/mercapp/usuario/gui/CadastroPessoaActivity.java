@@ -5,10 +5,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.mercapp.R;
 import com.mercapp.infra.Session;
 import com.mercapp.usuario.dominio.Pessoa;
@@ -23,14 +21,13 @@ public class CadastroPessoaActivity extends AppCompatActivity {
     private boolean validaCartao;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected final void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_pessoa);
         etNome = (EditText) findViewById(R.id.etNome);
         etTelefone = (EditText) findViewById(R.id.etTelefone);
         etTelefone.addTextChangedListener(Mascara.insert(Mascara.MaskType.CELL, etTelefone));
         etNumeroCartao = (EditText) findViewById(R.id.etNumeroCartao);
-        Button btnCadastroPessoa = (Button) findViewById(R.id.btnCadastroPessoa);
 
 
         if (session.getPessoaLogada() != null) {
@@ -38,13 +35,13 @@ public class CadastroPessoaActivity extends AppCompatActivity {
         }
     }
 
-    public void defineText(Pessoa pessoa) {
+    public final void defineText(Pessoa pessoa) {
         etNome.setText(pessoa.getNome());
         etTelefone.setText(pessoa.getTelefone());
         etNumeroCartao.setText(pessoa.getNumeroCartao());
     }
 
-    public void cadastroPessoa(View view) {
+    public  final void cadastroPessoa(View view) {
 
         String nome = etNome.getText().toString().trim();
         String apenasNumerotelefone = Mascara.unmask(etTelefone.getText().toString().trim());
@@ -96,7 +93,7 @@ public class CadastroPessoaActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
+    public final void onBackPressed() {
         Intent voltarMapa = new Intent(getApplication(), TelaMenuActivity.class);
         startActivity(voltarMapa);
         finish();

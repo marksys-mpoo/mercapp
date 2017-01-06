@@ -26,7 +26,7 @@
         android:textColor="@color/cast_expanded_controller_background_color"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="changeTelaListaSupermercadosToTelaAdmimistrador"
+        android:onClick="voltarAdministrador"
         android:id="@+id/button10"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
@@ -40,7 +40,7 @@
         android:id="@+id/adicionarSupermercado"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:onClick="changeScreenListaToCadastroSupermercados"/>
+        android:onClick="voltarCadastroSupermercado"/>
 
     <SearchView
         android:layout_width="match_parent"

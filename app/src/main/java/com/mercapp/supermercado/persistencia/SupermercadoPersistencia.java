@@ -16,16 +16,14 @@ public class SupermercadoPersistencia {
 
     private static final String SELECT = "SELECT * FROM ";
     private static final String WHERE = " WHERE ";
-    private Context context;
     private BDHelper bdHelper;
 
     public SupermercadoPersistencia(Context context)
     {
-        this.context = context;
-        bdHelper = new BDHelper(this.context);
+        bdHelper = new BDHelper(context);
     }
 
-    public void cadastrar(Supermercado supermercado){
+    public final  void cadastrar(Supermercado supermercado){
         SQLiteDatabase db = bdHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -38,7 +36,7 @@ public class SupermercadoPersistencia {
         db.close();
     }
 
-    public void editar(Supermercado supermercado){
+    public  final void editar(Supermercado supermercado){
         SQLiteDatabase db = bdHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -51,14 +49,14 @@ public class SupermercadoPersistencia {
         db.close();
     }
 
-    public void deletar(Supermercado supermercado){
+    public final  void deletar(Supermercado supermercado){
         SQLiteDatabase db = bdHelper.getWritableDatabase();
         String where = bdHelper.COLUNA_ID_SUPERMERCADO + "=" + supermercado.getId();
         db.delete(bdHelper.TBL_SUPERMERCADO, where, null);
         db.close();
     }
 
-    public Supermercado buscar(String nome){
+    public final  Supermercado buscar(String nome){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Supermercado supermercado = null;
         Cursor cursor = db.rawQuery(SELECT+ bdHelper.TBL_SUPERMERCADO +
@@ -71,7 +69,7 @@ public class SupermercadoPersistencia {
         return supermercado;
     }
 
-    public Supermercado buscar(int id){
+    public final  Supermercado buscar(int id){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Supermercado supermercado = null;
         Cursor cursor = db.rawQuery(SELECT+ bdHelper.TBL_SUPERMERCADO +
@@ -84,7 +82,7 @@ public class SupermercadoPersistencia {
         return supermercado;
     }
 
-    public List<Supermercado> listar(String inputText){
+    public  final List<Supermercado> listar(String inputText){
         List<Supermercado> supermercados = new ArrayList<>();
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery(SELECT+ bdHelper.TBL_SUPERMERCADO +
@@ -99,7 +97,7 @@ public class SupermercadoPersistencia {
         return supermercados;
     }
 
-    public List<Supermercado> listar(){
+    public final  List<Supermercado> listar(){
         List<Supermercado> supermercados = new ArrayList<>();
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery(SELECT + BDHelper.TBL_SUPERMERCADO, null);
@@ -112,7 +110,7 @@ public class SupermercadoPersistencia {
         db.close();
         return supermercados;
     }
-    public List<String> listaSupermercado (){
+    public  final List<String> listaSupermercado (){
         List<String> supermercados = new ArrayList<>();
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery(SELECT + BDHelper.TBL_SUPERMERCADO, null);
@@ -128,10 +126,15 @@ public class SupermercadoPersistencia {
 
     private Supermercado criarSupermercado(Cursor cursor){
         Supermercado supermercado = new Supermercado();
-        supermercado.setId(cursor.getInt(0));
-        supermercado.setNome(cursor.getString(1));
-        supermercado.setTelefone(cursor.getString(2));
-        supermercado.setCoordenadas(new LatLng(cursor.getDouble(3),cursor.getDouble(4)));
+        final int columnIndex0 = 0;
+        final int columnIndex1 = 1;
+        final int columnIndex2 = 2;
+        final int columnIndex3 = 3;
+        final int columnIndex4 = 4;
+        supermercado.setId(cursor.getInt(columnIndex0));
+        supermercado.setNome(cursor.getString(columnIndex1));
+        supermercado.setTelefone(cursor.getString(columnIndex2));
+        supermercado.setCoordenadas(new LatLng(cursor.getDouble(columnIndex3),cursor.getDouble(columnIndex4)));
         return supermercado;
     }
 

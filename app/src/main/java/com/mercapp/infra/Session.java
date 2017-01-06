@@ -18,7 +18,7 @@ public class Session {
     private Produto produtoSelecionado;
 
 
-    public Produto getProdutoSelecionado() {
+    public  final Produto getProdutoSelecionado() {
         return produtoSelecionado;
     }
 
@@ -26,66 +26,66 @@ public class Session {
         return instanciaSessao;
     }
 
-    public Pessoa getPessoaLogada() {
+    public  final Pessoa getPessoaLogada() {
         return pessoaLogada;
     }
 
-    public void setPessoaLogada(Pessoa pessoaLogada) {
-        this.pessoaLogada = pessoaLogada;
+    public  final void setPessoaLogada(Pessoa pessoaLogadas) {
+        this.pessoaLogada = pessoaLogadas;
     }
 
-    public Usuario getUsuarioLogado() {
+    public final  Usuario getUsuarioLogado() {
     return usuarioLogado;
 }
 
-    public void setUsuarioLogado(Usuario usuarioLogado) {
-    this.usuarioLogado = usuarioLogado;
+    public  final void setUsuarioLogado(Usuario usuarioLogados) {
+    this.usuarioLogado = usuarioLogados;
 }
 
-    public Supermercado getSupermercadoSelecionado() {
+    public final  Supermercado getSupermercadoSelecionado() {
     return supermercadoSelecionado;
 }
 
-    public void setSupermercadoSelecionado(Supermercado supermercadoSelecionado) {
-        this.supermercadoSelecionado = supermercadoSelecionado;
+    public final  void setSupermercadoSelecionado(Supermercado supermercadoSelecionados) {
+        this.supermercadoSelecionado = supermercadoSelecionados;
     }
-    public void setProdutoSelecionado(Produto produtoSelecionado) {
-        this.produtoSelecionado = produtoSelecionado;
+    public final  void setProdutoSelecionado(Produto produtoSelecionados) {
+        this.produtoSelecionado = produtoSelecionados;
     }
-    public void logout() {
+    public  final void logout() {
         this.pessoaLogada = null;
     }
 
 
-    public String getDepartamentoSelecionado() {
+    public final  String getDepartamentoSelecionado() {
         return departamentoSelecionado;
     }
 
-    public void setDepartamentoSelecionado(String departamentoSelecionado) {
-        this.departamentoSelecionado = departamentoSelecionado;
+    public final  void setDepartamentoSelecionado(String departamentoSelecionados) {
+        this.departamentoSelecionado = departamentoSelecionados;
     }
-    public LatLng getCoordenadas() {
+    public  final LatLng getCoordenadas() {
         return coordenadas;
     }
 
-    public void setCoordenadas(LatLng coordenadas) {
-        this.coordenadas = coordenadas;
+    public  final void setCoordenadas(LatLng coordenada) {
+        this.coordenadas = coordenada;
     }
 
-    public String getFuncaoCrudSupermercado() {
+    public final  String getFuncaoCrudSupermercado() {
         return funcaoCrudSupermercado;
     }
 
-    public void setFuncaoCrudSupermercado(String funcaoCrudSupermercado) {
-        this.funcaoCrudSupermercado = funcaoCrudSupermercado;
+    public final  void setFuncaoCrudSupermercado(String funcaoCrudSupermercados) {
+        this.funcaoCrudSupermercado = funcaoCrudSupermercados;
     }
 
-    public String getTextButaoFuncaoSupermercado() {
+    public  final String getTextButaoFuncaoSupermercado() {
         return textButaoFuncaoSupermercado;
     }
 
-    public void setTextButaoFuncaoSupermercado(String textButaoFuncaoSupermercado) {
-        this.textButaoFuncaoSupermercado = textButaoFuncaoSupermercado;
+    public  final void setTextButaoFuncaoSupermercado(String textButaoFuncaoSupermercados) {
+        this.textButaoFuncaoSupermercado = textButaoFuncaoSupermercados;
     }
 
 

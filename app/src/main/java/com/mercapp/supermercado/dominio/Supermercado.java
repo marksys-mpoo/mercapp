@@ -7,35 +7,35 @@ import com.google.android.gms.maps.model.LatLng;
     private String telefone;
     private LatLng coordenadas;
 
-    public int getId() {
+    public  final int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public  final void setId(int ids) {
+        this.id = ids;
     }
 
-    public String getNome() {
+    public  final String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public final  void setNome(String nomes) {
+        this.nome = nomes;
     }
 
-    public String getTelefone() {
+    public final  String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public final  void setTelefone(String telefones) {
+        this.telefone = telefones;
     }
 
-    public LatLng getCoordenadas() {
+    public final  LatLng getCoordenadas() {
         return coordenadas;
     }
 
-    public void setCoordenadas(LatLng coordenadas) {
-        this.coordenadas = coordenadas;
+    public  final void setCoordenadas(LatLng coordenada) {
+        this.coordenadas = coordenada;
     }
 }

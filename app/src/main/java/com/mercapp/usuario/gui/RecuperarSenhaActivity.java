@@ -39,57 +39,55 @@ public class RecuperarSenhaActivity extends AppCompatActivity implements View.On
     private String msg;
     private String sub;
 
-    public String getSub() {
+    public  final String getSub() {
         return sub;
     }
 
-    public void setSub(String sub) {
-        this.sub = sub;
+    public final  void setSub(String subs) {
+        this.sub = subs;
     }
 
-    public Context getContext() {
+    public final  Context getContext() {
         return context;
     }
 
-    public String getRec() {
+    public  final String getRec() {
         return rec;
     }
 
-    public void setRec(String rec) {
-        this.rec = rec;
+    public  final void setRec(String recs) {
+        this.rec = recs;
     }
 
-    public String getMsg() {
+    public  final String getMsg() {
         return msg;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public final  void setMsg(String msgs) {
+        this.msg = msgs;
     }
 
-    public ProgressDialog getPdialog() {
+    public final  ProgressDialog getPdialog() {
         return pdialog;
     }
 
-    public void setPdialog(ProgressDialog pdialog) {
-        this.pdialog = pdialog;
+    public  final void setPdialog(ProgressDialog pdialogs) {
+        this.pdialog = pdialogs;
     }
 
-    public Session getSession() {
+    public  final Session getSession() {
         return session;
     }
 
-    public void setSession(Session session) {
-        this.session = session;
+    public  final void setSession(Session sessions) {
+        this.session = sessions;
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected final  void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recuperar_senha);
         email = (EditText) findViewById(R.id.edtEmailRecuperarSenha);
-        String correo = "marksys.mercapp@gmail.com";
-        String contrasenha = "mercapp2016";
         setSub("Recuperação de Senha");
 
         Button recuperarSenha = (Button) findViewById(R.id.btnRecuperarSenha);
@@ -97,7 +95,7 @@ public class RecuperarSenhaActivity extends AppCompatActivity implements View.On
     }
 
     @Override
-    public void onClick(View v) {
+    public  final void onClick(View v) {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
@@ -153,7 +151,7 @@ public class RecuperarSenhaActivity extends AppCompatActivity implements View.On
         }
     }
     @Override
-    public void onBackPressed() {
+    public  final void onBackPressed() {
         Intent voltarLogin = new Intent(getApplication(), LoginActivity.class);
         startActivity(voltarLogin);
         finish();

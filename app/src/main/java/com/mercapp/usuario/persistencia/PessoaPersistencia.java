@@ -11,16 +11,14 @@ import com.mercapp.usuario.dominio.Pessoa;
 
 public class PessoaPersistencia {
 
-    private Context context;
     private BDHelper bdHelper;
     private Session session = Session.getInstanciaSessao();
 
-    public PessoaPersistencia(Context context){
-        this.context = context;
-        bdHelper = new BDHelper(this.context);
+    public PessoaPersistencia(Context contexto){
+        bdHelper = new BDHelper(contexto);
     }
 
-    public void cadastrar(Pessoa pessoa){
+    public final  void cadastrar(Pessoa pessoa){
         SQLiteDatabase db = bdHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -33,7 +31,7 @@ public class PessoaPersistencia {
         db.close();
     }
 
-    public void editar(Pessoa pessoa){
+    public final  void editar(Pessoa pessoa){
         SQLiteDatabase db = bdHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -45,7 +43,7 @@ public class PessoaPersistencia {
         db.close();
     }
 
-    public Pessoa buscar(String numeroCartao){
+    public  final Pessoa buscar(String numeroCartao){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
 
         Pessoa pessoa = null;
@@ -61,7 +59,7 @@ public class PessoaPersistencia {
         return pessoa;
     }
 
-    public Pessoa buscar(int usuario){
+    public  final Pessoa buscar(int usuario){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
 
         Pessoa pessoa = null;
@@ -78,12 +76,15 @@ public class PessoaPersistencia {
     }
 
     private Pessoa criarPessoa(Cursor cursor){
-
+        final int columnIndex0 = 0;
+        final int columnIndex1 = 1;
+        final int columnIndex2 = 2;
+        final int columnIndex3 = 3;
         Pessoa pessoa = new Pessoa();
-        pessoa.setId(cursor.getInt(0));
-        pessoa.setNome(cursor.getString(1));
-        pessoa.setTelefone(cursor.getString(2));
-        pessoa.setNumeroCartao(cursor.getString(3));
+        pessoa.setId(cursor.getInt(columnIndex0));
+        pessoa.setNome(cursor.getString(columnIndex1));
+        pessoa.setTelefone(cursor.getString(columnIndex2));
+        pessoa.setNumeroCartao(cursor.getString(columnIndex3));
 
         return pessoa;
     }

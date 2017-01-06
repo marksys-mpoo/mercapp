@@ -67,7 +67,7 @@ public class BDHelper extends SQLiteOpenHelper {
 
 
     @Override
-    public void onCreate(SQLiteDatabase db) {
+    public final void onCreate(SQLiteDatabase db) {
         db.execSQL(SQLScript.getTabelaUsuario());
         db.execSQL(SQLScript.getTabelaPessoa());
         db.execSQL(SQLScript.getTabelaEndereco());
@@ -77,13 +77,14 @@ public class BDHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int versaoAntiga, int novaVersao) {
-        db.execSQL("DROP TABLE IF EXISTIS " + TBL_USUARIO);
-        db.execSQL("DROP TABLE IF EXISTIS " + TBL_PESSOA);
-        db.execSQL("DROP TABLE IF EXISTIS " + TBL_ENDERECO);
-        db.execSQL("DROP TABLE IF EXISTIS " + TBL_CARRINHO);
-        db.execSQL("DROP TABLE IF EXISTIS " + TBL_PRODUTO);
-        db.execSQL("DROP TABLE IF EXISTIS " + TBL_SUPERMERCADO);
+    public final void onUpgrade(SQLiteDatabase db, int versaoAntiga, int novaVersao) {
+        final String testeTabelaExiste = "DROP TABLE IF EXISTIS ";
+        db.execSQL(testeTabelaExiste + TBL_USUARIO);
+        db.execSQL(testeTabelaExiste + TBL_PESSOA);
+        db.execSQL(testeTabelaExiste + TBL_ENDERECO);
+        db.execSQL(testeTabelaExiste + TBL_CARRINHO);
+        db.execSQL(testeTabelaExiste + TBL_PRODUTO);
+        db.execSQL(testeTabelaExiste + TBL_SUPERMERCADO);
         onCreate(db);
     }
 }

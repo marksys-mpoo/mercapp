@@ -10,7 +10,7 @@ import java.lang.reflect.Field;
 public class ListaImagens extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected final void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_imagens);
 

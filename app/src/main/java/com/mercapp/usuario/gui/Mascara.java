@@ -17,13 +17,12 @@ public abstract class Mascara {
             mask = s;
         }
 
-        public void setMask(String mask) {
-            this.mask = mask;
+        public void setMask(String masks) {
+            this.mask = masks;
         }
         public String getMask() {
             return mask;
         }
-
 
 
     }
@@ -35,30 +34,20 @@ public abstract class Mascara {
                 .replaceAll("[ ]", "").replaceAll("[)]", "");
     }
 
-    public static String mask(MaskType type, String s) {
-        String result = s;
-
-        if (!s.contains(".")) {
-            String str = Mascara.unmask(s);
-            result = "";
-
-            int i = 0;
-            for (char m : type.getMask().toCharArray()) {
-                if (m != '#') {
-                    result += m;
-                    continue;
-                }
-                try {
-                    result += str.charAt(i);
-                } catch (Exception e) {
-                    break;
-                }
-                i++;
-            }
-        }
-
-        return result;
-    }
+//    public static String mask(MaskType type, String s) {
+//        //String result = s;
+//        StringBuilder result = new StringBuilder();
+//        if (!s.contains(".")) {
+//
+//            result.append("");
+//            String str = Mascara.unmask(s.toString());
+//            result.append("");
+//
+//            int i = 0;
+//            concatenacao(str, result, i, type);
+//        }
+//        return result.toString();
+//    }
 
 
     public static TextWatcher insert(final MaskType type, final EditText ediTxt) {
@@ -73,10 +62,6 @@ public abstract class Mascara {
             public void setUpdating(boolean updating) {
                 isUpdating = updating;
             }
-            public String getOld() {
-                return old;
-            }
-
             public void setOld(String old) {
                 this.old = old;
             }
@@ -90,23 +75,16 @@ public abstract class Mascara {
                     return;
                 }
 
+                buscaConcatena(s);
+            }
+
+            private void buscaConcatena(CharSequence s) {
                 if (!s.toString().isEmpty() && (s.toString().length() > old.length())) {
                     String str = Mascara.unmask(s.toString());
-                    String mask = "";
-
+//                    String mask = "";
+                    StringBuilder mask = new StringBuilder();
                     int i = 0;
-                    for (char m : type.getMask().toCharArray()) {
-                        if (m != '#') {
-                            mask += m;
-                            continue;
-                        }
-                        try {
-                            mask += str.charAt(i);
-                        } catch (Exception e) {
-                            break;
-                        }
-                        i++;
-                    }
+                    concatenacao(str, mask, i, type);
                     setUpdating(true);
                     ediTxt.setText(mask);
                     ediTxt.setSelection(mask.length());
@@ -122,6 +100,21 @@ public abstract class Mascara {
             public void afterTextChanged(Editable s) {
             }
         };
+    }
+
+    private static void concatenacao(String str, StringBuilder mask, int incremanenta, MaskType type) {
+        for (char iteradorConcatenacaoString : type.getMask().toCharArray()) {
+            if ( iteradorConcatenacaoString != '#') {
+                mask.append(iteradorConcatenacaoString);
+                continue;
+            }
+            try {
+                mask.append(str.charAt(incremanenta));
+            } catch (Exception e) {
+                break;
+            }
+            incremanenta++;
+        }
     }
 
 }

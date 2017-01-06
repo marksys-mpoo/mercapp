@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.webkit.WebView;
-import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.android.gms.maps.model.LatLng;
@@ -25,7 +24,7 @@ public class CadastroSupermercadosActivity extends AppCompatActivity {
     private EditText etSupermercadoNome, etSupermercadoTelefone, etLogintude, etLatitude;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected final void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_supermercado);
         justificarTextoAjuda();
@@ -36,7 +35,6 @@ public class CadastroSupermercadosActivity extends AppCompatActivity {
 
         etLatitude = (EditText) findViewById(R.id.etSupLat);
         etLogintude = (EditText) findViewById(R.id.etSupLong);
-        Button btnSalvarEditar = (Button) findViewById(R.id.btnCadastrarSupermercado);
         etSupermercadoNome.requestFocus();
 
         Bundle bundle = getIntent().getExtras();
@@ -58,7 +56,7 @@ public class CadastroSupermercadosActivity extends AppCompatActivity {
 
     }
 
-    public void justificarTextoAjuda() {
+    public final void justificarTextoAjuda() {
         WebView view = (WebView) findViewById(R.id.ajudaMapa);
         String text;
         text = "<html><body><p align=\"justify\">";
@@ -69,7 +67,7 @@ public class CadastroSupermercadosActivity extends AppCompatActivity {
         view.loadData(text,"text/html;charset=UTF-8",null);
     }
 
-    public void cadastroSupermercado(View view) {
+    public final void cadastroSupermercado(View view) {
 
         if (validarCampos()) {
 
@@ -104,14 +102,14 @@ public class CadastroSupermercadosActivity extends AppCompatActivity {
         etLogintude.setText(coordLongString);
     }
 
-    public void changeScreenCadastroSupermercadoToMapa(View view) {
+    public final void voltarMapa(View view) {
         Intent addCoordenadas = new Intent(CadastroSupermercadosActivity.this, TelaMenuActivity.class);
         startActivity(addCoordenadas);
         finish();
     }
 
     @Override
-    public void onBackPressed() {
+    public final void onBackPressed() {
         Intent voltarMenu = new Intent(CadastroSupermercadosActivity.this, ListaSupermercadosActivity.class);
         startActivity(voltarMenu);
         finish();

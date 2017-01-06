@@ -30,52 +30,52 @@ public class ListaProdutosActivity extends AppCompatActivity {
     private AlertDialog alerta;
     private SearchView searchView;
 
-    public ListView getLista() {
+    public final ListView getLista() {
         return lista;
     }
 
-    public void setLista(ListView lista) {
-        this.lista = lista;
+    public  final void setLista(ListView listas) {
+        this.lista = listas;
     }
 
-    public Context getContext() {
+    public  final Context getContext() {
         return context;
     }
 
-    public ProdutoListAdapter getDataAdapter() {
+    public final  ProdutoListAdapter getDataAdapter() {
         return dataAdapter;
     }
 
-    public void setDataAdapter(ProdutoListAdapter dataAdapter) {
-        this.dataAdapter = dataAdapter;
+    public  final void setDataAdapter(ProdutoListAdapter dataAdapters) {
+        this.dataAdapter = dataAdapters;
     }
 
-    public Session getSession() {
+    public final  Session getSession() {
         return session;
     }
 
-    public ProdutoNegocio getProdutoNegocio() {
+    public  final ProdutoNegocio getProdutoNegocio() {
         return produtoNegocio;
     }
 
-    public AlertDialog getAlerta() {
+    public  final AlertDialog getAlerta() {
         return alerta;
     }
 
-    public void setAlerta(AlertDialog alerta) {
-        this.alerta = alerta;
+    public  final void setAlerta(AlertDialog alertas) {
+        this.alerta = alertas;
     }
 
-    public SearchView getSearchView() {
+    public  final SearchView getSearchView() {
         return searchView;
     }
 
-    public void setSearchView(SearchView searchView) {
-        this.searchView = searchView;
+    public  final void setSearchView(SearchView searchViews) {
+        this.searchView = searchViews;
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected final  void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_produtos);
         ProdutoNegocio consulta = new ProdutoNegocio(getContext());
@@ -130,13 +130,13 @@ public class ListaProdutosActivity extends AppCompatActivity {
 
 
     @Override
-    public void onBackPressed() {
+    public  final void onBackPressed() {
         // voltar para a tela adminstrador.
         Intent voltarAdm = new Intent(getContext(), Administrador.class);
         startActivity(voltarAdm);
         finish();
     }
-    public void adcionarProduto(View view) {
+    public final  void adcionarProduto(View view) {
         // Adiconar novos Produtos.
         getSession().setProdutoSelecionado(null);
         Intent cadastrarProdutos = new Intent(getContext(), CadastroProdutosActivity.class);

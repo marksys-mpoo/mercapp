@@ -8,63 +8,76 @@ import com.mercapp.R;
 
 public class SplashActivity extends AppCompatActivity {
     private static final int TEMPO_SPLASH = 1000;
+    private final int[] tempPassado = {0};
     private boolean mbActive;
     private ProgressBar progressBar;
 
-    public boolean isMbActive() {
+    public  final boolean isMbActive() {
         return mbActive;
     }
 
-    public void setMbActive(boolean mbActive) {
-        this.mbActive = mbActive;
+    public final  void setMbActive(boolean mbActives) {
+        this.mbActive = mbActives;
     }
 
-    public ProgressBar getProgressBar() {
+    public final  ProgressBar getProgressBar() {
         return progressBar;
     }
 
-    public void setProgressBar(ProgressBar progressBar) {
-        this.progressBar = progressBar;
+    public final  void setProgressBar(ProgressBar progressBars) {
+        this.progressBar = progressBars;
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected  final void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
         setProgressBar((ProgressBar)findViewById(R.id.barraProgresso));
+
         final Thread timer = new Thread(){
             @Override
             public void run(){
                 setMbActive(true);
                 try {
-                    int tempPassado = 0;
-                    while(isMbActive() && (tempPassado < TEMPO_SPLASH )){
+
+                    while(isMbActive() && (tempPassado[0] < TEMPO_SPLASH )){
                         // enquanto o tempoPassado for menor que 1s
                         // Soma 100 milisegundos
-                        sleep(100);
-                        if(isMbActive()) {
-                            tempPassado += 100;
-                            updateProgress(tempPassado);
-                        }
+                        final int time = 100;
+                        sleep(time);
+                        tempPassado[0] = getTempPassado(tempPassado[0]);
                     }
                 } catch (InterruptedException e) {
                   //// ERRO se houver
                 }
                 finally {
                     //após terminar o try ele chama a tela login. Se não houver erro.
-                   Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                    finish();
+                    chamarLogin();
                 }
             }
         };
         timer.start();
     }
 
-    private void updateProgress(int tempPassado) {
+    private void chamarLogin() {
+        Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private int getTempPassado(int tempoPassadoMilesimo) {
+        if(isMbActive()) {
+            final int time = 100;
+            tempoPassadoMilesimo += time;
+            updateProgress(tempoPassadoMilesimo);
+        }
+        return tempoPassadoMilesimo;
+    }
+
+    private void updateProgress(int tempPassados) {
         if (getProgressBar() != null){
-            final int progress = getProgressBar().getMax() * tempPassado /TEMPO_SPLASH;
+            final int progress = getProgressBar().getMax() * tempPassados / TEMPO_SPLASH;
             getProgressBar().setProgress(progress);
         }
     }

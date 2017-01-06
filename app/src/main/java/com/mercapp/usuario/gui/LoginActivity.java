@@ -35,8 +35,6 @@ public class LoginActivity extends AppCompatActivity {
         etSenha = (EditText) findViewById(R.id.etSenha);
         etEmail.requestFocus();
 
-        Button btnLogar = (Button) findViewById(R.id.btnEntrar);
-        Button btnCadastrar = (Button) findViewById(R.id.btnCadastrar);
         TextView recupSenha = (TextView) findViewById(R.id.tvRecuperarSenha);
         recupSenha.setOnClickListener(new View.OnClickListener() {
             @Override

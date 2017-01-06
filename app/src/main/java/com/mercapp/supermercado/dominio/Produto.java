@@ -11,76 +11,76 @@ public class Produto {
     private int posicaoSpinnerSupermercado;
     private int posicaoSpinnerImagem;
 
-    public String getNome() {
+    public  final String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public  final void setNome(String nomes) {
+        this.nome = nomes;
     }
 
-    public String getDescricao() {
+    public  final String getDescricao() {
         return descricao;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public  final void setDescricao(String descricaos) {
+        this.descricao = descricaos;
     }
 
-    public int getId() {
+    public  final int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public  final void setId(int ids) {
+        this.id = ids;
     }
 
-    public Double getPreco() {
+    public  final Double getPreco() {
         return preco;
     }
 
-    public void setPreco(Double preco) {
-        this.preco = preco;
+    public  final void setPreco(Double precos) {
+        this.preco = precos;
     }
 
-    public Supermercado getSupermercado() {
+    public  final Supermercado getSupermercado() {
         return supermercado;
     }
 
-    public void setSupermercado(Supermercado supermercado) {
-        this.supermercado = supermercado;
+    public  final void setSupermercado(Supermercado supermercados) {
+        this.supermercado = supermercados;
     }
 
-    public int getNumeroDepartamento() {
+    public  final int getNumeroDepartamento() {
         return numeroDepartamento;
     }
 
-    public void setNumeroDepartamento(int departamento) {
-        this.numeroDepartamento = departamento;
+    public  final void setNumeroDepartamento(int departamentos) {
+        this.numeroDepartamento = departamentos;
     }
 
-    public int getImageProduto() {
+    public  final int getImageProduto() {
         return imageProduto;
     }
 
-    public void setImageProduto(int imageProduto) {
-        this.imageProduto = imageProduto;
+    public  final void setImageProduto(int imageProdutos) {
+        this.imageProduto = imageProdutos;
     }
 
-    public int getPosicaoSpinnerSupermercado() {
+    public  final int getPosicaoSpinnerSupermercado() {
         return posicaoSpinnerSupermercado;
     }
 
-    public void setPosicaoSpinnerSupermercado(int posicaoSpinnerSupermercado) {
-        this.posicaoSpinnerSupermercado = posicaoSpinnerSupermercado;
+    public  final void setPosicaoSpinnerSupermercado(int posicaoSpinnerSupermercados) {
+        this.posicaoSpinnerSupermercado = posicaoSpinnerSupermercados;
     }
 
-    public int getPosicaoSpinnerImagem() {
+    public  final int getPosicaoSpinnerImagem() {
         return posicaoSpinnerImagem;
     }
 
-    public void setPosicaoSpinnerImagem(int posicaoSpinnerImagem) {
-        this.posicaoSpinnerImagem = posicaoSpinnerImagem;
+    public final  void setPosicaoSpinnerImagem(int posicaoSpinnerImagems) {
+        this.posicaoSpinnerImagem = posicaoSpinnerImagems;
     }
 
 }

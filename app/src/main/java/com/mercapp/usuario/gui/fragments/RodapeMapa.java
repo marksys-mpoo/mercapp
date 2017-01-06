@@ -22,23 +22,23 @@ public class RodapeMapa extends Fragment {
 
 
     @Override
-    public Activity getContext() {
+    public  final Activity getContext() {
         return context;
     }
 
-    public void setContext(Activity context) {
-        this.context = context;
+    public  final void setContext(Activity contexto) {
+        this.context = contexto;
     }
 
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public final  View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setContext(getActivity());
         return inflater.inflate(R.layout.fragment_rodape_mapa, container, false);
     }
 
     @Override
-    public void onStart() {
+    public  final void onStart() {
         super.onStart();
 
         String superSessao = session.getSupermercadoSelecionado().getNome().toString();
@@ -54,7 +54,7 @@ public class RodapeMapa extends Fragment {
             }
         });
     }
-    public void setTextSupermercado(String text){
+    public final  void setTextSupermercado(String text){
         TextView textView = (TextView) getView().findViewById(R.id.supermercadoSelecionadoWaypoint);
         textView.setText(text);
     }

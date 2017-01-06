@@ -8,7 +8,7 @@ import com.mercapp.R;
 public class ImagemListAdapter extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected  final void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_imagem_list_adapter);
     }

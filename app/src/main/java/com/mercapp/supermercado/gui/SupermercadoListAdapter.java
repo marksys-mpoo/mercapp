@@ -18,24 +18,24 @@ public class SupermercadoListAdapter extends ArrayAdapter<Supermercado> {
     private List<Supermercado> supermercados;
 
 
-    public SupermercadoListAdapter(Context context, List<Supermercado> supermercados) {
-        super(context, 0, supermercados);
-        this.context = context;
-        this.supermercados = supermercados;
+    public SupermercadoListAdapter(Context contexto, List<Supermercado> supermercado) {
+        super(contexto, 0, supermercado);
+        this.context = contexto;
+        this.supermercados = supermercado;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public  final View getView(int position, View converterTela, ViewGroup parent) {
         Supermercado supermercadoPosicao = this.supermercados.get(position);
 
-        convertView = LayoutInflater.from(this.context).inflate(R.layout.supermercados, null);
+        converterTela = LayoutInflater.from(this.context).inflate(R.layout.supermercados, null);
 
-        TextView nome = (TextView) convertView.findViewById(R.id.colunaProduto2);
+        TextView nome = (TextView) converterTela.findViewById(R.id.colunaProduto2);
         nome.setText(supermercadoPosicao.getNome());
 
-        TextView telefone = (TextView) convertView.findViewById(R.id.colunaProduto3);
+        TextView telefone = (TextView) converterTela.findViewById(R.id.colunaProduto3);
         telefone.setText(supermercadoPosicao.getTelefone());
 
-        return convertView;
+        return converterTela;
     }
 }

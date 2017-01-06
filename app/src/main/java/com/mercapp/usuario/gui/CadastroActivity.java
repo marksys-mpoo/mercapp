@@ -26,7 +26,6 @@ public class CadastroActivity extends AppCompatActivity {
         etEmail = (EditText) findViewById(R.id.etEmail);
         etSenha = (EditText) findViewById(R.id.etSenha);
         etConfirmar = (EditText) findViewById(R.id.etConfirmaSenha);
-        Button btnEfetuarCadastro = (Button) findViewById(R.id.btnEfetuarCadastro);
     }
 
     public void efetuarCadastro(View view) {
@@ -43,8 +42,8 @@ public class CadastroActivity extends AppCompatActivity {
             usuarioNegocio.cadastro(email, senhaCriptografada);
             Toast.makeText(this, "Cadastro efetuado com sucesso\r\n Faça o login - "+ email, Toast.LENGTH_SHORT).show();
             voltarLogin(view);
-        } else{
-            Toast.makeText(this, "Usuário já cadastrado!", Toast.LENGTH_SHORT).show();
+        } else if (usuarioCadastro != null) {
+                Toast.makeText(this, "Usuário já cadastrado!", Toast.LENGTH_SHORT).show();
         }
 
     }

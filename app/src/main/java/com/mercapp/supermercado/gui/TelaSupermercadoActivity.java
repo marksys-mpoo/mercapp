@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.mercapp.R;
@@ -19,7 +18,7 @@ public class TelaSupermercadoActivity extends AppCompatActivity {
     private Context context = null;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected final  void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_supermercado);
 
@@ -30,51 +29,49 @@ public class TelaSupermercadoActivity extends AppCompatActivity {
         TextView etFoneSupermercado = (TextView) findViewById(R.id.telefoneSessao);
         etFoneSupermercado.setText(foneSM);
 
-        Button btnOfertas = (Button) findViewById(R.id.btnOfertas);
-
     }
 
-    public void tela_de_produtos(View view) {
+    public  final void telaProdutos(View view) {
         this.selecionarDepartamento("Todos");
     }
 
-    public void listaProdutosPadaria(View view) {
+    public final  void listaProdutosPadaria(View view) {
         this.selecionarDepartamento("1");
     }
 
-    public void listaProdutosFrios(View view) {
+    public  final void listaProdutosFrios(View view) {
         this.selecionarDepartamento("2");
     }
 
-    public void listaProdutosAcougue(View view) {
+    public  final void listaProdutosAcougue(View view) {
         this.selecionarDepartamento("3");
     }
 
-    public void listaProdutosFrutas(View view) {
+    public  final void listaProdutosFrutas(View view) {
         this.selecionarDepartamento("4");
     }
 
-    public void listaProdutosBebidas(View view) {
+    public final  void listaProdutosBebidas(View view) {
         this.selecionarDepartamento("5");
     }
 
-    public void listaProdutosMercearia(View view) {
+    public  final void listaProdutosMercearia(View view) {
         this.selecionarDepartamento("6");
     }
 
-    public void listaProdutosHigiene(View view) {
+    public  final void listaProdutosHigiene(View view) {
         this.selecionarDepartamento("7");
     }
 
-    public void listaProdutosLimpeza(View view) {
+    public  final void listaProdutosLimpeza(View view) {
         this.selecionarDepartamento("8");
     }
 
-    public void listaProdutosBazar(View view) {
+    public  final void listaProdutosBazar(View view) {
         this.selecionarDepartamento("9");
     }
 
-    public void selecionarDepartamento(String departamentoSelecionado) {
+    public final  void selecionarDepartamento(String departamentoSelecionado) {
         SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(context);
         supermercadoNegocio.iniciarSessaoProduto(departamentoSelecionado);
         Intent voltarMenu = new Intent(TelaSupermercadoActivity.this, ListaProdutosDoSupermercadoActivity.class);
@@ -82,14 +79,14 @@ public class TelaSupermercadoActivity extends AppCompatActivity {
         finish();
     }
 
-    public void ofertas(View view){
+    public final  void ofertas(View view){
         Intent irOfertas = new Intent(TelaSupermercadoActivity.this, OfertasActivity.class);
         startActivity(irOfertas);
         finish();
     }
 
     @Override
-    public void onBackPressed() {
+    public final  void onBackPressed() {
         session.setSupermercadoSelecionado(null);
         Intent voltarTelaMenuMapa = new Intent(TelaSupermercadoActivity.this, TelaMenuActivity.class);
         startActivity(voltarTelaMenuMapa);

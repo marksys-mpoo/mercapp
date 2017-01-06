@@ -1,7 +1,11 @@
 package com.mercapp.infra.persistencia;
 
-public class SQLScript {
-    public static String getTabelaUsuario() {
+public final class SQLScript {
+
+    private SQLScript() {
+    }
+
+    static String getTabelaUsuario() {
 
         StringBuilder usuarioBuilder = new StringBuilder();
         usuarioBuilder.append("CREATE TABLE  usuarios ( ");
@@ -11,7 +15,7 @@ public class SQLScript {
         return usuarioBuilder.toString();
     }
 
-    public static String getTabelaPessoa() {
+    static String getTabelaPessoa() {
 
         StringBuilder pessoaBuilder = new StringBuilder();
         pessoaBuilder.append("CREATE TABLE  pessoas  (  ");
@@ -23,7 +27,7 @@ public class SQLScript {
         pessoaBuilder.append("_id_endereco   integer );");
         return pessoaBuilder.toString();
     }
-    public static String getTabelaEndereco() {
+    static String getTabelaEndereco() {
 
         StringBuilder enderecoBuilder = new StringBuilder();
         enderecoBuilder.append("CREATE TABLE  endereco  (  ");
@@ -37,7 +41,7 @@ public class SQLScript {
         return enderecoBuilder.toString();
     }
 
-    public static String getTabelaSupermercado() {
+    static String getTabelaSupermercado() {
 
         StringBuilder supermercadoBuilder = new StringBuilder();
         supermercadoBuilder.append("CREATE TABLE  Supermercado  (  ");
@@ -49,7 +53,7 @@ public class SQLScript {
         return supermercadoBuilder.toString();
     }
 
-    public static String getTabelaCarrinho() {
+    static String getTabelaCarrinho() {
 
         StringBuilder carrinhoBuilder = new StringBuilder();
         carrinhoBuilder.append("CREATE TABLE  carrinho  (  ");
@@ -60,7 +64,7 @@ public class SQLScript {
         carrinhoBuilder.append("foreign key (_id_produtos ) references  produto ( _id_produtos ) );");
         return carrinhoBuilder.toString();
     }
-    public static String getTabelaProduto() {
+    static String getTabelaProduto() {
 
         StringBuilder produtoBuilder = new StringBuilder();
         produtoBuilder.append("CREATE TABLE  produto  (  ");

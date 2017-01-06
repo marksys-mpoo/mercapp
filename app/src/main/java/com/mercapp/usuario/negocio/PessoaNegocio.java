@@ -9,21 +9,21 @@ public class PessoaNegocio {
 
     private Context context;
 
-    public PessoaNegocio(Context context) {
-        this.context = context;
+    public PessoaNegocio(Context contexto) {
+        this.context = contexto;
     }
 
-    public Pessoa buscar(int usuarioId){
+    public  final Pessoa buscar(int usuarioId){
         PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(context);
         return pessoaPersistencia.buscar(usuarioId);
     }
 
-    public Pessoa buscar(String numeroCartao){
+    public final  Pessoa buscar(String numeroCartao){
         PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(context);
         return pessoaPersistencia.buscar(numeroCartao);
     }
 
-    public void cadastro(String nome, String telefone, String numeroCartao){
+    public final  void cadastro(String nome, String telefone, String numeroCartao){
         Pessoa pessoaCadastro = new Pessoa();
 
         pessoaCadastro.setNome(nome);
@@ -34,7 +34,7 @@ public class PessoaNegocio {
         pessoaPersistencia.cadastrar(pessoaCadastro);
     }
 
-    public void editar(Pessoa pessoa){
+    public final void editar(Pessoa pessoa){
         PessoaPersistencia pessoaPersistencia = new PessoaPersistencia(context);
         pessoaPersistencia.editar(pessoa);
     }

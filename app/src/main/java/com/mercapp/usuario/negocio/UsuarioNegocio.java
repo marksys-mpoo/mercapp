@@ -9,23 +9,23 @@ public class UsuarioNegocio {
 
     private Context context;
 
-    public UsuarioNegocio(Context context)
+    public UsuarioNegocio(Context contexto)
     {
-        this.context = context;
+        this.context = contexto;
     }
     
-    public Usuario buscar(String email, String senha) {
+    public final  Usuario buscar(String email, String senha) {
         UsuarioPersistencia usuarioPersistencia = new UsuarioPersistencia(context);
         return usuarioPersistencia.buscar(email, senha);
     }
 
-    public Usuario buscar(String email) {
+    public final  Usuario buscar(String email) {
         UsuarioPersistencia usuarioPersistencia = new UsuarioPersistencia(context);
         return usuarioPersistencia.buscar(email);
     }
 
 
-    public void cadastro(String emailTela, String senhaTela){
+    public final  void cadastro(String emailTela, String senhaTela){
 
         Usuario usuarioCadastro = new Usuario();
 

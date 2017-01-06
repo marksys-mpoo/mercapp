@@ -32,7 +32,6 @@ public class CadastroProdutosActivity extends AppCompatActivity {
     private EditText setdescricao, setpreco,setnome;
     private int imagem, posicaoSpinnerSupermercado, posicaoSpinnerImagem, posicaoSpinnerDepartamento;
     private double preco;
-    private AlertDialog alerta;
     private Session session = Session.getInstanciaSessao();
     private ProdutoNegocio produtoNegocio = new ProdutoNegocio(context);
     private String[] strProdutosDrawable = {
@@ -59,7 +58,7 @@ public class CadastroProdutosActivity extends AppCompatActivity {
     };
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected final void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_produtos);
         setnome = (EditText) findViewById(R.id.edtNomeProduto);
@@ -70,7 +69,7 @@ public class CadastroProdutosActivity extends AppCompatActivity {
         spinnerDepartamento = (Spinner) findViewById(R.id.spinnerDepartamento);
         setnome.requestFocus();
 
-        SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(context);
+        supermercadoNegocio = new SupermercadoNegocio(context);
         List<String> supermercados = supermercadoNegocio.listaNomeSupermercado();
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, supermercados);
         ArrayAdapter<String> spinnerArrayAdapter = arrayAdapter;
@@ -122,7 +121,6 @@ public class CadastroProdutosActivity extends AppCompatActivity {
         spinnerDepartamento.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String nomeSpinnerDepartamento = parent.getItemAtPosition(position).toString();
                 posicaoSpinnerDepartamento = position;
             }
 
@@ -137,7 +135,7 @@ public class CadastroProdutosActivity extends AppCompatActivity {
         }
     }
 
-    public void pegarConteudoProdutos(View view) {
+    public final void pegarConteudoProdutos(View view) {
 
         if (validarCampos() && validarPrecoDouble()){
             String nome = setnome.getText().toString().trim();
@@ -170,16 +168,16 @@ public class CadastroProdutosActivity extends AppCompatActivity {
 
     }
 
-    private Produto criarProduto(String nome, int imagem, String descricao, double preco, Supermercado nomesupermercado, int numeroDepartamento,
-                    int posicaoSpinnerSupermercado, int posicaoSpinnerImagemProduto){
+    private Produto criarProduto(String nome, int recebeImagem, String descricao, double recebePreco, Supermercado nomesupermercado, int numeroDepartamento,
+                    int posicaodoSpinnerSupermercado, int posicaoSpinnerImagemProduto){
         Produto produtoCadastro = new Produto();
         produtoCadastro.setDescricao(descricao);
-        produtoCadastro.setPreco(preco);
+        produtoCadastro.setPreco(recebePreco);
         produtoCadastro.setNome(nome);
-        produtoCadastro.setImageProduto(imagem);
+        produtoCadastro.setImageProduto(recebeImagem);
         produtoCadastro.setSupermercado(nomesupermercado);
         produtoCadastro.setNumeroDepartamento(numeroDepartamento);
-        produtoCadastro.setPosicaoSpinnerSupermercado(posicaoSpinnerSupermercado);
+        produtoCadastro.setPosicaoSpinnerSupermercado(posicaodoSpinnerSupermercado);
         produtoCadastro.setPosicaoSpinnerImagem(posicaoSpinnerImagemProduto);
 
         return produtoCadastro;
@@ -203,9 +201,9 @@ public class CadastroProdutosActivity extends AppCompatActivity {
             }
         });
         //cria o AlertDialog
-        alerta = builder.create();
+        final AlertDialog messagemTela = builder.create();
         //Exibe
-        alerta.show();
+        messagemTela.show();
     }
 
     private void produtoSelecionado(String nome, String descricao, Supermercado supermercado) {
@@ -218,8 +216,8 @@ public class CadastroProdutosActivity extends AppCompatActivity {
     }
 
     private void carregaDados() {
-        Double preco = session.getProdutoSelecionado().getPreco();
-        String precoEditavel = preco.toString();
+        Double carregarPreco = session.getProdutoSelecionado().getPreco();
+        String precoEditavel = carregarPreco.toString();
         setnome.setText(session.getProdutoSelecionado().getNome());
         setdescricao.setText(session.getProdutoSelecionado().getDescricao());
         setpreco.setText(precoEditavel);
@@ -245,7 +243,7 @@ public class CadastroProdutosActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
+    public final void onBackPressed() {
         Intent voltarLista = new Intent(CadastroProdutosActivity.this, ListaProdutosActivity.class);
         startActivity(voltarLista);
         finish();
@@ -257,7 +255,7 @@ public class CadastroProdutosActivity extends AppCompatActivity {
         return Validacao.verificaVaziosProduto(nome, descricao,this,setnome,setdescricao);
     }
 
-    public void changeToImagens(View view) {
+    public final void mudaListaImagens(View view) {
         Intent voltarMenu = new Intent(CadastroProdutosActivity.this, ListaImagens.class);
         startActivity(voltarMenu);
         finish();

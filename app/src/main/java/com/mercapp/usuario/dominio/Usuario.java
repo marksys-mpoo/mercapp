@@ -6,18 +6,18 @@ public class Usuario {
     private String email;
     private String senha;
 
-    public String getEmail(){return email;}
+    public  final String getEmail(){return email;}
 
-    public void setEmail(String email){this.email = email;}
-    public String getSenha() {
+    public final  void setEmail(String emails){this.email = emails;}
+    public final  String getSenha() {
         return senha;
     }
 
-    public void setSenha(String senha){
-        this.senha = senha;
+    public  final void setSenha(String senhas){
+        this.senha = senhas;
     }
-    public int getId() {return id;}
+    public  final int getId() {return id;}
 
-    public void setId(int id) {this.id = id;}
+    public  final void setId(int ids) {this.id = ids;}
 
 }

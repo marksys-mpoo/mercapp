@@ -11,18 +11,15 @@ import com.mercapp.usuario.dominio.Usuario;
 
 public class UsuarioPersistencia {
 
-    private Context context;
 
     private BDHelper bdHelper;
 
 
-    public UsuarioPersistencia(Context context)
-    {
-        this.context = context;
-        bdHelper= new BDHelper(this.context);
+    public UsuarioPersistencia(Context context) {
+        bdHelper= new BDHelper(context);
     }
 
-    public void cadastrar(Usuario usuario){
+    public  final void cadastrar(Usuario usuario){
         SQLiteDatabase db = bdHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -33,7 +30,7 @@ public class UsuarioPersistencia {
         db.close();
     }
 
-    public Usuario buscar(String email, String senha){
+    public final  Usuario buscar(String email, String senha){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
 
         Usuario usuario = null;
@@ -50,7 +47,7 @@ public class UsuarioPersistencia {
         return usuario;
     }
 
-    public Usuario buscar(String email){
+    public  final Usuario buscar(String email){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
 
         Usuario usuario = null;

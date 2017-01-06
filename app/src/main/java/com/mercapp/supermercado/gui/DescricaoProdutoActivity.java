@@ -20,40 +20,40 @@ public class DescricaoProdutoActivity extends AppCompatActivity {
     private Button mais;
     private TextView quantidadeProduto;
 
-    public Session getSession() {
+    public final Session getSession() {
         return session;
     }
 
-    public TextView getQuantidadeProduto() {
+    public final TextView getQuantidadeProduto() {
         return quantidadeProduto;
     }
 
-    public void setQuantidadeProduto(TextView quantidadeProduto) {
-        this.quantidadeProduto = quantidadeProduto;
+    public final void setQuantidadeProduto(TextView quantidadeProdutox) {
+        this.quantidadeProduto = quantidadeProdutox;
     }
 
-    public Button getMais() {
+    public final Button getMais() {
         return mais;
     }
 
-    public void setMais(Button mais) {
-        this.mais = mais;
+    public final void setMais(Button maisx) {
+        this.mais = maisx;
     }
 
-    public Button getMenos() {
+    public final Button getMenos() {
         return menos;
     }
 
-    public void setMenos(Button menos) {
-        this.menos = menos;
+    public final void setMenos(Button menosx) {
+        this.menos = menosx;
     }
 
-    public Produto getProduto() {
+    public final Produto getProduto() {
         return produto;
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected final void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_descricao_produto);
 
@@ -98,7 +98,7 @@ public class DescricaoProdutoActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
+    public final void onBackPressed() {
         Intent voltarTela = new Intent(getApplication(), ListaProdutosDoSupermercadoActivity.class);
         startActivity(voltarTela);
         finish();

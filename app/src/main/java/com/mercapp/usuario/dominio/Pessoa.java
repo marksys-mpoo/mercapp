@@ -9,51 +9,51 @@ public class Pessoa {
     private Usuario usuario;
     private Endereco endereco;
 
-    public int getId() {
+    public final  int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public final  void setId(int ids) {
+        this.id = ids;
     }
 
-    public String getNome() {
+    public  final String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public final  void setNome(String nomes) {
+        this.nome = nomes;
     }
 
-    public String getTelefone() {
+    public  final String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public final  void setTelefone(String telefones) {
+        this.telefone = telefones;
     }
 
-    public String getNumeroCartao() {
+    public final  String getNumeroCartao() {
         return numeroCartao;
     }
 
-    public void setNumeroCartao(String numeroCartao) {
-        this.numeroCartao = numeroCartao;
+    public  final void setNumeroCartao(String numeroCartoes) {
+        this.numeroCartao = numeroCartoes;
     }
 
-    public Endereco getEndereco() {
+    public final Endereco getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public  final void setEndereco(Endereco enderecos) {
+        this.endereco = enderecos;
     }
 
-    public Usuario getUsuario() {
+    public  final Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public  final void setUsuario(Usuario usuarios) {
+        this.usuario = usuarios;
     }
 }

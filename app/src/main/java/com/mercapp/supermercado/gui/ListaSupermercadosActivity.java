@@ -30,46 +30,46 @@ public class ListaSupermercadosActivity extends AppCompatActivity {
     private SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(context);
     private SearchView searchView;
 
-    public Session getSession() {
+    public  final Session getSession() {
         return session;
     }
 
-    public SearchView getSearchView() {
+    public final  SearchView getSearchView() {
         return searchView;
     }
 
-    public void setSearchView(SearchView searchView) {
-        this.searchView = searchView;
+    public  final void setSearchView(SearchView searchViews) {
+        this.searchView = searchViews;
     }
 
-    public SupermercadoNegocio getSupermercadoNegocio() {
+    public  final SupermercadoNegocio getSupermercadoNegocio() {
         return supermercadoNegocio;
     }
 
 
-    public SupermercadoListAdapter getDataAdapter() {
+    public final  SupermercadoListAdapter getDataAdapter() {
         return dataAdapter;
     }
 
-    public void setDataAdapter(SupermercadoListAdapter dataAdapter) {
-        this.dataAdapter = dataAdapter;
+    public final  void setDataAdapter(SupermercadoListAdapter dataAdapters) {
+        this.dataAdapter = dataAdapters;
     }
 
-    public Context getContext() {
+    public final  Context getContext() {
         return context;
     }
 
-    public ListView getLista() {
+    public  final ListView getLista() {
         return lista;
     }
 
-    public void setLista(ListView lista) {
-        this.lista = lista;
+    public  final void setLista(ListView listas) {
+        this.lista = listas;
     }
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected  final void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_supermercados);
@@ -124,13 +124,13 @@ public class ListaSupermercadosActivity extends AppCompatActivity {
         });
     }
 
-    public void changeTelaListaSupermercadosToTelaAdmimistrador(View view) {
+    public  final void voltarAdministrador(View view) {
         Intent voltarAdm = new Intent(ListaSupermercadosActivity.this, Administrador.class);
         startActivity(voltarAdm);
         finish();
     }
 
-    public void changeScreenListaToCadastroSupermercados(View view) { // Botao (+)
+    public final  void voltarCadastroSupermercado(View view) { // Botao (+)
         Intent addSupermercado = new Intent(ListaSupermercadosActivity.this, CadastroSupermercadosActivity.class);
         getSession().setSupermercadoSelecionado(null);
         addSupermercado.putExtra("CoordLat",0);
@@ -140,7 +140,7 @@ public class ListaSupermercadosActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
+    public final  void onBackPressed() {
         Intent voltarMenu = new Intent(ListaSupermercadosActivity.this, Administrador.class);
         startActivity(voltarMenu);
         finish();

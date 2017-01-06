@@ -17,9 +17,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.mercapp.R;
 import com.mercapp.infra.Administrador;
 import com.mercapp.infra.Session;
@@ -34,7 +31,7 @@ public class TelaMenuActivity extends AppCompatActivity
     private Session session = Session.getInstanciaSessao();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected final  void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -52,7 +49,7 @@ public class TelaMenuActivity extends AppCompatActivity
     }
 
     private void abrirMapaFragments() {
-        GoogleApiClient client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+//        GoogleApiClient client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.add(id.container, new MapaFragments(), "Mapa");
@@ -74,12 +71,12 @@ public class TelaMenuActivity extends AppCompatActivity
     }
 
     @Override
-    public void onBackPressed() {
+    public final  void onBackPressed() {
         confirmarSaida();
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public  final boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.tela_menu, menu);
         return true;
@@ -89,24 +86,17 @@ public class TelaMenuActivity extends AppCompatActivity
      * **/
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-
+    public final  boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
-
         switch (id) {
-
             case R.id.nav_perfil:
-                Intent perfil = new Intent(TelaMenuActivity.this, CadastroPessoaActivity.class);
-                TelaMenuActivity.this.startActivity(perfil);
-                finish();
+                perfil();
                 break;
             case R.id.nav_historico:
                 aviso();
                 break;
             case R.id.nav_sobre:
-                Intent sobre = new Intent(TelaMenuActivity.this, SobreActivity.class);
-                TelaMenuActivity.this.startActivity(sobre);
-                finish();
+                sobre();
                 break;
             case R.id.nav_carrinho:
                 aviso();
@@ -124,19 +114,43 @@ public class TelaMenuActivity extends AppCompatActivity
                 confirmarSaida();
                 break;
             case R.id.nav_adm:
-                Intent changeToAdm = new Intent(TelaMenuActivity.this, Administrador.class);
-                TelaMenuActivity.this.startActivity(changeToAdm);
-                finish();
+                administrador();
                 break;
             case R.id.nav_ajuda:
-                Intent changeToAjuda = new Intent(TelaMenuActivity.this, AjudaActivity.class);
-                TelaMenuActivity.this.startActivity(changeToAjuda);
-                finish();
+                ajuda();
                 break;
         }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        drawer();
         return true;
+    }
+
+    private void perfil() {
+        Intent perfil = new Intent(TelaMenuActivity.this, CadastroPessoaActivity.class);
+        TelaMenuActivity.this.startActivity(perfil);
+        finish();
+    }
+
+    private void sobre() {
+        Intent sobre = new Intent(TelaMenuActivity.this, SobreActivity.class);
+        TelaMenuActivity.this.startActivity(sobre);
+        finish();
+    }
+
+    private void administrador() {
+        Intent changeToAdm = new Intent(TelaMenuActivity.this, Administrador.class);
+        TelaMenuActivity.this.startActivity(changeToAdm);
+        finish();
+    }
+
+    private void ajuda() {
+        Intent changeToAjuda = new Intent(TelaMenuActivity.this, AjudaActivity.class);
+        TelaMenuActivity.this.startActivity(changeToAjuda);
+        finish();
+    }
+
+    private void drawer() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
     }
 
     private void aviso() {

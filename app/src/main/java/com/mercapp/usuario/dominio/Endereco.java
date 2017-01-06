@@ -11,58 +11,58 @@ public class Endereco {
     private String uf;
     private String cep;
 
-    public String getId() {
+    public final String getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public final void setId(String ider) {
+        this.id = ider;
     }
-    public String getRua() {
+    public  final String getRua() {
         return rua;
     }
 
-    public void setRua(String rua) {
-        this.rua = rua;
+    public final void setRua(String ruas) {
+        this.rua = ruas;
     }
 
-    public String getUf() {
+    public final String getUf() {
         return uf;
     }
 
-    public void setUf(String uf) {
-        this.uf = uf;
+    public final void setUf(String ufs) {
+        this.uf = ufs;
     }
 
-    public String getNumero() {
+    public final String getNumero() {
         return numero;
     }
 
-    public void setNumero(String numero) {
-        this.numero = numero;
+    public final  void setNumero(String numeros) {
+        this.numero = numeros;
     }
 
-    public String getBairro() {
+    public final  String getBairro() {
         return bairro;
     }
 
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
+    public final void setBairro(String bairros) {
+        this.bairro = bairros;
     }
 
-    public String getCep() {
+    public final  String getCep() {
         return cep;
     }
 
-    public void setCep(String cep) {
-        this.cep = cep;
+    public final  void setCep(String ceps) {
+        this.cep = ceps;
     }
 
-    public String getCidade() {
+    public  final String getCidade() {
         return cidade;
     }
 
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
+    public  final void setCidades(String cidades) {
+        this.cidade = cidades;
     }
 }

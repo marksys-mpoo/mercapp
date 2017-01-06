@@ -15,18 +15,18 @@ public class SupermercadoNegocio {
     private Context context;
     private Session sessao = Session.getInstanciaSessao();
 
-    public SupermercadoNegocio(Context context)
+    public SupermercadoNegocio(Context contexto)
     {
-        this.context = context;
+        this.context = contexto;
     }
     
-    public Supermercado buscaSupermercado(String nome) {
+    public final  Supermercado buscaSupermercado(String nome) {
         SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(context);
         return supermercadoPersistencia.buscar(nome);
     }
 
 
-    public void cadastrar(String nome, String telefone, LatLng coordenadas){
+    public  final void cadastrar(String nome, String telefone, LatLng coordenadas){
         Supermercado supermercadoCadastro = new Supermercado();
         supermercadoCadastro.setNome(nome);
         supermercadoCadastro.setTelefone(telefone);
@@ -36,43 +36,43 @@ public class SupermercadoNegocio {
     }
 
 
-    public void editar(Supermercado supermercado){
+    public  final void editar(Supermercado supermercado){
         SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(context);
         supermercadoPersistencia.editar(supermercado);
     }
 
-    public List<Supermercado> listar(){
+    public  final List<Supermercado> listar(){
         SupermercadoPersistencia consulta = new SupermercadoPersistencia(context);
         return consulta.listar();
     }
 
-    public List<Supermercado> listar(String inputText){
+    public  final List<Supermercado> listar(String inputText){
         SupermercadoPersistencia listagem = new SupermercadoPersistencia(context);
         return listagem.listar(inputText);
     }
 
-    public List<String> listaNomeSupermercado(){
+    public  final List<String> listaNomeSupermercado(){
         SupermercadoPersistencia listagem = new SupermercadoPersistencia(context);
         return listagem.listaSupermercado();
     }
 
-    public void iniciarSessaoSupermercado(Supermercado supermercado){
+    public  final void iniciarSessaoSupermercado(Supermercado supermercado){
         sessao.setSupermercadoSelecionado(supermercado);
     }
 
-    public void iniciarSessaoFuncaoCrud(String funcao){
+    public final  void iniciarSessaoFuncaoCrud(String funcao){
         sessao.setFuncaoCrudSupermercado(funcao);
     }
 
-    public void iniciarSessaotextButaoFuncaoCrud(String text){
+    public  final void iniciarSessaotextButaoFuncaoCrud(String text){
         sessao.setTextButaoFuncaoSupermercado(text);
     }
 
-    public void iniciarSessaoProduto(String departamento){
+    public  final void iniciarSessaoProduto(String departamento){
         sessao.setDepartamentoSelecionado(departamento);
     }
 
-    public void deletar(Supermercado supermercado){
+    public final  void deletar(Supermercado supermercado){
         SupermercadoPersistencia supermercadoPersistencia = new SupermercadoPersistencia(context);
         supermercadoPersistencia.deletar(supermercado);
     }

@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/botao_produtos_tela_supermercado"
-        android:onClick="tela_de_produtos"
+        android:onClick="telaProdutos"
         android:id="@+id/button2"
         android:layout_alignParentBottom="true" />
 
