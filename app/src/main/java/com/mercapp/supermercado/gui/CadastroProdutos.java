@@ -23,10 +23,10 @@ import com.mercapp.usuario.negocio.Validacao;
 
 import java.util.List;
 
-public class CadastroProdutosActivity extends AppCompatActivity {
+public class CadastroProdutos extends AppCompatActivity {
 
     private String nomeSpinnerSupermercado, nomeSpinnerImagem;
-    private Context context = CadastroProdutosActivity.this;
+    private Context context = CadastroProdutos.this;
     private Spinner spinnerSupermercado, spinnerImagens, spinnerDepartamento;
     private SupermercadoNegocio supermercadoNegocio;
     private EditText setdescricao, setpreco,setnome;
@@ -155,9 +155,9 @@ public class CadastroProdutosActivity extends AppCompatActivity {
                     Produto produto = criarProduto(nome, imagem, descricao, preco, supermercado, posicaoSpinnerDepartamento, posicaoSpinnerSupermercado, posicaoSpinnerImagem);
                     produtoNegocio.cadastrar(produto);
                 }
-                Intent changeToListaProdutos = new Intent(CadastroProdutosActivity.this, ListaProdutosActivity.class);
+                Intent changeToListaProdutos = new Intent(CadastroProdutos.this, ListaProdutos.class);
                 session.setProdutoSelecionado(null);
-                CadastroProdutosActivity.this.startActivity(changeToListaProdutos);
+                CadastroProdutos.this.startActivity(changeToListaProdutos);
                 finish();
             }else {
                 criarAlertDialog();
@@ -228,8 +228,8 @@ public class CadastroProdutosActivity extends AppCompatActivity {
     }
 
     private void chamarCadastroSupermercado(){
-        Intent intent  = new Intent(this, ListaSupermercadosActivity.class);
-        CadastroProdutosActivity.this.startActivity(intent);
+        Intent intent  = new Intent(this, ListaSupermercados.class);
+        CadastroProdutos.this.startActivity(intent);
         finish();
     }
 
@@ -245,7 +245,7 @@ public class CadastroProdutosActivity extends AppCompatActivity {
 
     @Override
     public final void onBackPressed() {
-        Intent voltarLista = new Intent(CadastroProdutosActivity.this, ListaProdutosActivity.class);
+        Intent voltarLista = new Intent(CadastroProdutos.this, ListaProdutos.class);
         startActivity(voltarLista);
         finish();
     }
@@ -257,7 +257,7 @@ public class CadastroProdutosActivity extends AppCompatActivity {
     }
 
     public final void mudaListaImagens(View view) {
-        Intent voltarMenu = new Intent(CadastroProdutosActivity.this, ListaImagens.class);
+        Intent voltarMenu = new Intent(CadastroProdutos.this, ListaImagens.class);
         startActivity(voltarMenu);
         finish();
     }

@@ -20,17 +20,17 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.mercapp.R;
 import com.mercapp.supermercado.dominio.Supermercado;
-import com.mercapp.supermercado.gui.CadastroSupermercadosActivity;
+import com.mercapp.supermercado.gui.CadastroSupermercados;
 import com.mercapp.supermercado.negocio.SupermercadoNegocio;
 
 import java.util.Iterator;
 import java.util.List;
 
-public class MapaFragments extends SupportMapFragment implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener, GoogleMap.OnMapClickListener,
+public class Mapa extends SupportMapFragment implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener, GoogleMap.OnMapClickListener,
         android.location.LocationListener {
 
     private Context context = null;
-    private static  final String TAG = "MapaFragments";
+    private static  final String TAG = "Mapa";
     private GoogleMap mMap;
     private LocationManager locationManager;
 
@@ -204,7 +204,7 @@ public class MapaFragments extends SupportMapFragment implements OnMapReadyCallb
     @Override
     public final  void onMapLongClick(LatLng latLng) {
         Toast.makeText(getActivity(), "Coordenadas registradas!", Toast.LENGTH_LONG).show();
-        Intent cadastrar = new Intent(getActivity(), CadastroSupermercadosActivity.class);
+        Intent cadastrar = new Intent(getActivity(), CadastroSupermercados.class);
         cadastrar.putExtra("CoordLat",latLng.latitude);
         cadastrar.putExtra("CoordLong",latLng.longitude);
         startActivity(cadastrar);

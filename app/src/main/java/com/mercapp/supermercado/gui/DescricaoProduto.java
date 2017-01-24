@@ -12,7 +12,7 @@ import com.mercapp.R;
 import com.mercapp.infra.Session;
 import com.mercapp.supermercado.dominio.Produto;
 
-public class DescricaoProdutoActivity extends AppCompatActivity {
+public class DescricaoProduto extends AppCompatActivity {
 
     private Session session = Session.getInstanciaSessao();
     private Produto produto = session.getProdutoSelecionado();
@@ -99,7 +99,7 @@ public class DescricaoProdutoActivity extends AppCompatActivity {
 
     @Override
     public final void onBackPressed() {
-        Intent voltarTela = new Intent(getApplication(), ListaProdutosDoSupermercadoActivity.class);
+        Intent voltarTela = new Intent(getApplication(), ListaProdutosDoSupermercado.class);
         startActivity(voltarTela);
         finish();
     }

@@ -16,10 +16,10 @@ import com.mercapp.supermercado.negocio.ProdutoNegocio;
 
 import java.util.List;
 
-public class ListaProdutosDoSupermercadoActivity extends AppCompatActivity {
+public class ListaProdutosDoSupermercado extends AppCompatActivity {
 
     private ListView lista;
-    private Context context = ListaProdutosDoSupermercadoActivity.this;
+    private Context context = ListaProdutosDoSupermercado.this;
     private Session session = Session.getInstanciaSessao();
     private String departamentoSelecionado;
 
@@ -47,7 +47,7 @@ public class ListaProdutosDoSupermercadoActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> listView, View view, int position, long id) {
                 Produto produto = (Produto) listView.getItemAtPosition(position);
                 session.setProdutoSelecionado(produto);
-                Intent editarProdudo = new Intent(ListaProdutosDoSupermercadoActivity.this, DescricaoProdutoActivity.class);
+                Intent editarProdudo = new Intent(ListaProdutosDoSupermercado.this, DescricaoProduto.class);
                 startActivity(editarProdudo);
                 finish();
                 }
@@ -98,7 +98,7 @@ public class ListaProdutosDoSupermercadoActivity extends AppCompatActivity {
 
     @Override
     public final  void onBackPressed() {
-        Intent voltarTelaSupermercado = new Intent(ListaProdutosDoSupermercadoActivity.this, TelaSupermercadoActivity.class);
+        Intent voltarTelaSupermercado = new Intent(ListaProdutosDoSupermercado.this, TelaSupermercado.class);
         startActivity(voltarTelaSupermercado);
         finish();
     }

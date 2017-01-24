@@ -21,11 +21,11 @@ import com.mercapp.supermercado.negocio.SupermercadoNegocio;
 
 import java.util.List;
 
-public class ListaSupermercadosActivity extends AppCompatActivity {
+public class ListaSupermercados extends AppCompatActivity {
 
     private Session session = Session.getInstanciaSessao();
     private ListView lista;
-    private Context context = ListaSupermercadosActivity.this;
+    private Context context = ListaSupermercados.this;
     private SupermercadoListAdapter dataAdapter;
     private SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(context);
     private SearchView searchView;
@@ -88,7 +88,7 @@ public class ListaSupermercadosActivity extends AppCompatActivity {
                 Supermercado supermercado = (Supermercado) listView.getItemAtPosition(position);
                 if (supermercado != null) {
                     getSession().setSupermercadoSelecionado(supermercado);
-                    Intent editarSupermercado = new Intent(ListaSupermercadosActivity.this, CadastroSupermercadosActivity.class);
+                    Intent editarSupermercado = new Intent(ListaSupermercados.this, CadastroSupermercados.class);
                     editarSupermercado.putExtra("CoordLat",0);
                     editarSupermercado.putExtra("CoordLong",0);
                     startActivity(editarSupermercado);
@@ -125,13 +125,13 @@ public class ListaSupermercadosActivity extends AppCompatActivity {
     }
 
     public  final void voltarAdministrador(View view) {
-        Intent voltarAdm = new Intent(ListaSupermercadosActivity.this, Administrador.class);
+        Intent voltarAdm = new Intent(ListaSupermercados.this, Administrador.class);
         startActivity(voltarAdm);
         finish();
     }
 
     public final  void voltarCadastroSupermercado(View view) { // Botao (+)
-        Intent addSupermercado = new Intent(ListaSupermercadosActivity.this, CadastroSupermercadosActivity.class);
+        Intent addSupermercado = new Intent(ListaSupermercados.this, CadastroSupermercados.class);
         getSession().setSupermercadoSelecionado(null);
         addSupermercado.putExtra("CoordLat",0);
         addSupermercado.putExtra("CoordLong",0);
@@ -141,7 +141,7 @@ public class ListaSupermercadosActivity extends AppCompatActivity {
 
     @Override
     public final  void onBackPressed() {
-        Intent voltarMenu = new Intent(ListaSupermercadosActivity.this, Administrador.class);
+        Intent voltarMenu = new Intent(ListaSupermercados.this, Administrador.class);
         startActivity(voltarMenu);
         finish();
     }
@@ -153,7 +153,7 @@ public class ListaSupermercadosActivity extends AppCompatActivity {
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
                 getSupermercadoNegocio().deletar(supermercado);
-                Toast.makeText(ListaSupermercadosActivity.this, "Supermercado " + supermercado.getNome() + " deletado.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ListaSupermercados.this, "Supermercado " + supermercado.getNome() + " deletado.", Toast.LENGTH_SHORT).show();
                 getDataAdapter().remove(getDataAdapter().getItem(position));
                 getDataAdapter().notifyDataSetChanged();
                 getSession().setSupermercadoSelecionado(null);

@@ -20,10 +20,10 @@ import com.mercapp.supermercado.negocio.ProdutoNegocio;
 
 import java.util.List;
 
-public class ListaProdutosActivity extends AppCompatActivity {
+public class ListaProdutos extends AppCompatActivity {
 
     private ListView lista;
-    private Context context = ListaProdutosActivity.this;
+    private Context context = ListaProdutos.this;
     private ProdutoListAdapter dataAdapter;
     private Session session = Session.getInstanciaSessao();
     private ProdutoNegocio produtoNegocio = new ProdutoNegocio(context);
@@ -93,7 +93,7 @@ public class ListaProdutosActivity extends AppCompatActivity {
                 Produto produto = (Produto) listView.getItemAtPosition(position);
                 if (produto != null) {
                     getSession().setProdutoSelecionado(produto);
-                    Intent editarProdudo = new Intent(getContext(), CadastroProdutosActivity.class);
+                    Intent editarProdudo = new Intent(getContext(), CadastroProdutos.class);
                     startActivity(editarProdudo);
                     finish();
                 }
@@ -139,7 +139,7 @@ public class ListaProdutosActivity extends AppCompatActivity {
     public final  void adcionarProduto(View view) {
         // Adiconar novos Produtos.
         getSession().setProdutoSelecionado(null);
-        Intent cadastrarProdutos = new Intent(getContext(), CadastroProdutosActivity.class);
+        Intent cadastrarProdutos = new Intent(getContext(), CadastroProdutos.class);
         startActivity(cadastrarProdutos);
         finish();
     }

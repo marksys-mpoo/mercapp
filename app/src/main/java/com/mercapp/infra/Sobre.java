@@ -6,9 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
 
 import com.mercapp.R;
-import com.mercapp.usuario.gui.TelaMenuActivity;
+import com.mercapp.usuario.gui.TelaMenu;
 
-public class SobreActivity extends AppCompatActivity {
+public class Sobre extends AppCompatActivity {
 
     private String descricaoTelaSobre = "O projeto MercApp  tem como objetivo permitir que " +
             "o cliente realize suas compras em poucos minutos pelo seu Smartphone." +
@@ -26,7 +26,7 @@ public class SobreActivity extends AppCompatActivity {
 
     @Override
     public final  void onBackPressed() {
-        Intent voltarMenu = new Intent(this, TelaMenuActivity.class);
+        Intent voltarMenu = new Intent(this, TelaMenu.class);
         startActivity(voltarMenu);
         finish();
     }

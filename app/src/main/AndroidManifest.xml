@@ -22,7 +22,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".usuario.gui.TelaMenuActivity"
+            android:name=".usuario.gui.TelaMenu"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -40,7 +40,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".usuario.gui.SplashActivity"
+            android:name=".usuario.gui.Splash"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -49,20 +49,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".usuario.gui.CadastroActivity"
+            android:name=".usuario.gui.Cadastro"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".supermercado.gui.TelaSupermercadoActivity"
+            android:name=".supermercado.gui.TelaSupermercado"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".usuario.gui.TelaMenuActivity"
+            android:name=".usuario.gui.TelaMenu"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".usuario.gui.LoginActivity"
+            android:name=".usuario.gui.Login"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".supermercado.gui.CadastroSupermercadosActivity"
+            android:name=".supermercado.gui.CadastroSupermercados"
             android:screenOrientation="portrait" />
 
         <!--
@@ -85,19 +85,19 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".usuario.gui.CadastroPessoaActivity" />
-        <activity android:name=".supermercado.gui.ListaSupermercadosActivity" />
-        <activity android:name=".supermercado.gui.ListaProdutosActivity" />
-        <activity android:name=".supermercado.gui.CadastroProdutosActivity" />
-        <activity android:name=".supermercado.gui.ListaProdutosDoSupermercadoActivity" />
-        <activity android:name=".infra.SobreActivity" />
+        <activity android:name=".usuario.gui.CadastroPessoa" />
+        <activity android:name=".supermercado.gui.ListaSupermercados" />
+        <activity android:name=".supermercado.gui.ListaProdutos" />
+        <activity android:name=".supermercado.gui.CadastroProdutos" />
+        <activity android:name=".supermercado.gui.ListaProdutosDoSupermercado" />
+        <activity android:name=".infra.Sobre" />
         <activity android:name=".infra.Administrador" />
-        <activity android:name=".usuario.gui.RecuperarSenhaActivity" />
+        <activity android:name=".usuario.gui.RecuperarSenha" />
         <activity android:name=".supermercado.gui.ListaImagens" />
         <activity android:name=".supermercado.gui.ImagemListAdapter" />
-        <activity android:name=".usuario.gui.AjudaActivity" />
-        <activity android:name=".supermercado.gui.OfertasActivity" />
-        <activity android:name=".supermercado.gui.DescricaoProdutoActivity"></activity>
+        <activity android:name=".usuario.gui.Ajuda" />
+        <activity android:name=".supermercado.gui.Ofertas" />
+        <activity android:name=".supermercado.gui.DescricaoProduto"></activity>
     </application>
 
 </manifest>

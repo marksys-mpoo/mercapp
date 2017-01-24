@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -14,10 +13,10 @@ import com.mercapp.usuario.dominio.Usuario;
 import com.mercapp.usuario.negocio.UsuarioNegocio;
 import com.mercapp.usuario.negocio.Validacao;
 
-public class CadastroActivity extends AppCompatActivity {
+public class Cadastro extends AppCompatActivity {
 
     private EditText etEmail, etSenha, etConfirmar;
-    private Context context = CadastroActivity.this;
+    private Context context = Cadastro.this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +48,7 @@ public class CadastroActivity extends AppCompatActivity {
     }
 
     public void voltarLogin(View view) {
-        Intent voltarlogin = new Intent(this, LoginActivity.class);
+        Intent voltarlogin = new Intent(this, Login.class);
         startActivity(voltarlogin);
         finish();
     }

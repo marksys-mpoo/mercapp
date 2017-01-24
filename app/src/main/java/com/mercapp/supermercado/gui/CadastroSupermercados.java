@@ -13,12 +13,12 @@ import com.mercapp.R;
 import com.mercapp.infra.Session;
 import com.mercapp.supermercado.negocio.SupermercadoNegocio;
 import com.mercapp.usuario.gui.Mascara;
-import com.mercapp.usuario.gui.TelaMenuActivity;
+import com.mercapp.usuario.gui.TelaMenu;
 import com.mercapp.usuario.negocio.Validacao;
 
-public class CadastroSupermercadosActivity extends AppCompatActivity {
+public class CadastroSupermercados extends AppCompatActivity {
 
-    private Context context = CadastroSupermercadosActivity.this;
+    private Context context = CadastroSupermercados.this;
     private Session session = Session.getInstanciaSessao();
     private SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(context);
     private EditText etSupermercadoNome, etSupermercadoTelefone, etLogintude, etLatitude;
@@ -85,8 +85,8 @@ public class CadastroSupermercadosActivity extends AppCompatActivity {
             } else {
                 supermercadoNegocio.cadastrar(nome, telefone, latLng);
             }
-            Intent changeToListaSupermercado = new Intent(CadastroSupermercadosActivity.this, ListaSupermercadosActivity.class);
-            CadastroSupermercadosActivity.this.startActivity(changeToListaSupermercado);
+            Intent changeToListaSupermercado = new Intent(CadastroSupermercados.this, ListaSupermercados.class);
+            CadastroSupermercados.this.startActivity(changeToListaSupermercado);
             finish();
         }
     }
@@ -103,14 +103,14 @@ public class CadastroSupermercadosActivity extends AppCompatActivity {
     }
 
     public final void voltarMapa(View view) {
-        Intent addCoordenadas = new Intent(CadastroSupermercadosActivity.this, TelaMenuActivity.class);
+        Intent addCoordenadas = new Intent(CadastroSupermercados.this, TelaMenu.class);
         startActivity(addCoordenadas);
         finish();
     }
 
     @Override
     public final void onBackPressed() {
-        Intent voltarMenu = new Intent(CadastroSupermercadosActivity.this, ListaSupermercadosActivity.class);
+        Intent voltarMenu = new Intent(CadastroSupermercados.this, ListaSupermercados.class);
         startActivity(voltarMenu);
         finish();
     }

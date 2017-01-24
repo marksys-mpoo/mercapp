@@ -27,7 +27,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-public class RecuperarSenhaActivity extends AppCompatActivity implements View.OnClickListener {
+public class RecuperarSenha extends AppCompatActivity implements View.OnClickListener {
 
     private EditText email;
     private Session session;
@@ -152,7 +152,7 @@ public class RecuperarSenhaActivity extends AppCompatActivity implements View.On
     }
     @Override
     public  final void onBackPressed() {
-        Intent voltarLogin = new Intent(getApplication(), LoginActivity.class);
+        Intent voltarLogin = new Intent(getApplication(), Login.class);
         startActivity(voltarLogin);
         finish();
     }

@@ -10,9 +10,9 @@ import android.widget.TextView;
 import com.mercapp.R;
 import com.mercapp.infra.Session;
 import com.mercapp.supermercado.negocio.SupermercadoNegocio;
-import com.mercapp.usuario.gui.TelaMenuActivity;
+import com.mercapp.usuario.gui.TelaMenu;
 
-public class TelaSupermercadoActivity extends AppCompatActivity {
+public class TelaSupermercado extends AppCompatActivity {
 
     private Session session = Session.getInstanciaSessao();
     private Context context = null;
@@ -74,13 +74,13 @@ public class TelaSupermercadoActivity extends AppCompatActivity {
     public final  void selecionarDepartamento(String departamentoSelecionado) {
         SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(context);
         supermercadoNegocio.iniciarSessaoProduto(departamentoSelecionado);
-        Intent voltarMenu = new Intent(TelaSupermercadoActivity.this, ListaProdutosDoSupermercadoActivity.class);
+        Intent voltarMenu = new Intent(TelaSupermercado.this, ListaProdutosDoSupermercado.class);
         startActivity(voltarMenu);
         finish();
     }
 
     public final  void ofertas(View view){
-        Intent irOfertas = new Intent(TelaSupermercadoActivity.this, OfertasActivity.class);
+        Intent irOfertas = new Intent(TelaSupermercado.this, Ofertas.class);
         startActivity(irOfertas);
         finish();
     }
@@ -88,7 +88,7 @@ public class TelaSupermercadoActivity extends AppCompatActivity {
     @Override
     public final  void onBackPressed() {
         session.setSupermercadoSelecionado(null);
-        Intent voltarTelaMenuMapa = new Intent(TelaSupermercadoActivity.this, TelaMenuActivity.class);
+        Intent voltarTelaMenuMapa = new Intent(TelaSupermercado.this, TelaMenu.class);
         startActivity(voltarTelaMenuMapa);
         finish();
     }

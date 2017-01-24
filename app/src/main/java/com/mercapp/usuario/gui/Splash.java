@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.widget.ProgressBar;
 import com.mercapp.R;
 
-public class SplashActivity extends AppCompatActivity {
+public class Splash extends AppCompatActivity {
     private static final int TEMPO_SPLASH = 1000;
     private final int[] tempPassado = {0};
     private boolean mbActive;
@@ -61,7 +61,7 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void chamarLogin() {
-        Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+        Intent intent = new Intent(Splash.this, Login.class);
         startActivity(intent);
         finish();
     }

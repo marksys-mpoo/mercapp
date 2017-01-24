@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.mercapp.R;
 
-public class AjudaActivity extends AppCompatActivity {
+public class Ajuda extends AppCompatActivity {
 
     @Override
     protected final void onCreate(Bundle savedInstanceState) {
@@ -16,7 +16,7 @@ public class AjudaActivity extends AppCompatActivity {
 
     @Override
     public final void onBackPressed() {
-        Intent voltarMenu = new Intent(this, TelaMenuActivity.class);
+        Intent voltarMenu = new Intent(this, TelaMenu.class);
         startActivity(voltarMenu);
         finish();
     }

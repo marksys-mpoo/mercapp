@@ -7,7 +7,7 @@ import android.view.View;
 
 import com.mercapp.R;
 
-public class OfertasActivity extends AppCompatActivity {
+public class Ofertas extends AppCompatActivity {
 
     @Override
     protected  final  void onCreate(Bundle savedInstanceState) {
@@ -18,13 +18,13 @@ public class OfertasActivity extends AppCompatActivity {
 
     @Override
     public  final  void onBackPressed(){
-        Intent voltar = new Intent(OfertasActivity.this, TelaSupermercadoActivity.class);
+        Intent voltar = new Intent(Ofertas.this, TelaSupermercado.class);
         startActivity(voltar);
         finish();
     }
 
     public  final  void voltar(View view){
-        Intent back = new Intent(OfertasActivity.this, TelaSupermercadoActivity.class);
+        Intent back = new Intent(Ofertas.this, TelaSupermercado.class);
         startActivity(back);
         finish();
     }

@@ -13,11 +13,11 @@ import com.mercapp.usuario.dominio.Pessoa;
 import com.mercapp.usuario.negocio.PessoaNegocio;
 import com.mercapp.usuario.negocio.Validacao;
 
-public class CadastroPessoaActivity extends AppCompatActivity {
+public class CadastroPessoa extends AppCompatActivity {
 
     private EditText etNome, etTelefone, etNumeroCartao;
     private Session session = Session.getInstanciaSessao();
-    private Context context = CadastroPessoaActivity.this;
+    private Context context = CadastroPessoa.this;
     private boolean validaCartao;
 
     @Override
@@ -64,15 +64,15 @@ public class CadastroPessoaActivity extends AppCompatActivity {
                 session.getPessoaLogada().setNumeroCartao(numeroCartao);
                 pessoaNegocio.editar(session.getPessoaLogada());
                 Toast.makeText(this, "Alterações Salvas " + session.getPessoaLogada().getNome(), Toast.LENGTH_SHORT).show();
-                Intent changeToTelaPrincipal = new Intent(CadastroPessoaActivity.this, TelaMenuActivity.class);
-                CadastroPessoaActivity.this.startActivity(changeToTelaPrincipal);
+                Intent changeToTelaPrincipal = new Intent(CadastroPessoa.this, TelaMenu.class);
+                CadastroPessoa.this.startActivity(changeToTelaPrincipal);
                 finish();
             } else {
                 pessoaNegocio.cadastro(nome, telefone, numeroCartao);
                 Pessoa pessoa = pessoaNegocio.buscar(numeroCartao);
                 session.setPessoaLogada(pessoa);
-                Intent changeToTelaPrincipal = new Intent(CadastroPessoaActivity.this, TelaMenuActivity.class);
-                CadastroPessoaActivity.this.startActivity(changeToTelaPrincipal);
+                Intent changeToTelaPrincipal = new Intent(CadastroPessoa.this, TelaMenu.class);
+                CadastroPessoa.this.startActivity(changeToTelaPrincipal);
                 Toast.makeText(this, "Bem-Vindo - " + nome + "\nCompre com o seu cartão." + Validacao.getCardName(Validacao.getCardID(numeroCartao)), Toast.LENGTH_SHORT).show();
                 finish();
 
@@ -94,7 +94,7 @@ public class CadastroPessoaActivity extends AppCompatActivity {
 
     @Override
     public final void onBackPressed() {
-        Intent voltarMapa = new Intent(getApplication(), TelaMenuActivity.class);
+        Intent voltarMapa = new Intent(getApplication(), TelaMenu.class);
         startActivity(voltarMapa);
         finish();
     }

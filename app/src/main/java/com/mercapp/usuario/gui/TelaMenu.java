@@ -20,12 +20,12 @@ import android.widget.Toast;
 import com.mercapp.R;
 import com.mercapp.infra.Administrador;
 import com.mercapp.infra.Session;
-import com.mercapp.infra.SobreActivity;
-import com.mercapp.usuario.gui.fragments.MapaFragments;
+import com.mercapp.infra.Sobre;
+import com.mercapp.usuario.gui.fragments.Mapa;
 
 import static com.mercapp.R.id;
 
-public class TelaMenuActivity extends AppCompatActivity
+public class TelaMenu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     
     private Session session = Session.getInstanciaSessao();
@@ -52,7 +52,7 @@ public class TelaMenuActivity extends AppCompatActivity
 //        GoogleApiClient client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(id.container, new MapaFragments(), "Mapa");
+        transaction.add(id.container, new Mapa(), "Mapa");
         transaction.commitAllowingStateLoss();
     }
 
@@ -125,26 +125,26 @@ public class TelaMenuActivity extends AppCompatActivity
     }
 
     private void perfil() {
-        Intent perfil = new Intent(TelaMenuActivity.this, CadastroPessoaActivity.class);
-        TelaMenuActivity.this.startActivity(perfil);
+        Intent perfil = new Intent(TelaMenu.this, CadastroPessoa.class);
+        TelaMenu.this.startActivity(perfil);
         finish();
     }
 
     private void sobre() {
-        Intent sobre = new Intent(TelaMenuActivity.this, SobreActivity.class);
-        TelaMenuActivity.this.startActivity(sobre);
+        Intent sobre = new Intent(TelaMenu.this, Sobre.class);
+        TelaMenu.this.startActivity(sobre);
         finish();
     }
 
     private void administrador() {
-        Intent changeToAdm = new Intent(TelaMenuActivity.this, Administrador.class);
-        TelaMenuActivity.this.startActivity(changeToAdm);
+        Intent changeToAdm = new Intent(TelaMenu.this, Administrador.class);
+        TelaMenu.this.startActivity(changeToAdm);
         finish();
     }
 
     private void ajuda() {
-        Intent changeToAjuda = new Intent(TelaMenuActivity.this, AjudaActivity.class);
-        TelaMenuActivity.this.startActivity(changeToAjuda);
+        Intent changeToAjuda = new Intent(TelaMenu.this, Ajuda.class);
+        TelaMenu.this.startActivity(changeToAjuda);
         finish();
     }
 
@@ -166,8 +166,8 @@ public class TelaMenuActivity extends AppCompatActivity
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent logoutapp = new Intent(TelaMenuActivity.this, LoginActivity.class);
-                TelaMenuActivity.this.startActivity(logoutapp);
+                Intent logoutapp = new Intent(TelaMenu.this, Login.class);
+                TelaMenu.this.startActivity(logoutapp);
                 finish();
             }
         });

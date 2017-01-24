@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,12 +17,12 @@ import com.mercapp.usuario.negocio.UsuarioNegocio;
 import com.mercapp.usuario.negocio.Validacao;
 
 
-public class LoginActivity extends AppCompatActivity {
+public class Login extends AppCompatActivity {
 
     private Session session = Session.getInstanciaSessao();
     private EditText etEmail;
     private EditText etSenha;
-    private Context context = LoginActivity.this;
+    private Context context = Login.this;
     private CriptografiaSenha criptografiaSenha;
 
     @Override
@@ -39,8 +38,8 @@ public class LoginActivity extends AppCompatActivity {
         recupSenha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, RecuperarSenhaActivity.class);
-                LoginActivity.this.startActivity(intent);
+                Intent intent = new Intent(Login.this, RecuperarSenha.class);
+                Login.this.startActivity(intent);
                 finish();
             }
         });
@@ -64,13 +63,13 @@ public class LoginActivity extends AppCompatActivity {
                 PessoaNegocio pessoaNegocio = new PessoaNegocio(context);
                 if (pessoaNegocio.buscar(logarTest.getId()) != null) {
                     session.setPessoaLogada(pessoaNegocio.buscar(logarTest.getId()));
-                    Intent changeToTelaPrincipal = new Intent(LoginActivity.this, TelaMenuActivity.class);
-                    LoginActivity.this.startActivity(changeToTelaPrincipal);
+                    Intent changeToTelaPrincipal = new Intent(Login.this, TelaMenu.class);
+                    Login.this.startActivity(changeToTelaPrincipal);
                     Toast.makeText(this, "Bem-Vindo - " + session.getPessoaLogada().getNome(), Toast.LENGTH_SHORT).show();
                     finish();
                 } else{
-                    Intent changeToTelaCadastroPessoa = new Intent(LoginActivity.this,CadastroPessoaActivity.class);
-                    LoginActivity.this.startActivity(changeToTelaCadastroPessoa);
+                    Intent changeToTelaCadastroPessoa = new Intent(Login.this,CadastroPessoa.class);
+                    Login.this.startActivity(changeToTelaCadastroPessoa);
                     finish();
                 }
             } else {
@@ -81,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
     
 
     public void cadastrarUsuario (View view){
-        Intent cadastro = new Intent(LoginActivity.this, CadastroActivity.class);
+        Intent cadastro = new Intent(Login.this, Cadastro.class);
         startActivity(cadastro);
         finish();
     }
