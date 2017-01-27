@@ -74,6 +74,7 @@ public class BDHelper extends SQLiteOpenHelper {
         db.execSQL(SQLScript.getTabelaCarrinho());
         db.execSQL(SQLScript.getTabelaProduto());
         db.execSQL(SQLScript.getTabelaSupermercado());
+        CarregamentoDadosBD.carregaUsuarios(db);
     }
 
     @Override

@@ -34,8 +34,8 @@ public class Login extends AppCompatActivity {
         etSenha = (EditText) findViewById(R.id.etSenha);
         etEmail.requestFocus();
 
-        TextView recupSenha = (TextView) findViewById(R.id.tvRecuperarSenha);
-        recupSenha.setOnClickListener(new View.OnClickListener() {
+        TextView recuperaSenha = (TextView) findViewById(R.id.tvRecuperarSenha);
+        recuperaSenha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Login.this, RecuperarSenha.class);
