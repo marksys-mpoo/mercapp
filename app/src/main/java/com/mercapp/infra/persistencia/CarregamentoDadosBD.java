@@ -138,7 +138,7 @@ public class CarregamentoDadosBD extends AppCompatActivity {
 
     private static void carregarProduto(SQLiteDatabase db, String nome, String descricao, Double preco, String nomeImagem, int idSupermercado, int nDepartamento, int nPosicaoImagemProduto )
     {
-        int codImagem = 9999; // Valor Inicial da variável
+        int codImagem = 9999; //Valor Inicial da variável
         switch (nomeImagem)
         {
             case "img_arroz":
