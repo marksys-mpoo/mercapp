@@ -36,7 +36,7 @@ public class CadastroProdutos extends AppCompatActivity {
     private ProdutoNegocio produtoNegocio = new ProdutoNegocio(context);
     private String[] strProdutosDrawable = {
             "img_arroz",
-            "img_creme_leite",
+            "img_creme_pele",
             "img_leite",
             "img_maca",
             "img_pao",
@@ -73,6 +73,12 @@ public class CadastroProdutos extends AppCompatActivity {
         spinnerDepartamentos();
         if (session.getProdutoSelecionado() != null) {
             carregaDados();
+        }
+        System.out.println( "" );
+        System.out.println( " ========================== Códigos Imagens =========================== " );
+        for (String item : strProdutosDrawable) {
+            int codigoImagem = getResources().getIdentifier(item , "drawable", getPackageName());
+            System.out.println( item + " = " + codigoImagem );
         }
     }
 

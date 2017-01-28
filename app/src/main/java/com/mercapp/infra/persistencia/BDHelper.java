@@ -3,6 +3,7 @@ package com.mercapp.infra.persistencia;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.support.v7.app.AppCompatActivity;
 
 public class BDHelper extends SQLiteOpenHelper {
 
@@ -76,6 +77,7 @@ public class BDHelper extends SQLiteOpenHelper {
         db.execSQL(SQLScript.getTabelaSupermercado());
         CarregamentoDadosBD.carregarUsuariosBD(db);
         CarregamentoDadosBD.carregarSupermercadosBD(db);
+        CarregamentoDadosBD.carregarProdutosBD(db);
     }
 
     @Override
