@@ -5,6 +5,8 @@ import android.content.Context;
 import com.mercapp.usuario.dominio.Usuario;
 import com.mercapp.usuario.persistencia.UsuarioPersistencia;
 
+import java.util.List;
+
 public class UsuarioNegocio {
 
     private Context context;
@@ -24,15 +26,17 @@ public class UsuarioNegocio {
         return usuarioPersistencia.buscar(email);
     }
 
-
     public final  void cadastro(String emailTela, String senhaTela){
-
         Usuario usuarioCadastro = new Usuario();
-
         usuarioCadastro.setEmail(emailTela);
         usuarioCadastro.setSenha(senhaTela);
-
         UsuarioPersistencia usuarioPersistencia = new UsuarioPersistencia(context);
         usuarioPersistencia.cadastrar(usuarioCadastro);
     }
+
+    public final List<Usuario> listarTodosUsuarios(){
+        UsuarioPersistencia consulta = new UsuarioPersistencia(context);
+        return consulta.listarTodosUsuarios();
+    }
+
 }

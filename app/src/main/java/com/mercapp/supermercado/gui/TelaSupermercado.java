@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.mercapp.R;
 import com.mercapp.infra.Session;
+import com.mercapp.recomendacao.gui.SlopeOne;
 import com.mercapp.supermercado.negocio.SupermercadoNegocio;
 import com.mercapp.usuario.gui.TelaMenu;
 
@@ -82,6 +83,12 @@ public class TelaSupermercado extends AppCompatActivity {
     public final  void ofertas(View view){
         Intent irOfertas = new Intent(TelaSupermercado.this, Ofertas.class);
         startActivity(irOfertas);
+        finish();
+    }
+
+    public final  void recomendacoes(View view){
+        Intent irSlopeOne = new Intent(TelaSupermercado.this, SlopeOne.class);
+        startActivity(irSlopeOne);
         finish();
     }
 

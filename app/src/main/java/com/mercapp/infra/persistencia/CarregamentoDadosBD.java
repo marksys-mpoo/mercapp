@@ -6,8 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.mercapp.usuario.gui.CriptografiaSenha;
 
-import junit.framework.Assert;
-
 public class CarregamentoDadosBD extends AppCompatActivity {
 
     private static CriptografiaSenha criptografiaSenha;
@@ -45,6 +43,12 @@ public class CarregamentoDadosBD extends AppCompatActivity {
             BDHelper.COLUNA_POSICAO_SPINNER_IMAGEM_PRODUTO +
             ") VALUES  ";
 
+    private static String inserirRecomendacoesProdutosBD = "INSERT INTO " + BDHelper.TBL_RECOMENDACAO_PRODUTO + " (" +
+            BDHelper.COLUNA_RECOMENDACAO_PRODUTO_ID_PRODUTO +" , " +
+            BDHelper.COLUNA_RECOMENDACAO_PRODUTO_ID_USUARIO +" , " +
+            BDHelper.COLUNA_RECOMENDACAO_PRODUTO_NOTA +
+            ") VALUES  ";
+
     public static void carregarUsuariosBD(SQLiteDatabase db){
         carregarUsuario(db, 1, "jose@com.br", "jose", "José Silva", "12345678", "4139857451257454");
         carregarUsuario(db, 2, "ana@com.br", "ana", "Ana Araújo", "812536547", "4539520003155420");
@@ -65,13 +69,13 @@ public class CarregamentoDadosBD extends AppCompatActivity {
     }
 
     public static void carregarSupermercadosBD(SQLiteDatabase db){
-        carregarSupermercado(db, "Extra-Caxangá", "81456456", -8.031318722762279, -34.95355814695358);
-        carregarSupermercado(db, "Extra-Graças", "81325362", -8.040822755006179, -34.904181361198425);
-        carregarSupermercado(db, "Extra-DoisIrmãos", "813201234", -8.017785683292104, -34.942001178860664);
-        carregarSupermercado(db, "Extra-Várzea", "8132710088", -8.04335807767294, -34.95855409651994);
+        carregarSupermercados(db, "Extra-Caxangá", "81456456", -8.031318722762279, -34.95355814695358);
+        carregarSupermercados(db, "Extra-Graças", "81325362", -8.040822755006179, -34.904181361198425);
+        carregarSupermercados(db, "Extra-DoisIrmãos", "813201234", -8.017785683292104, -34.942001178860664);
+        carregarSupermercados(db, "Extra-Várzea", "8132710088", -8.04335807767294, -34.95855409651994);
     }
 
-    private static void carregarSupermercado(SQLiteDatabase db, String nome, String fone, Double latitude, Double longitude) {
+    private static void carregarSupermercados(SQLiteDatabase db, String nome, String fone, Double latitude, Double longitude) {
         db.execSQL(inserirSupermercadoBD +"('"+nome+"', '"+fone+"',  '"+latitude+"', '"+longitude+"');");
     }
 
@@ -94,17 +98,17 @@ public class CarregamentoDadosBD extends AppCompatActivity {
     nome, descrição, preço, nomeImagem, idSupermercado, nDepartemento, posiçãoImagem
     */
     public static void carregarProdutosBD(SQLiteDatabase db){
-        // Produtos Supermercado1
+        // Produtos Supermercado1 - Extra-Caxangá
         carregarProduto(db, "arroz", "integral", 4.50, "img_arroz", 1, 5, 0);
         carregarProduto(db, "coca-cola", "lata", 3.20, "img_refrigerante", 1, 4, 6);
         carregarProduto(db, "shampoo", "neutro", 8.10, "img_shampoo", 1, 6, 8);
         carregarProduto(db, "sabonete", "líquido", 9.30, "img_sabonete", 1, 6, 7);
         carregarProduto(db, "leite", "garrafa", 3.90, "img_leite", 1, 1, 2);
         carregarProduto(db, "pão", "forma", 4.60, "img_pao", 1, 0, 4);
-        carregarProduto(db, "maçã", "verde", 2.00, "img_maca", 1, 3, 3);
+        /*carregarProduto(db, "maçã", "verde", 2.00, "img_maca", 1, 3, 3);
         carregarProduto(db, "creme", "pele", 5.80, "img_creme_pele", 1, 6, 1);
-        carregarProduto(db, "pizza", "calabresa", 12.99, "img_pizza", 1, 0, 5);
-        // Produtos Supermercado2
+        carregarProduto(db, "pizza", "calabresa", 12.99, "img_pizza", 1, 0, 5);*/
+        // Produtos Supermercado2 - Extra-Graças
         carregarProduto(db, "arroz", "branco", 4.80, "img_arroz", 2, 5, 0);
         carregarProduto(db, "guaraná", "lata", 3.55, "img_refrigerante", 2, 4, 6);
         carregarProduto(db, "shampoo", "neutro", 9.08, "img_shampoo", 2, 6, 8);
@@ -114,7 +118,7 @@ public class CarregamentoDadosBD extends AppCompatActivity {
         carregarProduto(db, "maçã", "nacional", 2.60, "img_maca", 2, 3, 3);
         carregarProduto(db, "creme", "desodorante", 4.90, "img_creme_pele", 2, 6, 1);
         carregarProduto(db, "pizza", "muzzarella", 15.60, "img_pizza", 2, 0, 5);
-        // Produtos Supermercado3
+        // Produtos Supermercado3 - Extra-DoisIrmãos
         carregarProduto(db, "arroz", "parbonizado", 4.20, "img_arroz", 3, 5, 0);
         carregarProduto(db, "soda", "lata", 3.10, "img_refrigerante", 3, 4, 6);
         carregarProduto(db, "shampoo", "condicionador", 8.00, "img_shampoo", 3, 6, 8);
@@ -124,7 +128,7 @@ public class CarregamentoDadosBD extends AppCompatActivity {
         carregarProduto(db, "maçã", "importada", 2.20, "img_maca", 3, 3, 3);
         carregarProduto(db, "creme", "cabelo", 4.80, "img_creme_pele", 3, 6, 1);
         carregarProduto(db, "pizza", "bacon", 11.59, "img_pizza", 3, 0, 5);
-        // Produtos Supermercado4
+        // Produtos Supermercado4 - Extra-Várzea
         carregarProduto(db, "arroz", "integral", 4.44, "img_arroz", 4, 5, 0);
         carregarProduto(db, "pepsi", "lata", 3.26, "img_refrigerante", 4, 4, 6);
         carregarProduto(db, "shampoo", "hidratante", 8.02, "img_shampoo", 4, 6, 8);
@@ -172,5 +176,30 @@ public class CarregamentoDadosBD extends AppCompatActivity {
         db.execSQL(inserirProdutosBD +"('"+nome+"', '"+descricao+"',  '"+preco+"',  '"+codImagem+"',  '"+idSupermercado+"',  '"+nDepartamento+"', '"+idSupermercado+"', '"+nPosicaoImagemProduto+"');");
     }
 
+    public static void carregarRecomendacoesProdutosBD(SQLiteDatabase db){
+        //Notas dadas pelo Usuario1 para alguns produtos do Supermercado1
+        carregarRecomendacoesProduto(db, 1, 1, 0.8);
+        carregarRecomendacoesProduto(db, 3, 1, 0.3);
+        carregarRecomendacoesProduto(db, 5, 1, 0.4);
+        carregarRecomendacoesProduto(db, 6, 1, 0.5);
+        //Notas dadas pelo Usuario2 para alguns produtos do Supermercado1
+        carregarRecomendacoesProduto(db, 2, 2, 0.6);
+        carregarRecomendacoesProduto(db, 4, 2, 0.4);
+        carregarRecomendacoesProduto(db, 3, 2, 0.3);
+        carregarRecomendacoesProduto(db, 1, 2, 0.3);
+        //Notas dadas pelo Usuario3 para alguns produtos do Supermercado1
+        carregarRecomendacoesProduto(db, 1, 3, 0.7);
+        carregarRecomendacoesProduto(db, 4, 3, 1.3);
+        carregarRecomendacoesProduto(db, 5, 3, 1.0);
+        carregarRecomendacoesProduto(db, 2, 3, 0.7);
+        //Notas dadas pelo Usuario4 para alguns produtos do Supermercado1
+        carregarRecomendacoesProduto(db, 3, 4, 0.8);
+        carregarRecomendacoesProduto(db, 5, 4, 0.2);
+        carregarRecomendacoesProduto(db, 6, 4, 0.1);
+        carregarRecomendacoesProduto(db, 4, 4, 0.9);
+    }
 
+    private static void carregarRecomendacoesProduto(SQLiteDatabase db, Integer idProduto, Integer idUsuario, Double nota) {
+        db.execSQL(inserirRecomendacoesProdutosBD +"('"+idProduto+"',  '"+idUsuario+"', '"+nota+"');");
+    }
 }

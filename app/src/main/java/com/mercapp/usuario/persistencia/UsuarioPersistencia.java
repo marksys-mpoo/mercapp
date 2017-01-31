@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteDatabase;
 import com.mercapp.infra.persistencia.BDHelper;
 import com.mercapp.usuario.dominio.Usuario;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class UsuarioPersistencia {
 
@@ -63,11 +66,38 @@ public class UsuarioPersistencia {
         return usuario;
     }
 
+    public  final Usuario buscar(Integer id){
+        SQLiteDatabase db = bdHelper.getReadableDatabase();
+        Usuario usuario = null;
+        Cursor cursor = db.rawQuery("SELECT * FROM "+bdHelper.TBL_USUARIO +
+                " WHERE "+bdHelper.COLUNA_ID+" LIKE ? ", new String[]{""+id});
+        if (cursor.moveToFirst()){
+            usuario = criarUsuario(cursor);
+        }
+        cursor.close();
+        db.close();
+        return usuario;
+    }
+
     private Usuario criarUsuario(Cursor cursor){
         Usuario usuario = new Usuario();
         usuario.setId(cursor.getInt(0));
         usuario.setEmail(cursor.getString(1));
         usuario.setSenha(cursor.getString(2));
         return usuario;
+    }
+
+    public  final List<Usuario> listarTodosUsuarios(){
+        List<Usuario> usuarios = new ArrayList<>();
+        SQLiteDatabase db = bdHelper.getReadableDatabase();
+        Cursor cursor = db.query(BDHelper.TBL_USUARIO, null, null, null, null, null, null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()){
+            usuarios.add(criarUsuario(cursor));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        db.close();
+        return usuarios;
     }
 }

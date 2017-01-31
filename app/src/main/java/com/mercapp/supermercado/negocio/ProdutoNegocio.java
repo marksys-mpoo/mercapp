@@ -15,27 +15,27 @@ public class ProdutoNegocio {
         this.context = contexto;
     }
 
-    public  final Produto buscar(Integer id) {
+    public final Produto buscar(Integer id) {
         ProdutoPersistencia produtoPersistencia = new ProdutoPersistencia(context);
         return produtoPersistencia.buscar(id);
     }
 
-    public  final Produto buscar(String nome) {
+    public final Produto buscar(String nome) {
         ProdutoPersistencia produtoPersistencia = new ProdutoPersistencia(context);
         return produtoPersistencia.buscar(nome);
     }
 
-    public  final List<Produto> listar(String inputText){
+    public final List<Produto> listar(String nomeProduto){
         ProdutoPersistencia listagem = new ProdutoPersistencia(context);
-        return listagem.listar(inputText);
+        return listagem.listar(nomeProduto);
     }
 
-    public  final void cadastrar(Produto produtoCadastro){
+    public final void cadastrar(Produto produtoCadastro){
         ProdutoPersistencia produtoPersistencia = new ProdutoPersistencia(context);
         produtoPersistencia.cadastrar(produtoCadastro);
     }
 
-    public  final void editar(Produto produto){
+    public final void editar(Produto produto){
         ProdutoPersistencia produtoPersistencia = new ProdutoPersistencia(context);
         produtoPersistencia.editar(produto);
     }
@@ -48,7 +48,7 @@ public class ProdutoNegocio {
         return consulta.listar();
     }
 
-    public  final List<Produto> listaProdutosDoSupermercado(String idSuper){
+    public final List<Produto> listaProdutosDoSupermercado(String idSuper){
         ProdutoPersistencia consulta = new ProdutoPersistencia(context);
         return consulta.listaDadosProdutosDoSupermercado(idSuper);
     }

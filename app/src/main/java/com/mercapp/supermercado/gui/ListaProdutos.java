@@ -119,8 +119,8 @@ public class ListaProdutos extends AppCompatActivity {
                 return false;
             }
             @Override
-            public boolean onQueryTextChange(String text) {
-                setDataAdapter( new ProdutoListAdapter(getContext(), getProdutoNegocio().listar(text)));
+            public boolean onQueryTextChange(String nomeProduto) {
+                setDataAdapter( new ProdutoListAdapter(getContext(), getProdutoNegocio().listar(nomeProduto)));
                 getLista().setAdapter(getDataAdapter());
                 return false;
             }

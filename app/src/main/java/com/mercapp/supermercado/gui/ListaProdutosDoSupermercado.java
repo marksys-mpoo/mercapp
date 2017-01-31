@@ -78,7 +78,7 @@ public class ListaProdutosDoSupermercado extends AppCompatActivity {
         this.buscaProdutosPorDepartamento(idSupermercadoString, numeroDepartamento);
     }
 
-    public  final void buscarTodosProdutosDoSupermercado() {
+    public final void buscarTodosProdutosDoSupermercado() {
         ProdutoNegocio buscaProdutos = new ProdutoNegocio(context);
         Integer idSupermercado = session.getSupermercadoSelecionado().getId();
         List<Produto> produtos = buscaProdutos.listaProdutosDoSupermercado(idSupermercado.toString());

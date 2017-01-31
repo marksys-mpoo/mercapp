@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_slope_one"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".recomendacao.gui.SlopeOne">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        android:id="@+id/textView30"
+        android:layout_marginTop="13dp"
+        android:layout_below="@+id/btnDepartamentos"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="19dp" />
+
+    <Button
+        android:text="Departamentos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnDepartamentos"
+        android:onClick="departamentos"
+        android:background="@android:drawable/ic_notification_overlay"
+        android:textColor="@color/cast_expanded_controller_text_color"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/textView30" />
+
+    <Button
+        android:text="Recomendações"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnRecomendacoes"
+        android:onClick="recomendacoes"
+        android:background="@android:drawable/ic_notification_overlay"
+        android:textColor="@color/cast_expanded_controller_text_color"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/btnDepartamentos" />
+
+    <Button
+        android:text="Ofertas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnOfertas"
+        android:onClick="ofertas"
+        android:background="@android:drawable/ic_notification_overlay"
+        android:textColor="@color/cast_expanded_controller_text_color"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/btnRecomendacoes" />
+
+
+</RelativeLayout>

@@ -80,5 +80,17 @@ public final class SQLScript {
 
         return produtoBuilder.toString();
     }
+
+    static String getTabelaRecomendacaoProduto() {
+
+        StringBuilder recomendacaoProdutoBuilder = new StringBuilder();
+        recomendacaoProdutoBuilder.append("CREATE TABLE  recomendacao_produto  (  ");
+        recomendacaoProdutoBuilder.append("_id_recomendacao_produto integer primary key autoincrement,   ");
+        recomendacaoProdutoBuilder.append("recomendacao_produto_id_produto integer not null,  ");
+        recomendacaoProdutoBuilder.append("recomendacao_produto_id_usuario integer not null,  ");
+        recomendacaoProdutoBuilder.append("recomendacao_produto_nota integer not null );  ");
+
+        return recomendacaoProdutoBuilder.toString();
+    }
 }
 

@@ -5,36 +5,9 @@
     android:id="@+id/activity_tela_supermercado"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="5dp"
-    android:paddingRight="5dp"
-    android:paddingTop="@dimen/activity_vertical_margin"
+
     tools:context="com.mercapp.supermercado.gui.TelaSupermercado">
 
-    <TextView
-        android:text="supermercado"
-        android:textStyle="normal|bold"
-        android:textColor="@color/cast_expanded_controller_background_color"
-        android:id="@+id/supermercadoSessao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="22sp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-
-
-    <TextView
-        android:text="Telefone"
-        android:textStyle="normal|bold"
-        android:textColor="@color/cast_expanded_controller_background_color"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/telefoneSessao"
-        android:textSize="14sp"
-        android:width="10sp"
-        android:layout_alignBaseline="@+id/textFone"
-        android:layout_alignBottom="@+id/textFone"
-        android:layout_marginStart="36dp" />
 
     <Button
         android:layout_width="match_parent"
@@ -43,17 +16,6 @@
         android:onClick="telaProdutos"
         android:id="@+id/button2"
         android:layout_alignParentBottom="true" />
-
-    <TextView
-        android:text="@string/textview_fone_supermercado"
-        android:textStyle="normal|bold"
-        android:textColor="@color/cast_expanded_controller_background_color"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:id="@+id/textFone"
-        android:layout_below="@+id/supermercadoSessao"
-        android:layout_alignParentStart="true" />
 
     <TextView
         android:text="@string/textViewDepartamentos"
@@ -197,15 +159,73 @@
         </TableRow>
     </TableLayout>
 
+    <TextView
+        android:text="supermercado"
+        android:textStyle="normal|bold"
+        android:textColor="@color/cast_expanded_controller_background_color"
+        android:id="@+id/supermercadoSessao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:layout_below="@+id/btnRecomendacoes"
+        android:layout_alignStart="@+id/tableLayout" />
+
+    <TextView
+        android:text="Telefone"
+        android:textStyle="normal|bold"
+        android:textColor="@color/cast_expanded_controller_background_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/telefoneSessao"
+        android:textSize="14sp"
+        android:width="10sp"
+        android:layout_alignBaseline="@+id/textFone"
+        android:layout_alignBottom="@+id/textFone"
+        android:layout_toEndOf="@+id/textFone" />
+
+    <TextView
+        android:text="@string/textview_fone_supermercado"
+        android:textStyle="normal|bold"
+        android:textColor="@color/cast_expanded_controller_background_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:id="@+id/textFone"
+        android:layout_below="@+id/supermercadoSessao"
+        android:layout_alignStart="@+id/supermercadoSessao" />
+
+    <Button
+        android:text="Departamentos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnDepartamentos"
+        android:onClick="departamentos"
+        android:background="@android:drawable/ic_notification_overlay"
+        android:textColor="@color/cast_expanded_controller_text_color"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/supermercadoSessao" />
+
     <Button
         android:text="Ofertas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnOfertas"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
         android:onClick="ofertas"
         android:background="@android:drawable/ic_notification_overlay"
-        android:textColor="@color/cast_expanded_controller_text_color" />
+        android:textColor="@color/cast_expanded_controller_text_color"
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/tableLayout"
+        android:layout_toEndOf="@+id/btnRecomendacoes" />
+
+    <Button
+        android:text="Recomendações"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnRecomendacoes"
+        android:onClick="recomendacoes"
+        android:background="@android:drawable/ic_notification_overlay"
+        android:textColor="@color/cast_expanded_controller_text_color"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/btnDepartamentos" />
 
 </RelativeLayout>

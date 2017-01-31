@@ -11,63 +11,65 @@ public class Produto {
     private int posicaoSpinnerSupermercado;
     private int posicaoSpinnerImagem;
 
-    public  final String getNome() {
+    public String toString() { return nome; }
+
+    public final String getNome() {
         return nome;
     }
 
-    public  final void setNome(String nomes) {
+    public final void setNome(String nomes) {
         this.nome = nomes;
     }
 
-    public  final String getDescricao() {
+    public final String getDescricao() {
         return descricao;
     }
 
-    public  final void setDescricao(String descricaos) {
+    public final void setDescricao(String descricaos) {
         this.descricao = descricaos;
     }
 
-    public  final int getId() {
+    public final int getId() {
         return id;
     }
 
-    public  final void setId(int ids) {
+    public final void setId(int ids) {
         this.id = ids;
     }
 
-    public  final Double getPreco() {
+    public final Double getPreco() {
         return preco;
     }
 
-    public  final void setPreco(Double precos) {
+    public final void setPreco(Double precos) {
         this.preco = precos;
     }
 
-    public  final Supermercado getSupermercado() {
+    public final Supermercado getSupermercado() {
         return supermercado;
     }
 
-    public  final void setSupermercado(Supermercado supermercados) {
+    public final void setSupermercado(Supermercado supermercados) {
         this.supermercado = supermercados;
     }
 
-    public  final int getNumeroDepartamento() {
+    public final int getNumeroDepartamento() {
         return numeroDepartamento;
     }
 
-    public  final void setNumeroDepartamento(int departamentos) {
+    public final void setNumeroDepartamento(int departamentos) {
         this.numeroDepartamento = departamentos;
     }
 
-    public  final int getImageProduto() {
+    public final int getImageProduto() {
         return imageProduto;
     }
 
-    public  final void setImageProduto(int imageProdutos) {
+    public final void setImageProduto(int imageProdutos) {
         this.imageProduto = imageProdutos;
     }
 
-    public  final int getPosicaoSpinnerSupermercado() {
+    public final int getPosicaoSpinnerSupermercado() {
         return posicaoSpinnerSupermercado;
     }
 
@@ -75,7 +77,7 @@ public class Produto {
         this.posicaoSpinnerSupermercado = posicaoSpinnerSupermercados;
     }
 
-    public  final int getPosicaoSpinnerImagem() {
+    public final int getPosicaoSpinnerImagem() {
         return posicaoSpinnerImagem;
     }
 

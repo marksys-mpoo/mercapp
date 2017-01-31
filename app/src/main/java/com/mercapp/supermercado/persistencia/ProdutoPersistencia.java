@@ -55,14 +55,14 @@ public class ProdutoPersistencia {
         db.close();
     }
 
-    public  final void deletar(Produto produto){
+    public final void deletar(Produto produto){
         SQLiteDatabase db = bdHelper.getWritableDatabase();
         String where = bdHelper.COLUNA_ID_PRODUTO+ "=" + produto.getId();
         db.delete(bdHelper.TBL_PRODUTO, where, null);
         db.close();
     }
 
-    public  final Produto buscar(Integer id){
+    public final Produto buscar(Integer id){
         String idString = id.toString();
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Produto produto = null;
@@ -76,7 +76,7 @@ public class ProdutoPersistencia {
         db.close();
         return produto;
     }
-    public  final Produto buscar(String nome){
+    public final Produto buscar(String nome){
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Produto produto = null;
         Cursor cursor = db.rawQuery(SELECT + bdHelper.TBL_PRODUTO +
@@ -88,7 +88,7 @@ public class ProdutoPersistencia {
         db.close();
         return produto;
     }
-    public  final List<Produto> listar(){
+    public final List<Produto> listar(){
         List<Produto> produtos = new ArrayList<>();
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         Cursor cursor = db.query(BDHelper.TBL_PRODUTO, null, null, null, null, null, null);
@@ -158,12 +158,12 @@ public class ProdutoPersistencia {
         return produtos;
     }
 
-    public final List<Produto> listar(String inputText){
+    public final List<Produto> listar(String nomeProduto){
         List<Produto> produtos = new ArrayList<>();
         SQLiteDatabase db = bdHelper.getReadableDatabase();
         final String like =" LIKE '%";
         Cursor cursor = db.rawQuery(SELECT + bdHelper.TBL_PRODUTO +
-                WHERE + bdHelper.COLUNA_NOME_PRODUTO+ like + inputText + "%'", null, null);
+                WHERE + bdHelper.COLUNA_NOME_PRODUTO+ like + nomeProduto + "%'", null, null);
         cursor.moveToFirst();
         while(!cursor.isAfterLast()){
             produtos.add(criarProduto(cursor));

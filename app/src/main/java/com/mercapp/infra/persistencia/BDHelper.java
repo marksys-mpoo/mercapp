@@ -62,6 +62,13 @@ public class BDHelper extends SQLiteOpenHelper {
     public static final String COLUNA_DESCONTOS = "descontos";
     public static final String COLUNA_PRODUTOS = "_id_produtos";
 
+    //Tabela Recomendação Produtos
+    public static final String TBL_RECOMENDACAO_PRODUTO = "recomendacao_produto";
+    public static final String COLUNA_RECOMENDACAO_PRODUTO_ID = "_id_recomendacao_produto";
+    public static final String COLUNA_RECOMENDACAO_PRODUTO_ID_PRODUTO = "recomendacao_produto_id_produto";
+    public static final String COLUNA_RECOMENDACAO_PRODUTO_ID_USUARIO = "recomendacao_produto_id_usuario";
+    public static final String COLUNA_RECOMENDACAO_PRODUTO_NOTA = "recomendacao_produto_nota";
+
     public BDHelper(Context context) {
         super(context, NOME_BD, null, VERSAO_BD);
     }
@@ -75,9 +82,11 @@ public class BDHelper extends SQLiteOpenHelper {
         db.execSQL(SQLScript.getTabelaCarrinho());
         db.execSQL(SQLScript.getTabelaProduto());
         db.execSQL(SQLScript.getTabelaSupermercado());
+        db.execSQL(SQLScript.getTabelaRecomendacaoProduto());
         CarregamentoDadosBD.carregarUsuariosBD(db);
         CarregamentoDadosBD.carregarSupermercadosBD(db);
         CarregamentoDadosBD.carregarProdutosBD(db);
+        CarregamentoDadosBD.carregarRecomendacoesProdutosBD(db);
     }
 
     @Override

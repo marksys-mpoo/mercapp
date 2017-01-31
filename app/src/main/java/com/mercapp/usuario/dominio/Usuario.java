@@ -6,6 +6,8 @@ public class Usuario {
     private String email;
     private String senha;
 
+    public String toString() { return email; }
+
     public  final String getEmail(){return email;}
 
     public final  void setEmail(String emails){this.email = emails;}
