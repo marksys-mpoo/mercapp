@@ -199,9 +199,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnDepartamentos"
-        android:onClick="departamentos"
         android:background="@android:drawable/ic_notification_overlay"
-        android:textColor="@color/cast_expanded_controller_text_color"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/supermercadoSessao" />
 

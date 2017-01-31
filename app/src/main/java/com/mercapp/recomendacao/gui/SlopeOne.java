@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.mercapp.R;
@@ -12,6 +13,9 @@ import com.mercapp.infra.Session;
 import com.mercapp.recomendacao.dominio.RecomendacaoProduto;
 import com.mercapp.recomendacao.negocio.RecomendacaoProdutoNegocio;
 import com.mercapp.supermercado.dominio.Produto;
+import com.mercapp.supermercado.gui.DescricaoProduto;
+import com.mercapp.supermercado.gui.ListaProdutosDoSupermercado;
+import com.mercapp.supermercado.gui.ProdutoListAdapter;
 import com.mercapp.supermercado.gui.TelaSupermercado;
 import com.mercapp.supermercado.negocio.ProdutoNegocio;
 import com.mercapp.usuario.dominio.Usuario;
@@ -39,7 +43,7 @@ public class SlopeOne extends AppCompatActivity {
     private static List<Produto> todosItens = new ArrayList<>();
     private static List<Usuario> todosUsuarios = new ArrayList<>();
     private static List<RecomendacaoProduto> produtosClassificados = new ArrayList<>();
-    private static List<Produto> produtosRecomendadosOrdenados = new ArrayList<>();
+    private static List<Produto> produtosRecomendadosOrdenados; //= new ArrayList<>();
 
     @Override
     protected final void onCreate(Bundle savedInstanceState) {
@@ -76,6 +80,17 @@ public class SlopeOne extends AppCompatActivity {
         /** Fim - Simulando a leitura dos dados do sistema para o cálculo das recomendações */
 
         calculaRecomendacoes(data, session.getUsuarioLogado()); // Supondo que jose é o Usuário Logado (neste caso)
+
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> listView, View view, int position, long id) {
+                Produto produto = (Produto) listView.getItemAtPosition(position);
+                session.setProdutoSelecionado(produto);
+                Intent editarProdudo = new Intent(SlopeOne.this, DescricaoProduto.class);
+                startActivity(editarProdudo);
+                finish();
+            }
+        });
     }
 
     /*public static Produto buscarProdutoRecomendado(Integer idProduto) {
@@ -118,13 +133,19 @@ public class SlopeOne extends AppCompatActivity {
             System.out.println("results: " + sorted_map);
         }*/
         System.out.println("ListIdOrdenados... " + listIdOrdenados);
+        List<Produto> produtosRecomendadosOrdenados = new ArrayList<>();
         for (Integer i : listIdOrdenados ) {
             Produto produtoClassificado = buscaProdutos.buscar(i);
             produtosRecomendadosOrdenados.add(produtoClassificado);
         }
         System.out.println("results: " + produtosRecomendadosOrdenados);
+        ProdutoListAdapter adaptador = new ProdutoListAdapter(this, produtosRecomendadosOrdenados);
+        lista = (ListView)findViewById(R.id.lista_produtos_recomendados);
+        lista.setAdapter(adaptador);
+
         System.out.println(" --------------------  FIM - EXECUÇÃO DO PROTÓTIPO --------------------");
         System.out.println(" ");
+
     }
 
     public Map<Integer,Double> predict(Map<Integer,Double> notasUsuario) {
@@ -249,12 +270,18 @@ public class SlopeOne extends AppCompatActivity {
                 matrizDiferenca.get(j).put(i, oldvalue / count);
             }
         }
-
     }
 
     public final  void departamentos(View view){
         Intent irDepartamentos = new Intent(SlopeOne.this, TelaSupermercado.class);
         startActivity(irDepartamentos);
+        finish();
+    }
+
+    @Override
+    public final  void onBackPressed() {
+        Intent irTelaSupermercado = new Intent(SlopeOne.this, TelaSupermercado.class);
+        startActivity(irTelaSupermercado);
         finish();
     }
 }
