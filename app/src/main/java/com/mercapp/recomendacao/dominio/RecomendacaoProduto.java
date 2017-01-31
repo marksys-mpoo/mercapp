@@ -5,8 +5,8 @@ public class RecomendacaoProduto {
     private Integer id;
     private Integer idProduto;
     private Integer idUsuario;
+    private Integer idSupermercado;
     private Double nota;
-
 
     public Integer getIdProduto() {
         return idProduto;
@@ -30,6 +30,14 @@ public class RecomendacaoProduto {
 
     public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    public Integer getIdSupermercado() {
+        return idSupermercado;
+    }
+
+    public void setIdSupermercado(Integer idSupermercado) {
+        this.idSupermercado = idSupermercado;
     }
 
     public Double getNota() {

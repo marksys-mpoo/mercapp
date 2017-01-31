@@ -46,6 +46,7 @@ public class CarregamentoDadosBD extends AppCompatActivity {
     private static String inserirRecomendacoesProdutosBD = "INSERT INTO " + BDHelper.TBL_RECOMENDACAO_PRODUTO + " (" +
             BDHelper.COLUNA_RECOMENDACAO_PRODUTO_ID_PRODUTO +" , " +
             BDHelper.COLUNA_RECOMENDACAO_PRODUTO_ID_USUARIO +" , " +
+            BDHelper.COLUNA_RECOMENDACAO_PRODUTO_ID_SUPERMERCADO +" , " +
             BDHelper.COLUNA_RECOMENDACAO_PRODUTO_NOTA +
             ") VALUES  ";
 
@@ -98,17 +99,17 @@ public class CarregamentoDadosBD extends AppCompatActivity {
     nome, descrição, preço, nomeImagem, idSupermercado, nDepartemento, posiçãoImagem
     */
     public static void carregarProdutosBD(SQLiteDatabase db){
-        // Produtos Supermercado1 - Extra-Caxangá
+        // Produtos Supermercado1 - Extra-Caxangá - (ids de 1 a 9)
         carregarProduto(db, "arroz", "integral", 4.50, "img_arroz", 1, 5, 0);
         carregarProduto(db, "coca-cola", "lata", 3.20, "img_refrigerante", 1, 4, 6);
         carregarProduto(db, "shampoo", "neutro", 8.10, "img_shampoo", 1, 6, 8);
         carregarProduto(db, "sabonete", "líquido", 9.30, "img_sabonete", 1, 6, 7);
         carregarProduto(db, "leite", "garrafa", 3.90, "img_leite", 1, 1, 2);
         carregarProduto(db, "pão", "forma", 4.60, "img_pao", 1, 0, 4);
-        /*carregarProduto(db, "maçã", "verde", 2.00, "img_maca", 1, 3, 3);
+        carregarProduto(db, "maçã", "verde", 2.00, "img_maca", 1, 3, 3);
         carregarProduto(db, "creme", "pele", 5.80, "img_creme_pele", 1, 6, 1);
-        carregarProduto(db, "pizza", "calabresa", 12.99, "img_pizza", 1, 0, 5);*/
-        // Produtos Supermercado2 - Extra-Graças
+        carregarProduto(db, "pizza", "calabresa", 12.99, "img_pizza", 1, 0, 5);
+        // Produtos Supermercado2 - Extra-Graças  - (ids de 10 a 18)
         carregarProduto(db, "arroz", "branco", 4.80, "img_arroz", 2, 5, 0);
         carregarProduto(db, "guaraná", "lata", 3.55, "img_refrigerante", 2, 4, 6);
         carregarProduto(db, "shampoo", "neutro", 9.08, "img_shampoo", 2, 6, 8);
@@ -118,7 +119,7 @@ public class CarregamentoDadosBD extends AppCompatActivity {
         carregarProduto(db, "maçã", "nacional", 2.60, "img_maca", 2, 3, 3);
         carregarProduto(db, "creme", "desodorante", 4.90, "img_creme_pele", 2, 6, 1);
         carregarProduto(db, "pizza", "muzzarella", 15.60, "img_pizza", 2, 0, 5);
-        // Produtos Supermercado3 - Extra-DoisIrmãos
+        // Produtos Supermercado3 - Extra-DoisIrmãos (ids de 19 a 27)
         carregarProduto(db, "arroz", "parbonizado", 4.20, "img_arroz", 3, 5, 0);
         carregarProduto(db, "soda", "lata", 3.10, "img_refrigerante", 3, 4, 6);
         carregarProduto(db, "shampoo", "condicionador", 8.00, "img_shampoo", 3, 6, 8);
@@ -128,7 +129,7 @@ public class CarregamentoDadosBD extends AppCompatActivity {
         carregarProduto(db, "maçã", "importada", 2.20, "img_maca", 3, 3, 3);
         carregarProduto(db, "creme", "cabelo", 4.80, "img_creme_pele", 3, 6, 1);
         carregarProduto(db, "pizza", "bacon", 11.59, "img_pizza", 3, 0, 5);
-        // Produtos Supermercado4 - Extra-Várzea
+        // Produtos Supermercado4 - Extra-Várzea - (ids de 28 a 36)
         carregarProduto(db, "arroz", "integral", 4.44, "img_arroz", 4, 5, 0);
         carregarProduto(db, "pepsi", "lata", 3.26, "img_refrigerante", 4, 4, 6);
         carregarProduto(db, "shampoo", "hidratante", 8.02, "img_shampoo", 4, 6, 8);
@@ -177,29 +178,109 @@ public class CarregamentoDadosBD extends AppCompatActivity {
     }
 
     public static void carregarRecomendacoesProdutosBD(SQLiteDatabase db){
-        //Notas dadas pelo Usuario1 para alguns produtos do Supermercado1
-        carregarRecomendacoesProduto(db, 1, 1, 0.8);
-        carregarRecomendacoesProduto(db, 3, 1, 0.3);
-        carregarRecomendacoesProduto(db, 5, 1, 0.4);
-        carregarRecomendacoesProduto(db, 6, 1, 0.5);
-        //Notas dadas pelo Usuario2 para alguns produtos do Supermercado1
-        carregarRecomendacoesProduto(db, 2, 2, 0.6);
-        carregarRecomendacoesProduto(db, 4, 2, 0.4);
-        carregarRecomendacoesProduto(db, 3, 2, 0.3);
-        carregarRecomendacoesProduto(db, 1, 2, 0.3);
-        //Notas dadas pelo Usuario3 para alguns produtos do Supermercado1
-        carregarRecomendacoesProduto(db, 1, 3, 0.7);
-        carregarRecomendacoesProduto(db, 4, 3, 1.3);
-        carregarRecomendacoesProduto(db, 5, 3, 1.0);
-        carregarRecomendacoesProduto(db, 2, 3, 0.7);
-        //Notas dadas pelo Usuario4 para alguns produtos do Supermercado1
-        carregarRecomendacoesProduto(db, 3, 4, 0.8);
-        carregarRecomendacoesProduto(db, 5, 4, 0.2);
-        carregarRecomendacoesProduto(db, 6, 4, 0.1);
-        carregarRecomendacoesProduto(db, 4, 4, 0.9);
+        notasSupermercado1(db,1);
+        notasSupermercado2(db,2);
+        notasSupermercado3(db,3);
+        notasSupermercado4(db,4);
     }
 
-    private static void carregarRecomendacoesProduto(SQLiteDatabase db, Integer idProduto, Integer idUsuario, Double nota) {
-        db.execSQL(inserirRecomendacoesProdutosBD +"('"+idProduto+"',  '"+idUsuario+"', '"+nota+"');");
+    private static void notasSupermercado1(SQLiteDatabase db, Integer idSupermercado ) {
+        //Supermercado1 (ids de 1 a 9)
+        //Notas dadas pelo Usuario1 para os produtos do Supermercado
+        carregarRecomendacoesProduto(db, 1, 1, idSupermercado, 0.8);
+        carregarRecomendacoesProduto(db, 3, 1, idSupermercado, 0.3);
+        carregarRecomendacoesProduto(db, 6, 1, idSupermercado, 0.4);
+        carregarRecomendacoesProduto(db, 8, 1, idSupermercado, 0.5);
+        //Notas dadas pelo Usuario2 para os produtos do Supermercado
+        carregarRecomendacoesProduto(db, 2, 2, idSupermercado, 0.6);
+        carregarRecomendacoesProduto(db, 4, 2, idSupermercado, 0.4);
+        carregarRecomendacoesProduto(db, 7, 2, idSupermercado, 0.3);
+        carregarRecomendacoesProduto(db, 9, 2, idSupermercado, 0.3);
+        //Notas dadas pelo Usuario3 para os produtos do Supermercado
+        carregarRecomendacoesProduto(db, 1, 3, idSupermercado, 0.7);
+        carregarRecomendacoesProduto(db, 4, 3, idSupermercado, 1.3);
+        carregarRecomendacoesProduto(db, 7, 3, idSupermercado, 1.0);
+        carregarRecomendacoesProduto(db, 9, 3, idSupermercado, 0.7);
+        //Notas dadas pelo Usuario4 para os produtos do Supermercado
+        carregarRecomendacoesProduto(db, 3, 4, idSupermercado, 0.8);
+        carregarRecomendacoesProduto(db, 5, 4, idSupermercado, 0.2);
+        carregarRecomendacoesProduto(db, 6, 4, idSupermercado, 0.1);
+        carregarRecomendacoesProduto(db, 8, 4, idSupermercado, 0.9);
+    }
+
+    private static void notasSupermercado2(SQLiteDatabase db, Integer idSupermercado ) {
+        //Supermercado2 - (ids de 10 a 18)
+        //Notas dadas pelo Usuario1 para os produtos do Supermercado2
+        carregarRecomendacoesProduto(db, 12, 1, idSupermercado, 0.8);
+        carregarRecomendacoesProduto(db, 13, 1, idSupermercado, 0.3);
+        carregarRecomendacoesProduto(db, 16, 1, idSupermercado, 0.4);
+        carregarRecomendacoesProduto(db, 18, 1, idSupermercado, 0.5);
+        //Notas dadas pelo Usuario2 para os produtos do Supermercado2
+        carregarRecomendacoesProduto(db, 10, 2, idSupermercado, 0.6);
+        carregarRecomendacoesProduto(db, 14, 2, idSupermercado, 0.4);
+        carregarRecomendacoesProduto(db, 17, 2, idSupermercado, 0.3);
+        carregarRecomendacoesProduto(db, 15, 2, idSupermercado, 0.3);
+        //Notas dadas pelo Usuario3 para os produtos do Supermercado2
+        carregarRecomendacoesProduto(db, 11, 3, idSupermercado, 0.7);
+        carregarRecomendacoesProduto(db, 14, 3, idSupermercado, 1.3);
+        carregarRecomendacoesProduto(db, 17, 3, idSupermercado, 1.0);
+        carregarRecomendacoesProduto(db, 13, 3, idSupermercado, 0.7);
+        //Notas dadas pelo Usuario4 para os produtos do Supermercado2
+        carregarRecomendacoesProduto(db, 10, 4, idSupermercado, 0.8);
+        carregarRecomendacoesProduto(db, 15, 4, idSupermercado, 0.2);
+        carregarRecomendacoesProduto(db, 12, 4, idSupermercado, 0.1);
+        carregarRecomendacoesProduto(db, 18, 4, idSupermercado, 0.9);
+    }
+
+    private static void notasSupermercado3(SQLiteDatabase db, Integer idSupermercado ) {
+        //Supermercado3 (ids de 19 a 27)
+        //Notas dadas pelo Usuario1 para os produtos do Supermercado3
+        carregarRecomendacoesProduto(db, 19, 1, idSupermercado, 0.8);
+        carregarRecomendacoesProduto(db, 23, 1, idSupermercado, 0.3);
+        carregarRecomendacoesProduto(db, 26, 1, idSupermercado, 0.4);
+        carregarRecomendacoesProduto(db, 20, 1, idSupermercado, 0.5);
+        //Notas dadas pelo Usuario2 para os produtos do Supermercado3
+        carregarRecomendacoesProduto(db, 22, 2, idSupermercado, 0.6);
+        carregarRecomendacoesProduto(db, 24, 2, idSupermercado, 0.4);
+        carregarRecomendacoesProduto(db, 27, 2, idSupermercado, 0.3);
+        carregarRecomendacoesProduto(db, 21, 2, idSupermercado, 0.3);
+        //Notas dadas pelo Usuario3 para os produtos do Supermercado3
+        carregarRecomendacoesProduto(db, 25, 3, idSupermercado, 0.7);
+        carregarRecomendacoesProduto(db, 24, 3, idSupermercado, 1.3);
+        carregarRecomendacoesProduto(db, 27, 3, idSupermercado, 1.0);
+        carregarRecomendacoesProduto(db, 19, 3, idSupermercado, 0.7);
+        //Notas dadas pelo Usuario4 para os produtos do Supermercado3
+        carregarRecomendacoesProduto(db, 23, 4, idSupermercado, 0.8);
+        carregarRecomendacoesProduto(db, 25, 4, idSupermercado, 0.2);
+        carregarRecomendacoesProduto(db, 26, 4, idSupermercado, 0.1);
+        carregarRecomendacoesProduto(db, 20, 4, idSupermercado, 0.9);
+    }
+
+    private static void notasSupermercado4(SQLiteDatabase db, Integer idSupermercado ) {
+        //Supermercado4 (ids de 28 a 36)
+        //Notas dadas pelo Usuario1 para os produtos do Supermercado4
+        carregarRecomendacoesProduto(db, 31, 1, idSupermercado, 0.8);
+        carregarRecomendacoesProduto(db, 33, 1, idSupermercado, 0.3);
+        carregarRecomendacoesProduto(db, 36, 1, idSupermercado, 0.4);
+        carregarRecomendacoesProduto(db, 28, 1, idSupermercado, 0.5);
+        //Notas dadas pelo Usuario2 para os produtos do Supermercado4
+        carregarRecomendacoesProduto(db, 32, 2, idSupermercado, 0.6);
+        carregarRecomendacoesProduto(db, 34, 2, idSupermercado, 0.4);
+        carregarRecomendacoesProduto(db, 30, 2, idSupermercado, 0.3);
+        carregarRecomendacoesProduto(db, 29, 2, idSupermercado, 0.3);
+        //Notas dadas pelo Usuario3 para os produtos do Supermercado4
+        carregarRecomendacoesProduto(db, 35, 3, idSupermercado, 0.7);
+        carregarRecomendacoesProduto(db, 34, 3, idSupermercado, 1.3);
+        carregarRecomendacoesProduto(db, 33, 3, idSupermercado, 1.0);
+        carregarRecomendacoesProduto(db, 29, 3, idSupermercado, 0.7);
+        //Notas dadas pelo Usuario4 para os produtos do Supermercado4
+        carregarRecomendacoesProduto(db, 31, 4, idSupermercado, 0.8);
+        carregarRecomendacoesProduto(db, 30, 4, idSupermercado, 0.2);
+        carregarRecomendacoesProduto(db, 36, 4, idSupermercado, 0.1);
+        carregarRecomendacoesProduto(db, 32, 4, idSupermercado, 0.9);
+    }
+
+    private static void carregarRecomendacoesProduto(SQLiteDatabase db, Integer idProduto, Integer idUsuario, Integer idSupermercado, Double nota) {
+        db.execSQL(inserirRecomendacoesProdutosBD +"('"+idProduto+"', '"+idUsuario+"', '"+idSupermercado+"', '"+nota+"');");
     }
 }

@@ -88,6 +88,7 @@ public final class SQLScript {
         recomendacaoProdutoBuilder.append("_id_recomendacao_produto integer primary key autoincrement,   ");
         recomendacaoProdutoBuilder.append("recomendacao_produto_id_produto integer not null,  ");
         recomendacaoProdutoBuilder.append("recomendacao_produto_id_usuario integer not null,  ");
+        recomendacaoProdutoBuilder.append("recomendacao_produto_id_supermercado integer not null,  ");
         recomendacaoProdutoBuilder.append("recomendacao_produto_nota integer not null );  ");
 
         return recomendacaoProdutoBuilder.toString();

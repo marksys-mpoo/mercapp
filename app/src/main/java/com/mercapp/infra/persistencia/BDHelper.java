@@ -67,6 +67,7 @@ public class BDHelper extends SQLiteOpenHelper {
     public static final String COLUNA_RECOMENDACAO_PRODUTO_ID = "_id_recomendacao_produto";
     public static final String COLUNA_RECOMENDACAO_PRODUTO_ID_PRODUTO = "recomendacao_produto_id_produto";
     public static final String COLUNA_RECOMENDACAO_PRODUTO_ID_USUARIO = "recomendacao_produto_id_usuario";
+    public static final String COLUNA_RECOMENDACAO_PRODUTO_ID_SUPERMERCADO = "recomendacao_produto_id_supermercado";
     public static final String COLUNA_RECOMENDACAO_PRODUTO_NOTA = "recomendacao_produto_nota";
 
     public BDHelper(Context context) {
@@ -98,6 +99,7 @@ public class BDHelper extends SQLiteOpenHelper {
         db.execSQL(testeTabelaExiste + TBL_CARRINHO);
         db.execSQL(testeTabelaExiste + TBL_PRODUTO);
         db.execSQL(testeTabelaExiste + TBL_SUPERMERCADO);
+        db.execSQL(testeTabelaExiste + TBL_RECOMENDACAO_PRODUTO);
         onCreate(db);
     }
 }

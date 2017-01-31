@@ -59,8 +59,6 @@ public class SlopeOne extends AppCompatActivity {
         //Leitura de todos os usuários do BD
         todosUsuarios = buscaUsuarios.listarTodosUsuarios();
 
-        //HashMap<Produto,Double> notasUsuario1 = new HashMap<Produto,Double>();
-
         //Criação da lista de notas dadas pelos usuários aos produtos
         Map<Integer,Map<Integer,Double>> data = new HashMap<Integer,Map<Integer,Double>>();
 
@@ -68,11 +66,9 @@ public class SlopeOne extends AppCompatActivity {
 
             HashMap<Integer, Double> notasUsuario = new HashMap<Integer, Double>();
             //Lista de Objetos do Domínio RecomendacaoProduto
-            produtosClassificados = buscaProdutosClassificados.listaProdutosClassificados(usuario.getId());
+            produtosClassificados = buscaProdutosClassificados.listaProdutosClassificados(usuario.getId(), idSupermercado);
             for (RecomendacaoProduto recomendacaoProduto : produtosClassificados) {
-                //Produto produtoClassificado = buscaProdutos.buscar(recomendacaoProduto.getIdProduto());
                 notasUsuario.put(recomendacaoProduto.getIdProduto(), recomendacaoProduto.getNota());
-                //System.out.println( recomendacaoProduto + " = " + codigoImagem );
             }
             data.put(usuario.getId(), notasUsuario);
         }
@@ -117,7 +113,7 @@ public class SlopeOne extends AppCompatActivity {
         System.out.println(" ");
         System.out.println(" --------------------  INÍCIO - EXECUÇÃO DO PROTÓTIPO --------------------");
         System.out.println(" todos os Itens " + todosItens); // todosItens.get(0).getNome()
-        System.out.println(" Produto 0 " + todosItens.get(0));
+        //System.out.println(" Produto 0 " + todosItens.get(0));
         printData(data);
         System.out.println(" ");
         System.out.println("Lendo... " + usuarioLogado);
@@ -204,7 +200,7 @@ public class SlopeOne extends AppCompatActivity {
     private void printMatrizes(Map<Integer,Double> notas,
                                Map<Integer,Integer> frequencies) {
         System.out.println(" todos os Itens " + todosItens);
-        for (int j = 1; j< todosItens.size(); j++) {
+        for (int j = 0; j< todosItens.size(); j++) {
             System.out.format("%10.3f", notas.get(todosItens.get(j).getId()) );
             System.out.print(" ");
             System.out.format("%10s", frequencies.get(todosItens.get(j).getId()) + " |");

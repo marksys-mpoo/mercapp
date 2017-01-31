@@ -15,9 +15,9 @@ public class RecomendacaoProdutoNegocio {
         this.context = contexto;
     }
 
-    public final List<RecomendacaoProduto> listaProdutosClassificados(Integer idUsuario){
+    public final List<RecomendacaoProduto> listaProdutosClassificados(Integer idUsuario, Integer idSupermercado){
         RecomendacaoProdutoPersistencia consulta = new RecomendacaoProdutoPersistencia(context);
-        return consulta.listaProdutosClassificados(idUsuario);
+        return consulta.listaProdutosClassificados(idUsuario, idSupermercado);
     }
 
 }
