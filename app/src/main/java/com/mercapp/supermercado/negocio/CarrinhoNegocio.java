@@ -20,13 +20,13 @@ public class CarrinhoNegocio {
     }
 
 
-    public  final void cadastrar(Carrinho carrinhoCadastro){
-        CarrinhoPersistencia carrinhoPersistencia = new CarrinhoPersistencia(context);
-        carrinhoPersistencia.cadastrar(carrinhoCadastro);
-    }
-
-    public final List<Carrinho> listar(){
-        CarrinhoPersistencia consulta = new CarrinhoPersistencia(context);
-        return consulta.listar();
-    }
+//    public  final void cadastrar(Carrinho carrinhoCadastro){
+//        CarrinhoPersistencia carrinhoPersistencia = new CarrinhoPersistencia(context);
+//        carrinhoPersistencia.cadastrar(carrinhoCadastro);
+//    }
+//
+//    public final List<Carrinho> listar(){
+//        CarrinhoPersistencia consulta = new CarrinhoPersistencia(context);
+//        return consulta.listar();
+//    }
 }

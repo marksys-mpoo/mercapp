@@ -2,6 +2,7 @@ package com.mercapp.supermercado.gui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.util.ArrayMap;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -13,8 +14,8 @@ import com.mercapp.R;
 import com.mercapp.infra.Session;
 import com.mercapp.supermercado.dominio.Carrinho;
 import com.mercapp.supermercado.dominio.Produto;
-import com.mercapp.supermercado.negocio.CarrinhoNegocio;
-import com.mercapp.supermercado.negocio.ProdutoNegocio;
+
+import java.util.Map;
 
 import static java.lang.String.valueOf;
 
@@ -25,6 +26,7 @@ public class DescricaoProduto extends AppCompatActivity {
     private Button menos;
     private Button mais;
     private TextView quantidadeProduto;
+    private Map map = new ArrayMap();
 
     public final Session getSession() {
         return session;
@@ -106,14 +108,9 @@ public class DescricaoProduto extends AppCompatActivity {
     public final void cadastroCarrinho(View view){
         final String zero = String.valueOf(0);
         if (!(getQuantidadeProduto().getText().toString().equals(zero))){
-            Carrinho carrinho = new Carrinho();
-            carrinho.setValorUnitario(getProduto().getPreco());
-            CarrinhoNegocio carrinhoNegocio = new CarrinhoNegocio(this);
-            ProdutoNegocio produtoNegocio= new ProdutoNegocio(this);
-            Produto produto = produtoNegocio.buscar(getProduto().getId());
-            carrinho.setProduto(produto);
-            carrinho.setQuantidadeItens(getQuantidadeProduto().getText().toString());
-            carrinhoNegocio.cadastrar(carrinho);
+            String quantidade = getQuantidadeProduto().getText().toString();
+            map.put(Integer.parseInt(quantidade), produto);
+            session.getCarrinho().addProdutos(map);
             Toast.makeText(this, "O produto foi adicionado ao carrinho.", Toast.LENGTH_SHORT).show();
             this.onBackPressed();
         }else{

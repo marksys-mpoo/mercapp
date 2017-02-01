@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.mercapp.R;
 import com.mercapp.infra.Session;
+import com.mercapp.supermercado.dominio.Carrinho;
 import com.mercapp.usuario.dominio.Usuario;
 import com.mercapp.usuario.negocio.PessoaNegocio;
 import com.mercapp.usuario.negocio.UsuarioNegocio;
@@ -63,6 +64,7 @@ public class Login extends AppCompatActivity {
                 PessoaNegocio pessoaNegocio = new PessoaNegocio(context);
                 if (pessoaNegocio.buscar(logarTest.getId()) != null) {
                     session.setPessoaLogada(pessoaNegocio.buscar(logarTest.getId()));
+                    session.setCarrinho(new Carrinho());
                     Intent changeToTelaPrincipal = new Intent(Login.this, TelaMenu.class);
                     Login.this.startActivity(changeToTelaPrincipal);
                     Toast.makeText(this, "Bem-Vindo - " + session.getPessoaLogada().getNome(), Toast.LENGTH_SHORT).show();

@@ -1,39 +1,38 @@
 package com.mercapp.supermercado.dominio;
 
-/**
- * Created by WELLINGTON on 27/01/2017.
- */
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class Carrinho {
 
     private int id;
-    private Double valorUnitario;
-    private Produto Produto;
+    private Double valorTotal;
+    private List<Map> produtos = new ArrayList<>();
     private String quantidadeItens;
 
-    public final int getId() {
+    public int getId() {
         return id;
     }
 
-    public final void setId(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public final double getValorUnitario() {
-        return valorUnitario;
+    public Double getValorTotal() {
+        return valorTotal;
     }
 
-    public final void setValorUnitario(Double valorUnitario) {
-        this.valorUnitario = valorUnitario;
-
+    public void setValorTotal(Double valorTotal) {
+        this.valorTotal = valorTotal;
     }
 
-    public com.mercapp.supermercado.dominio.Produto getProduto() {
-        return Produto;
+    public List<Map> getProdutos() {
+        return produtos;
     }
 
-    public void setProduto(com.mercapp.supermercado.dominio.Produto produto) {
-        Produto = produto;
+    public void setProdutos(List<Map> produtos) {
+        this.produtos = produtos;
     }
 
     public String getQuantidadeItens() {
@@ -42,5 +41,9 @@ public class Carrinho {
 
     public void setQuantidadeItens(String quantidadeItens) {
         this.quantidadeItens = quantidadeItens;
+    }
+
+    public void addProdutos(Map map){
+        produtos.add(map);
     }
 }

@@ -19,9 +19,6 @@ public class ListarItensCarrinhoActivity extends AppCompatActivity {
     private Context context = ListarItensCarrinhoActivity.this;
     private CarrinhoListAdapter dataAdapter;
     private Session session = Session.getInstanciaSessao();
-    private CarrinhoNegocio carrinhoNegocio = new CarrinhoNegocio(context);
-    private AlertDialog alerta;
-    private SearchView searchView;
 
     public final ListView getLista() {
         return lista;
@@ -51,9 +48,8 @@ public class ListarItensCarrinhoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar_itens_carrinho);
 
-        CarrinhoNegocio consulta = new CarrinhoNegocio(getContext());
-        List<Carrinho> carrinhos = consulta.listar();
-        setDataAdapter(new CarrinhoListAdapter(getContext(), carrinhos));
+        Carrinho carrinho = session.getCarrinho();
+        setDataAdapter(new CarrinhoListAdapter(getContext(), carrinho.getProdutos()));
 
         setLista((ListView)findViewById(R.id.listaItensCarrinho));
         getLista().setAdapter(getDataAdapter());

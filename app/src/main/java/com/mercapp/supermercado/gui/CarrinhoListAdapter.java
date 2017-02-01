@@ -9,37 +9,40 @@ import android.widget.TextView;
 
 import com.mercapp.R;
 import com.mercapp.supermercado.dominio.Carrinho;
+import com.mercapp.supermercado.dominio.Produto;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
-/**
- * Created by WELLINGTON on 28/01/2017.
- */
-
-public class CarrinhoListAdapter extends ArrayAdapter<Carrinho> {
+public class CarrinhoListAdapter extends ArrayAdapter<Map> {
 
     private Context context;
-    private List<Carrinho> carrinhos;
+    private List<Map> carrinhos;
 
-    public CarrinhoListAdapter(Context contexto, List<Carrinho> carrinho) {
+    public CarrinhoListAdapter(Context contexto, List<Map> carrinho) {
         super(contexto, 0, carrinho);
         this.context = contexto;
         this.carrinhos = carrinho;
     }
 
     public  final View getView(int position, View converterTela, ViewGroup parent) {
-        Carrinho carrinhoPosicao = this.carrinhos.get(position);
+        Map<Integer, Produto> carrinhoPosicao = this.carrinhos.get(position);
+
+        ArrayList<Produto> produtos = new ArrayList<> (carrinhoPosicao.values());
+        ArrayList<Integer> quantidade = new ArrayList<>(carrinhoPosicao.keySet());
 
         converterTela = LayoutInflater.from(this.context).inflate(R.layout.itens_carrinhos_geral, null);
 
         TextView nome = (TextView) converterTela.findViewById(R.id.colunaProduto1);
-        nome.setText(carrinhoPosicao.getProduto().getNome().toString());
+        nome.setText(produtos.get(0).getNome().toString());
 
         TextView preco = (TextView) converterTela.findViewById(R.id.colunaProduto2);
-        preco.setText(carrinhoPosicao.getProduto().getPreco().toString());
+        preco.setText(produtos.get(0).getPreco().toString());
         
         TextView quantidadeItens = (TextView) converterTela.findViewById(R.id.colunaProduto4);
-        quantidadeItens.setText(carrinhoPosicao.getQuantidadeItens());
+        quantidadeItens.setText(quantidade.get(0).toString());
 
 //        TextView preco = (TextView) converterTela.findViewById(R.id.colunaProduto3);
 //        preco.setText(carrinhoPosicao.getPreco().toString().trim());

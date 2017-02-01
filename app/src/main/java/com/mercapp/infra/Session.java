@@ -1,6 +1,7 @@
 package com.mercapp.infra;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.mercapp.supermercado.dominio.Carrinho;
 import com.mercapp.supermercado.dominio.Produto;
 import com.mercapp.supermercado.dominio.Supermercado;
 import com.mercapp.usuario.dominio.Pessoa;
@@ -16,7 +17,15 @@ public class Session {
     private String funcaoCrudSupermercado;
     private String textButaoFuncaoSupermercado;
     private Produto produtoSelecionado;
+    private Carrinho carrinho;
 
+    public Carrinho getCarrinho() {
+        return carrinho;
+    }
+
+    public void setCarrinho(Carrinho carrinho) {
+        this.carrinho = carrinho;
+    }
 
     public  final Produto getProdutoSelecionado() {
         return produtoSelecionado;
