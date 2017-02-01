@@ -58,11 +58,13 @@ public final class SQLScript {
         StringBuilder carrinhoBuilder = new StringBuilder();
         carrinhoBuilder.append("CREATE TABLE  carrinho  (  ");
         carrinhoBuilder.append("_id_carrinho   integer primary key autoincrement,   ");
-        carrinhoBuilder.append("valor_total  text not null,  ");
-        carrinhoBuilder.append("descontos  text not null,  ");
+        carrinhoBuilder.append("valor_unitario  text not null,  ");
+        carrinhoBuilder.append("quantidade_itens  text not null,  ");
         carrinhoBuilder.append("_id_produtos   integer,  ");
         carrinhoBuilder.append("foreign key (_id_produtos ) references  produto ( _id_produtos ) );");
         return carrinhoBuilder.toString();
+
+        //        carrinhoBuilder.append("descontos  text not null,  ");
     }
     static String getTabelaProduto() {
 

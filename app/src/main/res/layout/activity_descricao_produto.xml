@@ -166,7 +166,9 @@
                 android:id="@+id/dcnCarrinho"
                 android:scaleType="fitCenter"
                 android:layout_width="60dp"
-                android:layout_height="60dp" />
+                android:layout_height="60dp"
+                android:onClick="cadastroCarrinho"
+                />
 
         </LinearLayout>
 

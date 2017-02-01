@@ -24,8 +24,6 @@ public class Ofertas extends AppCompatActivity {
     }
 
     public  final  void voltar(View view){
-        Intent back = new Intent(Ofertas.this, TelaSupermercado.class);
-        startActivity(back);
-        finish();
+        this.onBackPressed();
     }
 }

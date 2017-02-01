@@ -78,6 +78,7 @@ public class ListaProdutos extends AppCompatActivity {
     protected final  void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_produtos);
+
         ProdutoNegocio consulta = new ProdutoNegocio(getContext());
         List<Produto> produtos = consulta.listar();
         setDataAdapter(new ProdutoListAdapter(getContext(), produtos));

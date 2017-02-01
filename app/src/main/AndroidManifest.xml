@@ -90,6 +90,7 @@
         <activity android:name=".supermercado.gui.ListaProdutos" />
         <activity android:name=".supermercado.gui.CadastroProdutos" />
         <activity android:name=".supermercado.gui.ListaProdutosDoSupermercado" />
+        <activity android:name=".supermercado.gui.ListarItensCarrinhoActivity" />
         <activity android:name=".infra.Sobre" />
         <activity android:name=".infra.Administrador" />
         <activity android:name=".usuario.gui.RecuperarSenha" />
