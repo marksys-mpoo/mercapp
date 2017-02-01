@@ -40,7 +40,7 @@ public class ListaProdutosDoSupermercado extends AppCompatActivity {
             departamentoSelecionado(numeroDepartamento, idSupermercadoString, etDepartamentoSelecionado);
         } else {
             this.buscarTodosProdutosDoSupermercado();
-            etDepartamentoSelecionado.setText("Produtos");
+            etDepartamentoSelecionado.setText("Todos os Produtos");
         }
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

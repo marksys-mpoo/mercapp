@@ -15,6 +15,7 @@ import com.mercapp.recomendacao.negocio.RecomendacaoProdutoNegocio;
 import com.mercapp.supermercado.dominio.Produto;
 import com.mercapp.supermercado.gui.DescricaoProduto;
 import com.mercapp.supermercado.gui.ListaProdutosDoSupermercado;
+import com.mercapp.supermercado.gui.Ofertas;
 import com.mercapp.supermercado.gui.ProdutoListAdapter;
 import com.mercapp.supermercado.gui.TelaSupermercado;
 import com.mercapp.supermercado.negocio.ProdutoNegocio;
@@ -89,31 +90,10 @@ public class SlopeOne extends AppCompatActivity {
         });
     }
 
-    /*public static Produto buscarProdutoRecomendado(Integer idProduto) {
-        Produto produtoClassificado = buscaProdutos.buscar(idProduto);
-
-        //Integer idSupermercado = session.getSupermercadoSelecionado().getId();
-        //List<Produto> produtos = buscaProdutos.listaProdutosDoSupermercado(idSupermercado.toString());
-        //ProdutoListAdapter adaptador = new ProdutoListAdapter(this, produtos);
-        //lista = (ListView)findViewById(R.id.lista_produtos_do_supermercado);
-        //lista.setAdapter(adaptador);
-        return produtoClassificado;
-    }*/
-
-
     private void calculaRecomendacoes(Map<Integer,Map<Integer,Double>> data, Usuario usuarioLogado) {
         criarMatrizDiferenca(data);
-        System.out.println(" matrizDiff " + matrizDiferenca);
-        System.out.println(" matrizDiff " + matrizDiferenca.keySet());
-        System.out.println(" matrizDiff [] " + matrizDiferenca.get(todosItens.get(0).getId()));
-        //System.out.println(" matrizDiff " + notas);
-        System.out.println(" data.keys " + data.keySet());
-        System.out.println(" data.user " + data.values());
-
         System.out.println(" ");
         System.out.println(" --------------------  INÍCIO - EXECUÇÃO DO PROTÓTIPO --------------------");
-        System.out.println(" todos os Itens " + todosItens); // todosItens.get(0).getNome()
-        //System.out.println(" Produto 0 " + todosItens.get(0));
         printData(data);
         System.out.println(" ");
         System.out.println("Lendo... " + usuarioLogado);
@@ -124,10 +104,7 @@ public class SlopeOne extends AppCompatActivity {
         System.out.println(" ");
         System.out.println("Calculando PREDICT... " + usuarioLogado);
         Set<Integer> listIdOrdenados = printRecomendacao(predict(data.get(usuarioLogado.getId())), usuarioLogado);
-        /*for (Integer i : sorted_map.keySet() ) {
-            this.buscarProdutoRecomendado(i);
-            System.out.println("results: " + sorted_map);
-        }*/
+
         System.out.println("ListIdOrdenados... " + listIdOrdenados);
         List<Produto> produtosRecomendadosOrdenados = new ArrayList<>();
         for (Integer i : listIdOrdenados ) {
@@ -233,8 +210,6 @@ public class SlopeOne extends AppCompatActivity {
         return sorted_map.keySet();
     }
 
-
-
     public void criarMatrizDiferenca(Map<Integer,Map<Integer,Double>> data) {
         matrizDiferenca = new HashMap<Integer, Map<Integer, Double>>();
         matrizFrequencia = new HashMap<Integer, Map<Integer, Integer>>();
@@ -280,4 +255,11 @@ public class SlopeOne extends AppCompatActivity {
         startActivity(irTelaSupermercado);
         finish();
     }
+
+    public final void ofertas(View view){
+        Intent irOfertas = new Intent(SlopeOne.this, Ofertas.class);
+        startActivity(irOfertas);
+        finish();
+    }
+
 }

@@ -36,43 +36,43 @@ public class TelaSupermercado extends AppCompatActivity {
         this.selecionarDepartamento("Todos");
     }
 
-    public final  void listaProdutosPadaria(View view) {
+    public final void listaProdutosPadaria(View view) {
         this.selecionarDepartamento("1");
     }
 
-    public  final void listaProdutosFrios(View view) {
+    public final void listaProdutosFrios(View view) {
         this.selecionarDepartamento("2");
     }
 
-    public  final void listaProdutosAcougue(View view) {
+    public final void listaProdutosAcougue(View view) {
         this.selecionarDepartamento("3");
     }
 
-    public  final void listaProdutosFrutas(View view) {
+    public final void listaProdutosFrutas(View view) {
         this.selecionarDepartamento("4");
     }
 
-    public final  void listaProdutosBebidas(View view) {
+    public final void listaProdutosBebidas(View view) {
         this.selecionarDepartamento("5");
     }
 
-    public  final void listaProdutosMercearia(View view) {
+    public final void listaProdutosMercearia(View view) {
         this.selecionarDepartamento("6");
     }
 
-    public  final void listaProdutosHigiene(View view) {
+    public final void listaProdutosHigiene(View view) {
         this.selecionarDepartamento("7");
     }
 
-    public  final void listaProdutosLimpeza(View view) {
+    public final void listaProdutosLimpeza(View view) {
         this.selecionarDepartamento("8");
     }
 
-    public  final void listaProdutosBazar(View view) {
+    public final void listaProdutosBazar(View view) {
         this.selecionarDepartamento("9");
     }
 
-    public final  void selecionarDepartamento(String departamentoSelecionado) {
+    public final void selecionarDepartamento(String departamentoSelecionado) {
         SupermercadoNegocio supermercadoNegocio = new SupermercadoNegocio(context);
         supermercadoNegocio.iniciarSessaoProduto(departamentoSelecionado);
         Intent voltarMenu = new Intent(TelaSupermercado.this, ListaProdutosDoSupermercado.class);
@@ -80,13 +80,14 @@ public class TelaSupermercado extends AppCompatActivity {
         finish();
     }
 
-    public final  void ofertas(View view){
+    public final void ofertas(View view){
         Intent irOfertas = new Intent(TelaSupermercado.this, Ofertas.class);
         startActivity(irOfertas);
         finish();
     }
 
     public final  void recomendacoes(View view){
+        selecionarDepartamento("Todos");
         Intent irSlopeOne = new Intent(TelaSupermercado.this, SlopeOne.class);
         startActivity(irSlopeOne);
         finish();
