@@ -1,6 +1,7 @@
 package com.mercapp.supermercado.gui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import com.mercapp.R;
 import com.mercapp.infra.Session;
 import com.mercapp.supermercado.dominio.Carrinho;
 import com.mercapp.supermercado.negocio.CarrinhoNegocio;
+import com.mercapp.usuario.gui.TelaMenu;
 
 import java.util.List;
 
@@ -57,6 +59,12 @@ public class ListarItensCarrinhoActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public final  void onBackPressed() {
+        Intent voltarTela = new Intent(ListarItensCarrinhoActivity.this, TelaMenu.class);
+        startActivity(voltarTela);
+        finish();
+    }
 
 
 }

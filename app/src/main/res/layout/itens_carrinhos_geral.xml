@@ -6,16 +6,6 @@
 
 
     <TextView
-        android:id="@+id/colunaProduto3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/textview_coluna3_produtos"
-        android:textSize="18sp"
-        android:layout_marginTop="118dp"
-        android:layout_below="@+id/colunaProduto2"
-        android:layout_toEndOf="@+id/textView22" />
-
-    <TextView
         android:text="Preço:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
