@@ -40,7 +40,8 @@ public class ListaProdutosDoSupermercado extends AppCompatActivity {
             departamentoSelecionado(numeroDepartamento, idSupermercadoString, etDepartamentoSelecionado);
         } else {
             this.buscarTodosProdutosDoSupermercado();
-            etDepartamentoSelecionado.setText("Todos os Produtos");
+            final String todosProdutos = "Todos os Produtos";
+            etDepartamentoSelecionado.setText(todosProdutos);
         }
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -55,24 +56,58 @@ public class ListaProdutosDoSupermercado extends AppCompatActivity {
     }
 
     private void departamentoSelecionado(String numeroDepartamento, String idSupermercadoString, TextView etDepartamentoSelecionado) {
-        if (numeroDepartamento.equals("1")) {
-            this.setDepartamentoSelecionado("Padaria");
-        } else if (numeroDepartamento.equals("2")) {
-            this.setDepartamentoSelecionado("Frios");
-        } else if (numeroDepartamento .equals( "3")) {
-            this.setDepartamentoSelecionado("Açougue");
-        } else if (numeroDepartamento.equals( "4")) {
-            this.setDepartamentoSelecionado("Frutas");
-        } else if (numeroDepartamento .equals("5")) {
-            this.setDepartamentoSelecionado("Bebidas");
-        } else if (numeroDepartamento.equals("6")) {
-            this.setDepartamentoSelecionado("Mercearia");
-        } else if (numeroDepartamento.equals("7")) {
-            this.setDepartamentoSelecionado("Higiene");
-        } else if (numeroDepartamento.equals("8")) {
-            this.setDepartamentoSelecionado("Limpeza");
-        } else if (numeroDepartamento.equals("9")) {
-            this.setDepartamentoSelecionado("Bazar");
+        final String primeiro = "1";
+        if (numeroDepartamento.equals(primeiro)) {
+            final String padaria = "Padaria";
+            this.setDepartamentoSelecionado(padaria);
+        } else {
+            final String segundo = "2";
+            if (numeroDepartamento.equals(segundo)) {
+                final String frios = "Frios";
+                this.setDepartamentoSelecionado(frios);
+            } else {
+                final String terceiro = "3";
+                if (numeroDepartamento .equals(terceiro)) {
+                    final String acougue = "Açougue";
+                    this.setDepartamentoSelecionado(acougue);
+                } else {
+                    final String quarto = "4";
+                    if (numeroDepartamento.equals(quarto)) {
+                        final String frutas = "Frutas";
+                        this.setDepartamentoSelecionado(frutas);
+                    } else {
+                        final String quinto = "5";
+                        if (numeroDepartamento .equals(quinto)) {
+                            final String bebidas = "Bebidas";
+                            this.setDepartamentoSelecionado(bebidas);
+                        } else {
+                            final String sexto = "6";
+                            if (numeroDepartamento.equals(sexto)) {
+                                final String mercearia = "Mercearia";
+                                this.setDepartamentoSelecionado(mercearia);
+                            } else {
+                                final String setimo = "7";
+                                if (numeroDepartamento.equals(setimo)) {
+                                    final String higiene = "Higiene";
+                                    this.setDepartamentoSelecionado(higiene);
+                                } else {
+                                    final String oitavo = "8";
+                                    if (numeroDepartamento.equals(oitavo)) {
+                                        final String limpeza = "Limpeza";
+                                        this.setDepartamentoSelecionado(limpeza);
+                                    } else {
+                                        final String nono = "9";
+                                        if (numeroDepartamento.equals(nono)) {
+                                            final String bazar = "Bazar";
+                                            this.setDepartamentoSelecionado(bazar);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
         etDepartamentoSelecionado.setText(this.getDepartamentoSelecionado());
         this.buscaProdutosPorDepartamento(idSupermercadoString, numeroDepartamento);
@@ -94,6 +129,12 @@ public class ListaProdutosDoSupermercado extends AppCompatActivity {
         ProdutoListAdapter adaptador = new ProdutoListAdapter(this, produtos);
         lista = (ListView)findViewById(R.id.lista_produtos_do_supermercado);
         lista.setAdapter(adaptador);
+    }
+
+    public final void  listaProdutosCarrinho(View view){
+        Intent irListaCarrinho = new Intent(this, ListarItensCarrinhoActivity.class);
+        startActivity(irListaCarrinho);
+        finish();
     }
 
     @Override

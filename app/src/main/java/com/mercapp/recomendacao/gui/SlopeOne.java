@@ -14,6 +14,7 @@ import com.mercapp.recomendacao.dominio.RecomendacaoProduto;
 import com.mercapp.recomendacao.negocio.RecomendacaoProdutoNegocio;
 import com.mercapp.supermercado.dominio.Produto;
 import com.mercapp.supermercado.gui.DescricaoProduto;
+import com.mercapp.supermercado.gui.ListaProdutos;
 import com.mercapp.supermercado.gui.ListaProdutosDoSupermercado;
 import com.mercapp.supermercado.gui.Ofertas;
 import com.mercapp.supermercado.gui.ProdutoListAdapter;
@@ -90,7 +91,7 @@ public class SlopeOne extends AppCompatActivity {
         });
     }
 
-    private void calculaRecomendacoes(Map<Integer,Map<Integer,Double>> data, Usuario usuarioLogado) {
+    private List<Produto> calculaRecomendacoes(Map<Integer,Map<Integer,Double>> data, Usuario usuarioLogado) {
         criarMatrizDiferenca(data);
         System.out.println(" ");
         System.out.println(" --------------------  INÍCIO - EXECUÇÃO DO PROTÓTIPO --------------------");
@@ -117,6 +118,9 @@ public class SlopeOne extends AppCompatActivity {
 
         System.out.println(" --------------------  FIM - EXECUÇÃO DO PROTÓTIPO --------------------");
         System.out.println(" ");
+//        RecomendacaoProduto recomendacaoProdutos =  new RecomendacaoProduto();
+//        recomendacaoProdutos.setProdutos(produtosRecomendadosOrdenados);
+        return produtosRecomendadosOrdenados;
     }
 
     public Map<Integer,Double> predict(Map<Integer,Double> notasUsuario) {

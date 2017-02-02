@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_lista_produtos_do_supermercado"
     android:layout_width="match_parent"
@@ -56,5 +57,14 @@
         android:id="@+id/tituloDepartamento"
         android:layout_below="@+id/tituloSupermercado"
         android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_local_grocery_store_black_24dp"
+        android:layout_above="@+id/lista_produtos_do_supermercado"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/imageButton"
+        android:onClick="listaProdutosCarrinho" />
 
 </RelativeLayout>

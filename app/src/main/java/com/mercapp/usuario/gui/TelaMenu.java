@@ -100,8 +100,8 @@ public class TelaMenu extends AppCompatActivity
                 sobre();
                 break;
             case R.id.nav_carrinho:
-                Intent voltarMenu = new Intent(TelaMenu.this, ListarItensCarrinhoActivity.class);
-                startActivity(voltarMenu);
+                Intent irListaCarrinho = new Intent(TelaMenu.this, ListarItensCarrinhoActivity.class);
+                startActivity(irListaCarrinho);
                 finish();
 
 //                aviso();

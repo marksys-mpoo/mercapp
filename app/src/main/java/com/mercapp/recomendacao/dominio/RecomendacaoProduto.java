@@ -1,5 +1,9 @@
 package com.mercapp.recomendacao.dominio;
 
+import com.mercapp.supermercado.dominio.Produto;
+
+import java.util.List;
+
 public class RecomendacaoProduto {
 
     private Integer id;
@@ -7,6 +11,7 @@ public class RecomendacaoProduto {
     private Integer idUsuario;
     private Integer idSupermercado;
     private Double nota;
+//    private List<Produto> produtos;
 
     public Integer getIdProduto() {
         return idProduto;
@@ -48,4 +53,11 @@ public class RecomendacaoProduto {
         this.nota = nota;
     }
 
+//    public List<Produto> getProdutos() {
+//        return produtos;
+//    }
+//
+//    public void setProdutos(List<Produto> produtos) {
+//        this.produtos = produtos;
+//    }
 }
