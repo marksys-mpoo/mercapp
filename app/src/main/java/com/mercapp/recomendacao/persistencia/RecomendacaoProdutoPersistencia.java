@@ -22,21 +22,6 @@ public class RecomendacaoProdutoPersistencia {
         bdHelper = new BDHelper(context);
     }
 
-    /*public final List<RecomendacaoProduto> listaProdutosClassificados(Integer idUsuario, Integer idSupermercado){
-        List<RecomendacaoProduto> recomendacaoProdutos = new ArrayList<>();
-        SQLiteDatabase db = bdHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery(SELECT + bdHelper.TBL_RECOMENDACAO_PRODUTO +
-                WHERE + bdHelper.COLUNA_RECOMENDACAO_PRODUTO_ID_USUARIO + LIKE, new String[]{""+idUsuario});
-        cursor.moveToFirst();
-        while(!cursor.isAfterLast()){
-            recomendacaoProdutos.add(criarRecomendacaoProduto(cursor));
-            cursor.moveToNext();
-        }
-        cursor.close();
-        db.close();
-        return recomendacaoProdutos;
-    }*/
-
     public  final List<RecomendacaoProduto> listaProdutosClassificados(Integer idUsuario, Integer idSupermercado){
         List<RecomendacaoProduto> recomendacaoProdutos = new ArrayList<>();
         SQLiteDatabase db = bdHelper.getReadableDatabase();

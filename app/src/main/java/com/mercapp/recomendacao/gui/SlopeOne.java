@@ -96,12 +96,11 @@ public class SlopeOne extends AppCompatActivity {
         System.out.println(" --------------------  INÍCIO - EXECUÇÃO DO PROTÓTIPO --------------------");
         printData(data);
         System.out.println(" ");
-        System.out.println("Lendo... " + usuarioLogado);
-        System.out.println("data ... " + data);
-        System.out.println("data.get(usuarioLogado)... " + data.get(usuarioLogado.getId()));
 
+        System.out.println("Lendo... " + usuarioLogado);
         print(data.get(usuarioLogado.getId()));
         System.out.println(" ");
+
         System.out.println("Calculando PREDICT... " + usuarioLogado);
         Set<Integer> listIdOrdenados = printRecomendacao(predict(data.get(usuarioLogado.getId())), usuarioLogado);
 
@@ -111,14 +110,13 @@ public class SlopeOne extends AppCompatActivity {
             Produto produtoClassificado = buscaProdutos.buscar(i);
             produtosRecomendadosOrdenados.add(produtoClassificado);
         }
-        System.out.println("results: " + produtosRecomendadosOrdenados);
+        System.out.println("ListProdutosOrdenados: " + produtosRecomendadosOrdenados);
         ProdutoListAdapter adaptador = new ProdutoListAdapter(this, produtosRecomendadosOrdenados);
         lista = (ListView)findViewById(R.id.lista_produtos_recomendados);
         lista.setAdapter(adaptador);
 
         System.out.println(" --------------------  FIM - EXECUÇÃO DO PROTÓTIPO --------------------");
         System.out.println(" ");
-
     }
 
     public Map<Integer,Double> predict(Map<Integer,Double> notasUsuario) {
@@ -159,12 +157,12 @@ public class SlopeOne extends AppCompatActivity {
         System.out.println(" ");
         System.out.println("************ Matriz Diferença [Itens x (Média das diferenças das notas e Frequências dos itens juntos) ] ************");
         System.out.print("             |");
-        for (int g = 0; g< todosItens.size(); g++) { // todosItens[i]
+        for (int g = 0; g< todosItens.size(); g++) {
             System.out.format("%21s", todosItens.get(g) + "       |");
         }
         System.out.println(" ");
         System.out.print("             |");
-        for (int h = 0; h< todosItens.size(); h++) { // todosItens[i]
+        for (int h = 0; h< todosItens.size(); h++) {
             System.out.print("  Notas    Frequenc |");
         }
         System.out.println(" ");
@@ -174,9 +172,7 @@ public class SlopeOne extends AppCompatActivity {
         }
     }
 
-    private void printMatrizes(Map<Integer,Double> notas,
-                               Map<Integer,Integer> frequencies) {
-        System.out.println(" todos os Itens " + todosItens);
+    private void printMatrizes(Map<Integer,Double> notas, Map<Integer,Integer> frequencies) {
         for (int j = 0; j< todosItens.size(); j++) {
             System.out.format("%10.3f", notas.get(todosItens.get(j).getId()) );
             System.out.print(" ");
