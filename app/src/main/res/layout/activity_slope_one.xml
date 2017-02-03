@@ -13,7 +13,6 @@
         android:id="@+id/lista_produtos_recomendados"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/btnDepartamentos"
-        android:layout_alignEnd="@+id/btnOfertas"
         android:layout_below="@+id/btnRecomendacoes" />
 
     <Button
@@ -24,19 +23,6 @@
         android:background="@android:drawable/ic_notification_overlay"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/btnDepartamentos" />
-
-    <Button
-        android:text="Ofertas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnOfertas"
-        android:onClick="ofertas"
-        android:background="@android:drawable/ic_notification_overlay"
-        android:textColor="@color/cast_expanded_controller_text_color"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="12dp"
-        android:layout_toEndOf="@+id/btnRecomendacoes" />
 
     <Button
         android:text="Departamentos"

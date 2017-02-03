@@ -90,14 +90,13 @@
         <activity android:name=".supermercado.gui.ListaProdutos" />
         <activity android:name=".supermercado.gui.CadastroProdutos" />
         <activity android:name=".supermercado.gui.ListaProdutosDoSupermercado" />
-        <activity android:name=".supermercado.gui.ListarItensCarrinhoActivity" />
+        <activity android:name=".supermercado.gui.ListarItensCarrinho" />
         <activity android:name=".infra.Sobre" />
         <activity android:name=".infra.Administrador" />
         <activity android:name=".usuario.gui.RecuperarSenha" />
         <activity android:name=".supermercado.gui.ListaImagens" />
         <activity android:name=".supermercado.gui.ImagemListAdapter" />
         <activity android:name=".usuario.gui.Ajuda" />
-        <activity android:name=".supermercado.gui.Ofertas" />
         <activity android:name=".supermercado.gui.DescricaoProduto" />
         <activity android:name=".recomendacao.gui.SlopeOne" />
     </application>

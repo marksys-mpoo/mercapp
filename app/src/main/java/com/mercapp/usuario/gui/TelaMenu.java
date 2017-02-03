@@ -21,7 +21,7 @@ import com.mercapp.R;
 import com.mercapp.infra.Administrador;
 import com.mercapp.infra.Session;
 import com.mercapp.infra.Sobre;
-import com.mercapp.supermercado.gui.ListarItensCarrinhoActivity;
+import com.mercapp.supermercado.gui.ListarItensCarrinho;
 import com.mercapp.usuario.gui.fragments.Mapa;
 
 import static com.mercapp.R.id;
@@ -100,7 +100,7 @@ public class TelaMenu extends AppCompatActivity
                 sobre();
                 break;
             case R.id.nav_carrinho:
-                Intent irListaCarrinho = new Intent(TelaMenu.this, ListarItensCarrinhoActivity.class);
+                Intent irListaCarrinho = new Intent(TelaMenu.this, ListarItensCarrinho.class);
                 startActivity(irListaCarrinho);
                 finish();
 

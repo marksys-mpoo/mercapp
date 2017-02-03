@@ -80,12 +80,6 @@ public class TelaSupermercado extends AppCompatActivity {
         finish();
     }
 
-    public final void ofertas(View view){
-        Intent irOfertas = new Intent(TelaSupermercado.this, Ofertas.class);
-        startActivity(irOfertas);
-        finish();
-    }
-
     public final  void recomendacoes(View view){
         selecionarDepartamento("Todos");
         Intent irSlopeOne = new Intent(TelaSupermercado.this, SlopeOne.class);
@@ -100,5 +94,4 @@ public class TelaSupermercado extends AppCompatActivity {
         startActivity(voltarTelaMenuMapa);
         finish();
     }
-
 }

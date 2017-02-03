@@ -14,9 +14,6 @@ import com.mercapp.recomendacao.dominio.RecomendacaoProduto;
 import com.mercapp.recomendacao.negocio.RecomendacaoProdutoNegocio;
 import com.mercapp.supermercado.dominio.Produto;
 import com.mercapp.supermercado.gui.DescricaoProduto;
-import com.mercapp.supermercado.gui.ListaProdutos;
-import com.mercapp.supermercado.gui.ListaProdutosDoSupermercado;
-import com.mercapp.supermercado.gui.Ofertas;
 import com.mercapp.supermercado.gui.ProdutoListAdapter;
 import com.mercapp.supermercado.gui.TelaSupermercado;
 import com.mercapp.supermercado.negocio.ProdutoNegocio;
@@ -255,11 +252,4 @@ public class SlopeOne extends AppCompatActivity {
         startActivity(irTelaSupermercado);
         finish();
     }
-
-    public final void ofertas(View view){
-        Intent irOfertas = new Intent(SlopeOne.this, Ofertas.class);
-        startActivity(irOfertas);
-        finish();
-    }
-
 }

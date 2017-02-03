@@ -132,7 +132,7 @@ public class ListaProdutosDoSupermercado extends AppCompatActivity {
     }
 
     public final void  listaProdutosCarrinho(View view){
-        Intent irListaCarrinho = new Intent(this, ListarItensCarrinhoActivity.class);
+        Intent irListaCarrinho = new Intent(this, ListarItensCarrinho.class);
         startActivity(irListaCarrinho);
         finish();
     }
