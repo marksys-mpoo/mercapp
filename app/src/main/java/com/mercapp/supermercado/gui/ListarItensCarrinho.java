@@ -52,7 +52,7 @@ public class ListarItensCarrinho extends AppCompatActivity {
 
     @Override
     public final  void onBackPressed() {
-        Intent voltarTela = new Intent(ListarItensCarrinho.this, TelaMenu.class);
+        Intent voltarTela = new Intent(ListarItensCarrinho.this, TelaSupermercado.class);
         startActivity(voltarTela);
         finish();
     }
